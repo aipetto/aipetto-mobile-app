@@ -28,10 +28,6 @@ class WaveHeader extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Image.asset(
-                  'assets/images/icon_start.png',
-                  color: Colors.white,
-                ),
                 SizedBox(
                   height: 15,
                 ),

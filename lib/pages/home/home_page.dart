@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        '${'hello'.tr()} Tawfiq,',
+                        '${'hello'.tr()} Jhony,',
                         style: Theme.of(context).textTheme.headline6.copyWith(
                               fontWeight: FontWeight.w400,
                             ),
@@ -59,6 +59,25 @@ class _HomePageState extends State<HomePage>
                 ? NoAppointmentsWidget()
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                          height: 160,
+                          child: ListView.separated(
+                            separatorBuilder: (context, index) => SizedBox(
+                              width: 15,
+                            ),
+                            itemCount: 4,
+                            scrollDirection: Axis.horizontal,
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            itemBuilder: (context, index) {
+                              return VisitedDoctorListItem(
+                                doctor: doctors[index],
+                              );
+                            },
+                          ),
+                      )
+                    ]
+                    /*crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -119,7 +138,7 @@ class _HomePageState extends State<HomePage>
                           ],
                         ),
                       ),
-                    ],
+                    ],*/
                   ),
           ],
         ),

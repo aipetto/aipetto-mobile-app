@@ -1,3 +1,4 @@
+import 'package:aipetto/pages/pets/pets_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/custom_navigation_bar.dart';
@@ -53,7 +54,7 @@ class _HomeState extends State<Home> {
     final size = MediaQuery.of(context).size;
     final _pages = [
       HomePage(),
-      ProfilePage(),
+      PetsPage(),
       Container(),
       MessagesPage(),
       SettingsPage(),
@@ -158,7 +159,7 @@ class _HomeState extends State<Home> {
                         color: kColorBlue,
                       ),
                       child: Icon(
-                        Icons.add,
+                        Icons.pets,
                         color: Colors.white,
                       ),
                     ),
@@ -170,7 +171,7 @@ class _HomeState extends State<Home> {
               bottomNavigationBar: CustomNavigationBar(
                 backgroundColor:
                     Prefs.isDark() ? Color(0xff121212) : Colors.white,
-                strokeColor: kColorPink,
+                strokeColor: kColorGreen,
                 items: [
                   NavBarItemWidget(
                     onTap: () {

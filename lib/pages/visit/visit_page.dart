@@ -26,7 +26,7 @@ class _VisitPageState extends State<VisitPage>
                 onTap: () {
                   Navigator.of(context).pushNamed(Routes.visitDetail);
                 },
-                title: 'Tawfiq Bahri',
+                title: 'Super Pet',
                 subTitle: 'Family Doctor, Cardiologist',
                 buttonTitle: 'See Full Reports',
                 imagePath: 'assets/images/icon_doctor_1.png',

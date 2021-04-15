@@ -77,7 +77,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                         child: _buildColumn(
                           context: context,
                           title: 'doctor'.tr(),
-                          subtitle: 'Dr. Tawfiq Bahri',
+                          subtitle: 'Dr. Super Pet',
                         ),
                       ),
                       Expanded(

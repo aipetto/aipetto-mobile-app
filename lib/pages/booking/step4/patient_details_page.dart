@@ -25,7 +25,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
   @override
   void initState() {
     super.initState();
-    _nameController.text = 'Tawfiq Bahri';
+    _nameController.text = 'Super Pet';
     _phoneController.text = '+213781348677';
   }
 
@@ -35,7 +35,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
       children: <Widget>[
         Text(
           _patient
-              ? '${'please_provide_following_information_about'.tr()} Tawfiq Bahri:'
+              ? '${'please_provide_following_information_about'.tr()} Super Pet:'
               : 'please_provide_following_patient_details_dot'.tr(),
           style: TextStyle(
             fontSize: 14,
@@ -51,7 +51,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
         ),
         CustomTextFormField(
           controller: _nameController,
-          hintText: _patient ? '' : 'Tawfiq Bahri',
+          hintText: _patient ? '' : 'Super Pet',
         ),
         SizedBox(
           height: 15,
@@ -245,12 +245,12 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                                         onChanged: (value) {
                                           setState(() {
                                             _nameController.text =
-                                                'Tawfiq Bahri';
+                                                'Super Pet';
                                             _patient = true;
                                           });
                                         },
                                         groupValue: _patient,
-                                        title: Text('Tawfiq Bahri'),
+                                        title: Text('Super Pet'),
                                       ),
                                       Divider(
                                         color: _isdark

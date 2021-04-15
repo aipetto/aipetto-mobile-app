@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'working_day.dart';
 
-class Doctor {
+class Pet {
   String id;
   String nickname;
 
-  Doctor({
+  Pet({
     this.id,
     this.nickname,
   });
@@ -18,10 +18,10 @@ class Doctor {
     };
   }
 
-  factory Doctor.fromMap(Map<String, dynamic> map) {
+  factory Pet.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
-    return Doctor(
+    return Pet(
       id: map['id'],
       nickname: map['nickname'],
     );
@@ -29,70 +29,28 @@ class Doctor {
 
   String toJson() => json.encode(toMap());
 
-  factory Doctor.fromJson(String source) => Doctor.fromMap(json.decode(source));
+  factory Pet.fromJson(String source) => Pet.fromMap(json.decode(source));
 }
 
-class Doctors {
-  List<Doctor> doctorList;
+class Pets {
+  List<Pet> petList;
 
-  Doctors({this.doctorList});
+  Pets({this.petList});
 
-  factory Doctors.fromJSON(Map<dynamic, dynamic> json) {
-    return Doctors(doctorList: parserecipes(json));
+  factory Pets.fromJSON(Map<dynamic, dynamic> json) {
+    return Pets(petList: parserecipes(json));
   }
 
-  static List<Doctor> parserecipes(doctorJSON) {
+  static List<Pet> parserecipes(doctorJSON) {
     var dList = doctorJSON['doctors'] as List;
-    List<Doctor> doctorList =
-    dList.map((data) => Doctor.fromJson(data)).toList();
-    return doctorList;
+    List<Pet> petList =
+    dList.map((data) => Pet.fromJson(data)).toList();
+    return petList;
   }
 }
 
 final doctors = [
-  Doctor(
-    name: 'Tawfiq Bahri',
-    speciality: 'Family Doctor, Cardiologist',
-    about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_1.png',
-    rating: 4.5,
-    price: 100,
-  ),
-  Doctor(
-    name: 'Trashae Hubbard',
-    speciality: 'Family Doctor, Therapist',
-    about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_2.png',
-    rating: 4.7,
-    price: 90,
-  ),
-  Doctor(
-    name: 'Jesus Moruga',
-    speciality: 'Family Doctor, Therapist',
-    about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_3.png',
-    rating: 4.3,
-    price: 100,
-  ),
-  Doctor(
-    name: 'Gabriel Moreira',
-    speciality: 'Family Doctor, Therapist',
-    about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_4.png',
-    rating: 4.7,
-    price: 100,
-  ),
-  Doctor(
-    name: 'Liana Lee',
-    speciality: 'Family Doctor, Therapist',
-    about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_5.png',
-    rating: 4.7,
-    price: 100,
+  Pet(
+    nickname: 'Supet Pet',
   ),
 ];

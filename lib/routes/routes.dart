@@ -15,10 +15,12 @@ class Routes {
   static const String prescriptionDetail = '/prescription_detail';
   static const String chatDetail = '/chat_detail';
   static const String doctorProfile = '/doctorProfile';
+  static const String petProfile = '/pet_profile';
   static const String editProfile = '/edit_profile';
   static const String changeLanguage = '/change_language';
   static const String notificationSettings = '/notification_settings';
   static const String myDoctors = '/my_doctors';
+  static const String myPets = '/my_pets';
   static const String myAppointments = '/my_appointments';
   static const String notifications = '/notifications';
 }

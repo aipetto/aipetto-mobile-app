@@ -51,7 +51,7 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
               width: 5,
             ),
             Text(
-              'Tawfiq Bahri',
+              'Super Pet',
               style: Theme.of(context).textTheme.subtitle2.copyWith(
                     fontWeight: FontWeight.w700,
                   ),

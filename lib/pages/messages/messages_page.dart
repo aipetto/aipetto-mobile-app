@@ -56,7 +56,7 @@ class _MessagesPageState extends State<MessagesPage>
               Navigator.of(context).pushNamed(Routes.chatDetail);
             },
             imagePath: 'assets/images/icon_doctor_1.png',
-            name: 'Tawfiq Bahri',
+            name: 'Super Pet',
             message: 'Your next appointment',
             date: '11:05 AM',
             unread: 10,

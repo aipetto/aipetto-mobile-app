@@ -60,22 +60,17 @@ class _HomePageState extends State<HomePage>
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                          height: 160,
-                          child: ListView.separated(
-                            separatorBuilder: (context, index) => SizedBox(
-                              width: 15,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          children: <Widget>[
+                            SectionHeaderWidget(
+                              title: 'next_appointment'.tr(),
                             ),
-                            itemCount: 4,
-                            scrollDirection: Axis.horizontal,
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            itemBuilder: (context, index) {
-                              return VisitedDoctorListItem(
-                                doctor: doctors[index],
-                              );
-                            },
-                          ),
-                      )
+                            NextAppointmentWidget(),
+                          ],
+                        ),
+                      ),
                     ]
                     /*crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -122,7 +117,7 @@ class _HomePageState extends State<HomePage>
                             ),
                             TestAndPrescriptionCardWidget(
                               title: 'Tuberculosis ${'recipe'.tr()}',
-                              subTitle: '${'given_by'.tr()} Tawfiq Bahri',
+                              subTitle: '${'given_by'.tr()} Super Pet',
                               image: 'icon_medical_recipe.png',
                             ),
                             //test results

@@ -49,7 +49,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'Tawfiq Bahri',
+                                  'Super Pet',
                                   style: Theme.of(context)
                                       .textTheme
                                       .subtitle2

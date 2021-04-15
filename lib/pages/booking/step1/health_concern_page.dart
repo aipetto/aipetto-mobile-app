@@ -1,9 +1,9 @@
+import 'package:aipetto/components/service_type_item.dart';
+import 'package:aipetto/model/type_services.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../../components/health_concern_item.dart';
-import '../../../model/health_category.dart';
 import '../../../routes/routes.dart';
 
 class HealthConcernPage extends StatelessWidget {
@@ -35,7 +35,7 @@ class HealthConcernPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(20),
                     child: Text(
-                      'choose_health_concern'.tr(),
+                      'choose_service'.tr(),
                       style: Theme.of(context).textTheme.headline6.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
@@ -46,13 +46,13 @@ class HealthConcernPage extends StatelessWidget {
                     crossAxisCount: 4,
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: healthCategories.length,
+                    itemCount: typeServices.length,
                     staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                     itemBuilder: (context, index) {
-                      return HealthConcernItem(
-                        healthCategory: healthCategories[index],
+                      return ServiceTypeItem(
+                        serviceType: typeServices[index],
                         onTap: () {
                           Navigator.of(context).pushNamed(Routes.bookingStep2);
                         },

@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        '${'hello'.tr()} Tawfiq,',
+                        '${'hello'.tr()} Jhony,',
                         style: Theme.of(context).textTheme.headline6.copyWith(
                               fontWeight: FontWeight.w400,
                             ),
@@ -59,6 +59,20 @@ class _HomePageState extends State<HomePage>
                 ? NoAppointmentsWidget()
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          children: <Widget>[
+                            SectionHeaderWidget(
+                              title: 'next_appointment'.tr(),
+                            ),
+                            NextAppointmentWidget(),
+                          ],
+                        ),
+                      ),
+                    ]
+                    /*crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -103,7 +117,7 @@ class _HomePageState extends State<HomePage>
                             ),
                             TestAndPrescriptionCardWidget(
                               title: 'Tuberculosis ${'recipe'.tr()}',
-                              subTitle: '${'given_by'.tr()} Tawfiq Bahri',
+                              subTitle: '${'given_by'.tr()} Super Pet',
                               image: 'icon_medical_recipe.png',
                             ),
                             //test results
@@ -119,7 +133,7 @@ class _HomePageState extends State<HomePage>
                           ],
                         ),
                       ),
-                    ],
+                    ],*/
                   ),
           ],
         ),

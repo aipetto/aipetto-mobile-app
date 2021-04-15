@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const kColorBlue = Color(0xff2e83f8);
+const kColorBlue = Color(0xff4245ef);
 const kColorDarkBlue = Color(0xff1b3a5e);
-const kColorPink = Color(0xffff748d);
+const kColorGreen = Color(0xff4245ef);
 
 const kInputTextStyle = TextStyle(
     fontSize: 14,
@@ -10,7 +10,7 @@ const kInputTextStyle = TextStyle(
     fontWeight: FontWeight.w300,
     fontFamily: 'NunitoSans');
 
-const kColorPrimary = Color(0xff2e83f8);
+const kColorPrimary = Color(0xff4245ef);
 const kColorPrimaryDark = Color(0xff1b3a5e);
 const kColorSecondary = Color(0xffff748d);
 const kColorDark = Color(0xff121212);

@@ -8,27 +8,15 @@ class AppBarTitleWidget extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Icon(
-          Icons.add,
-          color: kColorPink,
-        ),
         Text.rich(
           TextSpan(
             children: [
               TextSpan(
-                text: 'Med',
+                text: 'AIPETTO',
                 style: TextStyle(
                   color: kColorBlue,
-                  fontSize: 14,
+                  fontSize: 22,
                   fontWeight: FontWeight.w700,
-                ),
-              ),
-              TextSpan(
-                text: 'APP',
-                style: TextStyle(
-                  color: Colors.grey[400],
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],

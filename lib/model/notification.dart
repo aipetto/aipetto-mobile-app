@@ -58,7 +58,7 @@ final notifications = [
   ),
   Notification(
     title: 'Appointment confirmation',
-    body: 'Doctor Tawfiq Bahri confirmed your booking appointment',
+    body: 'Doctor Super Pet confirmed your booking appointment',
     icon: 'assets/images/confirmation.png',
     date: '1d',
   ),

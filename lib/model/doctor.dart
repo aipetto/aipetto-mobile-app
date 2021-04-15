@@ -112,7 +112,7 @@ class Doctors {
 
 final doctors = [
   Doctor(
-    name: 'Tawfiq Bahri',
+    name: 'Super Pet',
     speciality: 'Family Doctor, Cardiologist',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',

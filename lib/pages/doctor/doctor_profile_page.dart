@@ -49,7 +49,7 @@ class DoctorProfilePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Tawfiq Bahri',
+                            'Super Pet',
                             style:
                                 Theme.of(context).textTheme.subtitle1.copyWith(
                                       fontWeight: FontWeight.w700,
@@ -147,7 +147,7 @@ class DoctorProfilePage extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  'Doctor Tawfiq Bahri, is a Doctor primarily located in New York, with another office in Atlantic City, New Jersey. He has 16 years of experience. His specialities include Family Medicine and Cardiology.',
+                  'Doctor Super Pet, is a Doctor primarily located in New York, with another office in Atlantic City, New Jersey. He has 16 years of experience. His specialities include Family Medicine and Cardiology.',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14,

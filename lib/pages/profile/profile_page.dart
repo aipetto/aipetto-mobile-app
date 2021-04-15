@@ -51,18 +51,22 @@ class _ProfilePageState extends State<ProfilePage>
       ),
     ];
 
-    return Column(
+    return Scaffold(
+      body: Column(
       children: <Widget>[
         Container(
           padding: EdgeInsets.all(20),
           //color: Colors.white,
           child: Row(
             children: <Widget>[
-              CircleAvatar(
-                radius: 32,
-                backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage(
-                  'assets/images/icon_man.png',
+              Padding(
+              padding: EdgeInsets.symmetric(vertical: 30),
+               child: CircleAvatar(
+                  radius: 32,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: AssetImage(
+                    'assets/images/pets/pet_1.jpg',
+                  ),
                 ),
               ),
               SizedBox(
@@ -73,14 +77,14 @@ class _ProfilePageState extends State<ProfilePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Tawfiq Bahri',
+                      'Super pet',
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                     SizedBox(
                       height: 3,
                     ),
                     Text(
-                      'bhr.tawfik@gmail.com',
+                      'Breed Name here',
                       style: TextStyle(
                         color: Colors.grey[350],
                         fontSize: 12,
@@ -90,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage>
                       height: 5,
                     ),
                     Text(
-                      '+213 781 348 677',
+                      '3yr',
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
@@ -153,6 +157,7 @@ class _ProfilePageState extends State<ProfilePage>
           ),
         )
       ],
+    ),
     );
   }
 

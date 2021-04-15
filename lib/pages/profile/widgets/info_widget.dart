@@ -19,7 +19,7 @@ class InfoWidget extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            'Tawfiq Bahri',
+            'Super Pet',
             style: Theme.of(context).textTheme.subtitle2,
           ),
           trailing: CircleAvatar(
@@ -41,7 +41,7 @@ class InfoWidget extends StatelessWidget {
         ),
         ProfileInfoTile(
           title: 'email'.tr(),
-          trailing: 'bhr.tawfik@gmail.com',
+          trailing: 'mrjhonyvidal@aipetto.com',
           hint: 'add_email'.tr(),
         ),
         ProfileInfoTile(

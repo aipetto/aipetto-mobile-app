@@ -22,7 +22,7 @@ class _InputWidgetState extends State<InputWidget> {
           title: 'email_dot'.tr(),
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
-          hintText: 'bhr.tawfik@gmail.com',
+          hintText: 'mrjhonyvidal@aipetto.com',
         ),
         LabeledTextFormField(
           title: 'password_dot'.tr(),

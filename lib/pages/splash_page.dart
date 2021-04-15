@@ -46,28 +46,15 @@ class _SplashPageState extends State<SplashPage> {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Icon(
-                        Icons.add,
-                        color: kColorPink,
-                        size: 48,
-                      ),
                       Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Med',
+                              text: 'AIPETTO',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 32,
                                 fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'APP',
-                              style: TextStyle(
-                                color: Colors.grey[400],
-                                fontSize: 32,
-                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],

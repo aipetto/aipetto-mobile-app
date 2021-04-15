@@ -1,3 +1,5 @@
+import 'package:aipetto/pages/pets/pets_page.dart';
+import 'package:aipetto/pages/profile/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -35,6 +37,9 @@ class RouteGenerator {
 
       case Routes.login:
         return CupertinoPageRoute(builder: (_) => LoginPage());
+
+      case Routes.petProfile:
+        return CupertinoPageRoute(builder: (_) => ProfilePage());
 
       case Routes.signup:
         return CupertinoPageRoute(builder: (_) => SignupPage());
@@ -86,6 +91,9 @@ class RouteGenerator {
 
       case Routes.editProfile:
         return CupertinoPageRoute(builder: (_) => EditProfilePage());
+
+      case Routes.myPets:
+        return CupertinoPageRoute(builder: (_) => PetsPage());
 
       case Routes.changeLanguage:
         return CupertinoPageRoute(builder: (_) => ChangeLanguagePage());

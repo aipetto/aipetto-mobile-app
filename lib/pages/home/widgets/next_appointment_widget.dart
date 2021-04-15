@@ -34,7 +34,7 @@ class NextAppointmentWidget extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      '11 January 2019, 10:00 AM',
+                      DateTime.now().add(const Duration(days: 1)) .toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -80,7 +80,7 @@ class NextAppointmentWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Tawfiq Bahri',
+                    'John Ferry',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -91,7 +91,7 @@ class NextAppointmentWidget extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    'Family Doctor, Cardiologist',
+                    'Veterinarian',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,

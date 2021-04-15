@@ -40,7 +40,7 @@ class DrawerPage extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Text(
-                            'Tawfiq Bahri',
+                            'Pet Owner name',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -50,14 +50,6 @@ class DrawerPage extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text(
-                            'O+',
-                            style: TextStyle(
-                              color: kColorSecondary,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
                         ],
                       )
                     ],
@@ -66,9 +58,15 @@ class DrawerPage extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                _drawerItem(
+                /*_drawerItem(
                   image: 'person',
                   text: 'my_doctors',
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(Routes.myDoctors),
+                ),*/
+                _drawerItem(
+                  image: 'person',
+                  text: 'my_pets',
                   onTap: () =>
                       Navigator.of(context).pushNamed(Routes.myDoctors),
                 ),
@@ -78,11 +76,11 @@ class DrawerPage extends StatelessWidget {
                   onTap: () =>
                       Navigator.of(context).pushNamed(Routes.myAppointments),
                 ),
-                _drawerItem(
+              /*  _drawerItem(
                   image: 'hospital',
                   text: 'hospitals',
                   onTap: () {},
-                ),
+                ),*/
               ],
             ),
           ),

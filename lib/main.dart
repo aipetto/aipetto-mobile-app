@@ -9,7 +9,11 @@ import 'routes/route_generator.dart';
 import 'routes/routes.dart';
 import 'utils/themebloc/theme_bloc.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
   runApp(
     EasyLocalization(
       child: MyApp(),

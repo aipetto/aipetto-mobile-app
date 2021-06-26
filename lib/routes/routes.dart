@@ -4,6 +4,8 @@ class Routes {
   static const String signup = '/signup';
   static const String forgotPassword = '/forgot_password';
   static const String home = '/home';
+  static const String banking = '/banking'; // TODO adapt to our app
+  static const String saloon = '/saloon'; // TODO adapt to our app
   static const String filter = '/filter';
   static const String bookingStep1 = '/booking_step1';
   static const String bookingStep2 = '/booking_step2';

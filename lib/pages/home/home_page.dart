@@ -71,25 +71,6 @@ class _HomePageState extends State<HomePage>
                           ],
                         ),
                       ),
-                    ]
-                    /*crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          children: <Widget>[
-                            SectionHeaderWidget(
-                              title: 'next_appointment'.tr(),
-                            ),
-                            NextAppointmentWidget(),
-                            SectionHeaderWidget(
-                              title: 'doctors_you_have_visited'.tr(),
-                              onPressed: () => Navigator.of(context)
-                                  .pushNamed(Routes.myDoctors),
-                            ),
-                          ],
-                        ),
-                      ),
                       Container(
                         height: 160,
                         child: ListView.separated(
@@ -133,7 +114,7 @@ class _HomePageState extends State<HomePage>
                           ],
                         ),
                       ),
-                    ],*/
+                    ],
                   ),
           ],
         ),

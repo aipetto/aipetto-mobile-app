@@ -1,9 +1,12 @@
+import 'package:aipetto/pages/hairsaloon/BHWalkThroughScreen.dart';
 import 'package:aipetto/pages/pets/pets_page.dart';
 import 'package:aipetto/pages/profile/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/appointment/appointment_detail_page.dart';
+import '../pages/bankinglayout/BankingWalkThrough.dart';
+import '../pages/hairsaloon/BHWalkThroughScreen.dart';
 import '../pages/appointment/my_appointments_page.dart';
 import '../pages/booking/filter/filter_page.dart';
 import '../pages/booking/step1/health_concern_page.dart';
@@ -37,6 +40,12 @@ class RouteGenerator {
 
       case Routes.login:
         return CupertinoPageRoute(builder: (_) => LoginPage());
+
+      case Routes.banking:
+        return CupertinoPageRoute(builder: (_) => BankingWalkThrough());
+
+      case Routes.saloon:
+        return CupertinoPageRoute(builder: (_) => BHWalkThroughScreen());
 
       case Routes.petProfile:
         return CupertinoPageRoute(builder: (_) => ProfilePage());

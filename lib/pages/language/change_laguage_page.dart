@@ -59,8 +59,8 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
         Prefs.setString(Prefs.LANGUAGE, 'pt');
         break;
     }
-    EasyLocalization.of(context).locale =
-        EasyLocalization.of(context).supportedLocales[index];
+    /*EasyLocalization.of(context).locale =
+        EasyLocalization.of(context).supportedLocales[index];*/
 
     print("language" + _language.toString());
   }

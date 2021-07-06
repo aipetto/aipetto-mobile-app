@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage>
                             SectionHeaderWidget(
                               title: 'your_prescriptions'.tr(),
                               onPressed: () => Navigator.pushNamed(
-                                  context, Routes.banking),
+                                  context, Routes.prescriptionDetail),
                             ),
                             TestAndPrescriptionCardWidget(
                               title: 'Tuberculosis ${'recipe'.tr()}',
@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage>
                             SectionHeaderWidget(
                               title: 'test_results'.tr(),
                               onPressed: () => Navigator.pushNamed(
-                                  context, Routes.saloon),
+                                  context, Routes.myAppointments),
                             ),
                             TestAndPrescriptionCardWidget(
                               title: 'Monthly Medical Check Up',

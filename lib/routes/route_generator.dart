@@ -41,12 +41,6 @@ class RouteGenerator {
       case Routes.login:
         return CupertinoPageRoute(builder: (_) => LoginPage());
 
-      case Routes.banking:
-        return CupertinoPageRoute(builder: (_) => BankingWalkThrough());
-
-      case Routes.saloon:
-        return CupertinoPageRoute(builder: (_) => BHWalkThroughScreen());
-
       case Routes.petProfile:
         return CupertinoPageRoute(builder: (_) => ProfilePage());
 

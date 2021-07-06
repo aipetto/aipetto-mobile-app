@@ -46,7 +46,7 @@ class ChooseDoctorPage extends StatelessWidget {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: kColorBlue,
+                color:kAmphibianColorGreenLight,
               ),
               child: Row(
                 children: <Widget>[

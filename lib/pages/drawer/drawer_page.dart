@@ -13,8 +13,14 @@ class DrawerPage extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Scaffold(
-        backgroundColor: kColorPrimary,
-        body: SafeArea(
+        backgroundColor: Colors.transparent,
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/background_bones_pawn.jpg"),
+                colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstATop),
+                fit: BoxFit.cover)
+          ),
           child: Padding(
             padding: EdgeInsets.symmetric(
               vertical: 35,

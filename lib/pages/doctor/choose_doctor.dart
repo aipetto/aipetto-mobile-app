@@ -19,7 +19,7 @@ class ChooseDoctor extends StatelessWidget {
             height: 10,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: i < progress ? kColorBlue : Colors.grey[300],
+              color: i < progress ?kAmphibianColorGreenLight : Colors.grey[300],
             ),
           ),
         ),
@@ -46,7 +46,7 @@ class ChooseDoctor extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Icons.filter_list,
-              color: kColorBlue,
+              color:kAmphibianColorGreenLight,
             ),
           )
         ],
@@ -79,7 +79,7 @@ class ChooseDoctor extends StatelessWidget {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: kColorBlue,
+                color:kAmphibianColorGreenLight,
               ),
               child: Row(
                 children: <Widget>[

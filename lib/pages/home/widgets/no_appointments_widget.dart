@@ -45,7 +45,7 @@ class NoAppointmentsWidget extends StatelessWidget {
             height: 100,
             child: Icon(
               Icons.arrow_downward,
-              color: kColorBlue,
+              color:kAmphibianColorGreenLight,
             ),
           ),
         ],

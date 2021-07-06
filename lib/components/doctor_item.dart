@@ -46,7 +46,7 @@ class DoctorItem extends StatelessWidget {
                       ),
                       Icon(
                         Icons.star,
-                        color: kColorBlue,
+                        color:kAmphibianColorGreenLight,
                         size: 18,
                       ),
                       SizedBox(

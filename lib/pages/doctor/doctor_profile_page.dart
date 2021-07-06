@@ -181,7 +181,7 @@ class DoctorProfilePage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        fillColor: kColorBlue,
+                        fillColor:kAmphibianColorGreenLight,
                         child: Container(
                           height: 48,
                           child: Center(

@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 1), () => {_loadScreen()});
+    Timer(Duration(seconds: 2), () => {_loadScreen()});
   }
 
   _loadScreen() async {
@@ -35,7 +35,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: kColorBlue,
+        color: kAmphibianColorGreenLight,
         child: Column(
           children: <Widget>[
             Expanded(
@@ -52,8 +52,8 @@ class _SplashPageState extends State<SplashPage> {
                             TextSpan(
                               text: 'AIPETTO',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 32,
+                                color: kAmphibianColorBlueDark,
+                                fontSize: 42,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -69,7 +69,7 @@ class _SplashPageState extends State<SplashPage> {
               width: 150,
               height: 2,
               child: LinearProgressIndicator(
-                backgroundColor: kColorBlue,
+                backgroundColor:kAmphibianColorGreenLight,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             ),

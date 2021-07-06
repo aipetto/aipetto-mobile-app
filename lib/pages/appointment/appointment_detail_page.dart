@@ -106,7 +106,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               child: Text(
                 'get_direction'.tr().toUpperCase(),
                 style: TextStyle(
-                  color: kColorBlue,
+                  color:kAmphibianColorGreenLight,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),

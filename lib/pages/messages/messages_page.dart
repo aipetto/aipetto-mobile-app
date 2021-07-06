@@ -25,7 +25,7 @@ class _MessagesPageState extends State<MessagesPage>
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide(color: kColorBlue, width: 0.5),
+                  borderSide: BorderSide(color:kAmphibianColorGreenLight, width: 0.5),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),

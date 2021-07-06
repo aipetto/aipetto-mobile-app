@@ -230,7 +230,7 @@ class MessageItem extends StatelessWidget {
                 bottomLeft: Radius.circular(send ? 20 : 0),
                 bottomRight: Radius.circular(send ? 0 : 20),
               ),
-              color: send ? Color(0xffeaf2fe) : kColorBlue,
+              color: send ? Color(0xffeaf2fe) :kAmphibianColorGreenLight,
             ),
             child: SelectableText(
               message,

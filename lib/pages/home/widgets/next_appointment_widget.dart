@@ -11,7 +11,7 @@ class NextAppointmentWidget extends StatelessWidget {
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: kColorBlue,
+        color:kAmphibianColorGreenLight,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

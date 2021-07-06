@@ -42,27 +42,29 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
       case 0:
         _language = Language.english;
         Prefs.setString(Prefs.LANGUAGE, 'en');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'US');
         break;
 
       case 1:
         _language = Language.spanish;
         Prefs.setString(Prefs.LANGUAGE, 'es');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'ES');
         break;
 
-      case 2:
+      /*case 2:
         _language = Language.italian;
         Prefs.setString(Prefs.LANGUAGE, 'it');
-        break;
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'IT');
+        break;*/
 
       case 3:
         _language = Language.portuguese;
         Prefs.setString(Prefs.LANGUAGE, 'pt');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'PT');
         break;
     }
-    /*EasyLocalization.of(context).locale =
-        EasyLocalization.of(context).supportedLocales[index];*/
-
-    print("language" + _language.toString());
+    //print("language" + _language.toString());
+    context.setLocale(Locale(Prefs.getString(Prefs.LANGUAGE), Prefs.getString(Prefs.LANGUAGE_REGION)));
   }
 
   @override
@@ -95,7 +97,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
               groupValue: _language,
               title: Text('spanish'.tr()),
             ),
-            Divider(
+           /* Divider(
               height: 0.5,
               indent: 10,
               endIndent: 10,
@@ -105,7 +107,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
               onChanged: (value) => _changeLanguage(2),
               groupValue: _language,
               title: Text('italian'.tr()),
-            ),
+            ),*/
             Divider(
               height: 0.5,
               indent: 10,

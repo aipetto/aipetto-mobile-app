@@ -22,11 +22,12 @@ void main() async {
         //Locale('de', 'DE'),
         //Locale('ar', 'DZ'),
         Locale('es', 'ES'),
-        Locale('it', 'IT'),
+        //Locale('it', 'IT'),
         Locale('pt', 'PT'),
         //Locale('fr', 'FR'),
       ],
       path: 'assets/languages',
+      fallbackLocale: Locale('es', 'ES'),
     ),
   );
 }
@@ -53,15 +54,9 @@ class MyApp extends StatelessWidget {
       title: 'AIPETTO',
       initialRoute: Routes.splash,
       onGenerateRoute: RouteGenerator.generateRoute,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate,
-        EasyLocalization.of(context).delegate,
-      ],
-      supportedLocales: EasyLocalization.of(context).supportedLocales,
-      locale: EasyLocalization.of(context).locale,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       debugShowCheckedModeBanner: false,
       theme: state.themeData,
     );

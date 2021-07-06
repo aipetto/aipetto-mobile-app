@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => {_loadScreen()});
+    Timer(Duration(seconds: 1), () => {_loadScreen()});
   }
 
   _loadScreen() async {
@@ -27,11 +27,11 @@ class _SplashPageState extends State<SplashPage> {
         theme: Prefs.getBool(Prefs.DARKTHEME, def: false)
             ? AppTheme.DarkTheme
             : AppTheme.LightTheme));
-    //Navigator.of(context).pushReplacementNamed(Routes.login);
+    Navigator.of(context).pushReplacementNamed(Routes.login);
     // TODO mix/use resources from banking layout
     // Navigator.of(context).pushReplacementNamed(Routes.banking);
     // TODO mix/use resources from hair saloon layout
-    Navigator.of(context).pushReplacementNamed(Routes.saloon);
+    //Navigator.of(context).pushReplacementNamed(Routes.saloon);
   }
 
   @override

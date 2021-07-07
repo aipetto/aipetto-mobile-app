@@ -10,13 +10,13 @@ import '../prescription/prescription_page.dart';
 import '../test/test_page.dart';
 import '../visit/visit_page.dart';
 
-class ProfilePage extends StatefulWidget {
+class PetProfilePage extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _PetProfilePageState createState() => _PetProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage>
-    with AutomaticKeepAliveClientMixin<ProfilePage> {
+class _PetProfilePageState extends State<PetProfilePage>
+    with AutomaticKeepAliveClientMixin<PetProfilePage> {
   final _kTabTextStyle = TextStyle(
     color:kAmphibianColorGreenLight,
     fontSize: 12,
@@ -52,6 +52,9 @@ class _ProfilePageState extends State<ProfilePage>
     ];
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('pet_profile'.tr()),
+      ),
       body: Column(
       children: <Widget>[
         Container(

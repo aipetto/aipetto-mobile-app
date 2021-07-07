@@ -64,29 +64,26 @@ class DrawerPage extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                /*_drawerItem(
-                  image: 'person',
-                  text: 'my_doctors',
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(Routes.myDoctors),
-                ),*/
                 _drawerItem(
                   image: 'person',
+                  text: 'my_veterinarians',
+                  onTap: () => Navigator.of(context).pushNamed(Routes.myDoctors),
+                ),
+                _drawerItem(
+                  image: 'dog_icon',
                   text: 'my_pets',
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(Routes.myDoctors),
+                  onTap: () => Navigator.of(context).pushNamed(Routes.myPets),
                 ),
                 _drawerItem(
                   image: 'calendar',
                   text: 'my_appointments',
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(Routes.myAppointments),
+                  onTap: () => Navigator.of(context).pushNamed(Routes.myAppointments),
                 ),
-              /*  _drawerItem(
-                  image: 'hospital',
-                  text: 'hospitals',
-                  onTap: () {},
-                ),*/
+                _drawerItem(
+                  image: 'icon_settings',
+                  text: 'settings',
+                  onTap: () => Navigator.of(context).pushNamed(Routes.appSettings),
+                ),
               ],
             ),
           ),

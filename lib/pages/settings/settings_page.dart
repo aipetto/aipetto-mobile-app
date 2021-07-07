@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../data/pref_manager.dart';
 import '../../utils/app_themes.dart';
@@ -28,6 +29,12 @@ class _SettingsPageState extends State<SettingsPage>
     super.build(context);
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'settings'.tr(),
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

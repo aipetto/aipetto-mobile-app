@@ -37,7 +37,7 @@ class DrawerPage extends StatelessWidget {
                         radius: 50,
                         backgroundColor: Colors.grey,
                         backgroundImage: AssetImage(
-                          'assets/images/icon_man.png',
+                          'assets/images/pets/snoopy-jvo.jpg',
                         ),
                       ),
                       SizedBox(

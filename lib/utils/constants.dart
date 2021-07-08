@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 /// Amphibian AIPETTO main color palette
 const kAmphibianColorGreenLight = Color(0xff4FE0B6);
 const kAmphibianColorGreenMediumLight = Color(0xff15CDCA);

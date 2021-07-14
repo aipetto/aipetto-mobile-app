@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
   }
 
   _selectPage(int index) {
-    if (_pageController.hasClients) _pageController.jumpToPage(index);
+    if (_pageController.hasClients) _pageController.animateToPage(index, duration: Duration(milliseconds: 250), curve: Curves.easeOut);
     setState(() {
       _selectedIndex = index;
     });
@@ -54,10 +54,8 @@ class _HomeState extends State<Home> {
     final size = MediaQuery.of(context).size;
     final _pages = [
       HomePage(),
-      PetsPage(),
       Container(),
       MessagesPage(),
-      SettingsPage(),
     ];
     return Stack(
       children: <Widget>[
@@ -156,7 +154,7 @@ class _HomeState extends State<Home> {
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: kColorBlue,
+                        color:kAmphibianColorGreenLight,
                       ),
                       child: Icon(
                         Icons.pets,
@@ -171,7 +169,7 @@ class _HomeState extends State<Home> {
               bottomNavigationBar: CustomNavigationBar(
                 backgroundColor:
                     Prefs.isDark() ? Color(0xff121212) : Colors.white,
-                strokeColor: kColorGreen,
+                strokeColor: kAmphibianColorGreenLight,
                 items: [
                   NavBarItemWidget(
                     onTap: () {
@@ -181,30 +179,16 @@ class _HomeState extends State<Home> {
                     isSelected: _selectedIndex == 0,
                   ),
                   NavBarItemWidget(
-                    onTap: () {
-                      _selectPage(1);
-                    },
-                    image: 'icon_profile',
-                    isSelected: _selectedIndex == 1,
-                  ),
-                  NavBarItemWidget(
                     onTap: () {},
                     image: '',
                     isSelected: false,
                   ),
                   NavBarItemWidget(
                     onTap: () {
-                      _selectPage(3);
+                      _selectPage(2);
                     },
                     image: 'icon_messages',
-                    isSelected: _selectedIndex == 3,
-                  ),
-                  NavBarItemWidget(
-                    onTap: () {
-                      _selectPage(4);
-                    },
-                    image: 'icon_settings',
-                    isSelected: _selectedIndex == 4,
+                    isSelected: _selectedIndex == 2,
                   ),
                 ],
                 currentIndex: _selectedIndex,

@@ -5,7 +5,7 @@ import '../../components/custom_button.dart';
 import '../../components/doctor_item1.dart';
 import '../../utils/constants.dart';
 import '../../data/pref_manager.dart';
-import '../../model/doctor.dart';
+import '../../model/veterinarian.dart';
 
 class AppointmentDetailPage extends StatefulWidget {
   @override
@@ -106,7 +106,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               child: Text(
                 'get_direction'.tr().toUpperCase(),
                 style: TextStyle(
-                  color: kColorBlue,
+                  color:kAmphibianColorGreenLight,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),

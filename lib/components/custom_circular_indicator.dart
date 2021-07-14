@@ -49,7 +49,7 @@ class CustomCircularIndicator extends StatelessWidget {
                 animation: true,
                 circularStrokeCap: CircularStrokeCap.round,
                 backgroundColor: Colors.transparent,
-                progressColor: kColorBlue,
+                progressColor:kAmphibianColorGreenLight,
                 lineWidth: lineWidth ?? 5,
                 percent: percent,
                 center: Center(

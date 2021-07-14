@@ -1,14 +1,13 @@
+import 'package:aipetto/model/pet.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../model/veterinarian.dart';
-import '../utils/constants.dart';
 import 'custom_button.dart';
 
-class MyDoctorListItem extends StatelessWidget {
-  final Veterinarian doctor;
+class MyPetListItem extends StatelessWidget {
+  final Pet pet;
 
-  const MyDoctorListItem({Key key, @required this.doctor}) : super(key: key);
+  const MyPetListItem({Key key, @required this.pet}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -17,7 +16,7 @@ class MyDoctorListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Image.asset(
-              doctor.avatar,
+              pet.profileImage,
               width: 60,
               height: 60,
             ),
@@ -29,14 +28,14 @@ class MyDoctorListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    doctor.name,
+                    pet.nickname,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    doctor.speciality + '\n',
+                    pet.nickname + '\n',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
@@ -54,7 +53,9 @@ class MyDoctorListItem extends StatelessWidget {
             CustomButton(
               text: 'details'.tr(),
               textSize: 14,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.petProfile);
+              },
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 5,

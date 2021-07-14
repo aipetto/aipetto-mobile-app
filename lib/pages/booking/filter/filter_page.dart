@@ -25,7 +25,7 @@ class _FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kColorBlue,
+        backgroundColor:kAmphibianColorGreenLight,
         title: Text(
           'filter'.tr(),
           style: TextStyle(

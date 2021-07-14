@@ -10,15 +10,15 @@ import '../prescription/prescription_page.dart';
 import '../test/test_page.dart';
 import '../visit/visit_page.dart';
 
-class ProfilePage extends StatefulWidget {
+class PetProfilePage extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _PetProfilePageState createState() => _PetProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage>
-    with AutomaticKeepAliveClientMixin<ProfilePage> {
+class _PetProfilePageState extends State<PetProfilePage>
+    with AutomaticKeepAliveClientMixin<PetProfilePage> {
   final _kTabTextStyle = TextStyle(
-    color: kColorBlue,
+    color:kAmphibianColorGreenLight,
     fontSize: 12,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
@@ -52,6 +52,9 @@ class _ProfilePageState extends State<ProfilePage>
     ];
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('pet_profile'.tr()),
+      ),
       body: Column(
       children: <Widget>[
         Container(
@@ -108,7 +111,7 @@ class _ProfilePageState extends State<ProfilePage>
                     Navigator.of(context).pushNamed(Routes.editProfile),
                 icon: Icons.edit,
                 size: 40,
-                color: kColorBlue,
+                color:kAmphibianColorGreenLight,
                 iconColor: Colors.white,
               ),
             ],
@@ -138,11 +141,11 @@ class _ProfilePageState extends State<ProfilePage>
                     ),
                   ),
                   child: TabBar(
-                    indicatorColor: kColorBlue,
+                    indicatorColor:kAmphibianColorGreenLight,
                     labelStyle: _kTabTextStyle,
                     unselectedLabelStyle:
                         _kTabTextStyle.copyWith(color: Colors.grey),
-                    labelColor: kColorBlue,
+                    labelColor:kAmphibianColorGreenLight,
                     unselectedLabelColor: Colors.grey,
                     tabs: _kTabs,
                   ),

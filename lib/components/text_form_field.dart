@@ -75,7 +75,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         color: Color(0xff575757),
         fontFamily: 'NunitoSans',
       ),
-      cursorColor: kColorBlue,
+      cursorColor:kAmphibianColorGreenLight,
       cursorWidth: 1,
       validator: widget.validator,
     );

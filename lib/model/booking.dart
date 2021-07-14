@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import 'doctor.dart';
+import 'veterinarian.dart';
 
 class Booking {
+
   String id;
-  Doctor doctor;
+  Veterinarian doctor;
   String doctorId;
   String userId;
   String date; // Monday, 3 Feb
@@ -53,7 +54,7 @@ class Booking {
 
     return Booking(
       id: map['id'],
-      doctor: Doctor.fromMap(map['doctor']),
+      doctor: Veterinarian.fromMap(map['doctor']),
       doctorId: map['doctorId'],
       userId: map['userId'],
       date: map['date'],

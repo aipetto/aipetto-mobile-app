@@ -4,17 +4,23 @@ import 'working_day.dart';
 
 class Pet {
   String id;
+  String name;
   String nickname;
+  String profileImage;
 
   Pet({
     this.id,
+    this.name,
     this.nickname,
+    this.profileImage,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': nickname,
+      'name': name,
+      'nickname': nickname,
+      'profileImage': profileImage
     };
   }
 
@@ -23,7 +29,9 @@ class Pet {
 
     return Pet(
       id: map['id'],
+      name: map['name'],
       nickname: map['nickname'],
+      profileImage: map['profileImage'],
     );
   }
 
@@ -32,6 +40,7 @@ class Pet {
   factory Pet.fromJson(String source) => Pet.fromMap(json.decode(source));
 }
 
+/// TODO Refactor this class
 class Pets {
   List<Pet> petList;
 
@@ -53,4 +62,12 @@ final doctors = [
   Pet(
     nickname: 'Supet Pet',
   ),
+];
+
+final pets = [
+  Pet(
+    name: 'Snoopy',
+    nickname: 'Pretinho',
+    profileImage: 'assets/images/pets/cat_1.jpg'
+  )
 ];

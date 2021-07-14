@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../components/doctor_item.dart';
 import '../../../components/round_icon_button.dart';
-import '../../../model/doctor.dart';
+import '../../../model/veterinarian.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/constants.dart';
 
@@ -46,7 +46,7 @@ class ChooseDoctorPage extends StatelessWidget {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: kColorBlue,
+                color:kAmphibianColorGreenLight,
               ),
               child: Row(
                 children: <Widget>[

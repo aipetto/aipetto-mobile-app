@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Prefs {
   static const String DARKTHEME = "dark_theme";
   static const String LANGUAGE = "language";
+  static const String LANGUAGE_REGION = "language_region";
 
   static SharedPreferences _prefs;
   static Map<String, dynamic> _memoryPrefs = Map<String, dynamic>();

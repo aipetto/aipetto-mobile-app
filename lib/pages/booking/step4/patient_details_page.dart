@@ -5,7 +5,7 @@ import '../../../components/custom_button.dart';
 import '../../../components/doctor_item1.dart';
 import '../../../components/text_form_field.dart';
 import '../../../data/pref_manager.dart';
-import '../../../model/doctor.dart';
+import '../../../model/veterinarian.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/constants.dart';
 

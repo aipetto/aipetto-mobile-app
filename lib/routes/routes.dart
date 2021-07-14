@@ -19,6 +19,7 @@ class Routes {
   static const String editProfile = '/edit_profile';
   static const String changeLanguage = '/change_language';
   static const String notificationSettings = '/notification_settings';
+  static const String appSettings = '/app_settings';
   static const String myDoctors = '/my_doctors';
   static const String myPets = '/my_pets';
   static const String myAppointments = '/my_appointments';

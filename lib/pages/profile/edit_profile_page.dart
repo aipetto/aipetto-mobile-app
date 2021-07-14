@@ -6,12 +6,12 @@ import '../../utils/constants.dart';
 import 'widgets/edit_widget.dart';
 import 'widgets/info_widget.dart';
 
-class EditProfilePage extends StatefulWidget {
+class EditPetProfilePage extends StatefulWidget {
   @override
-  _EditProfilePageState createState() => _EditProfilePageState();
+  _EditPetProfilePageState createState() => _EditPetProfilePageState();
 }
 
-class _EditProfilePageState extends State<EditProfilePage> {
+class _EditPetProfilePageState extends State<EditPetProfilePage> {
   bool _editing = false;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             },
             icon: Icon(
               _editing ? Icons.close : Icons.edit,
-              color: kColorBlue,
+              color:kAmphibianColorGreenLight,
             ),
           )
         ],

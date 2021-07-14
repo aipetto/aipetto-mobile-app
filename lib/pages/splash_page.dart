@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => {_loadScreen()});
+    Timer(Duration(seconds: 2), () => {_loadScreen()});
   }
 
   _loadScreen() async {
@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
         theme: Prefs.getBool(Prefs.DARKTHEME, def: false)
             ? AppTheme.DarkTheme
             : AppTheme.LightTheme));
-    Navigator.of(context).pushReplacementNamed(Routes.login);
+    Navigator.of(context).pushReplacementNamed(Routes.home);
   }
 
   @override
@@ -35,49 +35,13 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: kColorBlue,
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'AIPETTO',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 32,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: 150,
-              height: 2,
-              child: LinearProgressIndicator(
-                backgroundColor: kColorBlue,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(),
-            )
-          ],
+        color: kAmphibianColorBlueDarkAlternative,
+        child: Center(
+          child: Image.asset("assets/images/logo_big_size.png",
+              height: 250,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.contain
+          ),
         ),
       ),
     );

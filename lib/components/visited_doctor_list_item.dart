@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../model/doctor.dart';
+import '../model/veterinarian.dart';
 
 class VisitedDoctorListItem extends StatelessWidget {
-  final Doctor doctor;
+  final Veterinarian doctor;
 
   const VisitedDoctorListItem({Key key, @required this.doctor})
       : super(key: key);

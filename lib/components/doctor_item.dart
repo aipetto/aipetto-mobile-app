@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../utils/constants.dart';
-import '../model/doctor.dart';
+import '../model/veterinarian.dart';
 
 class DoctorItem extends StatelessWidget {
-  final Doctor doctor;
+  final Veterinarian doctor;
   final Function onTap;
 
   const DoctorItem({Key key, @required this.onTap, @required this.doctor})

@@ -5,7 +5,7 @@ import '../../components/custom_button.dart';
 import '../../components/doctor_item1.dart';
 import '../../utils/constants.dart';
 import '../../data/pref_manager.dart';
-import '../../model/doctor.dart';
+import '../../model/veterinarian.dart';
 
 class AppointmentDetailPage extends StatefulWidget {
   @override

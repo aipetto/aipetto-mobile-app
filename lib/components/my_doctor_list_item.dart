@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../model/doctor.dart';
+import '../model/veterinarian.dart';
 import '../utils/constants.dart';
 import 'custom_button.dart';
 
 class MyDoctorListItem extends StatelessWidget {
-  final Doctor doctor;
+  final Veterinarian doctor;
 
   const MyDoctorListItem({Key key, @required this.doctor}) : super(key: key);
   @override

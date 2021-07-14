@@ -1,3 +1,4 @@
+import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -43,9 +44,14 @@ class NoAppointmentsWidget extends StatelessWidget {
           ),
           SizedBox(
             height: 100,
-            child: Icon(
-              Icons.arrow_downward,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_downward),
+              tooltip: 'create_new_appointment'.tr(),
               color:kAmphibianColorGreenLight,
+              onPressed: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+                Navigator.of(context).pushNamed(Routes.bookingStep1);
+              },
             ),
           ),
         ],

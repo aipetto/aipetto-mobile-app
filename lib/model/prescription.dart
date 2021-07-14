@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'doctor.dart';
+import 'veterinarian.dart';
 
 class Prescription {
   String id;
@@ -8,7 +8,7 @@ class Prescription {
   DateTime date;
   String userId;
   String doctorId;
-  Doctor doctor;
+  Veterinarian doctor;
 
   Prescription({
     this.id,
@@ -39,7 +39,7 @@ class Prescription {
       date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       userId: map['userId'],
       doctorId: map['doctorId'],
-      doctor: Doctor.fromMap(map['doctor']),
+      doctor: Veterinarian.fromMap(map['doctor']),
     );
   }
 

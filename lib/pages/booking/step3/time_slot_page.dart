@@ -6,7 +6,7 @@ import '../../../components/day_slot_item.dart';
 import '../../../components/doctor_item1.dart';
 import '../../../components/time_slot_item.dart';
 import '../../../data/pref_manager.dart';
-import '../../../model/doctor.dart';
+import '../../../model/veterinarian.dart';
 import '../../../routes/routes.dart';
 
 class TimeSlotPage extends StatefulWidget {

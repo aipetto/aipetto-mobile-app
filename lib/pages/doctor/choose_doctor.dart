@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../components/doctor_item.dart';
 import '../../components/round_icon_button.dart';
-import '../../model/doctor.dart';
+import '../../model/veterinarian.dart';
 import '../../utils/constants.dart';
 
 class ChooseDoctor extends StatelessWidget {

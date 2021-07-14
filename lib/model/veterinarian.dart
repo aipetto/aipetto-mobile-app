@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'working_day.dart';
 
-class Doctor {
+class Veterinarian {
   String id;
   String name;
   String firstName;
@@ -21,7 +21,7 @@ class Doctor {
   int visitDuration;
   List<WorkingDay> workingDays;
 
-  Doctor({
+  Veterinarian({
     this.id,
     this.name,
     this.firstName,
@@ -63,10 +63,10 @@ class Doctor {
     };
   }
 
-  factory Doctor.fromMap(Map<String, dynamic> map) {
+  factory Veterinarian.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
-    return Doctor(
+    return Veterinarian(
       id: map['id'],
       name: map['name'],
       firstName: map['firstName'],
@@ -90,11 +90,11 @@ class Doctor {
 
   String toJson() => json.encode(toMap());
 
-  factory Doctor.fromJson(String source) => Doctor.fromMap(json.decode(source));
+  factory Veterinarian.fromJson(String source) => Veterinarian.fromMap(json.decode(source));
 }
 
 class Doctors {
-  List<Doctor> doctorList;
+  List<Veterinarian> doctorList;
 
   Doctors({this.doctorList});
 
@@ -102,16 +102,16 @@ class Doctors {
     return Doctors(doctorList: parserecipes(json));
   }
 
-  static List<Doctor> parserecipes(doctorJSON) {
+  static List<Veterinarian> parserecipes(doctorJSON) {
     var dList = doctorJSON['doctors'] as List;
-    List<Doctor> doctorList =
-        dList.map((data) => Doctor.fromJson(data)).toList();
+    List<Veterinarian> doctorList =
+        dList.map((data) => Veterinarian.fromJson(data)).toList();
     return doctorList;
   }
 }
 
 final doctors = [
-  Doctor(
+  Veterinarian(
     name: 'Super Pet',
     speciality: 'Family Doctor, Cardiologist',
     about:
@@ -120,7 +120,7 @@ final doctors = [
     rating: 4.5,
     price: 100,
   ),
-  Doctor(
+  Veterinarian(
     name: 'Trashae Hubbard',
     speciality: 'Family Doctor, Therapist',
     about:
@@ -129,7 +129,7 @@ final doctors = [
     rating: 4.7,
     price: 90,
   ),
-  Doctor(
+  Veterinarian(
     name: 'Jesus Moruga',
     speciality: 'Family Doctor, Therapist',
     about:
@@ -138,7 +138,7 @@ final doctors = [
     rating: 4.3,
     price: 100,
   ),
-  Doctor(
+  Veterinarian(
     name: 'Gabriel Moreira',
     speciality: 'Family Doctor, Therapist',
     about:
@@ -147,7 +147,7 @@ final doctors = [
     rating: 4.7,
     price: 100,
   ),
-  Doctor(
+  Veterinarian(
     name: 'Liana Lee',
     speciality: 'Family Doctor, Therapist',
     about:

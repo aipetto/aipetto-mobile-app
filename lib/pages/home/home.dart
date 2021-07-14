@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
   }
 
   _selectPage(int index) {
-    if (_pageController.hasClients) _pageController.jumpToPage(index);
+    if (_pageController.hasClients) _pageController.animateToPage(index, duration: Duration(milliseconds: 250), curve: Curves.easeOut);
     setState(() {
       _selectedIndex = index;
     });

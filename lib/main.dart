@@ -17,12 +17,12 @@ void main() async {
     EasyLocalization(
       child: MyApp(),
       supportedLocales: [
+        Locale('es', 'ES'),
+        Locale('pt', 'PT'),
         Locale('en', 'US'),
         //Locale('de', 'DE'),
         //Locale('ar', 'DZ'),
-        Locale('es', 'ES'),
         //Locale('it', 'IT'),
-        Locale('pt', 'PT'),
         //Locale('fr', 'FR'),
       ],
       path: 'assets/languages',
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
-      title: 'AIPETTO',
+      title: 'aipetto',
       initialRoute: Routes.splash,
       onGenerateRoute: RouteGenerator.generateRoute,
       localizationsDelegates: context.localizationDelegates,

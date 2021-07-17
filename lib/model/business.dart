@@ -95,11 +95,11 @@ class Business {
 
 final businesses = [
   Business(
-    name: 'Bons Amigos Veterinária',
+    name: 'Veterinária Bons Amigos',
     speciality: 'Family Doctor, Cardiologist',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_1.png',
+    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
     rating: 4.5,
     price: 100,
   ),

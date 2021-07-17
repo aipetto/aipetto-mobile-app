@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
-      title: 'app_name'.tr(),
+      title: 'aipetto',
       initialRoute: Routes.splash,
       onGenerateRoute: RouteGenerator.generateRoute,
       localizationsDelegates: context.localizationDelegates,

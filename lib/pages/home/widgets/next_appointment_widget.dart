@@ -76,30 +76,36 @@ class NextAppointmentWidget extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'John Ferry',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Dr Vidal CRMV 11111',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      maxLines: 3,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  SizedBox(
-                    height: 2,
-                  ),
-                  Text(
-                    'Veterinarian',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300,
+                    SizedBox(
+                      height: 2,
                     ),
-                  ),
+                    Text(
+                      'veterinarian'.tr(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
                 ],
-              )
+              ),
+             )
             ],
           )
         ],

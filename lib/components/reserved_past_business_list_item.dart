@@ -36,7 +36,7 @@ class ReservedPastBussinessListItem extends StatelessWidget {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey,
-            backgroundImage: AssetImage('assets/images/aipetto/place_marker.png'),
+            backgroundImage: AssetImage(business.avatar),
           ),
           SizedBox(
             height: 10,

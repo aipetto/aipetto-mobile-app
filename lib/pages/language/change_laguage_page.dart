@@ -24,10 +24,6 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
         _language = Language.spanish;
         break;
 
-      case 'it':
-        _language = Language.italian;
-        break;
-
       case 'pt':
         _language = Language.portuguese;
         break;
@@ -51,13 +47,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
         Prefs.setString(Prefs.LANGUAGE_REGION, 'ES');
         break;
 
-      /*case 2:
-        _language = Language.italian;
-        Prefs.setString(Prefs.LANGUAGE, 'it');
-        Prefs.setString(Prefs.LANGUAGE_REGION, 'IT');
-        break;*/
-
-      case 3:
+      case 2:
         _language = Language.portuguese;
         Prefs.setString(Prefs.LANGUAGE, 'pt');
         Prefs.setString(Prefs.LANGUAGE_REGION, 'PT');
@@ -97,17 +87,6 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
               groupValue: _language,
               title: Text('spanish'.tr()),
             ),
-           /* Divider(
-              height: 0.5,
-              indent: 10,
-              endIndent: 10,
-            ),
-            RadioListTile(
-              value: Language.italian,
-              onChanged: (value) => _changeLanguage(2),
-              groupValue: _language,
-              title: Text('italian'.tr()),
-            ),*/
             Divider(
               height: 0.5,
               indent: 10,
@@ -115,7 +94,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
             ),
             RadioListTile(
               value: Language.portuguese,
-              onChanged: (value) => _changeLanguage(3),
+              onChanged: (value) => _changeLanguage(2),
               groupValue: _language,
               title: Text('portuguese'.tr()),
             ),

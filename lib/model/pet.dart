@@ -67,7 +67,7 @@ final doctors = [
 final pets = [
   Pet(
     name: 'Snoopy',
-    nickname: 'Pretinho',
-    profileImage: 'assets/images/pets/cat_1.jpg'
+    nickname: 'Duchinho',
+    profileImage: 'assets/images/pets/snoopy.jpg'
   )
 ];

@@ -10,6 +10,26 @@ class VisitedDoctorListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 140,
+      height: 140,
+      margin: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+              color: Color(0x0c000000),
+              offset: Offset(0, 5),
+              blurRadius: 5,
+              spreadRadius: 0),
+          BoxShadow(
+              color: Color(0x0c000000),
+              offset: Offset(0, -5),
+              blurRadius: 5,
+              spreadRadius: 0),
+        ],
+      ),
       child: Column(
         children: <Widget>[
           CircleAvatar(

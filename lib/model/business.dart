@@ -93,23 +93,6 @@ class Business {
   factory Business.fromJson(String source) => Business.fromMap(json.decode(source));
 }
 
-class Doctors {
-  List<Business> doctorList;
-
-  Doctors({this.doctorList});
-
-  factory Doctors.fromJSON(Map<dynamic, dynamic> json) {
-    return Doctors(doctorList: parserecipes(json));
-  }
-
-  static List<Business> parserecipes(doctorJSON) {
-    var dList = doctorJSON['doctors'] as List;
-    List<Business> doctorList =
-    dList.map((data) => Business.fromJson(data)).toList();
-    return doctorList;
-  }
-}
-
 final businesses = [
   Business(
     name: 'Bons Amigos Veterinária',

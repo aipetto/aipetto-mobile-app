@@ -40,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           children: <Widget>[
             Expanded(
-              flex: 1,
+              flex: 3,
               child: Container(),
             ),
             Center(

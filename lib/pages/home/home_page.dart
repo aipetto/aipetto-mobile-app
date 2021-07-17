@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-  final bool _noAppoints = true;
+  final bool _noAppoints = false;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +61,7 @@ class _HomePageState extends State<HomePage>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -93,10 +94,15 @@ class _HomePageState extends State<HomePage>
                               children: <Widget>[
                                 SectionHeaderWidget(
                                   title: 'next_appointment'.tr(),
+                                  onPressed: () => Navigator.of(context)
+                                      .pushNamed(Routes.myDoctors),
                                 ),
                                 NextAppointmentWidget(),
                               ],
                             ),
+                          ),
+                          SizedBox(
+                            height: 20,
                           ),
                           Container(
                             height: 160,
@@ -104,7 +110,7 @@ class _HomePageState extends State<HomePage>
                               separatorBuilder: (context, index) => SizedBox(
                                 width: 15,
                               ),
-                              itemCount: 4,
+                              itemCount: 1,
                               scrollDirection: Axis.horizontal,
                               padding: EdgeInsets.symmetric(horizontal: 20),
                               itemBuilder: (context, index) {

@@ -13,7 +13,7 @@ class SectionHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -33,7 +33,7 @@ class SectionHeaderWidget extends StatelessWidget {
                   child: Text(
                     'see_all'.tr(),
                     style: Theme.of(context).textTheme.button.copyWith(
-                          fontSize: 12,
+                          fontSize: 14,
                         ),
                   ),
                 )

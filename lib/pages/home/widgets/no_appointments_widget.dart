@@ -40,9 +40,6 @@ class NoAppointmentsWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: 20,
-          ),
-          SizedBox(
             height: 100,
             child: IconButton(
               icon: const Icon(Icons.arrow_downward),

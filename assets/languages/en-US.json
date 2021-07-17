@@ -1,4 +1,6 @@
 {
+    "app_name": "aipetto",
+    "app_slogan": "Pets and services connected everywhere anytime",
     "sign_in": "Sign in",
     "forgot_yout_password": "Forgot your password?",
     "social_login": "Social login",

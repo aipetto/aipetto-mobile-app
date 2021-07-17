@@ -1,4 +1,6 @@
 {
+    "app_name": "aipetto",
+    "app_slogan": "Pets and services connected everywhere anytime",
     "sign_in": "Registrar",
     "forgot_yout_password": "Recuperar Palavra Pass?",
     "social_login": "Social login",
@@ -24,8 +26,8 @@
     "pet_profile": "Perfil",
     "hello": "Olá",
     "how_are_you_today": "Como se sente hoje?",
-    "there_is_no_appontments": "Não tem consultas agendadas",
-    "create_new_appointment": "Click aqui para agendar uma consulta.",
+    "there_is_no_appontments": "Nenhuma reserva agendada",
+    "create_new_appointment": "Click abaixo para escolher um serviço.",
     "next_appointment": "Próxima Consulta",
     "your_prescriptions": "As Suas Prescrições",
     "see_all": "Ver Tudo",
@@ -217,5 +219,10 @@
     "upcoming": "Próximos",
     "history": "História",
     "details": "Detalhes",
-    "reschedule": "Reagendar"
+    "reschedule": "Reagendar",
+    "notifications": "Notifications",
+    "hello_again": "Bem-vindo ao aipetto",
+    "login_to_your_account_to_continue": "Login to your account to continue",
+    "welcome_to_app_name": "aipetto",
+    "create_an_account_to_get_started": "Create an account to get started"
 }

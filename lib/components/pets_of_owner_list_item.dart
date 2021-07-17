@@ -1,11 +1,10 @@
+import 'package:aipetto/model/pet.dart';
 import 'package:flutter/material.dart';
 
-import '../model/veterinarian.dart';
+class PetsOfOwnerListItem extends StatelessWidget {
+  final Pet pet;
 
-class VisitedDoctorListItem extends StatelessWidget {
-  final Veterinarian doctor;
-
-  const VisitedDoctorListItem({Key key, @required this.doctor})
+  const PetsOfOwnerListItem({Key key, @required this.pet})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -15,13 +14,13 @@ class VisitedDoctorListItem extends StatelessWidget {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey,
-            backgroundImage: AssetImage(doctor.avatar),
+            backgroundImage: AssetImage(pet.profileImage),
           ),
           SizedBox(
             height: 15,
           ),
           Text(
-            doctor.name,
+            pet.name,
             style: TextStyle(
               color: Colors.black,
               fontSize: 14,

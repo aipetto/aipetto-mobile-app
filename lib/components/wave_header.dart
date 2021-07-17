@@ -35,7 +35,7 @@ class WaveHeader extends StatelessWidget {
                   title,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 24,
+                    fontSize: 25,
                     fontWeight: FontWeight.w700,
                   ),
                 )

@@ -1,9 +1,10 @@
-import 'package:aipetto/components/headers.dart';
+import 'package:aipetto/components/pets_of_owner_list_item.dart';
+import 'package:aipetto/components/reserved_past_business_list_item.dart';
+import 'package:aipetto/model/business.dart';
+import 'package:aipetto/model/pet.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/visited_doctor_list_item.dart';
-import '../../model/veterinarian.dart';
 import '../../routes/routes.dart';
 import 'widgets/widgets.dart';
 
@@ -64,17 +65,17 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      height: 160,
+                      height: 100,
                       child: ListView.separated(
                         separatorBuilder: (context, index) => SizedBox(
                           width: 15,
                         ),
-                        itemCount: 4,
+                        itemCount: 1,
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         itemBuilder: (context, index) {
-                          return VisitedDoctorListItem(
-                            doctor: doctors[index],
+                          return PetsOfOwnerListItem(
+                            pet: pets[index],
                           );
                         },
                       ),
@@ -107,39 +108,10 @@ class _HomePageState extends State<HomePage>
                               scrollDirection: Axis.horizontal,
                               padding: EdgeInsets.symmetric(horizontal: 20),
                               itemBuilder: (context, index) {
-                                return VisitedDoctorListItem(
-                                  doctor: doctors[index],
+                                return ReservedPastBussinessListItem(
+                                  business: businesses[index],
                                 );
                               },
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                SectionHeaderWidget(
-                                  title: 'your_prescriptions'.tr(),
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, Routes.prescriptionDetail),
-                                ),
-                                TestAndPrescriptionCardWidget(
-                                  title: 'Tuberculosis ${'recipe'.tr()}',
-                                  subTitle: '${'given_by'.tr()} Super Pet',
-                                  image: 'icon_medical_recipe.png',
-                                ),
-                                //test results
-                                SectionHeaderWidget(
-                                  title: 'test_results'.tr(),
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, Routes.myAppointments),
-                                ),
-                                TestAndPrescriptionCardWidget(
-                                  title: 'Monthly Medical Check Up',
-                                  subTitle: '1 January 2019',
-                                  image: 'icon_medical_check_up.png',
-                                ),
-                              ],
                             ),
                           ),
                         ],

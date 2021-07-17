@@ -93,7 +93,7 @@ class _WidgetForgotState extends State<WidgetForgot> {
         ),
         CustomTextFormField(
           controller: _emailController,
-          hintText: 'mrjhonyvidal@aipetto.com',
+          hintText: 'email@email.com',
         ),
         SizedBox(
           height: 35,

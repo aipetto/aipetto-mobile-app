@@ -41,7 +41,7 @@ class InfoWidget extends StatelessWidget {
         ),
         ProfileInfoTile(
           title: 'email'.tr(),
-          trailing: 'mrjhonyvidal@aipetto.com',
+          trailing: 'email@email.com',
           hint: 'add_email'.tr(),
         ),
         ProfileInfoTile(

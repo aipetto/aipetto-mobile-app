@@ -153,7 +153,7 @@ class _EditWidgetState extends State<EditWidget> {
               style: kInputTextStyle,
             ),
             CustomTextFormField(
-              hintText: 'mrjhonyvidal@aipetto.com',
+              hintText: 'email@email.com',
               enabled: false,
             ),
             SizedBox(height: 15),

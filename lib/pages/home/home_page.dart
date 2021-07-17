@@ -63,38 +63,50 @@ class _HomePageState extends State<HomePage>
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.grey,
-                      backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Add your pet',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-
                     Container(
                       height: 100,
                       child: ListView.separated(
                         separatorBuilder: (context, index) => SizedBox(
                           width: 15,
                         ),
-                        itemCount: 1,
+                        itemCount: 5,
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         itemBuilder: (context, index) {
-                          return PetsOfOwnerListItem(
-                            pet: pets[index],
-                          );
+                          if(index == 0){
+                            return GestureDetector(
+                                    onTap: () {
+                                      FocusScope.of(context).requestFocus(FocusNode());
+                                      Navigator.of(context).pushNamed(Routes.bookingStep1);
+                                    },
+                                    child:Column(
+                                        children: <Widget>[
+                                          CircleAvatar(
+                                            radius: 30,
+                                            backgroundColor: Colors.grey,
+                                            backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                              'Add your pet',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            )
+                                        ]
+                                      )
+                                 );
+                          }else{
+                            return PetsOfOwnerListItem(
+                              pet: pets[index],
+                            );
+                          }
                         },
                       ),
                     ),

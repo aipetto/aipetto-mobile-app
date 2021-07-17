@@ -69,5 +69,25 @@ final pets = [
     name: 'Snoopy',
     nickname: 'Duchinho',
     profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
   )
 ];

@@ -103,4 +103,22 @@ final businesses = [
     rating: 4.5,
     price: 100,
   ),
+  Business(
+    name: 'Veterinária Bons Amigos',
+    speciality: 'Family Doctor, Cardiologist',
+    about:
+    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
+    rating: 4.5,
+    price: 100,
+  ),
+  Business(
+    name: 'Veterinária Bons Amigos',
+    speciality: 'Family Doctor, Cardiologist',
+    about:
+    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
+    rating: 4.5,
+    price: 100,
+  ),
 ];

@@ -10,6 +10,8 @@ class Routes {
   static const String bookingStep3 = '/booking_step3';
   static const String bookingStep4 = '/booking_step4';
   static const String bookingStep5 = '/booking_step5';
+  static const String businessProfile = '/business_profile';
+  static const String addNewPet = '/add_new_pet';
   static const String appointmentDetail = '/appointment_detail';
   static const String visitDetail = '/visit_detail';
   static const String prescriptionDetail = '/prescription_detail';

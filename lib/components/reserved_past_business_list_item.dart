@@ -31,28 +31,33 @@ class ReservedPastBussinessListItem extends StatelessWidget {
               spreadRadius: 0),
         ],
       ),
-      child: Column(
-        children: <Widget>[
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.grey,
-            backgroundImage: AssetImage(business.avatar),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-         CustomButton(
-              text: business.name,
-              textSize: 14,
-              onPressed: () {
-                Navigator.of(context).pushNamed(Routes.myAppointments);
+
+      child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(Routes.myAppointments); /// TODO Add business_page + place_id -> there we bring information about the business_id or vice-versa
               },
-              padding: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 5,
-              ),
-         )
-        ],
+            child: Column(
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.grey,
+                  backgroundImage: AssetImage(business.avatar),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  business.name,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
       ),
     );
   }

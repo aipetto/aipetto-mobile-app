@@ -1,3 +1,5 @@
+import 'package:aipetto/pages/business/business_profile_page.dart';
+import 'package:aipetto/pages/pets/add_new_pet_page.dart';
 import 'package:aipetto/pages/pets/pets_page.dart';
 import 'package:aipetto/pages/profile/profile_page.dart';
 import 'package:aipetto/pages/settings/settings_page.dart';
@@ -74,6 +76,12 @@ class RouteGenerator {
 
       case Routes.bookingStep5:
         return CupertinoPageRoute(builder: (_) => AppointmentBookedPage());
+
+      case Routes.businessProfile:
+        return CupertinoPageRoute(builder: (_) => BusinessProfilePage());
+
+      case Routes.addNewPet:
+        return CupertinoPageRoute(builder: (_) => AddNewPetPage());
 
       case Routes.appointmentDetail:
         return CupertinoPageRoute(builder: (_) => AppointmentDetailPage());

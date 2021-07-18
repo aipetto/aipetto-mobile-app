@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage>
                                             height: 15,
                                           ),
                                           Text(
-                                              'Add your pet',
+                                              'add_your_pet'.tr(),
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage>
                                 SectionHeaderWidget(
                                   title: 'next_appointment'.tr(),
                                   onPressed: () => Navigator.of(context)
-                                      .pushNamed(Routes.myDoctors),
+                                      .pushNamed(Routes.myAppointments),
                                 ),
                                 NextAppointmentWidget(),
                               ],
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage>
                               separatorBuilder: (context, index) => SizedBox(
                                 width: 15,
                               ),
-                              itemCount: 1,
+                              itemCount: 3,
                               scrollDirection: Axis.horizontal,
                               padding: EdgeInsets.symmetric(horizontal: 20),
                               itemBuilder: (context, index) {

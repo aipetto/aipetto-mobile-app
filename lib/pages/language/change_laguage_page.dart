@@ -38,7 +38,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
       case 0:
         _language = Language.english;
         Prefs.setString(Prefs.LANGUAGE, 'en');
-        Prefs.setString(Prefs.LANGUAGE_REGION, 'US');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'UK');
         break;
 
       case 1:

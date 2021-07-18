@@ -19,7 +19,7 @@ void main() async {
       supportedLocales: [
         Locale('es', 'ES'),
         Locale('pt', 'PT'),
-        Locale('en', 'US'),
+        Locale('en', 'UK'),
         //Locale('de', 'DE'),
         //Locale('ar', 'DZ'),
         //Locale('it', 'IT'),

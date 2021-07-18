@@ -17,7 +17,7 @@ void main() async {
     EasyLocalization(
       child: MyApp(),
       supportedLocales: [
-        Locale('es', 'ES'),
+        Locale('es', 'AR'),
         Locale('pt', 'PT'),
         Locale('en', 'UK'),
         //Locale('de', 'DE'),
@@ -26,7 +26,7 @@ void main() async {
         //Locale('fr', 'FR'),
       ],
       path: 'assets/languages',
-      fallbackLocale: Locale('es', 'ES'),
+      fallbackLocale: Locale('es', 'AR'),
     ),
   );
 }

@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     WaveHeader(
-                      title: 'hello_again'.tr(),
+                      title: 'welcome_to_app_name'.tr(),
                     ),
                     Expanded(
                       child: Padding(

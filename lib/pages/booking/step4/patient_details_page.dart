@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_button.dart';
-import '../../../components/doctor_item1.dart';
+import '../../../components/veterinarian_item1.dart';
 import '../../../components/text_form_field.dart';
 import '../../../data/pref_manager.dart';
 import '../../../model/veterinarian.dart';
@@ -125,8 +125,8 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                     children: <Widget>[
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
-                        child: DoctorItem1(
-                          doctor: doctors[0],
+                        child: VeterinarianItem1(
+                          veterinarian: veterinarians[0],
                         ),
                       ),
                       Divider(

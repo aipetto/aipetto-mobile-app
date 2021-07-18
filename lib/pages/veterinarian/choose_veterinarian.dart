@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/doctor_item.dart';
+import '../../components/veterinarian_item.dart';
 import '../../components/round_icon_button.dart';
 import '../../model/veterinarian.dart';
 import '../../utils/constants.dart';
 
-class ChooseDoctor extends StatelessWidget {
+class ChooseVeterinarian extends StatelessWidget {
   Widget _progress(int size, int progress) {
     List<Widget> widgets = [];
     for (var i = 0; i < size; i++) {
@@ -39,7 +39,7 @@ class ChooseDoctor extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'doctor'.tr(),
+          'veterinarian'.tr(),
         ),
         actions: <Widget>[
           IconButton(
@@ -60,7 +60,7 @@ class ChooseDoctor extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'choose_a_doctor'.tr(),
+                'choose_a_veterinarian'.tr(),
                 style: TextStyle(
                   color: kColorDarkBlue,
                   fontSize: 20,
@@ -91,7 +91,7 @@ class ChooseDoctor extends StatelessWidget {
                     width: 20,
                   ),
                   Text(
-                    'any_available_doctor'.tr(),
+                    'any_available_veterinarian'.tr(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -111,11 +111,11 @@ class ChooseDoctor extends StatelessWidget {
               ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: doctors.length,
+              itemCount: veterinarians.length,
               itemBuilder: (context, index) {
-                return DoctorItem(
+                return VeterinarianItem(
                   onTap: () {},
-                  doctor: doctors[index],
+                  veterinarian: veterinarians[index],
                 );
               },
             ),

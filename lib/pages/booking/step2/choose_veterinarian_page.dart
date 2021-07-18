@@ -1,19 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/doctor_item.dart';
+import '../../../components/veterinarian_item.dart';
 import '../../../components/round_icon_button.dart';
 import '../../../model/veterinarian.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/constants.dart';
 
-class ChooseDoctorPage extends StatelessWidget {
+class ChooseVeterinarianPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'doctor'.tr(),
+          'veterinarian'.tr(),
         ),
         actions: <Widget>[
           IconButton(
@@ -33,7 +33,7 @@ class ChooseDoctorPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(20),
               child: Text(
-                'choose_a_doctor'.tr(),
+                'choose_a_veterinarian'.tr(),
                 style: Theme.of(context).textTheme.headline6.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
@@ -58,7 +58,7 @@ class ChooseDoctorPage extends StatelessWidget {
                     width: 20,
                   ),
                   Text(
-                    'any_available_doctor'.tr(),
+                    'any_available_veterinarian'.tr(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -75,13 +75,13 @@ class ChooseDoctorPage extends StatelessWidget {
               separatorBuilder: (context, index) => Divider(),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: doctors.length,
+              itemCount: veterinarians.length,
               itemBuilder: (context, index) {
-                return DoctorItem(
+                return VeterinarianItem(
                   onTap: () {
                     Navigator.of(context).pushNamed(Routes.bookingStep3);
                   },
-                  doctor: doctors[index],
+                  veterinarian: veterinarians[index],
                 );
               },
             ),

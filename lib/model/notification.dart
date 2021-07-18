@@ -46,7 +46,7 @@ class Notification {
 final notifications = [
   Notification(
     title: 'Appointment reminder',
-    body: 'Don\'t forget your next appointment with doctor Tawfiq tomorrow',
+    body: 'Don\'t forget your next appointment with veterinarian Tawfiq tomorrow',
     icon: 'assets/images/reminder.png',
     date: '2h',
   ),
@@ -58,7 +58,7 @@ final notifications = [
   ),
   Notification(
     title: 'Appointment confirmation',
-    body: 'Doctor Super Pet confirmed your booking appointment',
+    body: 'Veterinarian Super Pet confirmed your booking appointment',
     icon: 'assets/images/confirmation.png',
     date: '1d',
   ),
@@ -70,7 +70,7 @@ final notifications = [
   ),
   Notification(
     title: 'Prescription Reminder',
-    body: 'Contact doctor Liana about the last visit prescription',
+    body: 'Contact veterinarian Liana about the last visit prescription',
     icon: 'assets/images/reminder.png',
     date: '1 week',
   ),

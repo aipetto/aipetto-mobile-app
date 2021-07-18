@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../model/veterinarian.dart';
 
-class VisitedDoctorListItem extends StatelessWidget {
-  final Veterinarian doctor;
+class VisitedVeterinarianListItem extends StatelessWidget {
+  final Veterinarian veterinarian;
 
-  const VisitedDoctorListItem({Key key, @required this.doctor})
+  const VisitedVeterinarianListItem({Key key, @required this.veterinarian})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,13 @@ class VisitedDoctorListItem extends StatelessWidget {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey,
-            backgroundImage: AssetImage(doctor.avatar),
+            backgroundImage: AssetImage(veterinarian.avatar),
           ),
           SizedBox(
             height: 15,
           ),
           Text(
-            doctor.name,
+            veterinarian.name,
             style: TextStyle(
               color: Colors.black,
               fontSize: 14,

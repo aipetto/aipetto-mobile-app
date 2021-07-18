@@ -37,7 +37,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                             backgroundColor: Colors.transparent,
                             radius: 30,
                             child: Image.asset(
-                              'assets/images/icon_doctor_1.png',
+                              'assets/images/icon_veterinarian_1.png',
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -61,7 +61,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                                   height: 2,
                                 ),
                                 Text(
-                                  'Family Doctor. Cardiologist',
+                                  'Family Veterinarian. Cardiologist',
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontFamily: 'NunitoSans',

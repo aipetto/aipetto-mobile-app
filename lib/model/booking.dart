@@ -5,8 +5,8 @@ import 'veterinarian.dart';
 class Booking {
 
   String id;
-  Veterinarian doctor;
-  String doctorId;
+  Veterinarian veterinarian;
+  String veterinarianId;
   String userId;
   String date; // Monday, 3 Feb
   String formattedDate; // dd-MM-yyyy
@@ -19,8 +19,8 @@ class Booking {
 
   Booking({
     this.id,
-    this.doctor,
-    this.doctorId,
+    this.veterinarian,
+    this.veterinarianId,
     this.userId,
     this.date,
     this.formattedDate,
@@ -35,8 +35,8 @@ class Booking {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'doctor': doctor?.toMap(),
-      'doctorId': doctorId,
+      'veterinarian': veterinarian?.toMap(),
+      'veterinarianId': veterinarianId,
       'userId': userId,
       'date': date,
       'formattedDate': formattedDate,
@@ -54,8 +54,8 @@ class Booking {
 
     return Booking(
       id: map['id'],
-      doctor: Veterinarian.fromMap(map['doctor']),
-      doctorId: map['doctorId'],
+      veterinarian: Veterinarian.fromMap(map['veterinarian']),
+      veterinarianId: map['veterinarianId'],
       userId: map['userId'],
       date: map['date'],
       formattedDate: map['formattedDate'],

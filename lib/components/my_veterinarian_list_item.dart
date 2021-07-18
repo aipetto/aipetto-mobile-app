@@ -5,10 +5,10 @@ import '../model/veterinarian.dart';
 import '../utils/constants.dart';
 import 'custom_button.dart';
 
-class MyDoctorListItem extends StatelessWidget {
-  final Veterinarian doctor;
+class MyVeterinarianListItem extends StatelessWidget {
+  final Veterinarian veterinarian;
 
-  const MyDoctorListItem({Key key, @required this.doctor}) : super(key: key);
+  const MyVeterinarianListItem({Key key, @required this.veterinarian}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -17,7 +17,7 @@ class MyDoctorListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Image.asset(
-              doctor.avatar,
+              veterinarian.avatar,
               width: 60,
               height: 60,
             ),
@@ -29,14 +29,14 @@ class MyDoctorListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    doctor.name,
+                    veterinarian.name,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    doctor.speciality + '\n',
+                    veterinarian.speciality + '\n',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 12,

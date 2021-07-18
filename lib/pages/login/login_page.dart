@@ -49,13 +49,7 @@ class LoginPage extends StatelessWidget {
                               height: 30,
                             ),
                             InputWidget(),
-                            CustomButton(
-                              onPressed: () {
-                                Navigator.of(context)
-                                    .popAndPushNamed(Routes.home);
-                              },
-                              text: 'login'.tr(),
-                            ),
+
                             SizedBox(
                               height: 20,
                             ),

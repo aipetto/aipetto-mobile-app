@@ -1,3 +1,4 @@
+import 'package:aipetto/components/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,18 @@ class _InputWidgetState extends State<InputWidget> {
           obscureText: true,
           hintText: '* * * * * *',
           padding: 0,
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        CustomButton(
+          onPressed: () {
+            print(_emailController.text);
+            print(_passwordController.text);
+             Navigator.of(context)
+                .popAndPushNamed(Routes.home);
+          },
+          text: 'login'.tr(),
         ),
         Row(
           children: [

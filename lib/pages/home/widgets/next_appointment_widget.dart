@@ -68,7 +68,7 @@ class NextAppointmentWidget extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/icon_doctor_1.png',
+                    'assets/images/icon_veterinarian_1.png',
                     fit: BoxFit.fill,
                   ),
                 ),

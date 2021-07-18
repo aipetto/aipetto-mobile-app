@@ -28,7 +28,7 @@ class MyPetListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    pet.nickname,
+                    pet.name,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2

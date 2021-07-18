@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../../components/custom_button.dart';
-import '../../components/doctor_item1.dart';
+import '../../components/veterinarian_item1.dart';
 import '../../utils/constants.dart';
 import '../../data/pref_manager.dart';
 import '../../model/veterinarian.dart';
@@ -260,8 +260,8 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                     children: <Widget>[
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
-                        child: DoctorItem1(
-                          doctor: doctors[0],
+                        child: VeterinarianItem1(
+                          veterinarian: veterinarians[0],
                         ),
                       ),
                       Divider(

@@ -96,7 +96,7 @@ class Business {
 final businesses = [
   Business(
     name: 'Veterinária Bons Amigos',
-    speciality: 'Family Doctor, Cardiologist',
+    speciality: 'Family Veterinarian, Cardiologist',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
@@ -105,7 +105,7 @@ final businesses = [
   ),
   Business(
     name: 'Veterinária Bons Amigos',
-    speciality: 'Family Doctor, Cardiologist',
+    speciality: 'Family Veterinarian, Cardiologist',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
@@ -114,7 +114,7 @@ final businesses = [
   ),
   Business(
     name: 'Veterinária Bons Amigos',
-    speciality: 'Family Doctor, Cardiologist',
+    speciality: 'Family Veterinarian, Cardiologist',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/logos/veterinariabonsamigos.jpg',

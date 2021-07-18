@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../routes/routes.dart';
-import '../../utils/constants.dart';
 
 class DrawerPage extends StatelessWidget {
   final Function onTap;
@@ -67,7 +66,7 @@ class DrawerPage extends StatelessWidget {
                 _drawerItem(
                   image: 'person',
                   text: 'my_veterinarians',
-                  onTap: () => Navigator.of(context).pushNamed(Routes.myDoctors),
+                  onTap: () => Navigator.of(context).pushNamed(Routes.myVeterinarians),
                 ),
                 _drawerItem(
                   image: 'dog_icon',

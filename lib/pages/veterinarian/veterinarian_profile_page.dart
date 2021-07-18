@@ -6,7 +6,7 @@ import '../../components/custom_circular_indicator.dart';
 import '../../components/round_icon_button.dart';
 import '../../utils/constants.dart';
 
-class DoctorProfilePage extends StatelessWidget {
+class VeterinarianProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class DoctorProfilePage extends StatelessWidget {
               elevation: 1,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(
-                  'assets/images/doctor_profile.jpg',
+                  'assets/images/veterinarian_profile.jpg',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -56,7 +56,7 @@ class DoctorProfilePage extends StatelessWidget {
                                     ),
                           ),
                           Text(
-                            'Family Doctor. Cardiologist',
+                            'Family Veterinarian. Cardiologist',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 14,
@@ -147,7 +147,7 @@ class DoctorProfilePage extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  'Doctor Super Pet, is a Doctor primarily located in New York, with another office in Atlantic City, New Jersey. He has 16 years of experience. His specialities include Family Medicine and Cardiology.',
+                  'Veterinarian Super Pet, is a Veterinarian primarily located in New York, with another office in Atlantic City, New Jersey. He has 16 years of experience. His specialities include Family Medicine and Cardiology.',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14,

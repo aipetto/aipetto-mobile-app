@@ -4,11 +4,11 @@ import 'package:easy_localization/easy_localization.dart';
 import '../utils/constants.dart';
 import '../model/veterinarian.dart';
 
-class DoctorItem extends StatelessWidget {
-  final Veterinarian doctor;
+class VeterinarianItem extends StatelessWidget {
+  final Veterinarian veterinarian;
   final Function onTap;
 
-  const DoctorItem({Key key, @required this.onTap, @required this.doctor})
+  const VeterinarianItem({Key key, @required this.onTap, @required this.veterinarian})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class DoctorItem extends StatelessWidget {
               radius: 30,
               backgroundColor: Colors.transparent,
               child: Image.asset(
-                doctor.avatar,
+                veterinarian.avatar,
                 fit: BoxFit.fill,
               ),
             ),
@@ -37,7 +37,7 @@ class DoctorItem extends StatelessWidget {
                     children: <Widget>[
                       Expanded(
                         child: Text(
-                          doctor.name,
+                          veterinarian.name,
                           style: Theme.of(context)
                               .textTheme
                               .subtitle2
@@ -53,7 +53,7 @@ class DoctorItem extends StatelessWidget {
                         width: 5,
                       ),
                       Text(
-                        '${doctor.rating}',
+                        '${veterinarian.rating}',
                         style: Theme.of(context).textTheme.bodyText2.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.w300,
@@ -65,7 +65,7 @@ class DoctorItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    doctor.speciality,
+                    veterinarian.speciality,
                     style: TextStyle(
                       color: Colors.grey[350],
                       fontSize: 12,
@@ -75,7 +75,7 @@ class DoctorItem extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    '${'start_from'.tr()} \$${doctor.price}',
+                    '${'start_from'.tr()} \$${veterinarian.price}',
                     style: Theme.of(context).textTheme.subtitle2.copyWith(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,

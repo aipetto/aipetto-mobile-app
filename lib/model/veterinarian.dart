@@ -93,66 +93,66 @@ class Veterinarian {
   factory Veterinarian.fromJson(String source) => Veterinarian.fromMap(json.decode(source));
 }
 
-class Doctors {
-  List<Veterinarian> doctorList;
+class Veterinarians {
+  List<Veterinarian> veterinarianList;
 
-  Doctors({this.doctorList});
+  Veterinarians({this.veterinarianList});
 
-  factory Doctors.fromJSON(Map<dynamic, dynamic> json) {
-    return Doctors(doctorList: parserecipes(json));
+  factory Veterinarians.fromJSON(Map<dynamic, dynamic> json) {
+    return Veterinarians(veterinarianList: parserecipes(json));
   }
 
-  static List<Veterinarian> parserecipes(doctorJSON) {
-    var dList = doctorJSON['doctors'] as List;
-    List<Veterinarian> doctorList =
+  static List<Veterinarian> parserecipes(veterinarianJSON) {
+    var dList = veterinarianJSON['veterinarians'] as List;
+    List<Veterinarian> veterinarianList =
         dList.map((data) => Veterinarian.fromJson(data)).toList();
-    return doctorList;
+    return veterinarianList;
   }
 }
 
-final doctors = [
+final veterinarians = [
   Veterinarian(
     name: 'Super Pet',
-    speciality: 'Family Doctor, Cardiologist',
+    speciality: 'Family Veterinarian, Cardiologist',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_1.png',
+    avatar: 'assets/images/icon_veterinarian_1.png',
     rating: 4.5,
     price: 100,
   ),
   Veterinarian(
     name: 'Trashae Hubbard',
-    speciality: 'Family Doctor, Therapist',
+    speciality: 'Family Veterinarian, Therapist',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_2.png',
+    avatar: 'assets/images/icon_veterinarian_2.png',
     rating: 4.7,
     price: 90,
   ),
   Veterinarian(
     name: 'Jesus Moruga',
-    speciality: 'Family Doctor, Therapist',
+    speciality: 'Family Veterinarian, Therapist',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_3.png',
+    avatar: 'assets/images/icon_veterinarian_3.png',
     rating: 4.3,
     price: 100,
   ),
   Veterinarian(
     name: 'Gabriel Moreira',
-    speciality: 'Family Doctor, Therapist',
+    speciality: 'Family Veterinarian, Therapist',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_4.png',
+    avatar: 'assets/images/icon_veterinarian_4.png',
     rating: 4.7,
     price: 100,
   ),
   Veterinarian(
     name: 'Liana Lee',
-    speciality: 'Family Doctor, Therapist',
+    speciality: 'Family Veterinarian, Therapist',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/icon_doctor_5.png',
+    avatar: 'assets/images/icon_veterinarian_5.png',
     rating: 4.7,
     price: 100,
   ),

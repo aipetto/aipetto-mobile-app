@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../model/veterinarian.dart';
 
-class DoctorItem1 extends StatelessWidget {
-  final Veterinarian doctor;
+class VeterinarianItem1 extends StatelessWidget {
+  final Veterinarian veterinarian;
 
-  const DoctorItem1({Key key, @required this.doctor}) : super(key: key);
+  const VeterinarianItem1({Key key, @required this.veterinarian}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +16,7 @@ class DoctorItem1 extends StatelessWidget {
             radius: 20,
             backgroundColor: Colors.transparent,
             child: Image.asset(
-              doctor.avatar,
+              veterinarian.avatar,
               fit: BoxFit.fill,
             ),
           ),
@@ -28,7 +28,7 @@ class DoctorItem1 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  doctor.name,
+                  veterinarian.name,
                   style: Theme.of(context)
                       .textTheme
                       .subtitle2
@@ -38,7 +38,7 @@ class DoctorItem1 extends StatelessWidget {
                   height: 3,
                 ),
                 Text(
-                  doctor.speciality,
+                  veterinarian.speciality,
                   style: TextStyle(
                     color: Colors.grey[350],
                     fontSize: 12,

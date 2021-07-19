@@ -19,7 +19,7 @@ class _PetProfilePageState extends State<PetProfilePage>
     with AutomaticKeepAliveClientMixin<PetProfilePage> {
   final _kTabTextStyle = TextStyle(
     color:kAmphibianColorGreenLight,
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
   );
@@ -90,7 +90,7 @@ class _PetProfilePageState extends State<PetProfilePage>
                       'Breed Name here',
                       style: TextStyle(
                         color: Colors.grey[350],
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                     SizedBox(
@@ -101,7 +101,7 @@ class _PetProfilePageState extends State<PetProfilePage>
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
-                          .copyWith(fontSize: 12),
+                          .copyWith(fontSize: 14),
                     ),
                   ],
                 ),

@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage>
                             return GestureDetector(
                                     onTap: () {
                                       FocusScope.of(context).requestFocus(FocusNode());
-                                      Navigator.of(context).pushNamed(Routes.bookingStep1);
+                                      Navigator.of(context).pushNamed(Routes.categories);
                                     },
                                     child:Column(
                                         children: <Widget>[

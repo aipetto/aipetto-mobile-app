@@ -47,7 +47,7 @@ class NoAppointmentsWidget extends StatelessWidget {
               color:kAmphibianColorGreenLight,
               onPressed: () {
                 FocusScope.of(context).requestFocus(FocusNode());
-                Navigator.of(context).pushNamed(Routes.bookingStep1);
+                Navigator.of(context).pushNamed(Routes.categories);
               },
             ),
           ),

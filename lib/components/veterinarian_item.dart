@@ -55,7 +55,7 @@ class VeterinarianItem extends StatelessWidget {
                       Text(
                         '${veterinarian.rating}',
                         style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.w300,
                             ),
                       ),
@@ -68,7 +68,7 @@ class VeterinarianItem extends StatelessWidget {
                     veterinarian.speciality,
                     style: TextStyle(
                       color: Colors.grey[350],
-                      fontSize: 12,
+                      fontSize: 14,
                     ),
                   ),
                   SizedBox(
@@ -77,7 +77,7 @@ class VeterinarianItem extends StatelessWidget {
                   Text(
                     '${'start_from'.tr()} \$${veterinarian.price}',
                     style: Theme.of(context).textTheme.subtitle2.copyWith(
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
                   ),

@@ -118,7 +118,7 @@ class VisitItem extends StatelessWidget {
               time,
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w300,
               ),
             )

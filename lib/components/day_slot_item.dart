@@ -37,7 +37,7 @@ class DaySlotItem extends StatelessWidget {
               '24 ${'slots_available'.tr().toLowerCase()}',
               style: TextStyle(
                 color: Colors.greenAccent[400],
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
             ),

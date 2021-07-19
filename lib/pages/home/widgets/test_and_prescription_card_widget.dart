@@ -40,7 +40,7 @@ class TestAndPrescriptionCardWidget extends StatelessWidget {
                 Text(
                   subTitle,
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 14,
                     fontFamily: 'NunitoSans',
                     fontWeight: FontWeight.w300,
                   ),

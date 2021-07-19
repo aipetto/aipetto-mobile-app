@@ -1,5 +1,6 @@
 import 'package:aipetto/pages/booking/step2/choose_veterinarian_page.dart';
 import 'package:aipetto/pages/business/business_profile_page.dart';
+import 'package:aipetto/pages/categories/categories_page.dart';
 import 'package:aipetto/pages/veterinarian/my_veterinarian_list_page.dart';
 import 'package:aipetto/pages/pets/add_new_pet_page.dart';
 import 'package:aipetto/pages/pets/pets_page.dart';
@@ -61,19 +62,19 @@ class RouteGenerator {
           fullscreenDialog: true,
         );
 
-      case Routes.bookingStep1:
+      case Routes.categories:
         return CupertinoPageRoute(
-          builder: (_) => HealthConcernPage(),
+          builder: (_) => CategoriesPage(),
           fullscreenDialog: true,
         );
 
-      case Routes.bookingStep2:
+      case Routes.bookingStep1:
         return CupertinoPageRoute(builder: (_) => ChooseVeterinarianPage());
 
-      case Routes.bookingStep3:
+      case Routes.bookingStep2:
         return CupertinoPageRoute(builder: (_) => TimeSlotPage());
 
-      case Routes.bookingStep4:
+      case Routes.bookingStep3:
         return CupertinoPageRoute(builder: (_) => PatientDetailsPage());
 
       case Routes.bookingStep5:

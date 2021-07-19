@@ -45,7 +45,7 @@ class NotificationListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .bodyText2
-                        .copyWith(fontSize: 12),
+                        .copyWith(fontSize: 14),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -61,7 +61,7 @@ class NotificationListItem extends StatelessWidget {
                 color: isDark
                     ? Colors.white.withOpacity(0.5)
                     : Colors.grey.withOpacity(0.5),
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
             ),

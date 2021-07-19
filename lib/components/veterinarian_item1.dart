@@ -41,7 +41,7 @@ class VeterinarianItem1 extends StatelessWidget {
                   veterinarian.speciality,
                   style: TextStyle(
                     color: Colors.grey[350],
-                    fontSize: 12,
+                    fontSize: 14,
                   ),
                 ),
               ],

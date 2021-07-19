@@ -38,7 +38,7 @@ class MyPetListItem extends StatelessWidget {
                     pet.nickname + '\n',
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                     maxLines: 2,

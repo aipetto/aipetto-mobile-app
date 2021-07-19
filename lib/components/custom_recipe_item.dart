@@ -56,7 +56,7 @@ class CustomRecipeItem extends StatelessWidget {
                       Text(
                         subTitle,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           fontFamily: 'NunitoSans',
                           fontWeight: FontWeight.w300,
                         ),
@@ -87,7 +87,7 @@ class CustomRecipeItem extends StatelessWidget {
                         'days_of_treat'.tr(),
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -97,7 +97,7 @@ class CustomRecipeItem extends StatelessWidget {
                       Text(
                         days,
                         style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.w700,
                             ),
                       ),
@@ -113,7 +113,7 @@ class CustomRecipeItem extends StatelessWidget {
                         'pill_per_day'.tr(),
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -123,7 +123,7 @@ class CustomRecipeItem extends StatelessWidget {
                       Text(
                         pills,
                         style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.w700,
                             ),
                       ),

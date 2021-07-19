@@ -225,5 +225,7 @@
     "welcome_to_app_name": "Bienvenido al aipetto",
     "create_an_account_to_get_started": "Creá tu cuenta para empezar",
     "veterinarian": "Veterinario",
-    "add_your_pet": "Agregá tu mascota"
+    "add_your_pet": "Agregá tu mascota",
+    "categories_title": "Categorias",
+    "choose_category": "Seleccione una por favor"
 }

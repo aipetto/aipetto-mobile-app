@@ -149,7 +149,7 @@ class _HomeState extends State<Home> {
                   child: GestureDetector(
                     onTap: () {
                       FocusScope.of(context).requestFocus(FocusNode());
-                      Navigator.of(context).pushNamed(Routes.bookingStep1);
+                      Navigator.of(context).pushNamed(Routes.categories);
                     },
                     child: Container(
                       decoration: BoxDecoration(

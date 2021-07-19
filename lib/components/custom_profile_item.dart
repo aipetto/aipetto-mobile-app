@@ -56,7 +56,7 @@ class CustomProfileItem extends StatelessWidget {
                   Text(
                     subTitle,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       fontFamily: 'NunitoSans',
                       fontWeight: FontWeight.w300,
                     ),
@@ -72,7 +72,7 @@ class CustomProfileItem extends StatelessWidget {
                         Text(
                           '${'given_at'.tr()} 14/02/2019',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 14,
                             color: Colors.grey[400],
                             fontWeight: FontWeight.w400,
                           ),

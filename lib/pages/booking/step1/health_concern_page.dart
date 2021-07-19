@@ -54,7 +54,7 @@ class HealthConcernPage extends StatelessWidget {
                       return ServiceTypeItem(
                         serviceType: typeServices[index],
                         onTap: () {
-                          Navigator.of(context).pushNamed(Routes.bookingStep2);
+                          Navigator.of(context).pushNamed(Routes.bookingStep2DetailsOfPlace);
                         },
                       );
                     },

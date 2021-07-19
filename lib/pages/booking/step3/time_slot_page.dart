@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../components/day_slot_item.dart';
-import '../../../components/doctor_item1.dart';
+import '../../../components/veterinarian_item1.dart';
 import '../../../components/time_slot_item.dart';
 import '../../../data/pref_manager.dart';
 import '../../../model/veterinarian.dart';
@@ -60,7 +60,7 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
             return TimeSlotItem(
               time: hour,
               onTap: () {
-                Navigator.of(context).pushNamed(Routes.bookingStep4);
+                Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability);
               },
             );
           },
@@ -81,8 +81,8 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            DoctorItem1(
-              doctor: doctors[0],
+            VeterinarianItem1(
+              veterinarian: veterinarians[0],
             ),
             Container(
               width: double.infinity,

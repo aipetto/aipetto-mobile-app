@@ -37,7 +37,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                             backgroundColor: Colors.transparent,
                             radius: 30,
                             child: Image.asset(
-                              'assets/images/icon_doctor_1.png',
+                              'assets/images/icon_veterinarian_1.png',
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -61,9 +61,9 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                                   height: 2,
                                 ),
                                 Text(
-                                  'Family Doctor. Cardiologist',
+                                  'Family Veterinarian. Cardiologist',
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 14,
                                     fontFamily: 'NunitoSans',
                                     fontWeight: FontWeight.w300,
                                   ),
@@ -99,7 +99,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                                 'Thu. 17:00 - 14 February 2019',
                                 style: TextStyle(
                                   color: Colors.grey,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -126,7 +126,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                                 'St. Anthony Street 15A. Moscow',
                                 style: TextStyle(
                                   color: Colors.grey,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),

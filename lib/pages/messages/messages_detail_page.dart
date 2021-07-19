@@ -24,7 +24,7 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
                     radius: 18,
                     backgroundColor: Colors.transparent,
                     child: Image.asset(
-                      'assets/images/icon_doctor_1.png',
+                      'assets/images/icon_veterinarian_1.png',
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -67,7 +67,7 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
           ),
           IconButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(Routes.doctorProfile);
+              Navigator.of(context).pushNamed(Routes.veterinarianProfile);
             },
             icon: Icon(
               Icons.info,
@@ -96,7 +96,7 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
                     ),
                     MessageItem(
                       send: true,
-                      message: 'Hello Doctor \nHow are you?',
+                      message: 'Hello Veterinarian \nHow are you?',
                     ),
                     SizedBox(
                       height: 10,
@@ -208,7 +208,7 @@ class MessageItem extends StatelessWidget {
             radius: 18,
             backgroundColor: Colors.transparent,
             child: Image.asset(
-              'assets/images/icon_doctor_1.png',
+              'assets/images/icon_veterinarian_1.png',
               fit: BoxFit.fill,
             ),
           ),

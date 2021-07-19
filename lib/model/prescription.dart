@@ -7,16 +7,16 @@ class Prescription {
   String name;
   DateTime date;
   String userId;
-  String doctorId;
-  Veterinarian doctor;
+  String veterinarianId;
+  Veterinarian veterinarian;
 
   Prescription({
     this.id,
     this.name,
     this.date,
     this.userId,
-    this.doctorId,
-    this.doctor,
+    this.veterinarianId,
+    this.veterinarian,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,8 +25,8 @@ class Prescription {
       'name': name,
       'date': date?.millisecondsSinceEpoch,
       'userId': userId,
-      'doctorId': doctorId,
-      'doctor': doctor?.toMap(),
+      'veterinarianId': veterinarianId,
+      'veterinarian': veterinarian?.toMap(),
     };
   }
 
@@ -38,8 +38,8 @@ class Prescription {
       name: map['name'],
       date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       userId: map['userId'],
-      doctorId: map['doctorId'],
-      doctor: Veterinarian.fromMap(map['doctor']),
+      veterinarianId: map['veterinarianId'],
+      veterinarian: Veterinarian.fromMap(map['veterinarian']),
     );
   }
 

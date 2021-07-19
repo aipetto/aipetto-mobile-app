@@ -1,3 +1,5 @@
+import 'package:aipetto/components/custom_button.dart';
+import 'package:aipetto/services/auth_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +24,7 @@ class _InputWidgetState extends State<InputWidget> {
           title: 'email_dot'.tr(),
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
-          hintText: 'mrjhonyvidal@aipetto.com',
+          hintText: 'email@email.com',
         ),
         LabeledTextFormField(
           title: 'password_dot'.tr(),
@@ -30,6 +32,22 @@ class _InputWidgetState extends State<InputWidget> {
           obscureText: true,
           hintText: '* * * * * *',
           padding: 0,
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        CustomButton(
+          onPressed: () {
+            print(_emailController.text);
+            print(_passwordController.text);
+
+            // final authService = Provider.of<AuthService>(context, listen: false);
+            // authService.login(_emailController, _passwordController);
+
+             Navigator.of(context)
+                .popAndPushNamed(Routes.home);
+          },
+          text: 'login'.tr(),
         ),
         Row(
           children: [
@@ -43,7 +61,7 @@ class _InputWidgetState extends State<InputWidget> {
               child: Text(
                 'forgot_yout_password'.tr(),
                 style:
-                    Theme.of(context).textTheme.button.copyWith(fontSize: 12),
+                    Theme.of(context).textTheme.button.copyWith(fontSize: 14),
               ),
             ),
           ],

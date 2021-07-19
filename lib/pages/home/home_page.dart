@@ -1,9 +1,10 @@
-import 'package:aipetto/components/headers.dart';
+import 'package:aipetto/components/pets_of_owner_list_item.dart';
+import 'package:aipetto/components/reserved_past_business_list_item.dart';
+import 'package:aipetto/model/business.dart';
+import 'package:aipetto/model/pet.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/visited_doctor_list_item.dart';
-import '../../model/veterinarian.dart';
 import '../../routes/routes.dart';
 import 'widgets/widgets.dart';
 
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-  final bool _noAppoints = true;
+  final bool _noAppoints = false;
 
   @override
   Widget build(BuildContext context) {
@@ -61,21 +62,51 @@ class _HomePageState extends State<HomePage>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      height: 160,
+                      height: 100,
                       child: ListView.separated(
                         separatorBuilder: (context, index) => SizedBox(
                           width: 15,
                         ),
-                        itemCount: 4,
+                        itemCount: 5,
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         itemBuilder: (context, index) {
-                          return VisitedDoctorListItem(
-                            doctor: doctors[index],
-                          );
+                          if(index == 0){
+                            return GestureDetector(
+                                    onTap: () {
+                                      FocusScope.of(context).requestFocus(FocusNode());
+                                      Navigator.of(context).pushNamed(Routes.categories);
+                                    },
+                                    child:Column(
+                                        children: <Widget>[
+                                          CircleAvatar(
+                                            radius: 30,
+                                            backgroundColor: Colors.grey,
+                                            backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                              'add_your_pet'.tr(),
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            )
+                                        ]
+                                      )
+                                 );
+                          }else{
+                            return PetsOfOwnerListItem(
+                              pet: pets[index],
+                            );
+                          }
                         },
                       ),
                     ),
@@ -92,10 +123,15 @@ class _HomePageState extends State<HomePage>
                               children: <Widget>[
                                 SectionHeaderWidget(
                                   title: 'next_appointment'.tr(),
+                                  onPressed: () => Navigator.of(context)
+                                      .pushNamed(Routes.myAppointments),
                                 ),
                                 NextAppointmentWidget(),
                               ],
                             ),
+                          ),
+                          SizedBox(
+                            height: 20,
                           ),
                           Container(
                             height: 160,
@@ -103,43 +139,14 @@ class _HomePageState extends State<HomePage>
                               separatorBuilder: (context, index) => SizedBox(
                                 width: 15,
                               ),
-                              itemCount: 4,
+                              itemCount: 3,
                               scrollDirection: Axis.horizontal,
                               padding: EdgeInsets.symmetric(horizontal: 20),
                               itemBuilder: (context, index) {
-                                return VisitedDoctorListItem(
-                                  doctor: doctors[index],
+                                return ReservedPastBussinessListItem(
+                                  business: businesses[index],
                                 );
                               },
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                SectionHeaderWidget(
-                                  title: 'your_prescriptions'.tr(),
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, Routes.prescriptionDetail),
-                                ),
-                                TestAndPrescriptionCardWidget(
-                                  title: 'Tuberculosis ${'recipe'.tr()}',
-                                  subTitle: '${'given_by'.tr()} Super Pet',
-                                  image: 'icon_medical_recipe.png',
-                                ),
-                                //test results
-                                SectionHeaderWidget(
-                                  title: 'test_results'.tr(),
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, Routes.myAppointments),
-                                ),
-                                TestAndPrescriptionCardWidget(
-                                  title: 'Monthly Medical Check Up',
-                                  subTitle: '1 January 2019',
-                                  image: 'icon_medical_check_up.png',
-                                ),
-                              ],
                             ),
                           ),
                         ],

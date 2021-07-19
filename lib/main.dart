@@ -17,16 +17,16 @@ void main() async {
     EasyLocalization(
       child: MyApp(),
       supportedLocales: [
-        Locale('es', 'ES'),
+        Locale('es', 'AR'),
         Locale('pt', 'PT'),
-        Locale('en', 'US'),
+        Locale('en', 'UK'),
         //Locale('de', 'DE'),
         //Locale('ar', 'DZ'),
         //Locale('it', 'IT'),
         //Locale('fr', 'FR'),
       ],
       path: 'assets/languages',
-      fallbackLocale: Locale('es', 'ES'),
+      fallbackLocale: Locale('es', 'AR'),
     ),
   );
 }
@@ -34,8 +34,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ThemeBloc())
+      ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: _buildWithTheme,
       ),

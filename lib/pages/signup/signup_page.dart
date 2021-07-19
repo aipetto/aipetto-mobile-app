@@ -92,7 +92,7 @@ class SignupPage extends StatelessWidget {
                                     '${'already_a_member'.tr()} ?',
                                     style: TextStyle(
                                       color: Color(0xffbcbcbc),
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontFamily: 'NunitoSans',
                                     ),
                                   ),
@@ -109,7 +109,7 @@ class SignupPage extends StatelessWidget {
                                         style: Theme.of(context)
                                             .textTheme
                                             .button
-                                            .copyWith(fontSize: 12),
+                                            .copyWith(fontSize: 14),
                                       ),
                                     ),
                                   ),

@@ -1,5 +1,5 @@
 name: aipetto
-description: App for aipetto network
+description: Pets and services connected everywhere
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.3-alpha
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -33,9 +33,13 @@ dependencies:
   easy_localization: ^3.0.0
   nb_utils: ^4.0.5
   dots_indicator: ^2.0.0
+  provider: ^4.3.3
+  http: ^0.12.2
+  bloc: ^6.1.3
 
   flutter_svg: ^0.21.0-nullsafety.0
   cached_network_image: ^2.3.1
+  intl: ^0.17.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -63,6 +67,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/pets/
+    - assets/images/logos/
     - assets/images/aipetto/
     - assets/images/1.5x/
     - assets/images/2.0x/

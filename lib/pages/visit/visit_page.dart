@@ -27,9 +27,9 @@ class _VisitPageState extends State<VisitPage>
                   Navigator.of(context).pushNamed(Routes.visitDetail);
                 },
                 title: 'Super Pet',
-                subTitle: 'Family Doctor, Cardiologist',
+                subTitle: 'Family Veterinarian, Cardiologist',
                 buttonTitle: 'See Full Reports',
-                imagePath: 'assets/images/icon_doctor_1.png',
+                imagePath: 'assets/images/icon_veterinarian_1.png',
               ),
             ),
             SizedBox(
@@ -41,9 +41,9 @@ class _VisitPageState extends State<VisitPage>
               child: CustomProfileItem(
                 onTap: () {},
                 title: 'Josef Bouroumat',
-                subTitle: 'Family Doctor, Cardiologist',
+                subTitle: 'Family Veterinarian, Cardiologist',
                 buttonTitle: 'See Full Reports',
-                imagePath: 'assets/images/icon_doctor_3.png',
+                imagePath: 'assets/images/icon_veterinarian_3.png',
               ),
             ),
             SizedBox(
@@ -77,9 +77,9 @@ class _VisitPageState extends State<VisitPage>
               child: CustomProfileItem(
                 onTap: () {},
                 title: 'Amine Khlili',
-                subTitle: 'Family Doctor, Cardiologist',
+                subTitle: 'Family Veterinarian, Cardiologist',
                 buttonTitle: 'See Full Reports',
-                imagePath: 'assets/images/icon_doctor_4.png',
+                imagePath: 'assets/images/icon_veterinarian_4.png',
               ),
             ),
           ],
@@ -118,7 +118,7 @@ class VisitItem extends StatelessWidget {
               time,
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w300,
               ),
             )

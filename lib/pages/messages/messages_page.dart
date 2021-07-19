@@ -55,7 +55,7 @@ class _MessagesPageState extends State<MessagesPage>
             onTap: () {
               Navigator.of(context).pushNamed(Routes.chatDetail);
             },
-            imagePath: 'assets/images/icon_doctor_1.png',
+            imagePath: 'assets/images/icon_veterinarian_1.png',
             name: 'Super Pet',
             message: 'Your next appointment',
             date: '11:05 AM',
@@ -64,7 +64,7 @@ class _MessagesPageState extends State<MessagesPage>
           ),
           MessageListItem(
             onTap: () {},
-            imagePath: 'assets/images/icon_doctor_3.png',
+            imagePath: 'assets/images/icon_veterinarian_3.png',
             name: 'Joseph Bouroumat',
             message: 'Don\'t forget your blood test',
             date: '08:31 AM',
@@ -73,7 +73,7 @@ class _MessagesPageState extends State<MessagesPage>
           ),
           MessageListItem(
             onTap: () {},
-            imagePath: 'assets/images/icon_doctor_2.png',
+            imagePath: 'assets/images/icon_veterinarian_2.png',
             name: 'Liza Anderson',
             message: 'You: Good news 😃',
             date: '03:48 PM',

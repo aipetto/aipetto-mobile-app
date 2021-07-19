@@ -40,9 +40,6 @@ class NoAppointmentsWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: 20,
-          ),
-          SizedBox(
             height: 100,
             child: IconButton(
               icon: const Icon(Icons.arrow_downward),
@@ -50,7 +47,7 @@ class NoAppointmentsWidget extends StatelessWidget {
               color:kAmphibianColorGreenLight,
               onPressed: () {
                 FocusScope.of(context).requestFocus(FocusNode());
-                Navigator.of(context).pushNamed(Routes.bookingStep1);
+                Navigator.of(context).pushNamed(Routes.categories);
               },
             ),
           ),

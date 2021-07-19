@@ -7,7 +7,7 @@ class Visit {
   String diagnosis;
   String recommendation;
   String userId;
-  String doctorId;
+  String veterinarianId;
 
   Visit({
     this.id,
@@ -16,7 +16,7 @@ class Visit {
     this.diagnosis,
     this.recommendation,
     this.userId,
-    this.doctorId,
+    this.veterinarianId,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,7 +27,7 @@ class Visit {
       'diagnosis': diagnosis,
       'recommendation': recommendation,
       'userId': userId,
-      'doctorId': doctorId,
+      'veterinarianId': veterinarianId,
     };
   }
 
@@ -41,7 +41,7 @@ class Visit {
       diagnosis: map['diagnosis'],
       recommendation: map['recommendation'],
       userId: map['userId'],
-      doctorId: map['doctorId'],
+      veterinarianId: map['veterinarianId'],
     );
   }
 

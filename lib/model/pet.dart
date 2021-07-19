@@ -50,15 +50,15 @@ class Pets {
     return Pets(petList: parserecipes(json));
   }
 
-  static List<Pet> parserecipes(doctorJSON) {
-    var dList = doctorJSON['doctors'] as List;
+  static List<Pet> parserecipes(veterinarianJSON) {
+    var dList = veterinarianJSON['veterinarians'] as List;
     List<Pet> petList =
     dList.map((data) => Pet.fromJson(data)).toList();
     return petList;
   }
 }
 
-final doctors = [
+final veterinarians = [
   Pet(
     nickname: 'Supet Pet',
   ),
@@ -67,7 +67,27 @@ final doctors = [
 final pets = [
   Pet(
     name: 'Snoopy',
-    nickname: 'Pretinho',
-    profileImage: 'assets/images/pets/cat_1.jpg'
+    nickname: 'Duchinho',
+    profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
+  ),
+  Pet(
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      profileImage: 'assets/images/pets/snoopy.jpg'
   )
 ];

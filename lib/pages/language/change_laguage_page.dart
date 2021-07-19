@@ -15,17 +15,13 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
   @override
   void initState() {
     super.initState();
-    switch (Prefs.getString('language', def: 'en')) {
+    switch (Prefs.getString('language', def: 'es')) {
       case 'en':
         _language = Language.english;
         break;
 
       case 'es':
         _language = Language.spanish;
-        break;
-
-      case 'it':
-        _language = Language.italian;
         break;
 
       case 'pt':
@@ -42,22 +38,16 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
       case 0:
         _language = Language.english;
         Prefs.setString(Prefs.LANGUAGE, 'en');
-        Prefs.setString(Prefs.LANGUAGE_REGION, 'US');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'UK');
         break;
 
       case 1:
         _language = Language.spanish;
         Prefs.setString(Prefs.LANGUAGE, 'es');
-        Prefs.setString(Prefs.LANGUAGE_REGION, 'ES');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'AR');
         break;
 
-      /*case 2:
-        _language = Language.italian;
-        Prefs.setString(Prefs.LANGUAGE, 'it');
-        Prefs.setString(Prefs.LANGUAGE_REGION, 'IT');
-        break;*/
-
-      case 3:
+      case 2:
         _language = Language.portuguese;
         Prefs.setString(Prefs.LANGUAGE, 'pt');
         Prefs.setString(Prefs.LANGUAGE_REGION, 'PT');
@@ -97,17 +87,6 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
               groupValue: _language,
               title: Text('spanish'.tr()),
             ),
-           /* Divider(
-              height: 0.5,
-              indent: 10,
-              endIndent: 10,
-            ),
-            RadioListTile(
-              value: Language.italian,
-              onChanged: (value) => _changeLanguage(2),
-              groupValue: _language,
-              title: Text('italian'.tr()),
-            ),*/
             Divider(
               height: 0.5,
               indent: 10,
@@ -115,7 +94,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
             ),
             RadioListTile(
               value: Language.portuguese,
-              onChanged: (value) => _changeLanguage(3),
+              onChanged: (value) => _changeLanguage(2),
               groupValue: _language,
               title: Text('portuguese'.tr()),
             ),

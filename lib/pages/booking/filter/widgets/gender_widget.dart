@@ -38,7 +38,7 @@ class _GenderWidgetState extends State<GenderWidget> {
               _male = value;
             });
           },
-          title: Text('male_doctor'.tr()),
+          title: Text('male_veterinarian'.tr()),
         ),
         CheckboxListTile(
           value: _female,
@@ -47,7 +47,7 @@ class _GenderWidgetState extends State<GenderWidget> {
               _female = value;
             });
           },
-          title: Text('female_doctor'.tr()),
+          title: Text('female_veterinarian'.tr()),
         ),
       ],
     );

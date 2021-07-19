@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     WaveHeader(
-                      title: 'hello_again'.tr(),
+                      title: 'welcome_to_app_name'.tr(),
                     ),
                     Expanded(
                       child: Padding(
@@ -49,13 +49,7 @@ class LoginPage extends StatelessWidget {
                               height: 30,
                             ),
                             InputWidget(),
-                            CustomButton(
-                              onPressed: () {
-                                Navigator.of(context)
-                                    .popAndPushNamed(Routes.home);
-                              },
-                              text: 'login'.tr(),
-                            ),
+
                             SizedBox(
                               height: 20,
                             ),
@@ -63,42 +57,6 @@ class LoginPage extends StatelessWidget {
                             Expanded(
                               child: SizedBox(
                                 height: 20,
-                              ),
-                            ),
-                            SafeArea(
-                              child: Center(
-                                child: Wrap(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(5),
-                                      child: Text(
-                                        'dont_have_an_account'.tr(),
-                                        style: TextStyle(
-                                          color: Color(0xffbcbcbc),
-                                          fontSize: 12,
-                                          fontFamily: 'NunitoSans',
-                                        ),
-                                      ),
-                                    ),
-                                    InkWell(
-                                      borderRadius: BorderRadius.circular(2),
-                                      onTap: () {
-                                        Navigator.of(context)
-                                            .pushNamed(Routes.signup);
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5),
-                                        child: Text(
-                                          'register_now'.tr(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .button
-                                              .copyWith(fontSize: 12),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ),
                             SizedBox(

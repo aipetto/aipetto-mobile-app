@@ -9,12 +9,12 @@ import '../../../model/veterinarian.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/constants.dart';
 
-class PatientDetailsPage extends StatefulWidget {
+class ReservationPetDetailsPage extends StatefulWidget {
   @override
-  _PatientDetailsPageState createState() => _PatientDetailsPageState();
+  _ReservationPetDetailsPageState createState() => _ReservationPetDetailsPageState();
 }
 
-class _PatientDetailsPageState extends State<PatientDetailsPage> {
+class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
   bool _isdark = Prefs.isDark();
   bool _patient = true;
   var _nameController = TextEditingController();

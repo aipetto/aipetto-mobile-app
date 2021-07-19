@@ -60,7 +60,7 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
             return TimeSlotItem(
               time: hour,
               onTap: () {
-                Navigator.of(context).pushNamed(Routes.bookingStep4);
+                Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability);
               },
             );
           },

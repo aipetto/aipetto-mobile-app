@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-  final bool _noAppoints = true;
+  final bool _noAppoints = false;
 
   @override
   Widget build(BuildContext context) {

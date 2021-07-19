@@ -6,10 +6,10 @@ class Routes {
   static const String home = '/home';
   static const String filter = '/filter';
   static const String categories = '/categories';
-  static const String bookingStep1 = '/booking_step1';
-  static const String bookingStep2 = '/booking_step2';
-  static const String bookingStep3 = '/booking_step3';
-  static const String bookingStep4 = '/booking_step4';
+  static const String bookingStep1FindPlacesNearby = '/booking_step1_find_places_nearby';
+  static const String bookingStep2DetailsOfPlace = '/booking_step2_show_details_place';
+  static const String bookingStep4ServicePrices = '/booking_step4_service_prices';
+  static const String bookingStep3ServiceAvailability = '/booking_step3_service_availability';
   static const String bookingStep5 = '/booking_step5';
   static const String businessProfile = '/business_profile';
   static const String addNewPet = '/add_new_pet';

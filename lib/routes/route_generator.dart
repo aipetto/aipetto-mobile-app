@@ -15,7 +15,7 @@ import '../pages/booking/filter/filter_page.dart';
 import '../pages/booking/step1/health_concern_page.dart';
 import '../pages/booking/step2/choose_veterinarian_page.dart';
 import '../pages/booking/step3/time_slot_page.dart';
-import '../pages/booking/step4/patient_details_page.dart';
+import '../pages/booking/step4/reservation_pet_details_page.dart';
 import '../pages/booking/step5/appointment_booked_page.dart';
 import '../pages/veterinarian/veterinarian_profile_page.dart';
 import '../pages/veterinarian/my_veterinarian_list_page.dart';
@@ -68,14 +68,19 @@ class RouteGenerator {
           fullscreenDialog: true,
         );
 
-      case Routes.bookingStep1:
+      case Routes.bookingStep1FindPlacesNearby:
         return CupertinoPageRoute(builder: (_) => ChooseVeterinarianPage());
 
-      case Routes.bookingStep2:
+      case Routes.bookingStep2DetailsOfPlace:
+        return CupertinoPageRoute(builder: (_) => BusinessProfilePage());
+
+      case Routes.bookingStep3ServiceAvailability:
         return CupertinoPageRoute(builder: (_) => TimeSlotPage());
 
-      case Routes.bookingStep3:
-        return CupertinoPageRoute(builder: (_) => PatientDetailsPage());
+      case Routes.bookingStep4ServicePrices:
+        return CupertinoPageRoute(builder: (_) => ReservationPetDetailsPage());
+
+      /// AppointmentBookedPage()
 
       case Routes.bookingStep5:
         return CupertinoPageRoute(builder: (_) => AppointmentBookedPage());

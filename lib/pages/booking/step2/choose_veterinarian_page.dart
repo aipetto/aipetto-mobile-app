@@ -79,7 +79,7 @@ class ChooseVeterinarianPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return VeterinarianItem(
                   onTap: () {
-                    Navigator.of(context).pushNamed(Routes.bookingStep3);
+                    Navigator.of(context).pushNamed(Routes.bookingStep2DetailsOfPlace); /// TODO pass id selected in the list for the step 2 page
                   },
                   veterinarian: veterinarians[index],
                 );

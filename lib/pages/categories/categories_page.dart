@@ -48,7 +48,7 @@ class CategoriesPage extends StatelessWidget {
                           serviceType: typeServices[index],
                           onTap: () {
                             Navigator.of(context).pushNamed(
-                                Routes.bookingStep2
+                                Routes.bookingStep1FindPlacesNearby
                             );
                           },
                         );

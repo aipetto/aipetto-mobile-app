@@ -48,11 +48,11 @@ class BHIncludeServiceModel {
   BHIncludeServiceModel({this.serviceImg, this.serviceName, this.time, this.price});
 }
 
-class BHMakeUpModel {
+class BHGroomingModel {
   String img;
   String name;
 
-  BHMakeUpModel({this.img, this.name});
+  BHGroomingModel({this.img, this.name});
 }
 
 class MessageModel {

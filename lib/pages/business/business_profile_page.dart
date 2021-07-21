@@ -4,6 +4,8 @@ import 'package:aipetto/pages/business/widgets/BHConstants.dart';
 import 'package:aipetto/pages/business/widgets/BHDataProvider.dart';
 import 'package:aipetto/pages/business/BHConstants.dart';
 import 'package:aipetto/pages/business/widgets/BHImages.dart';
+import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:aipetto/utils/flutter_rating_bar.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -28,24 +30,16 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
   int _radioValue1 = 0;
   TabController controller;
 
-  List<BHGalleryModel> galleryList;
   List<BHCategoryModel> categoryList;
   List<BHOfferModel> offerList;
   List<BHServicesModel> servicesList;
-  List<BHReviewModel> reviewList;
-  List<BHHairStyleModel> hairStyleList;
-  List<BHMakeUpModel> makeupList;
 
   @override
   void initState() {
     super.initState();
-    galleryList = getGalleryList();
+    servicesList = getServicesList();
     categoryList = getCategory();
     offerList = getOfferList();
-    servicesList = getServicesList();
-    reviewList = getReviewList();
-    hairStyleList = getHairStyleList();
-    makeupList = getMakeupList();
   }
 
   void something(int value) {
@@ -69,7 +63,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: whiteColor,
+                  color: Colors.black,
                   boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
                 ),
                 child: Column(
@@ -90,7 +84,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: whiteColor,
+                  color: Colors.black,
                   boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
                 ),
                 child: Column(
@@ -106,7 +100,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       children: [
                         Icon(Icons.call, size: 16),
                         8.width,
-                        Text('+1(325)1256 7592', style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14)),
+                        Text('+1(54)1111 1111', style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14)),
                       ],
                     ),
                     8.height,
@@ -114,7 +108,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       children: [
                         Icon(Icons.web, size: 16),
                         8.width,
-                        Text('www.salon.com', style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14)),
+                        Text('www.aipetto.com', style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14)),
                       ],
                     )
                   ],
@@ -179,28 +173,13 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       textAlign: TextAlign.center,
                     ),
                     8.width,
-                    Text('301 Dorthy walks,chicago,Us.', style: TextStyle(color: BHColorPrimary, fontSize: 14)),
+                    Text('301 Dorthy walks,chicago,Us.', style: TextStyle(color: kAmphibianColorGreenLight, fontSize: 14)),
                   ],
                 ),
               ),
             ],
           ),
         ),
-      );
-    }
-
-    Widget galleryWidget() {
-      return StaggeredGridView.countBuilder(
-        crossAxisCount: 4,
-        itemCount: galleryList.length,
-        padding: EdgeInsets.all(16),
-        itemBuilder: (BuildContext context, int index) => ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          child: Image.asset(galleryList[index].img, fit: BoxFit.cover),
-        ),
-        staggeredTileBuilder: (int index) => new StaggeredTile.count(2, index.isEven ? 2 : 3),
-        mainAxisSpacing: 16.0,
-        crossAxisSpacing: 16.0,
       );
     }
 
@@ -220,7 +199,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                     margin: EdgeInsets.all(8),
                     child: Column(
                       children: <Widget>[
-                        SvgPicture.asset(categoryList[index].img, height: 40, width: 40),
+                        Image.asset(categoryList[index].img, height: 40, width: 40),
                         8.height,
                         Text(categoryList[index].categoryName, style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14))
                       ],
@@ -235,14 +214,14 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
               child: Text(BHTxtPackageOffers, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: BHAppTextColorPrimary)),
             ),
             Container(
-              height: 220,
+              height: 130,
               child: ListView.builder(
                 padding: EdgeInsets.all(8),
                 itemCount: offerList.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    width: 220,
+                    width: 300,
                     margin: EdgeInsets.all(8),
                     child: Card(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -260,6 +239,8 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                             child: Text(
                               offerList[index].offerName,
                               style: TextStyle(fontSize: 14, color: BHAppTextColorPrimary, fontWeight: FontWeight.bold),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           Container(
@@ -284,7 +265,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                                     8.width,
                                     Text(
                                       '\$${offerList[index].offerNewPrice}',
-                                      style: TextStyle(color: BHColorPrimary, fontWeight: FontWeight.bold, fontSize: 16),
+                                      style: TextStyle(color: kAmphibianColorGreenLight, fontWeight: FontWeight.bold, fontSize: 16),
                                     ),
                                   ],
                                 ),
@@ -342,7 +323,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                               8.width,
                               Text(
                                 '\$${servicesList[index].price}',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: BHColorPrimary),
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: kAmphibianColorGreenLight),
                               ),
                             ],
                           ),
@@ -351,7 +332,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       Radio(
                         value: servicesList[index].radioVal,
                         groupValue: _radioValue1,
-                        activeColor: BHColorPrimary,
+                        activeColor: kAmphibianColorGreenLight,
                         onChanged: (value) => something(value),
                       ),
                     ],
@@ -367,278 +348,26 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 onPressed: () {
                   ///BHPackageOffersScreen().launch(context);
                 },
-                color: BHColorPrimary,
+                color: kAmphibianColorGreenLight,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: Text(BHBtnBookAppointment, style: TextStyle(color: whiteColor, fontSize: 16, fontWeight: FontWeight.bold)),
-              ),
+                child: GestureDetector(
+                  onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability); /// TODO get the pet profile passing the pet.id
+                  },
+                  child: Text(BHBtnBookAppointment, style: TextStyle(color: whiteColor, fontSize: 16, fontWeight: FontWeight.bold)),
+                ),
+             ),
             ),
           ],
         ),
       );
     }
 
-    Widget reviewWidget() {
-      return Container(
-        padding: EdgeInsets.all(8),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.all(8),
-                margin: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: whiteColor,
-                  boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      BHTxtReview,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: BHAppTextColorPrimary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    8.height,
-                    Text(
-                      BHTxtReviewMsg,
-                      style: TextStyle(fontSize: 14, color: BHGreyColor),
-                    ),
-                    8.height,
-                    RatingBar(
-                      onRatingUpdate: (rating) {
-                        print(rating);
-                      },
-                      initialRating: 1.5,
-                      glow: true,
-                      glowColor: BHGreyColor,
-                      direction: Axis.horizontal,
-                      itemCount: 5,
-                      allowHalfRating: true,
-                      minRating: 1,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 4),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: BHColorPrimary,
-                      ),
-                    ),
-                    8.height,
-                    Row(
-                      children: [
-                        Container(
-                          height: 45,
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              hintText: 'Say something...',
-                              hintStyle: TextStyle(color: BHGreyColor),
-                              filled: true,
-                              fillColor: BHGreyColor.withOpacity(0.1),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10.0),
-                                ),
-                                borderSide: BorderSide(color: whiteColor),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10.0),
-                                ),
-                                borderSide: BorderSide(color: whiteColor),
-                              ),
-                            ),
-                          ),
-                        ).expand(),
-                        8.width,
-                        Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                            color: BHColorPrimary,
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: whiteColor,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              ListView.builder(
-                itemCount: reviewList.length,
-                shrinkWrap: true,
-                padding: EdgeInsets.only(top: 0),
-                physics: NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: whiteColor, boxShadow: [
-                      BoxShadow(
-                        color: BHGreyColor.withOpacity(0.3),
-                        offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0,
-                      ),
-                    ]),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundImage: AssetImage(reviewList[index].img),
-                              radius: 30,
-                            ),
-                            8.width,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  reviewList[index].name,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: BHAppTextColorPrimary,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                8.height,
-                                Text(
-                                  reviewList[index].day,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: BHGreyColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ).expand(),
-                            Row(
-                              children: [
-                                Text(
-                                  reviewList[index].rating.toString(),
-                                  style: TextStyle(
-                                    color: BHAppTextColorSecondary,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                8.width,
-                                Icon(
-                                  Icons.star,
-                                  color: BHColorPrimary,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Text(
-                          reviewList[index].review,
-                          style: TextStyle(
-                            color: BHAppTextColorSecondary,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
-    Widget specialListsWidget() {
-      return Container(
-        padding: EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(BHTxtHairStyle, style: TextStyle(color: BHAppTextColorPrimary, fontWeight: FontWeight.bold, fontSize: 16)),
-              Container(
-                height: 180,
-                child: ListView.builder(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  itemCount: hairStyleList.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(0, 8, 16, 8),
-                      shadowColor: BHGreyColor.withOpacity(0.3),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /**ClipRRect(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                            child:commonCacheImageWidget(hairStyleList[index].img, 110, width: 120, fit: BoxFit.cover),
-                          ),**/
-                          Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Text(
-                              hairStyleList[index].name,
-                              style: TextStyle(fontSize: 14, color: BHAppTextColorSecondary),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Text(BHTxtMakeupArtist, style: TextStyle(color: BHAppTextColorPrimary, fontWeight: FontWeight.bold, fontSize: 16)),
-              Container(
-                height: 180,
-                child: ListView.builder(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  itemCount: makeupList.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(0, 8, 16, 8),
-                      shadowColor: BHGreyColor.withOpacity(0.3),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /**ClipRRect(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                            child: commonCacheImageWidget(hairStyleList[index].img, 110, width: 120, fit: BoxFit.cover),
-                          ),**/
-                          Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Text(
-                              makeupList[index].name,
-                              style: TextStyle(fontSize: 14, color: BHAppTextColorSecondary),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
     return DefaultTabController(
-      length: 5,
+      length: 2,
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -648,7 +377,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                   leading: IconButton(icon: Icon(Icons.arrow_back,color: white),onPressed: (){
                     finish(context);
                   },),
-                  backgroundColor: BHColorPrimary,
+                  backgroundColor: kAmphibianColorGreenLight,
                   pinned: true,
                   elevation: 2,
                   expandedHeight: 300,
@@ -664,7 +393,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                           fit: BoxFit.cover,
                         ),
                         Container(
-                          margin: EdgeInsets.only(bottom: 35),
+                          margin: EdgeInsets.only(bottom: 5),
                           padding: EdgeInsets.all(8),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -675,22 +404,14 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Text(
-                                    'Marguerite Cross',
-                                    style: TextStyle(
-                                      color: whiteColor,
-                                      fontSize: 16,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
                                         '4.5',
-                                        style: TextStyle(color: whiteColor, fontSize: 16),
+                                        style: TextStyle(color: Colors.black, fontSize: 18),
                                       ),
-                                      IconButton(icon: Icon(Icons.star, color: BHColorPrimary), onPressed: () {})
+                                      IconButton(icon: Icon(Icons.star, color: kAmphibianColorGreenLight), onPressed: () {})
                                     ],
                                   ),
                                 ],
@@ -699,15 +420,15 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Day Salon', style: TextStyle(color: whiteColor, fontSize: 16), textAlign: TextAlign.left),
+                                  Text('Vet', style: TextStyle(color: whiteColor, fontSize: 16), textAlign: TextAlign.left),
                                   Container(
                                     height: 25,
-                                    width: 65,
+                                    width: 75,
                                     margin: EdgeInsets.only(right: 16),
                                     child: FlatButton(
                                       onPressed: () {},
                                       child: Text(BHBtnOpen, style: TextStyle(color: whiteColor, fontSize: 14)),
-                                      color: BHColorPrimary,
+                                      color: kAmphibianColorGreenLight,
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                                     ),
                                   )
@@ -721,44 +442,29 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                     centerTitle: true,
                   ),
                   bottom: TabBar(
-                    labelColor: whiteColor,
-                    unselectedLabelColor: whiteColor,
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.black,
                     isScrollable: true,
-                    indicatorColor: BHColorPrimary,
+                    indicatorColor: kAmphibianColorGreenLight,
                     tabs: [
                       Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabAbout, style: TextStyle(fontSize: 14))),
+                        child: Align(alignment: Alignment.center, child: Text(BHTabServices, style: TextStyle(fontSize: 16))),
                       ),
                       Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabGallery, style: TextStyle(fontSize: 14))),
-                      ),
-                      Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabServices, style: TextStyle(fontSize: 14))),
-                      ),
-                      Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabReview, style: TextStyle(fontSize: 14))),
-                      ),
-                      Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabSalonSpecialList, style: TextStyle(fontSize: 14))),
+                        child: Align(alignment: Alignment.center, child: Text(BHTabAbout, style: TextStyle(fontSize: 16))),
                       ),
                     ],
                     controller: controller,
                   ),
-                  actions: [
-                    IconButton(icon: Icon(Icons.call, color: whiteColor, size: 16), onPressed: () {}),
-                    IconButton(icon: Icon(Icons.message, color: whiteColor, size: 16), onPressed: () {}),
-                  ],
+                  actions: [],
                 ),
               ),
             ];
           },
           body: TabBarView(
             children: [
-              aboutWidget(),
-              galleryWidget(),
               serviceWidget(),
-              reviewWidget(),
-              specialListsWidget(),
+              aboutWidget(),
             ],
           ),
         ),

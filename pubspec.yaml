@@ -69,6 +69,8 @@ flutter:
     - assets/images/pets/
     - assets/images/logos/
     - assets/images/aipetto/
+    - assets/images/illustrations/
+    - assets/images/animations/
     - assets/images/1.5x/
     - assets/images/2.0x/
     - assets/images/3.0x/

@@ -49,7 +49,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'Super Pet',
+                                  'Dr Vidal CRMV 11111',
                                   style: Theme.of(context)
                                       .textTheme
                                       .subtitle2
@@ -61,7 +61,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                                   height: 2,
                                 ),
                                 Text(
-                                  'Family Veterinarian. Cardiologist',
+                                  'Veterinário',
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontFamily: 'NunitoSans',

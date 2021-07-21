@@ -1,8 +1,9 @@
+import 'package:aipetto/model/business.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_button.dart';
-import '../../../components/veterinarian_item1.dart';
+import '../../../components/business_place_item.dart';
 import '../../../components/text_form_field.dart';
 import '../../../data/pref_manager.dart';
 import '../../../model/veterinarian.dart';
@@ -25,7 +26,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
   @override
   void initState() {
     super.initState();
-    _nameController.text = 'Super Pet';
+    _nameController.text = 'Veterinaria Buenos Aires';
     _phoneController.text = '+213781348677';
   }
 
@@ -35,7 +36,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
       children: <Widget>[
         Text(
           _patient
-              ? '${'please_provide_following_information_about'.tr()} Super Pet:'
+              ? '${'please_provide_following_information_about'.tr()}:'
               : 'please_provide_following_patient_details_dot'.tr(),
           style: TextStyle(
             fontSize: 14,
@@ -125,8 +126,8 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
                     children: <Widget>[
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
-                        child: VeterinarianItem1(
-                          veterinarian: veterinarians[0],
+                        child: BusinessPlaceItem(
+                          business: businesses[0],
                         ),
                       ),
                       Divider(

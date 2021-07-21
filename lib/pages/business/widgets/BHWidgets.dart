@@ -1,4 +1,5 @@
 import 'package:aipetto/pages/business/model/BHModel.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -51,7 +52,7 @@ Widget raiseButton1(String btnText1) {
   return RaisedButton(
     padding: EdgeInsets.all(12),
     onPressed: () {},
-    color: BHColorPrimary,
+    color: kAmphibianColorBlueDark,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     child: Text(
       btnText1,

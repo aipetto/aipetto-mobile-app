@@ -90,7 +90,10 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => BusinessProfilePage());
 
       case Routes.addNewPet:
-        return CupertinoPageRoute(builder: (_) => AddNewPetPage());
+        return CupertinoPageRoute(
+            builder: (_) => AddNewPetPage(),
+            fullscreenDialog: true
+        );
 
       case Routes.appointmentDetail:
         return CupertinoPageRoute(builder: (_) => AppointmentDetailPage());

@@ -95,11 +95,11 @@ class Business {
 
 final businesses = [
   Business(
-    name: 'Veterinária MG Brasil',
+    name: 'Veterinária Bons Amigos',
     speciality: 'Vet',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/aipetto/first-aid-kit-color.png',
+    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
     rating: 4.5,
     price: 100,
   ),

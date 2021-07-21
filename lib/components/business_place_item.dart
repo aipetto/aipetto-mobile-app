@@ -1,11 +1,12 @@
+import 'package:aipetto/model/business.dart';
 import 'package:flutter/material.dart';
 
 import '../model/veterinarian.dart';
 
-class VeterinarianItem1 extends StatelessWidget {
-  final Veterinarian veterinarian;
+class BusinessPlaceItem extends StatelessWidget {
+  final Business business;
 
-  const VeterinarianItem1({Key key, @required this.veterinarian}) : super(key: key);
+  const BusinessPlaceItem({Key key, @required this.business}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +17,7 @@ class VeterinarianItem1 extends StatelessWidget {
             radius: 20,
             backgroundColor: Colors.transparent,
             child: Image.asset(
-              veterinarian.avatar,
+              business.avatar,
               fit: BoxFit.fill,
             ),
           ),
@@ -28,7 +29,7 @@ class VeterinarianItem1 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  veterinarian.name,
+                  business.name,
                   style: Theme.of(context)
                       .textTheme
                       .subtitle2
@@ -38,7 +39,7 @@ class VeterinarianItem1 extends StatelessWidget {
                   height: 3,
                 ),
                 Text(
-                  veterinarian.speciality,
+                  business.speciality,
                   style: TextStyle(
                     color: Colors.grey[350],
                     fontSize: 14,

@@ -45,7 +45,7 @@ class DrawerPage extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Text(
-                            'Pet Owner name',
+                            'Mr Jhony Vidal',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,

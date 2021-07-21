@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '${'hello'.tr()} Jhony,',
+                      '${'hello'.tr()},',
                       style: Theme.of(context).textTheme.headline6.copyWith(
                         fontWeight: FontWeight.w400,
                       ),

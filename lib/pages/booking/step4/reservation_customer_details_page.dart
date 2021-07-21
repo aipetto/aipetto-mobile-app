@@ -6,19 +6,19 @@ import '../../../components/custom_button.dart';
 import '../../../components/business_place_item.dart';
 import '../../../components/text_form_field.dart';
 import '../../../data/pref_manager.dart';
-import '../../../model/veterinarian.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/constants.dart';
 
-class ReservationPetDetailsPage extends StatefulWidget {
+class ReservationCustomerDetailsPage extends StatefulWidget {
   @override
-  _ReservationPetDetailsPageState createState() => _ReservationPetDetailsPageState();
+  _ReservationCustomerDetailsPageState createState() => _ReservationCustomerDetailsPageState();
 }
 
-class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
+class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDetailsPage> {
   bool _isdark = Prefs.isDark();
   bool _customer = true;
-  var _nameController = TextEditingController();
+  var _petNameController = TextEditingController();
+  var _customerController = TextEditingController();
   var _phoneController = TextEditingController();
   var _customerPhoneController = TextEditingController();
   var _emailController = TextEditingController();
@@ -26,7 +26,8 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
   @override
   void initState() {
     super.initState();
-    _nameController.text = 'Nombre del usuário viene aqui';
+    _petNameController.text = 'Nombre del pet';
+    _customerController.text = 'Nombre del usuário cliente';
     _phoneController.text = '+213781348677';
   }
 
@@ -51,7 +52,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
           style: kInputTextStyle,
         ),
         CustomTextFormField(
-          controller: _nameController,
+          controller: _customerController,
           hintText: _customer ? '' : 'Cliente ABC',
         ),
         SizedBox(
@@ -245,7 +246,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
                                         value: true,
                                         onChanged: (value) {
                                           setState(() {
-                                            _nameController.text =
+                                            _petNameController.text =
                                                 'Snoopy';
                                             _customer = true;
                                           });
@@ -263,7 +264,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
                                         value: false,
                                         onChanged: (value) {
                                           setState(() {
-                                            _nameController.clear();
+                                            _petNameController.clear();
                                             _customer = false;
                                           });
                                         },

@@ -354,6 +354,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 ),
                 child: GestureDetector(
                   onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
                     Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability); /// TODO get the pet profile passing the pet.id
                   },
                   child: Text(BHBtnBookAppointment, style: TextStyle(color: whiteColor, fontSize: 16, fontWeight: FontWeight.bold)),

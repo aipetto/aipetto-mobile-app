@@ -1,3 +1,5 @@
+import 'package:aipetto/pages/pets/pet_info_page.dart';
+import 'package:aipetto/pages/vaccines/vaccine_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -5,9 +7,6 @@ import '../../components/round_icon_button.dart';
 import '../../data/pref_manager.dart';
 import '../../routes/routes.dart';
 import '../../utils/constants.dart';
-import '../examination/examination_page.dart';
-import '../prescription/prescription_page.dart';
-import '../test/test_page.dart';
 import '../visit/visit_page.dart';
 
 class PetProfilePage extends StatefulWidget {
@@ -25,10 +24,9 @@ class _PetProfilePageState extends State<PetProfilePage>
   );
 
   final _kTabPages = [
+    PetInfoPage(),
     VisitPage(),
-    ExaminationPage(),
-    TestPage(),
-    PrescriptionPage(),
+    VaccinePage(),
   ];
 
   @override
@@ -38,16 +36,13 @@ class _PetProfilePageState extends State<PetProfilePage>
 
     var _kTabs = [
       Tab(
+        text: 'pet_info'.tr(),
+      ),
+      Tab(
         text: 'visit'.tr(),
       ),
       Tab(
-        text: 'examination'.tr(),
-      ),
-      Tab(
-        text: 'test'.tr(),
-      ),
-      Tab(
-        text: 'prescription'.tr(),
+        text: 'vaccines'.tr(),
       ),
     ];
 
@@ -65,10 +60,10 @@ class _PetProfilePageState extends State<PetProfilePage>
               Padding(
               padding: EdgeInsets.symmetric(vertical: 30),
                child: CircleAvatar(
-                  radius: 32,
+                  radius: 62,
                   backgroundColor: Colors.transparent,
                   backgroundImage: AssetImage(
-                    'assets/images/pets/pet_1.jpg',
+                    'assets/images/pets/snoopy-2.jpg',
                   ),
                 ),
               ),
@@ -80,14 +75,14 @@ class _PetProfilePageState extends State<PetProfilePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Super pet',
+                      'Snoopy',
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                     SizedBox(
                       height: 3,
                     ),
                     Text(
-                      'Breed Name here',
+                      'Breed Name',
                       style: TextStyle(
                         color: Colors.grey[350],
                         fontSize: 14,
@@ -97,7 +92,7 @@ class _PetProfilePageState extends State<PetProfilePage>
                       height: 5,
                     ),
                     Text(
-                      '3yr',
+                      '7yr',
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2

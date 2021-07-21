@@ -4,13 +4,13 @@ import 'package:easy_localization/easy_localization.dart';
 import '../../components/custom_profile_item.dart';
 import '../../routes/routes.dart';
 
-class VisitPage extends StatefulWidget {
+class VaccinePage extends StatefulWidget {
   @override
-  _VisitPageState createState() => _VisitPageState();
+  _VaccinePageState createState() => _VaccinePageState();
 }
 
-class _VisitPageState extends State<VisitPage>
-    with AutomaticKeepAliveClientMixin<VisitPage> {
+class _VaccinePageState extends State<VaccinePage>
+    with AutomaticKeepAliveClientMixin<VaccinePage> {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -20,22 +20,19 @@ class _VisitPageState extends State<VisitPage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            VisitItem(
-              date: 'FEB 14',
+            VaccineItem(
+              date: 'MAR, 2021',
               time: 'Tue. 17:00',
               child: CustomProfileItem(
                 onTap: () {
                   Navigator.of(context).pushNamed(Routes.visitDetail);
                 },
-                title: 'examination'.tr(),
-                subTitle: 'veterinarian'.tr(),
-                buttonTitle: 'See Full Reports',
-                imagePath: 'assets/images/icon_veterinarian_1.png',
+                title: 'antirage_vaccine'.tr(),
+                subTitle: 'J07BG01',
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/syringe.png',
               ),
             ),
-            SizedBox(
-              height: 20,
-            )
           ],
         ),
       ),
@@ -46,12 +43,12 @@ class _VisitPageState extends State<VisitPage>
   bool get wantKeepAlive => true;
 }
 
-class VisitItem extends StatelessWidget {
+class VaccineItem extends StatelessWidget {
   final String date;
   final String time;
   final Widget child;
 
-  const VisitItem(
+  const VaccineItem(
       {Key key, @required this.date, @required this.time, @required this.child})
       : super(key: key);
   @override

@@ -13,11 +13,11 @@ class EditWidget extends StatefulWidget {
 }
 
 class _EditWidgetState extends State<EditWidget> {
-  var _selectedGender = 'male'.tr();
+  var _selectedSex = 'male'.tr();
 
   var _selectedBloodGroup = 'O+';
   var _selectedMarital = 'single'.tr();
-  var _genderItems = <String>['male'.tr(), 'female'.tr()];
+  var _sexItems = <String>['male'.tr(), 'female'.tr()];
   static const _bloodItems = <String>[
     'A+',
     'A-',
@@ -32,7 +32,7 @@ class _EditWidgetState extends State<EditWidget> {
 
   var _birthDate = '01/01/2000';
 
-  List<DropdownMenuItem<String>> _dropDownGender;
+  List<DropdownMenuItem<String>> _dropDownSex;
   List<DropdownMenuItem<String>> _dropDownMarital;
 
   List<DropdownMenuItem<String>> _dropDownBlood = _bloodItems
@@ -53,7 +53,7 @@ class _EditWidgetState extends State<EditWidget> {
   }
 
   _initDropDowns() {
-    _dropDownGender = _genderItems
+    _dropDownSex = _sexItems
         .map((String value) => DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -158,19 +158,19 @@ class _EditWidgetState extends State<EditWidget> {
             ),
             SizedBox(height: 15),
             Text(
-              'gender_dot'.tr(),
+              'sex_dot'.tr(),
               style: kInputTextStyle,
             ),
             DropdownButton(
               isExpanded: true,
-              value: _selectedGender,
+              value: _selectedSex,
               //hint: ,
               onChanged: (value) {
                 setState(() {
-                  _selectedGender = value;
+                  _selectedSex = value;
                 });
               },
-              items: _dropDownGender,
+              items: _dropDownSex,
             ),
             SizedBox(height: 15),
             Text(

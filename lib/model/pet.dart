@@ -71,23 +71,23 @@ final pets = [
     profileImage: 'assets/images/pets/snoopy.jpg'
   ),
   Pet(
-      name: 'Snoopy',
-      nickname: 'Duchinho',
-      profileImage: 'assets/images/pets/snoopy.jpg'
+      name: 'Sparrow',
+      nickname: 'Piratinha',
+      profileImage: 'assets/images/pets/cat_3.jpg'
   ),
   Pet(
-      name: 'Snoopy',
-      nickname: 'Duchinho',
-      profileImage: 'assets/images/pets/snoopy.jpg'
+      name: 'Big',
+      nickname: 'Bigguinho',
+      profileImage: 'assets/images/pets/pet_2.jpg'
   ),
   Pet(
-      name: 'Snoopy',
-      nickname: 'Duchinho',
-      profileImage: 'assets/images/pets/snoopy.jpg'
+      name: 'Amanda',
+      nickname: 'Rainha',
+      profileImage: 'assets/images/pets/cat_1.jpg'
   ),
   Pet(
-      name: 'Snoopy',
-      nickname: 'Duchinho',
-      profileImage: 'assets/images/pets/snoopy.jpg'
+      name: 'CDF',
+      nickname: 'Nerd',
+      profileImage: 'assets/images/pets/cat_2.jpg'
   )
 ];

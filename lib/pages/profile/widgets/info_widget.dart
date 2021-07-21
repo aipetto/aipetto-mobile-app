@@ -45,9 +45,9 @@ class InfoWidget extends StatelessWidget {
           hint: 'add_email'.tr(),
         ),
         ProfileInfoTile(
-          title: 'gender'.tr(),
+          title: 'sex'.tr(),
           trailing: 'male'.tr(),
-          hint: 'add_gender'.tr(),
+          hint: 'add_sex'.tr(),
         ),
         ProfileInfoTile(
           title: 'date_of_birth'.tr(),

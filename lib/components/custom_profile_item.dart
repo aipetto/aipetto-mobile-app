@@ -94,7 +94,10 @@ class CustomProfileItem extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .button
-                              .copyWith(fontSize: 14),
+                              .copyWith(fontSize: 12),
+                          maxLines: 3,
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis
                         ),
                         SizedBox(
                           width: 5,

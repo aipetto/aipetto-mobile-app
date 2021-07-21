@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class GenderWidget extends StatefulWidget {
+class SexWidget extends StatefulWidget {
   final Color color;
 
-  const GenderWidget({Key key, @required this.color}) : super(key: key);
+  const SexWidget({Key key, @required this.color}) : super(key: key);
   @override
-  _GenderWidgetState createState() => _GenderWidgetState();
+  _SexWidgetState createState() => _SexWidgetState();
 }
 
-class _GenderWidgetState extends State<GenderWidget> {
+class _SexWidgetState extends State<SexWidget> {
   bool _male = false;
   bool _female = false;
   @override
@@ -23,7 +23,7 @@ class _GenderWidgetState extends State<GenderWidget> {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Text(
-              'gender'.tr(),
+              'sex'.tr(),
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,

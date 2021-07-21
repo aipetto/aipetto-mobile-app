@@ -18,7 +18,7 @@ void main() async {
       child: MyApp(),
       supportedLocales: [
         Locale('es', 'AR'),
-        Locale('pt', 'PT'),
+        Locale('pt', 'BR'),
         Locale('en', 'UK'),
         //Locale('de', 'DE'),
         //Locale('ar', 'DZ'),

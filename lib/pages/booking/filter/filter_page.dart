@@ -51,7 +51,7 @@ class _FilterPageState extends State<FilterPage> {
                     AvailabilityWidget(
                       color: _color,
                     ),
-                    GenderWidget(
+                    SexWidget(
                       color: _color,
                     ),
                     ConsultationFeeWidget(

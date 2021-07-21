@@ -95,29 +95,29 @@ class Business {
 
 final businesses = [
   Business(
-    name: 'Veterinária Bons Amigos',
+    name: 'Veterinária aipetto 1',
     speciality: 'Family Veterinarian, Cardiologist',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
+    avatar: 'assets/images/aipetto/first-aid-kit-color.png',
     rating: 4.5,
     price: 100,
   ),
   Business(
-    name: 'Veterinária Bons Amigos',
+    name: 'Veterinária aipetto 2',
     speciality: 'Family Veterinarian, Cardiologist',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
+    avatar: 'assets/images/aipetto/first-aid-kit-color.png',
     rating: 4.5,
     price: 100,
   ),
   Business(
-    name: 'Veterinária Bons Amigos',
+    name: 'Veterinária aipetto 3',
     speciality: 'Family Veterinarian, Cardiologist',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
+    avatar: 'assets/images/aipetto/first-aid-kit-color.png',
     rating: 4.5,
     price: 100,
   ),

@@ -1,8 +1,9 @@
+import 'package:aipetto/components/custom_button.dart';
+import 'package:aipetto/components/labeled_text_form_field.dart';
+import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../../../components/labeled_text_form_field.dart';
-import '../../../utils/constants.dart';
 
 enum Sex { male, female }
 
@@ -108,6 +109,11 @@ class _InputWidgetState extends State<InputWidget> {
               ),
             ],
           ),
+        ),
+        CustomButton(
+          onPressed: () => Navigator.of(context)
+              .popUntil(ModalRoute.withName(Routes.petProfile)), /// TODO pass for pet details page or back to home
+          text: 'sign_up'.tr(),
         ),
       ],
     );

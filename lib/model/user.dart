@@ -6,7 +6,7 @@ class User {
   String lastName;
   String email;
   String password;
-  int gender;
+  int sex;
   String phone;
   String birthDate;
   String bloodGroup;
@@ -23,7 +23,7 @@ class User {
     this.lastName,
     this.email,
     this.password,
-    this.gender,
+    this.sex,
     this.phone,
     this.birthDate,
     this.bloodGroup,
@@ -42,7 +42,7 @@ class User {
       'lastName': lastName,
       'email': email,
       'password': password,
-      'gender': gender,
+      'sex': sex,
       'phone': phone,
       'birthDate': birthDate,
       'bloodGroup': bloodGroup,
@@ -64,7 +64,7 @@ class User {
       lastName: map['lastName'],
       email: map['email'],
       password: map['password'],
-      gender: map['gender'],
+      sex: map['sex'],
       phone: map['phone'],
       birthDate: map['birthDate'],
       bloodGroup: map['bloodGroup'],

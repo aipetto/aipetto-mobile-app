@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 1), () => {_loadScreen()});
+    Timer(Duration(seconds: 2), () => {_loadScreen()});
   }
 
   _loadScreen() async {

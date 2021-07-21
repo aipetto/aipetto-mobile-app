@@ -15,22 +15,20 @@ class EditWidget extends StatefulWidget {
 class _EditWidgetState extends State<EditWidget> {
   var _selectedSex = 'male'.tr();
 
-  var _selectedBloodGroup = 'O+';
-  var _selectedMarital = 'single'.tr();
+  var _selectedBloodGroup = 'DEA-1.1';
+  var _selectedLookingForMatch = true;
   var _sexItems = <String>['male'.tr(), 'female'.tr()];
   static const _bloodItems = <String>[
-    'A+',
-    'A-',
-    'B+',
-    'B-',
-    'O+',
-    'O-',
-    'AB+',
-    'AB-'
+    'DEA-1.1',
+    'DEA-1.2',
+    'DEA-3',
+    'DEA-4',
+    'DEA-5',
+    'DEA-7',
   ];
-  var _maritalItems = <String>['single'.tr(), 'married'.tr()];
+  var _lookingForMatchAnswers = <String>['yes'.tr(), 'no'.tr()];
 
-  var _birthDate = '01/01/2000';
+  var _birthDate = '03/04/2016';
 
   List<DropdownMenuItem<String>> _dropDownSex;
   List<DropdownMenuItem<String>> _dropDownMarital;
@@ -60,7 +58,7 @@ class _EditWidgetState extends State<EditWidget> {
             ))
         .toList();
 
-    _dropDownMarital = _maritalItems
+    _dropDownMarital = _lookingForMatchAnswers
         .map((String value) => DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -89,12 +87,12 @@ class _EditWidgetState extends State<EditWidget> {
                 },
                 child: _image == null
                     ? CircleAvatar(
-                        radius: 30,
+                        radius: 80,
                         backgroundColor: Colors.grey,
                         //backgroundImage: NetworkImage(avatarUrl),
                       )
                     : CircleAvatar(
-                        radius: 30,
+                        radius: 80,
                         backgroundImage: FileImage(_image),
                       ),
               ),
@@ -120,41 +118,26 @@ class _EditWidgetState extends State<EditWidget> {
               height: 25,
             ),
             Text(
-              'first_name_dot'.tr(),
+              'name_dot'.tr(),
               style: kInputTextStyle,
             ),
             CustomTextFormField(
-              hintText: 'John',
+              hintText: 'Hachikō',
               validator: (value) =>
-                  value.isEmpty ? 'Please insert a valid first name' : null,
+                  value.isEmpty ? 'Please add a name' : null,
+            ),
+            SizedBox(height: 15),
+            Text(
+              'breed_dot'.tr(),
+              style: kInputTextStyle,
+            ),
+            CustomTextFormField(
+              hintText: 'Akita'
             ),
             SizedBox(height: 15),
             Text(
               'last_name_dot'.tr(),
               style: kInputTextStyle,
-            ),
-            CustomTextFormField(
-              hintText: 'Doe',
-              validator: (value) =>
-                  value.isEmpty ? 'Please insert a valid last name' : null,
-            ),
-            SizedBox(height: 15),
-            Text(
-              'contact_number_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            CustomTextFormField(
-              keyboardType: TextInputType.phone,
-              hintText: '0781 34 86 77',
-            ),
-            SizedBox(height: 15),
-            Text(
-              'email_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            CustomTextFormField(
-              hintText: 'email@email.com',
-              enabled: false,
             ),
             SizedBox(height: 15),
             Text(
@@ -213,28 +196,16 @@ class _EditWidgetState extends State<EditWidget> {
             ),
             SizedBox(height: 15),
             Text(
-              'marital_status_dot'.tr(),
+              'available_for_match'.tr(),
               style: kInputTextStyle,
             ),
-            DropdownButton(
-              isExpanded: true,
-              value: _selectedMarital,
-              //hint: ,
-              onChanged: (value) {
+            SwitchListTile(
+              value: _selectedLookingForMatch,
+              onChanged: (_) {
                 setState(() {
-                  _selectedMarital = value;
-                });
-              },
-              items: _dropDownMarital,
-            ),
-            SizedBox(height: 15),
-            Text(
-              'height_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            CustomTextFormField(
-              keyboardType: TextInputType.number,
-              hintText: 'in_cm'.tr(),
+                  _selectedLookingForMatch = !_selectedLookingForMatch;
+                 });
+             },
             ),
             SizedBox(height: 15),
             Text(

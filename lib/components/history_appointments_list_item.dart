@@ -77,14 +77,14 @@ class HistoryAppointmentListItem extends StatelessWidget {
                         child: _buildColumn(
                           context: context,
                           title: 'veterinarian'.tr(),
-                          subtitle: 'Dr. Super Pet',
+                          subtitle: 'Dr Vidal CRMV 11111',
                         ),
                       ),
                       Expanded(
                         child: _buildColumn(
                           context: context,
                           title: 'speciality'.tr(),
-                          subtitle: 'Family Veterinarian',
+                          subtitle: 'antirage_vaccine'.tr(),
                         ),
                       ),
                     ],

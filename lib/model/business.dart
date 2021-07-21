@@ -95,8 +95,8 @@ class Business {
 
 final businesses = [
   Business(
-    name: 'Veterinária aipetto 1',
-    speciality: 'Family Veterinarian, Cardiologist',
+    name: 'Veterinária MG Brasil',
+    speciality: 'Vet',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/aipetto/first-aid-kit-color.png',
@@ -104,20 +104,20 @@ final businesses = [
     price: 100,
   ),
   Business(
-    name: 'Veterinária aipetto 2',
-    speciality: 'Family Veterinarian, Cardiologist',
+    name: 'Salón Pet Belleza Buenos Aires',
+    speciality: 'Beauty',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/aipetto/first-aid-kit-color.png',
+    avatar: 'assets/images/aipetto/grooming_color.png',
     rating: 4.5,
     price: 100,
   ),
   Business(
-    name: 'Veterinária aipetto 3',
-    speciality: 'Family Veterinarian, Cardiologist',
+    name: 'Café Pet Friendly London',
+    speciality: 'Human-Pet Spaces',
     about:
     'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/aipetto/first-aid-kit-color.png',
+    avatar: 'assets/images/aipetto/cafe_pet_friendly.jpg',
     rating: 4.5,
     price: 100,
   ),

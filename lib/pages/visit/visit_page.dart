@@ -29,7 +29,7 @@ class _VisitPageState extends State<VisitPage>
                 },
                 title: 'examination'.tr(),
                 subTitle: 'veterinarian'.tr(),
-                buttonTitle: 'See Full Reports',
+                buttonTitle: 'details'.tr(),
                 imagePath: 'assets/images/icon_veterinarian_1.png',
               ),
             ),

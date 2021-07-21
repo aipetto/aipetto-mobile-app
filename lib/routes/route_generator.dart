@@ -1,10 +1,12 @@
 import 'package:aipetto/pages/booking/step2/choose_veterinarian_page.dart';
 import 'package:aipetto/pages/business/business_profile_page.dart';
+import 'package:aipetto/pages/business/my_favorite_businesses_list_page.dart';
 import 'package:aipetto/pages/categories/categories_page.dart';
+import 'package:aipetto/pages/pets/edit_profile_page.dart';
 import 'package:aipetto/pages/veterinarian/my_veterinarian_list_page.dart';
 import 'package:aipetto/pages/pets/add_new_pet_page.dart';
 import 'package:aipetto/pages/pets/pets_page.dart';
-import 'package:aipetto/pages/profile/profile_page.dart';
+import 'package:aipetto/pages/pets/pet_profile_page.dart';
 import 'package:aipetto/pages/settings/settings_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,6 @@ import 'package:flutter/material.dart';
 import '../pages/appointment/appointment_detail_page.dart';
 import '../pages/appointment/my_appointments_page.dart';
 import '../pages/booking/filter/filter_page.dart';
-import '../pages/booking/step1/health_concern_page.dart';
 import '../pages/booking/step2/choose_veterinarian_page.dart';
 import '../pages/booking/step3/time_slot_page.dart';
 import '../pages/booking/step4/reservation_pet_details_page.dart';
@@ -27,7 +28,7 @@ import '../pages/messages/messages_detail_page.dart';
 import '../pages/notifications/notification_settings_page.dart';
 import '../pages/notifications/notifications_page.dart';
 import '../pages/prescription/prescription_detail_page.dart';
-import '../pages/profile/edit_profile_page.dart';
+import '../pages/user_profile/edit_user_profile_page.dart';
 import '../pages/signup/signup_page.dart';
 import '../pages/splash_page.dart';
 import '../pages/visit/visit_detail_page.dart';
@@ -106,8 +107,11 @@ class RouteGenerator {
       case Routes.veterinarianProfile:
         return CupertinoPageRoute(builder: (_) => VeterinarianProfilePage());
 
-      case Routes.editProfile:
+      case Routes.editPetProfile:
         return CupertinoPageRoute(builder: (_) => EditPetProfilePage());
+
+      case Routes.editUserProfile:
+        return CupertinoPageRoute(builder: (_) => EditUserProfilePage());
 
       case Routes.myPets:
         return CupertinoPageRoute(builder: (_) => MyPetsListPage());
@@ -123,6 +127,9 @@ class RouteGenerator {
 
       case Routes.myVeterinarians:
         return CupertinoPageRoute(builder: (_) => MyVeterinarianListPage());
+
+      case Routes.myFavoriteBusinesses:
+        return CupertinoPageRoute(builder: (_) => MyFavoriteBusinessessListPage());
 
       case Routes.myAppointments:
         return CupertinoPageRoute(builder: (_) => MyAppointmentsPage());

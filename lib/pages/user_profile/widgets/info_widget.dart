@@ -35,16 +35,6 @@ class InfoWidget extends StatelessWidget {
           endIndent: 15,
         ),
         ProfileInfoTile(
-          title: 'contact_number'.tr(),
-          trailing: '0781 348 677',
-          hint: 'Add phone number',
-        ),
-        ProfileInfoTile(
-          title: 'email'.tr(),
-          trailing: 'email@email.com',
-          hint: 'add_email'.tr(),
-        ),
-        ProfileInfoTile(
           title: 'sex'.tr(),
           trailing: 'male'.tr(),
           hint: 'add_sex'.tr(),
@@ -52,35 +42,12 @@ class InfoWidget extends StatelessWidget {
         ProfileInfoTile(
           title: 'date_of_birth'.tr(),
           trailing: null,
-          hint: 'yyyy mm dd',
-        ),
-        ProfileInfoTile(
-          title: 'blood_group'.tr(),
-          trailing: 'O+',
-          hint: 'add_blood_group'.tr(),
-        ),
-        ProfileInfoTile(
-          title: 'marital_status'.tr(),
-          trailing: null,
-          hint: 'add_marital_status'.tr(),
-        ),
-        ProfileInfoTile(
-          title: 'height'.tr(),
-          trailing: null,
-          hint: 'add_height'.tr(),
+          hint: '2014 03 05',
         ),
         ProfileInfoTile(
           title: 'weight'.tr(),
           trailing: null,
-          hint: 'add_weight'.tr(),
-        ),
-        ProfileInfoTile(
-          title: 'emergency_contact'.tr(),
-          hint: 'add_emergency_contact'.tr(),
-        ),
-        ProfileInfoTile(
-          title: 'location'.tr(),
-          hint: 'add_location'.tr(),
+          hint: '45 Kg',
         ),
       ],
     );

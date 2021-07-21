@@ -1,13 +1,15 @@
-import 'package:aipetto/model/pet.dart';
-import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/model/business.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '../model/business.dart';
 import 'custom_button.dart';
 
-class MyPetListItem extends StatelessWidget {
-  final Pet pet;
+class MyBusinessListItem extends StatelessWidget {
+  final Business business;
 
-  const MyPetListItem({Key key, @required this.pet}) : super(key: key);
+  const MyBusinessListItem({Key key, @required this.business}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -17,9 +19,9 @@ class MyPetListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Image.asset(
-              pet.profileImage,
-              width: 90,
-              height: 90,
+              business.avatar,
+              width: 80,
+              height: 80,
             ),
             SizedBox(
               width: 20,
@@ -29,14 +31,14 @@ class MyPetListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    pet.name,
+                    business.name,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    pet.nickname + '\n',
+                    business.speciality + '\n',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
@@ -54,9 +56,7 @@ class MyPetListItem extends StatelessWidget {
             CustomButton(
               text: 'details'.tr(),
               textSize: 14,
-              onPressed: () {
-                Navigator.of(context).pushNamed(Routes.petProfile);
-              },
+              onPressed: () {},
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 5,

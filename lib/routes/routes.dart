@@ -19,12 +19,15 @@ class Routes {
   static const String chatDetail = '/chat_detail';
   static const String veterinarianProfile = '/veterinarianProfile';
   static const String petProfile = '/pet_profile';
-  static const String editProfile = '/edit_profile';
+  static const String userProfile = '/user_profile';
+  static const String editPetProfile = '/edit_pet_profile';
+  static const String editUserProfile = '/edit_user_profile';
   static const String changeLanguage = '/change_language';
   static const String notificationSettings = '/notification_settings';
   static const String appSettings = '/app_settings';
   static const String myVeterinarians = '/my_veterinarians';
   static const String myPets = '/my_pets';
+  static const String myFavoriteBusinesses = '/my_favorite_businesses';
   static const String myAppointments = '/my_appointments';
   static const String notifications = '/notifications';
 }

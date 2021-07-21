@@ -9,13 +9,13 @@ import '../../routes/routes.dart';
 import '../../utils/constants.dart';
 import '../visit/visit_page.dart';
 
-class PetProfilePage extends StatefulWidget {
+class UserProfilePage extends StatefulWidget {
   @override
-  _PetProfilePageState createState() => _PetProfilePageState();
+  _UserProfilePageState createState() => _UserProfilePageState();
 }
 
-class _PetProfilePageState extends State<PetProfilePage>
-    with AutomaticKeepAliveClientMixin<PetProfilePage> {
+class _UserProfilePageState extends State<UserProfilePage>
+    with AutomaticKeepAliveClientMixin<UserProfilePage> {
   final _kTabTextStyle = TextStyle(
     color:kAmphibianColorGreenLight,
     fontSize: 14,
@@ -103,7 +103,7 @@ class _PetProfilePageState extends State<PetProfilePage>
               ),
               RoundIconButton(
                 onPressed: () =>
-                    Navigator.of(context).pushNamed(Routes.editProfile),
+                    Navigator.of(context).pushNamed(Routes.editPetProfile),
                 icon: Icons.edit,
                 size: 40,
                 color:kAmphibianColorGreenLight,

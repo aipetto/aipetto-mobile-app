@@ -64,9 +64,9 @@ class DrawerPage extends StatelessWidget {
                   height: 30,
                 ),
                 _drawerItem(
-                  image: 'person',
-                  text: 'my_veterinarians',
-                  onTap: () => Navigator.of(context).pushNamed(Routes.myVeterinarians),
+                  image: 'icon_home',
+                  text: 'my_favorite_business_places',
+                  onTap: () => Navigator.of(context).pushNamed(Routes.myFavoriteBusinesses),
                 ),
                 _drawerItem(
                   image: 'dog_icon',

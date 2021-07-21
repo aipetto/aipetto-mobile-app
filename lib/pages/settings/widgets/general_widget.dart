@@ -81,16 +81,6 @@ class _GeneralWidgetState extends State<GeneralWidget> {
           ),
           onTap: () {},
         ),
-        ListTile(
-          leading: Text(
-            'rate_the_app'.tr(),
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          onTap: () {},
-        ),
         SwitchListTile(
           value: _darkTheme,
           onChanged: (_) {

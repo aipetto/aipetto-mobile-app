@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage>
                         separatorBuilder: (context, index) => SizedBox(
                           width: 15,
                         ),
-                        itemCount: 5,
+                        itemCount: 6, /// TODO n + 1 Sum as we are taking the zero position to add new pet
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         itemBuilder: (context, index) {
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage>
                                  );
                           }else{
                             return PetsOfOwnerListItem(
-                              pet: pets[index],
+                              pet: pets[--index],
                             );
                           }
                         },

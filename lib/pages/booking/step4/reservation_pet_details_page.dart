@@ -17,27 +17,27 @@ class ReservationPetDetailsPage extends StatefulWidget {
 
 class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
   bool _isdark = Prefs.isDark();
-  bool _patient = true;
+  bool _customer = true;
   var _nameController = TextEditingController();
   var _phoneController = TextEditingController();
-  var _patientPhoneController = TextEditingController();
+  var _customerPhoneController = TextEditingController();
   var _emailController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _nameController.text = 'Veterinaria Buenos Aires';
+    _nameController.text = 'Nombre del usuário viene aqui';
     _phoneController.text = '+213781348677';
   }
 
-  Widget _patientDetails() {
+  Widget _userDetails() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          _patient
+          _customer
               ? '${'please_provide_following_information_about'.tr()}:'
-              : 'please_provide_following_patient_details_dot'.tr(),
+              : 'please_provide_following_customer_details_dot'.tr(),
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -47,12 +47,12 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
           height: 35,
         ),
         Text(
-          _patient ? '${'full_name'.tr()}*' : '${'patient_full_name'.tr()}*',
+          _customer ? '${'full_name'.tr()}*' : '${'customer_full_name'.tr()}*',
           style: kInputTextStyle,
         ),
         CustomTextFormField(
           controller: _nameController,
-          hintText: _patient ? '' : 'Super Pet',
+          hintText: _customer ? '' : 'Cliente ABC',
         ),
         SizedBox(
           height: 15,
@@ -66,25 +66,25 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
           hintText: '+213781348677',
           enabled: false,
         ),
-        _patient ? Container() : _patientsMobile(),
+        _customer ? Container() : _customersMobile(),
         SizedBox(
           height: 15,
         ),
         Text(
-          _patient ? '${'your_email'.tr()}*' : '${'patient_email'.tr()}*',
+          _customer ? '${'your_email'.tr()}*' : '${'customer_email'.tr()}*',
           style: kInputTextStyle,
         ),
         CustomTextFormField(
           controller: _emailController,
-          hintText: _patient
+          hintText: _customer
               ? 'enter_your_email_id'.tr()
-              : 'enter_patient_email_id'.tr(),
+              : 'enter_customer_email_id'.tr(),
         ),
       ],
     );
   }
 
-  Widget _patientsMobile() {
+  Widget _customersMobile() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -92,12 +92,12 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
           height: 15,
         ),
         Text(
-          'Patient\'s Mobile*',
+          'Mobile number',
           style: kInputTextStyle,
         ),
         CustomTextFormField(
-          controller: _patientPhoneController,
-          hintText: 'Enter Patient\'s Mobile Number',
+          controller: _customerPhoneController,
+          hintText: 'Enter Mobile Number',
         ),
       ],
     );
@@ -110,7 +110,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'patient_details'.tr(),
+          'reservation_details'.tr(),
         ),
       ),
       body: SafeArea(
@@ -153,7 +153,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
                                 ),
                               ),
                               Text(
-                                'consultation'.tr(),
+                                'antirage_vaccine'.tr(),
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -246,12 +246,12 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
                                         onChanged: (value) {
                                           setState(() {
                                             _nameController.text =
-                                                'Super Pet';
-                                            _patient = true;
+                                                'Snoopy';
+                                            _customer = true;
                                           });
                                         },
-                                        groupValue: _patient,
-                                        title: Text('Super Pet'),
+                                        groupValue: _customer,
+                                        title: Text('Snoopy'),
                                       ),
                                       Divider(
                                         color: _isdark
@@ -264,10 +264,10 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
                                         onChanged: (value) {
                                           setState(() {
                                             _nameController.clear();
-                                            _patient = false;
+                                            _customer = false;
                                           });
                                         },
-                                        groupValue: _patient,
+                                        groupValue: _customer,
                                         title: Text('someone_else'.tr()),
                                       ),
                                     ],
@@ -277,7 +277,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
                               SizedBox(
                                 height: 15,
                               ),
-                              _patientDetails(),
+                              _userDetails(),
                             ],
                           ),
                         ),
@@ -318,7 +318,7 @@ class _ReservationPetDetailsPageState extends State<ReservationPetDetailsPage> {
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: CustomButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Routes.bookingStep5);
+                  Navigator.of(context).pushNamed(Routes.bookingStepConfirmation);
                 },
                 text: 'confirm'.tr(),
               ),

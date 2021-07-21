@@ -49,7 +49,7 @@ class _VaccineDetailPageState extends State<VaccineDetailPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'Super Pet',
+                                  'Dr Vidal CRMV 11111',
                                   style: Theme.of(context)
                                       .textTheme
                                       .subtitle2

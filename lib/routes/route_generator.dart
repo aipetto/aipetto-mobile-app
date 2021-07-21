@@ -78,12 +78,12 @@ class RouteGenerator {
       case Routes.bookingStep3ServiceAvailability:
         return CupertinoPageRoute(builder: (_) => TimeSlotPage());
 
-      case Routes.bookingStep4ServicePrices:
+      case Routes.bookingStep4ReservationDetails:
         return CupertinoPageRoute(builder: (_) => ReservationPetDetailsPage());
 
       /// AppointmentBookedPage()
 
-      case Routes.bookingStep5:
+      case Routes.bookingStepConfirmation:
         return CupertinoPageRoute(builder: (_) => AppointmentBookedPage());
 
       case Routes.businessProfile:

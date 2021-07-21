@@ -63,7 +63,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
+                  color: whiteColor,
                   boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
                 ),
                 child: Column(
@@ -84,7 +84,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
+                  color: whiteColor,
                   boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
                 ),
                 child: Column(
@@ -100,7 +100,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       children: [
                         Icon(Icons.call, size: 16),
                         8.width,
-                        Text('+1(54)1111 1111', style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14)),
+                        Text('+1(55)1111 1111', style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14)),
                       ],
                     ),
                     8.height,
@@ -354,7 +354,6 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    FocusScope.of(context).requestFocus(FocusNode());
                     Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability); /// TODO get the pet profile passing the pet.id
                   },
                   child: Text(BHBtnBookAppointment, style: TextStyle(color: whiteColor, fontSize: 16, fontWeight: FontWeight.bold)),

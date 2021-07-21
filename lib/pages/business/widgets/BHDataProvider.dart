@@ -173,13 +173,13 @@ List<BHNotificationModel> getNotificationList() {
 List<BHNotifyModel> getNotifyList() {
   List<BHNotifyModel> notifyList = List<BHNotifyModel>();
   notifyList.add(
-    BHNotifyModel(img: BHDashedBoardImage1, name: 'Sherman Barber Shop', address: 'Dorthy walks,Us.', rating: 3.5, distance: 14.2),
+    BHNotifyModel(img: BHDashedBoardImage1, name: 'Sherman Barber Shop', address: 'Rua Independencia 123, Contagem - MG - Brasil', rating: 3.5, distance: 14.2),
   );
   notifyList.add(
-    BHNotifyModel(img: BHDashedBoardImage3, name: 'willies carpen', address: '301 Dorthy walks,chicago,Us.', rating: 2.0, distance: 10.0),
+    BHNotifyModel(img: BHDashedBoardImage3, name: 'willies carpen', address: 'Rua Independencia 123, Contagem - MG -Brasil', rating: 2.0, distance: 10.0),
   );
   notifyList.add(
-    BHNotifyModel(img: BHDashedBoardImage6, name: 'Dale Horward', address: '301 Dorthy walks,chicago,Us.', rating: 3.5, distance: 11.0),
+    BHNotifyModel(img: BHDashedBoardImage6, name: 'Dale Horward', address: 'Rua Independencia 123, Contagem - MG - Brasil', rating: 3.5, distance: 11.0),
   );
   return notifyList;
 }

@@ -25,7 +25,7 @@ class _PrescriptionPageState extends State<PrescriptionPage>
                 Navigator.of(context).pushNamed(Routes.prescriptionDetail);
               },
               title: 'Pharyngitis Recipe',
-              subTitle: 'Super Pet',
+              subTitle: 'Receita Subtitile',
               subTitle2: 'Given at 14/02/2019',
               buttonTitle: 'See Prescription',
               imagePath: 'assets/images/icon_medical_recipe.png',

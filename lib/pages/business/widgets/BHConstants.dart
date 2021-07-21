@@ -13,7 +13,7 @@ const BHVerificationTitle = "Enter the OTP code from the phone we just sent you"
 const BHResetPasswordTitle = "Enter your new password and confirm it.";
 const BHAlertDialogTitle = "Your password has been completely reset, login and use the app";
 const BHDetailTitle =
-    "Time to stop imagining and take advantage of the unique properties of graphene. Paragraf develop and deliver game-changing, commercial-quality, graphene-based electronic devices using contamination-free technology.Read more ";
+    "Melhor veterinária em Contagem, Minas Gerais.";
 const BHReview = "Love it !!! /n I had a fun party with my new hair color, Thank you.";
 const BHInviteFriendsTitle = "Please share the code below for your friends to join the HASA.";
 const BHBtnNext = 'Next';
@@ -38,9 +38,9 @@ const BHTxtSalonSpecialLists=  'Salon SpecialLists';
 const BHTxtSalonServices=   'Salon Services';
 const BHTxtViewAll= 'View all';
 const BHBtnOpen=  'Open';
-const BHTabAbout=  'About';
+const BHTabAbout=  'Sobre';
 const BHTabGallery=  'Gallery';
-const BHTabServices=  'Services';
+const BHTabServices=  'Serviços';
 const BHTabReview=  'Review';
 const BHTabSalonSpecialList=  'Salon SpecialList';
 const BHTxtInformation=  'Information';

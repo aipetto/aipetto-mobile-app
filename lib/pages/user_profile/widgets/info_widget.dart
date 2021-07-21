@@ -19,7 +19,7 @@ class InfoWidget extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            'Super Pet',
+            'Usuario ABC',
             style: Theme.of(context).textTheme.subtitle2,
           ),
           trailing: CircleAvatar(

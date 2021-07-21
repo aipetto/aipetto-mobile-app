@@ -19,65 +19,37 @@ class _MessagesPageState extends State<MessagesPage>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: TextField(
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide(color:kAmphibianColorGreenLight, width: 0.5),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide(color: Colors.grey[300], width: 0.5),
-                ),
-                filled: true,
-                fillColor: Colors.grey[250],
-                contentPadding: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 15,
-                ),
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.grey[400],
-                  size: 20,
-                ),
-                hintText: 'search_messages'.tr(),
-                hintStyle: TextStyle(
-                  color: Colors.grey[400],
-                ),
-              ),
-              cursorWidth: 1,
-              maxLines: 1,
-            ),
-          ),
           MessageListItem(
             onTap: () {
               Navigator.of(context).pushNamed(Routes.chatDetail);
             },
             imagePath: 'assets/images/icon_veterinarian_1.png',
-            name: 'Super Pet',
-            message: 'Your next appointment',
+            name: 'Dr Vidal CRMV 11111',
+            message: 'Iremos pesarlo cuando venga a la clínica hoy, así estamos seguros que estamos por debajo de 36 kilos, la última vez que hicimos el check-up él pesaba 33 kilos.',
             date: '11:05 AM',
-            unread: 10,
-            online: false,
-          ),
-          MessageListItem(
-            onTap: () {},
-            imagePath: 'assets/images/icon_veterinarian_3.png',
-            name: 'Joseph Bouroumat',
-            message: 'Don\'t forget your blood test',
-            date: '08:31 AM',
-            unread: 2,
+            unread: 3,
             online: true,
           ),
           MessageListItem(
-            onTap: () {},
-            imagePath: 'assets/images/icon_veterinarian_2.png',
-            name: 'Liza Anderson',
-            message: 'You: Good news 😃',
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.chatDetail);
+            },
+            imagePath: 'assets/images/aipetto/van_alternative.png',
+            name: 'José Villareal',
+            message: 'Qué horário podemos pasar a buscar tu mascota?',
+            date: '08:31 AM',
+            unread: 2,
+            online: false,
+          ),
+          MessageListItem(
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.chatDetail);
+            },
+            imagePath: 'assets/images/aipetto/unplash_tamara.jpg',
+            name: 'Tamara',
+            message: 'Amé tu bichito ❤ hace mucho que quiero cruzar mi perrita',
             date: '03:48 PM',
-            unread: 0,
+            unread: 1,
             online: false,
           ),
         ],
@@ -118,12 +90,12 @@ class MessageListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Container(
-              width: 50,
-              height: 50,
+              width: 80,
+              height: 80,
               child: Stack(
                 children: <Widget>[
                   CircleAvatar(
-                    radius: 25,
+                    radius: 35,
                     backgroundColor: Colors.transparent,
                     child: Image.asset(
                       imagePath,
@@ -169,7 +141,7 @@ class MessageListItem extends StatelessWidget {
                     message,
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 13,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -186,7 +158,7 @@ class MessageListItem extends StatelessWidget {
                   date,
                   style: TextStyle(
                     color: kColorPrimary,
-                    fontSize: 10,
+                    fontSize: 12,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

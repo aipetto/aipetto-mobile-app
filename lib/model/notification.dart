@@ -45,33 +45,33 @@ class Notification {
 
 final notifications = [
   Notification(
-    title: 'Appointment reminder',
-    body: 'Don\'t forget your next appointment with veterinarian Tawfiq tomorrow',
+    title: 'Recordatorio de Reserva',
+    body: 'No te olvides de tu reserva para desparasitar tu mascota',
     icon: 'assets/images/reminder.png',
     date: '2h',
   ),
   Notification(
-    title: 'Health tips',
-    body: 'Consume less salt and sugar.',
+    title: 'Consejos de salud',
+    body: 'Caminar tu pet 30 minutos por día puede reducir 90% de las enfermedades del corazón',
     icon: 'assets/images/tip.png',
     date: '1d',
   ),
   Notification(
     title: 'Appointment confirmation',
-    body: 'Veterinarian Super Pet confirmed your booking appointment',
+    body: 'Veterinaria aipetto confirmó la reserva para la vacunación',
     icon: 'assets/images/confirmation.png',
     date: '1d',
   ),
   Notification(
-    title: 'Medical Check up Reminder',
-    body: 'Don\'t forget to do your monthly medical check up',
+    title: 'Recordatorio Médico - Check up',
+    body: 'No te olvides de hacer el check-up general mensual',
     icon: 'assets/images/reminder.png',
-    date: '1 week',
+    date: '1 semana',
   ),
   Notification(
-    title: 'Prescription Reminder',
-    body: 'Contact veterinarian Liana about the last visit prescription',
+    title: 'Recordatorio de Receta',
+    body: 'Entre en contacto con la veterinaria Liana sobre la última prescipción',
     icon: 'assets/images/reminder.png',
-    date: '1 week',
+    date: '1 semana',
   ),
 ];

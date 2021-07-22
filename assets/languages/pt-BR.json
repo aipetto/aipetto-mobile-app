@@ -229,5 +229,6 @@
     "vaccine_detail": "Detalhes da vacina",
     "breed": "Raça",
     "breed_dot": "Raça:",
-    "reservation_details": "Detalhes da reserva"
+    "reservation_details": "Detalhes da reserva",
+    "reserve": "Agendar"
 }

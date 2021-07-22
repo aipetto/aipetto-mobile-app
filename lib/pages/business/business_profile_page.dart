@@ -1,22 +1,19 @@
+import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/pages/business/widgets/AppWidget.dart';
 import 'package:aipetto/pages/business/widgets/BHColors.dart';
 import 'package:aipetto/pages/business/widgets/BHConstants.dart';
 import 'package:aipetto/pages/business/widgets/BHDataProvider.dart';
-import 'package:aipetto/pages/business/BHConstants.dart';
 import 'package:aipetto/pages/business/widgets/BHImages.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
-import 'package:aipetto/utils/flutter_rating_bar.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../main.dart';
 import 'model/BHModel.dart';
 
 class BusinessProfilePage extends StatefulWidget {
@@ -184,6 +181,10 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
     }
 
     Widget serviceWidget() {
+
+      final ButtonStyle style =
+      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -343,23 +344,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
             Container(
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
-              child: RaisedButton(
-                padding: EdgeInsets.all(12),
+              child: CustomButton(
                 onPressed: () {
-                  ///BHPackageOffersScreen().launch(context);
+                  Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability); /// TODO get the pet profile passing the pet.id
                 },
-                color: kAmphibianColorGreenLight,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    FocusScope.of(context).requestFocus(FocusNode());
-                    Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability); /// TODO get the pet profile passing the pet.id
-                  },
-                  child: Text(BHBtnBookAppointment, style: TextStyle(color: whiteColor, fontSize: 16, fontWeight: FontWeight.bold)),
-                ),
-             ),
+                text: 'reserve'.tr(),
+              )
             ),
           ],
         ),

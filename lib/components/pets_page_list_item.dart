@@ -11,14 +11,15 @@ class MyPetListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.transparent,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Row(
           children: <Widget>[
             Image.asset(
               pet.profileImage,
-              width: 60,
-              height: 60,
+              width: 90,
+              height: 90,
             ),
             SizedBox(
               width: 20,

@@ -1,19 +1,19 @@
+import 'package:aipetto/components/business_place_item.dart';
+import 'package:aipetto/model/business.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/veterinarian_item.dart';
 import '../../../components/round_icon_button.dart';
-import '../../../model/veterinarian.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/constants.dart';
 
-class ChooseVeterinarianPage extends StatelessWidget {
+class ChooseBusinessPlacePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'veterinarian'.tr(),
+          'businesses'.tr(),
         ),
         actions: <Widget>[
           IconButton(
@@ -33,7 +33,7 @@ class ChooseVeterinarianPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(20),
               child: Text(
-                'choose_a_veterinarian'.tr(),
+                'choose_a_business_place'.tr(),
                 style: Theme.of(context).textTheme.headline6.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
@@ -50,19 +50,23 @@ class ChooseVeterinarianPage extends StatelessWidget {
               ),
               child: Row(
                 children: <Widget>[
-                  RoundIconButton(
+                RoundIconButton(
                     onPressed: () {},
                     icon: Icons.person_pin,
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Text(
-                    'any_available_veterinarian'.tr(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                Expanded(
+                    child: Text(
+                      'geo_location_address'.tr(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
@@ -75,13 +79,13 @@ class ChooseVeterinarianPage extends StatelessWidget {
               separatorBuilder: (context, index) => Divider(),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: veterinarians.length,
+              itemCount: businesses.length,
               itemBuilder: (context, index) {
-                return VeterinarianItem(
+                return BusinessPlaceItem(
                   onTap: () {
                     Navigator.of(context).pushNamed(Routes.bookingStep2DetailsOfPlace); /// TODO pass id selected in the list for the step 2 page
                   },
-                  veterinarian: veterinarians[index],
+                  business: businesses[index],
                 );
               },
             ),

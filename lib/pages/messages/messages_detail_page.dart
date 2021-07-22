@@ -50,21 +50,17 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
             SizedBox(
               width: 5,
             ),
-            Text(
-              'Super Pet',
+            Expanded(child: Text(
+              'Dr Vidal CRMV 11111',
               style: Theme.of(context).textTheme.subtitle2.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-            ),
+                fontWeight: FontWeight.w700,
+              ),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ))
           ],
         ),
         actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.phone,
-            ),
-          ),
           IconButton(
             onPressed: () {
               Navigator.of(context).pushNamed(Routes.veterinarianProfile);
@@ -88,29 +84,29 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
                       height: 10,
                     ),
                     MessageItem(
-                      send: false,
-                      message: 'Hello',
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    MessageItem(
                       send: true,
-                      message: 'Hello Veterinarian \nHow are you?',
+                      message: 'Buen día Vidal, Cómo estás? Le quería hacer una pequeña consulta respecto a la operación del jueves. Es necesário tomar algún cuidado extra de lo que recomendaste en la última visita?',
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     MessageItem(
                       send: false,
-                      message: 'Fine \nI hope you\'re doing well.',
+                      message: 'Buen día',
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     MessageItem(
                       send: false,
-                      message: 'Don\'t forget about your next appointment.',
+                      message: 'Bien, es importante que Snoopy no coma mucho en esta semana.',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    MessageItem(
+                      send: false,
+                      message: 'Iremos pesarlo cuando venga a la clínica hoy, así estamos seguros que estamos por debajo de 36 kilos, la última vez que hicimos el check-up él pesaba 33 kilos.',
                     ),
                   ],
                 ),
@@ -128,20 +124,6 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
               padding: EdgeInsets.symmetric(vertical: 5),
               child: Row(
                 children: <Widget>[
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.attach_file,
-                      size: 25,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.camera_alt,
-                      size: 25,
-                    ),
-                  ),
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
@@ -161,7 +143,7 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
                           vertical: 10,
                           horizontal: 10,
                         ),
-                        hintText: 'Enter message',
+                        hintText: 'Escriba tu mensaje',
                         hintStyle: TextStyle(
                           color: Colors.grey[400],
                         ),
@@ -236,7 +218,7 @@ class MessageItem extends StatelessWidget {
               message,
               style: TextStyle(
                 color: send ? kColorDarkBlue : Colors.white,
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
               textAlign: TextAlign.start,

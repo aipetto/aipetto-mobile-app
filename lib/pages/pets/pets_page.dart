@@ -17,7 +17,7 @@ class MyPetsListPage extends StatelessWidget {
         separatorBuilder: (context, index) => SizedBox(
           height: 15,
         ),
-        itemCount: 1,
+        itemCount: 5,
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
         itemBuilder: (context, index) {
           return MyPetListItem(

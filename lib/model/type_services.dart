@@ -40,42 +40,32 @@ class TypeServices {
 final typeServices = [
   TypeServices(
     id: 0,
-    name: 'category_women_health',
-    imagePath: 'assets/images/aipetto/vet.png',
+    name: 'service_grooming',
+    imagePath: 'assets/images/aipetto/grooming_color.png',
   ),
   TypeServices(
     id: 1,
-    name: 'category_skin',
-    imagePath: 'assets/images/personal-care.png',
+    name: 'service_vaccine',
+    imagePath: 'assets/images/aipetto/syringe.png',
   ),
   TypeServices(
     id: 2,
-    name: 'category_child',
-    imagePath: 'assets/images/baby.png',
+    name: 'service_transport',
+    imagePath: 'assets/images/aipetto/van_alternative.png',
   ),
   TypeServices(
     id: 3,
-    name: 'category_general_physician',
-    imagePath: 'assets/images/stethoscope.png',
+    name: 'service_ultrasound',
+    imagePath: 'assets/images/aipetto/ultrasound.png',
   ),
   TypeServices(
     id: 4,
-    name: 'category_dental',
-    imagePath: 'assets/images/dental-care.png',
+    name: 'service_microchip',
+    imagePath: 'assets/images/aipetto/pet-microchip.png',
   ),
   TypeServices(
     id: 5,
-    name: 'category_ear',
-    imagePath: 'assets/images/throat.png',
+    name: 'service_spay_neuter',
+    imagePath: 'assets/images/aipetto/icon_examination.png',
   ),
-  TypeServices(
-    id: 6,
-    name: 'category_homoetherapy',
-    imagePath: 'assets/images/medicine.png',
-  ),
-  TypeServices(
-    id: 7,
-    name: 'category_bone',
-    imagePath: 'assets/images/knee.png',
-  )
 ];

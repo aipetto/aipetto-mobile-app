@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../components/labeled_text_form_field.dart';
 import '../../../utils/constants.dart';
 
-enum Gender { male, female }
+enum Sex { male, female }
 
 class InputWidget extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _InputWidgetState extends State<InputWidget> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  Gender _gender = Gender.male;
+  Sex _sex = Sex.male;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _InputWidgetState extends State<InputWidget> {
                 hintText: 'Doe',
               ),
               Text(
-                'gender_dot'.tr(),
+                'sex_dot'.tr(),
                 style: kInputTextStyle,
               ),
             ],
@@ -52,11 +52,11 @@ class _InputWidgetState extends State<InputWidget> {
           child: Row(
             children: <Widget>[
               Radio(
-                value: Gender.male,
-                groupValue: _gender,
-                onChanged: (gender) {
+                value: Sex.male,
+                groupValue: _sex,
+                onChanged: (sex) {
                   setState(() {
-                    _gender = gender;
+                    _sex = sex;
                   });
                 },
               ),
@@ -68,11 +68,11 @@ class _InputWidgetState extends State<InputWidget> {
                 width: 30,
               ),
               Radio(
-                value: Gender.female,
-                groupValue: _gender,
-                onChanged: (gender) {
+                value: Sex.female,
+                groupValue: _sex,
+                onChanged: (sex) {
                   setState(() {
-                    _gender = gender;
+                    _sex = sex;
                   });
                 },
               ),

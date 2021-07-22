@@ -9,14 +9,14 @@ class AppointmentBookedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kColorDarkBlue,
+      backgroundColor: kRedPinkColor,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.only(top: 100),
           width: double.infinity,
           child: Column(
             children: <Widget>[
-              Image.asset('assets/images/thumb_success.png'),
+              Image.asset('assets/images/animations/petAnimationHappiness.gif'),
               SizedBox(
                 height: 60,
               ),

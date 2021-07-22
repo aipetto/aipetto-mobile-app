@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-const BHColorPrimary = Color(0xFFff6e40);
 const BHColorSecondary = Color(0xFF);
 const BHAppTextColorPrimary = Color(0xFF212121);
 const BHAppTextColorSecondary = Color(0xFF5A5C5E);

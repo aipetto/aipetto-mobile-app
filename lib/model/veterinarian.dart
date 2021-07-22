@@ -112,7 +112,7 @@ class Veterinarians {
 
 final veterinarians = [
   Veterinarian(
-    name: 'Super Pet',
+    name: 'Dr Vidal CRMV 11111',
     speciality: 'Family Veterinarian, Cardiologist',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',

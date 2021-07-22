@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:easy_localization/easy_localization.dart';
 import '../../components/custom_profile_item.dart';
 import '../../routes/routes.dart';
 
@@ -26,62 +27,15 @@ class _VisitPageState extends State<VisitPage>
                 onTap: () {
                   Navigator.of(context).pushNamed(Routes.visitDetail);
                 },
-                title: 'Super Pet',
-                subTitle: 'Family Veterinarian, Cardiologist',
-                buttonTitle: 'See Full Reports',
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
                 imagePath: 'assets/images/icon_veterinarian_1.png',
               ),
             ),
             SizedBox(
               height: 20,
-            ),
-            VisitItem(
-              date: 'JAN 08',
-              time: 'Tue. 17:00',
-              child: CustomProfileItem(
-                onTap: () {},
-                title: 'Josef Bouroumat',
-                subTitle: 'Family Veterinarian, Cardiologist',
-                buttonTitle: 'See Full Reports',
-                imagePath: 'assets/images/icon_veterinarian_3.png',
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Divider(
-                    height: 1,
-                    endIndent: 10,
-                    color: Colors.grey[250],
-                  ),
-                ),
-                Text('2018'),
-                Expanded(
-                  child: Divider(
-                    height: 1,
-                    indent: 10,
-                    color: Colors.grey[250],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            VisitItem(
-              date: 'NOV 24',
-              time: 'Tue. 17:00',
-              child: CustomProfileItem(
-                onTap: () {},
-                title: 'Amine Khlili',
-                subTitle: 'Family Veterinarian, Cardiologist',
-                buttonTitle: 'See Full Reports',
-                imagePath: 'assets/images/icon_veterinarian_4.png',
-              ),
-            ),
+            )
           ],
         ),
       ),

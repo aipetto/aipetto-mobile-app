@@ -184,7 +184,7 @@ class CustomerId {
   CustomerId({
     this.id,
     this.userId,
-    this.gender,
+    this.sex,
     this.birthdate,
     this.name,
     this.tenant,
@@ -197,7 +197,7 @@ class CustomerId {
 
   String id;
   String userId;
-  String gender;
+  String sex;
   DateTime birthdate;
   String name;
   String tenant;
@@ -210,7 +210,7 @@ class CustomerId {
   factory CustomerId.fromJson(Map<String, dynamic> json) => CustomerId(
     id: json["_id"],
     userId: json["userId"],
-    gender: json["gender"],
+    sex: json["sex"],
     birthdate: DateTime.parse(json["birthdate"]),
     name: json["name"],
     tenant: json["tenant"],
@@ -224,7 +224,7 @@ class CustomerId {
   Map<String, dynamic> toJson() => {
     "_id": id,
     "userId": userId,
-    "gender": gender,
+    "sex": sex,
     "birthdate": "${birthdate.year.toString().padLeft(4, '0')}-${birthdate.month.toString().padLeft(2, '0')}-${birthdate.day.toString().padLeft(2, '0')}",
     "name": name,
     "tenant": tenant,

@@ -1,8 +1,10 @@
+import 'package:aipetto/model/business.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../../components/custom_button.dart';
-import '../../components/veterinarian_item1.dart';
+import '../../components/business_place_item.dart';
 import '../../utils/constants.dart';
 import '../../data/pref_manager.dart';
 import '../../model/veterinarian.dart';
@@ -85,14 +87,14 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               height: 10,
             ),
             Text(
-              'YourHealth Medical Centre',
+              'Veterinárian Bons Amigos',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              '3719  Jehovah Drive, Roanoke, Virginia - 24011',
+              'Rua Independencia, Contagem MG - Brasil Cep 111',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -188,7 +190,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       height: 10,
                     ),
                     Text(
-                      'Super Pet',
+                      'Dr Vidal CRMV 11111',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -260,8 +262,8 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                     children: <Widget>[
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
-                        child: VeterinarianItem1(
-                          veterinarian: veterinarians[0],
+                        child: BusinessPlaceItem(
+                          business: businesses[0],
                         ),
                       ),
                       Divider(
@@ -277,29 +279,34 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text:
-                                    '${'manage_you_appointments_better'.tr()} ',
-                                style: TextStyle(
-                                  color: Colors.grey[600],
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                        child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed(Routes.myAppointments);
+                                },
+                                child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          '${'manage_you_appointments_better'.tr()} ',
+                                      style: TextStyle(
+                                        color: Colors.grey[600],
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: 'my_appointments'.tr(),
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                          decoration: TextDecoration.underline,
+                                       ),
+                                    ),
+                                 ],
                               ),
-                              TextSpan(
-                                text: 'my_appointments'.tr(),
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                            ],
-                          ),
+                           ),
                         ),
                       ),
                     ],

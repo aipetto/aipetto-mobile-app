@@ -11,6 +11,8 @@ const kAmphibianColorGreenLightAlternative = Color(0xff34F5C5);
 const kAmphibianColorGreenMediumLightAlternative = Color(0xff21D082);
 const kAmphibianColorBlueLightAlternative = Color(0xff1DCDFE);
 const kAmphibianColorBlueDarkAlternative = Color(0xff2f455C);
+
+const kRedPinkColor = Color(0xffE55842);
 /// ------------------------------------
 
 const kColorBlue = Color(0xff4245ef);

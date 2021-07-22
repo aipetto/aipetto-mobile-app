@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '${'hello'.tr()} Jhony,',
+                      '${'hello'.tr()},',
                       style: Theme.of(context).textTheme.headline6.copyWith(
                         fontWeight: FontWeight.w400,
                       ),
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage>
                         separatorBuilder: (context, index) => SizedBox(
                           width: 15,
                         ),
-                        itemCount: 5,
+                        itemCount: 6, /// TODO n + 1 Sum as we are taking the zero position to add new pet
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         itemBuilder: (context, index) {
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage>
                             return GestureDetector(
                                     onTap: () {
                                       FocusScope.of(context).requestFocus(FocusNode());
-                                      Navigator.of(context).pushNamed(Routes.categories);
+                                      Navigator.of(context).pushNamed(Routes.addNewPet);
                                     },
                                     child:Column(
                                         children: <Widget>[
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage>
                                  );
                           }else{
                             return PetsOfOwnerListItem(
-                              pet: pets[index],
+                              pet: pets[--index],
                             );
                           }
                         },

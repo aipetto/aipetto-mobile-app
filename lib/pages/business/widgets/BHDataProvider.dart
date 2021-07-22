@@ -109,12 +109,9 @@ List<BHGalleryModel> getGalleryList() {
 
 List<BHCategoryModel> getCategory() {
   List<BHCategoryModel> categoryList = List<BHCategoryModel>();
-  categoryList.add(BHCategoryModel(img: BHMakeUp, categoryName: 'All'));
-  categoryList.add(BHCategoryModel(img: BHSkinCare, categoryName: 'Skin Care'));
-  categoryList.add(BHCategoryModel(img: BHMakeUp, categoryName: 'Make Up'));
-  categoryList.add(BHCategoryModel(img: BHHairColor, categoryName: 'Hair Color'));
-  categoryList.add(BHCategoryModel(img: BHSkinCare, categoryName: 'Skin Care'));
-  categoryList.add(BHCategoryModel(img: BHHairColor, categoryName: 'Hair Color'));
+  categoryList.add(BHCategoryModel(img: BHGrooming, categoryName: 'Cuidados estéticos'));
+  categoryList.add(BHCategoryModel(img: BHVetServices, categoryName: 'Veterinaria'));
+  categoryList.add(BHCategoryModel(img: BHTransport, categoryName: 'Transporte'));
 
   return categoryList;
 }
@@ -122,30 +119,22 @@ List<BHCategoryModel> getCategory() {
 List<BHOfferModel> getOfferList() {
   List<BHOfferModel> offerList = List<BHOfferModel>();
   offerList.add(
-    BHOfferModel(img: BHDashedBoardImage1, offerName: 'Personality Girl Event', offerDate: 'June 10 - June 26', offerOldPrice: 100, offerNewPrice: 89),
-  );
-  offerList.add(
-    BHOfferModel(img: BHDashedBoardImage2, offerName: 'Changer Hair Color', offerDate: 'May 10 - May 17', offerOldPrice: 80, offerNewPrice: 70),
-  );
-  offerList.add(
-    BHOfferModel(img: BHDashedBoardImage3, offerName: 'Personality Girl Event', offerDate: 'Sep 12 - Sep 14', offerOldPrice: 120, offerNewPrice: 109),
+    BHOfferModel(img: BHDashedBoardImage1, offerName: 'Promoción Reserva baño y check-up médico completo', offerDate: 'Agosto 15 - Agosto 31', offerOldPrice: 1200, offerNewPrice: 900),
   );
   return offerList;
 }
 
 List<BHServicesModel> getServicesList() {
   List<BHServicesModel> servicesList = List<BHServicesModel>();
-  servicesList.add(BHServicesModel(img: BHDashedBoardImage1, serviceName: 'Change Hair Color', time: '50 Min', price: 100, radioVal: 2));
-  servicesList.add(BHServicesModel(img: BHDashedBoardImage3, serviceName: 'hair Cutting', time: '60 Min', price: 70, radioVal: 3));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage1, serviceName: 'Vacuna antirrábica', time: '30 Min', price: 400, radioVal: 2));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage3, serviceName: 'Microchip', time: '30 Min', price: 600, radioVal: 3));
   return servicesList;
 }
 
 List<BHIncludeServiceModel> getIncludeServicesList() {
   List<BHIncludeServiceModel> servicesList = List<BHIncludeServiceModel>();
-  servicesList.add(BHIncludeServiceModel(serviceImg: BHDashedBoardImage3, serviceName: 'hair Cutting', time: '60 Min', price: 70));
-  servicesList.add(BHIncludeServiceModel(serviceImg: BHDashedBoardImage1, serviceName: 'Change Hair Color', time: '50 Min', price: 100));
-  servicesList.add(BHIncludeServiceModel(serviceImg: BHDashedBoardImage1, serviceName: 'Change Hair Color', time: '50 Min', price: 100));
-  servicesList.add(BHIncludeServiceModel(serviceImg: BHDashedBoardImage6, serviceName: 'Change Hair Color', time: '50 Min', price: 100));
+  servicesList.add(BHIncludeServiceModel(serviceImg: BHDashedBoardImage1, serviceName: 'Vacuna antirrábica', time: '30 Min', price: 400));
+  servicesList.add(BHIncludeServiceModel(serviceImg: BHDashedBoardImage3, serviceName: 'Microchip', time: '30 Min', price: 600));
   return servicesList;
 }
 
@@ -166,10 +155,10 @@ List<BHHairStyleModel> getHairStyleList() {
   return hairStyleList;
 }
 
-List<BHMakeUpModel> getMakeupList() {
-  List<BHMakeUpModel> makeupList = List<BHMakeUpModel>();
-  makeupList.add(BHMakeUpModel(img: BHDashedBoardImage3, name: 'willies carpen'));
-  makeupList.add(BHMakeUpModel(img: BHDashedBoardImage1, name: 'willies carpen'));
+List<BHGroomingModel> getMakeupList() {
+  List<BHGroomingModel> makeupList = List<BHGroomingModel>();
+  makeupList.add(BHGroomingModel(img: BHDashedBoardImage3, name: 'willies carpen'));
+  makeupList.add(BHGroomingModel(img: BHDashedBoardImage1, name: 'willies carpen'));
   return makeupList;
 }
 
@@ -184,145 +173,13 @@ List<BHNotificationModel> getNotificationList() {
 List<BHNotifyModel> getNotifyList() {
   List<BHNotifyModel> notifyList = List<BHNotifyModel>();
   notifyList.add(
-    BHNotifyModel(img: BHDashedBoardImage1, name: 'Sherman Barber Shop', address: 'Dorthy walks,Us.', rating: 3.5, distance: 14.2),
+    BHNotifyModel(img: BHDashedBoardImage1, name: 'Sherman Barber Shop', address: 'Rua Independencia 123, Contagem - MG - Brasil', rating: 3.5, distance: 14.2),
   );
   notifyList.add(
-    BHNotifyModel(img: BHDashedBoardImage3, name: 'willies carpen', address: '301 Dorthy walks,chicago,Us.', rating: 2.0, distance: 10.0),
+    BHNotifyModel(img: BHDashedBoardImage3, name: 'willies carpen', address: 'Rua Independencia 123, Contagem - MG -Brasil', rating: 2.0, distance: 10.0),
   );
   notifyList.add(
-    BHNotifyModel(img: BHDashedBoardImage6, name: 'Dale Horward', address: '301 Dorthy walks,chicago,Us.', rating: 3.5, distance: 11.0),
+    BHNotifyModel(img: BHDashedBoardImage6, name: 'Dale Horward', address: 'Rua Independencia 123, Contagem - MG - Brasil', rating: 3.5, distance: 11.0),
   );
   return notifyList;
-}
-
-List<BHMessageModel> getChatMsgData() {
-  List<BHMessageModel> list = List();
-
-  BHMessageModel c1 = BHMessageModel();
-  c1.senderId = BHSender_id;
-  c1.receiverId = BHReceiver_id;
-  c1.msg = 'Helloo';
-  c1.time = '1:43 AM';
-  list.add(c1);
-
-  BHMessageModel c2 = BHMessageModel();
-  c2.senderId = BHSender_id;
-  c2.receiverId = BHReceiver_id;
-  c2.msg = 'How are you? What are you doing?';
-  c2.time = '1:45 AM';
-  list.add(c2);
-
-  BHMessageModel c3 = BHMessageModel();
-  c3.senderId = BHReceiver_id;
-  c3.receiverId = BHSender_id;
-  c3.msg = 'Helloo...';
-  c3.time = '1:45 AM';
-  list.add(c3);
-
-  BHMessageModel c4 = BHMessageModel();
-  c4.senderId = BHSender_id;
-  c4.receiverId = BHReceiver_id;
-  c4.msg = 'I am good. Can you do something for me? I need your help.';
-  c4.time = '1:45 AM';
-  list.add(c4);
-
-  BHMessageModel c5 = BHMessageModel();
-  c5.senderId = BHSender_id;
-  c5.receiverId = BHReceiver_id;
-  c5.msg = 'I am good. Can you do something for me? I need your help.';
-  c5.time = '1:45 AM';
-  list.add(c5);
-
-  BHMessageModel c6 = BHMessageModel();
-  c6.senderId = BHReceiver_id;
-  c6.receiverId = BHSender_id;
-  c6.msg = 'I am good. Can you do something for me? I need your help.';
-  c6.time = '1:45 AM';
-  list.add(c6);
-
-  BHMessageModel c7 = BHMessageModel();
-  c7.senderId = BHSender_id;
-  c7.receiverId = BHReceiver_id;
-  c7.msg = 'I am good. Can you do something for me? I need your help.';
-  c7.time = '1:45 AM';
-  list.add(c7);
-
-  BHMessageModel c8 = BHMessageModel();
-  c8.senderId = BHReceiver_id;
-  c8.receiverId = BHSender_id;
-  c8.msg = 'I am good. Can you do something for me? I need your help.';
-  c8.time = '1:45 AM';
-  list.add(c8);
-
-  BHMessageModel c9 = BHMessageModel();
-  c9.senderId = BHSender_id;
-  c9.receiverId = BHReceiver_id;
-  c9.msg = 'I am good. Can you do something for me? I need your help.';
-  c9.time = '1:45 AM';
-  list.add(c9);
-
-  BHMessageModel c10 = BHMessageModel();
-  c10.senderId = BHReceiver_id;
-  c10.receiverId = BHSender_id;
-  c10.msg = 'I am good. Can you do something for me? I need your help.';
-  c10.time = '1:45 AM';
-  list.add(c10);
-
-  BHMessageModel c11 = BHMessageModel();
-  c11.senderId = BHReceiver_id;
-  c11.receiverId = BHSender_id;
-  c11.msg = 'I am good. Can you do something for me? I need your help.';
-  c11.time = '1:45 AM';
-  list.add(c11);
-
-  BHMessageModel c12 = BHMessageModel();
-  c12.senderId = BHSender_id;
-  c12.receiverId = BHReceiver_id;
-  c12.msg = 'I am good. Can you do something for me? I need your help.';
-  c12.time = '1:45 AM';
-  list.add(c12);
-
-  BHMessageModel c13 = BHMessageModel();
-  c13.senderId = BHSender_id;
-  c13.receiverId = BHReceiver_id;
-  c13.msg = 'I am good. Can you do something for me? I need your help.';
-  c13.time = '1:45 AM';
-  list.add(c13);
-
-  BHMessageModel c14 = BHMessageModel();
-  c14.senderId = BHReceiver_id;
-  c14.receiverId = BHSender_id;
-  c14.msg = 'I am good. Can you do something for me? I need your help.';
-  c14.time = '1:45 AM';
-  list.add(c14);
-
-  BHMessageModel c15 = BHMessageModel();
-  c15.senderId = BHSender_id;
-  c15.receiverId = BHReceiver_id;
-  c15.msg = 'I am good. Can you do something for me? I need your help.';
-  c15.time = '1:45 AM';
-  list.add(c15);
-
-  BHMessageModel c16 = BHMessageModel();
-  c16.senderId = BHReceiver_id;
-  c16.receiverId = BHSender_id;
-  c16.msg = 'I am good. Can you do something for me? I need your help.';
-  c16.time = '1:45 AM';
-  list.add(c16);
-
-  BHMessageModel c17 = BHMessageModel();
-  c17.senderId = BHSender_id;
-  c17.receiverId = BHReceiver_id;
-  c17.msg = 'I am good. Can you do something for me? I need your help.';
-  c17.time = '1:45 AM';
-  list.add(c17);
-
-  BHMessageModel c18 = BHMessageModel();
-  c18.senderId = BHReceiver_id;
-  c18.receiverId = BHSender_id;
-  c18.msg = 'I am good. Can you do something for me? I need your help.';
-  c18.time = '1:45 AM';
-  list.add(c18);
-
-  return list;
 }

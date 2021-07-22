@@ -27,7 +27,7 @@ class UpcomingAppointmentListItem extends StatelessWidget {
                         child: _buildColumn(
                           context: context,
                           title: 'date'.tr(),
-                          subtitle: '18 Juin 2020',
+                          subtitle: '5 Agosto 2021',
                         ),
                       ),
                       SizedBox(
@@ -37,7 +37,7 @@ class UpcomingAppointmentListItem extends StatelessWidget {
                         child: _buildColumn(
                           context: context,
                           title: 'time'.tr(),
-                          subtitle: '09:30',
+                          subtitle: '09:30 AM',
                         ),
                       ),
                     ],
@@ -61,14 +61,14 @@ class UpcomingAppointmentListItem extends StatelessWidget {
                         child: _buildColumn(
                           context: context,
                           title: 'veterinarian'.tr(),
-                          subtitle: 'Dr. Super Pet',
+                          subtitle: 'Dr Vidal CRMV 11111',
                         ),
                       ),
                       Expanded(
                         child: _buildColumn(
                           context: context,
                           title: 'speciality'.tr(),
-                          subtitle: 'Family Veterinarian',
+                          subtitle: 'antirage_vaccine'.tr(),
                         ),
                       ),
                     ],

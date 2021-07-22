@@ -1,9 +1,10 @@
+import 'package:aipetto/model/business.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../components/day_slot_item.dart';
-import '../../../components/veterinarian_item1.dart';
+import '../../../components/business_place_item.dart';
 import '../../../components/time_slot_item.dart';
 import '../../../data/pref_manager.dart';
 import '../../../model/veterinarian.dart';
@@ -60,7 +61,7 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
             return TimeSlotItem(
               time: hour,
               onTap: () {
-                Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability);
+                Navigator.of(context).pushNamed(Routes.bookingStep4ReservationDetails);
               },
             );
           },
@@ -81,8 +82,8 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            VeterinarianItem1(
-              veterinarian: veterinarians[0],
+            BusinessPlaceItem(
+              business: businesses[0],
             ),
             Container(
               width: double.infinity,

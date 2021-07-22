@@ -21,7 +21,7 @@ class VeterinarianProfilePage extends StatelessWidget {
               elevation: 1,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(
-                  'assets/images/veterinarian_profile.jpg',
+                  'assets/images/aipetto/vet_alternative.png',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -49,14 +49,14 @@ class VeterinarianProfilePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Super Pet',
+                            'Dr Vidal CRMV 11111',
                             style:
                                 Theme.of(context).textTheme.subtitle1.copyWith(
                                       fontWeight: FontWeight.w700,
                                     ),
                           ),
                           Text(
-                            'Family Veterinarian. Cardiologist',
+                            'Veterinario',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 14,
@@ -95,37 +95,40 @@ class VeterinarianProfilePage extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    CustomCircularIndicator(
-                      radius: 80,
-                      percent: 0.85,
-                      lineWidth: 5,
-                      line1Width: 2,
-                      footer: 'good_reviews'.tr(),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    CustomCircularIndicator(
-                      radius: 80,
-                      percent: 0.95,
-                      lineWidth: 5,
-                      line1Width: 2,
-                      footer: 'total_score'.tr(),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    CustomCircularIndicator(
-                      radius: 80,
-                      percent: 0.9,
-                      lineWidth: 5,
-                      line1Width: 2,
-                      footer: 'satisfaction'.tr(),
-                    ),
-                  ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                    child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      CustomCircularIndicator(
+                        radius: 80,
+                        percent: 0.85,
+                        lineWidth: 5,
+                        line1Width: 2,
+                        footer: 'good_reviews'.tr(),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CustomCircularIndicator(
+                        radius: 80,
+                        percent: 0.95,
+                        lineWidth: 5,
+                        line1Width: 2,
+                        footer: 'total_score'.tr(),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CustomCircularIndicator(
+                        radius: 80,
+                        percent: 0.9,
+                        lineWidth: 5,
+                        line1Width: 2,
+                        footer: 'satisfaction'.tr(),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -147,7 +150,7 @@ class VeterinarianProfilePage extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  'Veterinarian Super Pet, is a Veterinarian primarily located in New York, with another office in Atlantic City, New Jersey. He has 16 years of experience. His specialities include Family Medicine and Cardiology.',
+                  'Veterinario titular del hospital X, ejerce como veterinario clínico en las áreas de consultas, diagnóstico, cirugía general, cirugía de mínima invasión y cirugía de tejidos blandos. Ha recibido varios premios científicos de medicina interna, cirugía y cine científico.',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14,

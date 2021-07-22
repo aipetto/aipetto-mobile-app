@@ -9,7 +9,7 @@ class UpcomingAppointmentsPage extends StatelessWidget {
       separatorBuilder: (context, index) => SizedBox(
         height: 15,
       ),
-      itemCount: 2,
+      itemCount: 1,
       padding: EdgeInsets.symmetric(
         vertical: 35,
         horizontal: 15,

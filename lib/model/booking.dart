@@ -11,9 +11,9 @@ class Booking {
   String date; // Monday, 3 Feb
   String formattedDate; // dd-MM-yyyy
   String time; // 08:00 AM
-  String patient;
+  String customer;
   String mobile;
-  String patientMobile;
+  String customerMobile;
   String email;
   int healthConcern;
 
@@ -25,9 +25,9 @@ class Booking {
     this.date,
     this.formattedDate,
     this.time,
-    this.patient,
+    this.customer,
     this.mobile,
-    this.patientMobile,
+    this.customerMobile,
     this.email,
     this.healthConcern,
   });
@@ -41,9 +41,9 @@ class Booking {
       'date': date,
       'formattedDate': formattedDate,
       'time': time,
-      'patient': patient,
+      'customer': customer,
       'mobile': mobile,
-      'patientMobile': patientMobile,
+      'customerMobile': customerMobile,
       'email': email,
       'healthConcern': healthConcern,
     };
@@ -60,9 +60,9 @@ class Booking {
       date: map['date'],
       formattedDate: map['formattedDate'],
       time: map['time'],
-      patient: map['patient'],
+      customer: map['customer'],
       mobile: map['mobile'],
-      patientMobile: map['patientMobile'],
+      customerMobile: map['customerMobile'],
       email: map['email'],
       healthConcern: map['healthConcern'],
     );

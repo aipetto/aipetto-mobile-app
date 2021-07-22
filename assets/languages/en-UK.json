@@ -229,5 +229,6 @@
     "vaccine_detail": "Vaccine details",
     "breed": "Breed",
     "breed_dot": "Breed:",
-    "reservation_details": "Reservation details"
+    "reservation_details": "Reservation details",
+    "reserve": "Book appointment"
 }

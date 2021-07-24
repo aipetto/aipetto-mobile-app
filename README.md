@@ -16,3 +16,8 @@ flutter clean
 flutter build apk --release
 flutter build appbundle --release
 ```
+
+### Release on iOS
+```
+
+```

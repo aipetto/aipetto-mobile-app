@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
               child: Container(),
             ),
             Center(
-                child: Image.asset("assets/images/logo_big_size.png",
+                child: Image.asset("assets/images/logos/aipetto-logo-transparent.png",
                     height: 250,
                     width: MediaQuery.of(context).size.width,
                     fit: BoxFit.contain

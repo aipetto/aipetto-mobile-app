@@ -34,5 +34,4 @@ flutter build appbundle --release
 - [x] Install iOS Emulator
 - [x] Install Git and SSH 
 
-TODO add release steps
 ```

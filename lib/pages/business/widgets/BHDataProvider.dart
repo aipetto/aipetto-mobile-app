@@ -128,6 +128,14 @@ List<BHServicesModel> getServicesList() {
   List<BHServicesModel> servicesList = List<BHServicesModel>();
   servicesList.add(BHServicesModel(img: BHDashedBoardImage1, serviceName: 'Vacuna antirrábica', time: '30 Min', price: 400, radioVal: 2));
   servicesList.add(BHServicesModel(img: BHDashedBoardImage3, serviceName: 'Microchip', time: '30 Min', price: 600, radioVal: 3));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage1, serviceName: 'Service 3', time: '30 Min', price: 400, radioVal: 4));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage3, serviceName: 'Service 4', time: '30 Min', price: 600, radioVal: 5));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage1, serviceName: 'Service 5', time: '30 Min', price: 400, radioVal: 6));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage3, serviceName: 'Service 6', time: '30 Min', price: 600, radioVal: 7));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage1, serviceName: 'Service 7', time: '30 Min', price: 400, radioVal: 8));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage3, serviceName: 'Service 8', time: '30 Min', price: 600, radioVal: 9));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage1, serviceName: 'Service 9', time: '30 Min', price: 400, radioVal: 10));
+  servicesList.add(BHServicesModel(img: BHDashedBoardImage3, serviceName: 'Service 10', time: '30 Min', price: 600, radioVal: 11));
   return servicesList;
 }
 

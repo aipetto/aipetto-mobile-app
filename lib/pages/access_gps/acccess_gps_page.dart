@@ -13,7 +13,9 @@ class _AccessGPSPageState extends State<AccessGPSPage> {
 
   @override
   Widget build(BuildContext context) {
-    final String walkImg = 'assets/images/illustrations/pet-searching.png';
+    final String walkImg = 'assets/images/map.png';
+    var h = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +33,7 @@ class _AccessGPSPageState extends State<AccessGPSPage> {
               child: Stack(
                 alignment: Alignment.center,
                 children: <Widget>[
-                  walkImg != null ? Image.asset(walkImg, fit: BoxFit.fill) : Container(),
+                  walkImg != null ? Image.asset(walkImg, width: width * 0.3, height: h * 0.2, fit: BoxFit.fill) : Container(),
                 ],
               ),
             ),
@@ -40,6 +42,7 @@ class _AccessGPSPageState extends State<AccessGPSPage> {
               'Enable location to suggest places near you.',
               style: TextStyle(
                 fontSize: 18,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -65,6 +68,7 @@ class _AccessGPSPageState extends State<AccessGPSPage> {
               'Or',
               style: TextStyle(
                 fontSize: 18,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -87,6 +91,9 @@ class _AccessGPSPageState extends State<AccessGPSPage> {
   }
 
   void accessGPS(PermissionStatus status) {
+
+
+
     switch( status) {
       case PermissionStatus.granted:
         Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby);

@@ -19,5 +19,10 @@ flutter build appbundle --release
 
 ### Release on iOS
 ```
-
+flutter clean
+rm ios/Podfile.lock pubspec.lock
+rm ios/Podfile.lock pubspec.lock
+rm -rf ios/Pods ios/Runner.xcworkspace
+flutter build io --no-codesign
+flutter build ios --release
 ```

@@ -182,15 +182,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
 
     Widget serviceWidget() {
 
-      final ButtonStyle style =
-      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
-
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 100,
+              height: 120,
               child: ListView.builder(
                 padding: EdgeInsets.all(8),
                 itemCount: categoryList.length,
@@ -202,84 +199,14 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       children: <Widget>[
                         Image.asset(categoryList[index].img, height: 40, width: 40),
                         8.height,
-                        Text(categoryList[index].categoryName, style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14))
+                        Text(categoryList[index].categoryName, style: TextStyle(color: BHAppTextColorSecondary, fontSize: 16))
                       ],
                     ),
                   );
                 },
               ),
             ),
-            // 8.height,
-            Container(
-              padding: EdgeInsets.only(left: 16, right: 16),
-              child: Text(BHTxtPackageOffers, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: BHAppTextColorPrimary)),
-            ),
-            Container(
-              height: 130,
-              child: ListView.builder(
-                padding: EdgeInsets.all(8),
-                itemCount: offerList.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    width: 300,
-                    margin: EdgeInsets.all(8),
-                    child: Card(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      shadowColor: BHGreyColor.withOpacity(0.3),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          /**ClipRRect(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                            child: commonCacheImageWidget(offerList[index].img, 100, width: 250, fit: BoxFit.cover),
-                          ),**/
-                          Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Text(
-                              offerList[index].offerName,
-                              style: TextStyle(fontSize: 14, color: BHAppTextColorPrimary, fontWeight: FontWeight.bold),
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 8, right: 8, bottom: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  offerList[index].offerDate,
-                                  style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14),
-                                  textAlign: TextAlign.left,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      '\$${offerList[index].offerOldPrice}',
-                                      style: TextStyle(color: BHAppTextColorSecondary, fontSize: 14, decoration: TextDecoration.lineThrough),
-                                    ),
-                                    8.width,
-                                    Text(
-                                      '\$${offerList[index].offerNewPrice}',
-                                      style: TextStyle(color: kAmphibianColorGreenLight, fontWeight: FontWeight.bold, fontSize: 16),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+
             Container(
               padding: EdgeInsets.only(right: 16, left: 16),
               child: Text(BHTxtPopularServices, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: BHAppTextColorPrimary)),
@@ -364,7 +291,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
             return <Widget>[
               Container(
                 child: SliverAppBar(
-                  leading: IconButton(icon: Icon(Icons.arrow_back,color: white),onPressed: (){
+                  leading: IconButton(icon: Icon(Icons.arrow_back,color: kAmphibianColorGreenLight),onPressed: (){
                     finish(context);
                   },),
                   backgroundColor: kAmphibianColorGreenLight,
@@ -380,6 +307,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                         Image.asset(
                           BHDashedBoardImage6,
                           height: 500,
+                          width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover,
                         ),
                         Container(
@@ -389,23 +317,6 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                             mainAxisAlignment: MainAxisAlignment.end,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        '4.5',
-                                        style: TextStyle(color: Colors.black, fontSize: 18),
-                                      ),
-                                      IconButton(icon: Icon(Icons.star, color: kAmphibianColorGreenLight), onPressed: () {})
-                                    ],
-                                  ),
-                                ],
-                              ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -438,10 +349,10 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                     indicatorColor: kAmphibianColorGreenLight,
                     tabs: [
                       Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabServices, style: TextStyle(fontSize: 16))),
+                        child: Align(alignment: Alignment.center, child: Text(BHTabServices, style: TextStyle(fontSize: 18))),
                       ),
                       Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabAbout, style: TextStyle(fontSize: 16))),
+                        child: Align(alignment: Alignment.center, child: Text(BHTabAbout, style: TextStyle(fontSize: 18))),
                       ),
                     ],
                     controller: controller,

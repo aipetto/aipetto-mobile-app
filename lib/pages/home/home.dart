@@ -1,4 +1,3 @@
-import 'package:aipetto/pages/pets/pets_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/custom_navigation_bar.dart';
@@ -7,8 +6,6 @@ import '../../routes/routes.dart';
 import '../../utils/constants.dart';
 import '../drawer/drawer_page.dart';
 import '../messages/messages_page.dart';
-import '../user_profile/profile_page.dart';
-import '../settings/settings_page.dart';
 import 'home_page.dart';
 import 'widgets/widgets.dart';
 

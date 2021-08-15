@@ -20,13 +20,9 @@ void main() async {
         Locale('es', 'AR'),
         Locale('pt', 'BR'),
         Locale('en', 'UK'),
-        //Locale('de', 'DE'),
-        //Locale('ar', 'DZ'),
-        //Locale('it', 'IT'),
-        //Locale('fr', 'FR'),
       ],
       path: 'assets/languages',
-      fallbackLocale: Locale('es', 'AR'),
+      fallbackLocale: Locale('en', 'UK'),
     ),
   );
 }

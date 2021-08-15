@@ -6,6 +6,9 @@ class Routes {
   static const String home = '/home';
   static const String filter = '/filter';
   static const String categories = '/categories';
+  static const String accessGPS = '/access_gps';
+  static const String choosePetType = '/pets_types';
+  static const String addressSearch = '/address_search';
   static const String bookingStep1FindPlacesNearby = '/booking_step1_find_places_nearby';
   static const String bookingStep2DetailsOfPlace = '/booking_step2_show_details_place';
   static const String bookingStep3ServiceAvailability = '/booking_step3_service_availability';

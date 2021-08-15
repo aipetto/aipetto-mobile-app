@@ -1,7 +1,10 @@
+import 'package:aipetto/pages/access_gps/acccess_gps_page.dart';
+import 'package:aipetto/pages/access_gps/address_search_page.dart';
 import 'package:aipetto/pages/booking/step2/choose_veterinarian_page.dart';
 import 'package:aipetto/pages/business/business_profile_page.dart';
 import 'package:aipetto/pages/business/my_favorite_businesses_list_page.dart';
 import 'package:aipetto/pages/categories/categories_page.dart';
+import 'package:aipetto/pages/pets/choose_pet_type.dart';
 import 'package:aipetto/pages/pets/edit_profile_page.dart';
 import 'package:aipetto/pages/veterinarian/my_veterinarian_list_page.dart';
 import 'package:aipetto/pages/pets/add_new_pet_page.dart';
@@ -136,6 +139,15 @@ class RouteGenerator {
 
       case Routes.myAppointments:
         return CupertinoPageRoute(builder: (_) => MyAppointmentsPage());
+
+      case Routes.accessGPS:
+        return CupertinoPageRoute(builder: (_) => AccessGPSPage());
+
+      case Routes.choosePetType:
+        return CupertinoPageRoute(builder: (_) => ChoosePetTypePage());
+
+      case Routes.addressSearch:
+        return CupertinoPageRoute(builder: (_) => AddressSearchPage());
 
       case Routes.notifications:
         return CupertinoPageRoute(

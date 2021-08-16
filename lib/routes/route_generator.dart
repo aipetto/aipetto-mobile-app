@@ -1,7 +1,7 @@
 import 'package:aipetto/pages/access_gps/acccess_gps_page.dart';
 import 'package:aipetto/pages/access_gps/address_search_page.dart';
 import 'package:aipetto/pages/access_gps/loading_page.dart';
-import 'package:aipetto/pages/booking/step2/choose_veterinarian_page.dart';
+import 'package:aipetto/pages/booking/step2/choose_business_page.dart';
 import 'package:aipetto/pages/business/business_profile_page.dart';
 import 'package:aipetto/pages/business/my_favorite_businesses_list_page.dart';
 import 'package:aipetto/pages/categories/categories_page.dart';
@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 import '../pages/appointment/appointment_detail_page.dart';
 import '../pages/appointment/my_appointments_page.dart';
 import '../pages/booking/filter/filter_page.dart';
-import '../pages/booking/step2/choose_veterinarian_page.dart';
+import '../pages/booking/step2/choose_business_page.dart';
 import '../pages/booking/step3/time_slot_page.dart';
 import '../pages/booking/step4/reservation_customer_details_page.dart';
 import '../pages/booking/step5/appointment_booked_page.dart';

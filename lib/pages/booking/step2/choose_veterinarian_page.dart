@@ -1,5 +1,7 @@
+import 'package:aipetto/bloc/user_geolocation/user_geolocation_bloc.dart';
 import 'package:aipetto/components/business_place_item.dart';
 import 'package:aipetto/model/business.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,26 @@ import '../../../components/round_icon_button.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/constants.dart';
 
-class ChooseBusinessPlacePage extends StatelessWidget {
+class ChooseBusinessPlacePage extends StatefulWidget {
+
+  @override
+  _ChooseBusinessPlacePageState createState() =>_ChooseBusinessPlacePageState();
+
+}
+class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
+
+  @override
+  void initState(){
+    context.read<UserGeolocationBloc>().getCurrentLocation();
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    context.read<UserGeolocationBloc>().cancelGeoCurrentLocation();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

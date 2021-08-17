@@ -39,18 +39,21 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
         _language = Language.english;
         Prefs.setString(Prefs.LANGUAGE, 'en');
         Prefs.setString(Prefs.LANGUAGE_REGION, 'UK');
+        Prefs.setString(Prefs.LANGUAGE_ID, '6096a50fb57043bb3ae7b537');
         break;
 
       case 1:
         _language = Language.spanish;
         Prefs.setString(Prefs.LANGUAGE, 'es');
         Prefs.setString(Prefs.LANGUAGE_REGION, 'AR');
+        Prefs.setString(Prefs.LANGUAGE_ID, '6096a507b570431faae7b533');
         break;
 
       case 2:
         _language = Language.portuguese;
         Prefs.setString(Prefs.LANGUAGE, 'pt');
         Prefs.setString(Prefs.LANGUAGE_REGION, 'BR');
+        Prefs.setString(Prefs.LANGUAGE_ID, '6096a50ab5704301f1e7b535');
         break;
     }
     //print("language" + _language.toString());

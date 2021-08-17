@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-class User {
+import 'package:equatable/equatable.dart';
+
+class User extends Equatable{
   String id;
   String firstName;
   String lastName;
@@ -80,4 +82,8 @@ class User {
   String toJson() => json.encode(toMap());
 
   factory User.fromJson(String source) => User.fromMap(json.decode(source));
+
+  @override
+  // TODO: implement props
+  List<Object> get props => throw UnimplementedError();
 }

@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class BusinessPlace extends Equatable{
+class Message extends Equatable{
 
   String id;
 
-  BusinessPlace({
+  Message({
     this.id,
   });
 
@@ -16,21 +16,21 @@ class BusinessPlace extends Equatable{
     };
   }
 
-  factory BusinessPlace.fromMap(Map<String, dynamic> map) {
+  factory Message.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
-    return BusinessPlace(
+    return Message(
       id: map['id'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory BusinessPlace.fromJson(String source) => BusinessPlace.fromMap(json.decode(source));
+  factory Message.fromJson(String source) => Message.fromMap(json.decode(source));
 
   @override
   List<Object> get props => [id];
 
   @override
-  String toString() => 'Business Place: {id: $id}';
+  String toString() => 'Message: {id: $id}';
 }

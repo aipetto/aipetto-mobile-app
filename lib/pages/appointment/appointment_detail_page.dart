@@ -318,7 +318,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: CustomButton(
                 onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
+                  Navigator.of(context).pushNamed(Routes.home);
                 },
                 text: 'done'.tr(),
               ),

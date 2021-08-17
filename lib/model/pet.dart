@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 import 'working_day.dart';
 
-class Pet {
+class Pet extends Equatable{
   String id;
   String name;
   String nickname;
@@ -38,6 +40,10 @@ class Pet {
   String toJson() => json.encode(toMap());
 
   factory Pet.fromJson(String source) => Pet.fromMap(json.decode(source));
+
+  @override
+  // TODO: implement props
+  List<Object> get props => throw UnimplementedError();
 }
 
 /// TODO Refactor this class

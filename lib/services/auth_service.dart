@@ -14,7 +14,7 @@ class AuthService{
      "tenantId": ""
    };
 
-  final resp = await http.post('${Environment.apiUrl}/auth/sign-in',
+  final resp = await http.post('${Environment.aipettoCoreApi}/auth/sign-in',
         body: jsonEncode(data),
         headers: {
           'Content-Type': 'application/json'

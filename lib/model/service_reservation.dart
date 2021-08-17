@@ -4,11 +4,13 @@
 
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 ServiceReservation serviceReservationFromJson(String str) => ServiceReservation.fromJson(json.decode(str));
 
 String serviceReservationToJson(ServiceReservation data) => json.encode(data.toJson());
 
-class ServiceReservation {
+class ServiceReservation extends Equatable{
   ServiceReservation({
     this.serviceType,
     this.serviceProviderIDs,
@@ -82,6 +84,10 @@ class ServiceReservation {
     "updatedAt": updatedAt.toIso8601String(),
     "id": serviceReservationId,
   };
+
+  @override
+  // TODO: implement props
+  List<Object> get props => throw UnimplementedError();
 }
 
 class BusinessId {

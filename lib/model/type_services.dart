@@ -1,8 +1,9 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class TypeServices {
+class TypeServices extends Equatable{
   int id;
   String name;
   String imagePath;
@@ -35,6 +36,10 @@ class TypeServices {
 
   factory TypeServices.fromJson(String source) =>
       TypeServices.fromMap(json.decode(source));
+
+  @override
+  // TODO: implement props
+  List<Object> get props => throw UnimplementedError();
 }
 
 final typeServices = [

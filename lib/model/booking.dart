@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'veterinarian.dart';
+import 'package:equatable/equatable.dart';
 
-class Booking {
+class Booking extends Equatable{
 
   String id;
   Veterinarian veterinarian;
@@ -72,4 +73,10 @@ class Booking {
 
   factory Booking.fromJson(String source) =>
       Booking.fromMap(json.decode(source));
+
+  @override
+  List<Object> get props => [id, date, time];
+
+  @override
+  String toString() => 'Booking: {id: $id}';
 }

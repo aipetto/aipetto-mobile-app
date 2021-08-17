@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-class Notification {
+import 'package:equatable/equatable.dart';
+
+class Notification extends Equatable{
   int id;
   String title;
   String body;
@@ -41,6 +43,10 @@ class Notification {
 
   factory Notification.fromJson(String source) =>
       Notification.fromMap(json.decode(source));
+
+  @override
+  // TODO: implement props
+  List<Object> get props => throw UnimplementedError();
 }
 
 final notifications = [

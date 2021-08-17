@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 import 'working_day.dart';
 
-class Business {
+class Business extends Equatable{
   String id;
   String name;
   String firstName;
@@ -91,6 +93,10 @@ class Business {
   String toJson() => json.encode(toMap());
 
   factory Business.fromJson(String source) => Business.fromMap(json.decode(source));
+
+  @override
+  // TODO: implement props
+  List<Object> get props => throw UnimplementedError();
 }
 
 final businesses = [

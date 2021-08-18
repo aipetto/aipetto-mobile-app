@@ -17,6 +17,7 @@ class PetTypeApiClient {
   }) : assert(httpClient != null);
 
   Future<PetType> fetchPetTypes() async {
+
     final url = '$_baseUrl/pet-types?filter%5Blanguage%5D=$languageId';
     final response = await this.httpClient.get(url);
 

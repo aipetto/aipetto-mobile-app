@@ -62,7 +62,6 @@ class _LoginPageState extends State<LoginPage> {
         Prefs.setString(Prefs.LANGUAGE_ID, '6096a50ab5704301f1e7b535');
         break;
     }
-    //print("language" + _language.toString());
     context.setLocale(Locale(Prefs.getString(Prefs.LANGUAGE), Prefs.getString(Prefs.LANGUAGE_REGION)));
   }
 

@@ -18,28 +18,7 @@ class ChoosePetTypePage extends StatelessWidget {
           BlocProvider.of<PetTypeBloc>(context).add(FetchPetType());
         }
         if (state is PetTypeError) {
-          return Center(
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
-              Image.asset('assets/images/pet_sick_icon.png'),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Error',
-                  style: TextStyle(
-                    color: kColorDarkBlue,
-                    fontSize: 20,
-                    fontFamily: 'NunitoSans',
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            )
-          );
+          return noValuesWidget();
         }
         if (state is PetTypeLoaded) {
 
@@ -67,7 +46,7 @@ class ChoosePetTypePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            StaggeredGridView.countBuilder(
+                            state.petType.rows.length < 0 ? noValuesWidget() : StaggeredGridView.countBuilder(
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               crossAxisCount: 4,
                               physics: NeverScrollableScrollPhysics(),
@@ -105,4 +84,29 @@ class ChoosePetTypePage extends StatelessWidget {
       },
     );
   }
+
+  Center noValuesWidget() {
+    return Center(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
+            Image.asset('assets/images/pet_sick_icon.png'),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Error',
+                style: TextStyle(
+                  color: kColorDarkBlue,
+                  fontSize: 20,
+                  fontFamily: 'NunitoSans',
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          )
+        );
+    }
 }

@@ -1,10 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/data/pref_manager.dart';
 import 'package:meta/meta.dart';
 import 'package:aipetto/model/models.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class PetTypeApiClient {
@@ -17,7 +17,7 @@ class PetTypeApiClient {
   }) : assert(httpClient != null);
 
   Future<PetType> fetchPetTypes() async {
-    final url = '$_baseUrl/api/pet-types/autocomplete?query%5Blanguage%5D=$languageId';
+    final url = '$_baseUrl/pet-types?filter%5Blanguage%5D=$languageId';
     final response = await this.httpClient.get(url);
 
     if( response.statusCode != 200 ){

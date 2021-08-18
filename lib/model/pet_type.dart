@@ -4,14 +4,28 @@
 
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
-
 PetType petTypeFromJson(String str) => PetType.fromJson(json.decode(str));
 
 String petTypeToJson(PetType data) => json.encode(data.toJson());
 
-class PetType extends Equatable{
+class PetType {
   PetType({
+    this.rows,
+  });
+
+  List<Row> rows;
+
+  factory PetType.fromJson(Map<String, dynamic> json) => PetType(
+    rows: List<Row>.from(json["rows"].map((x) => Row.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "rows": List<dynamic>.from(rows.map((x) => x.toJson())),
+  };
+}
+
+class Row {
+  Row({
     this.id,
     this.language,
     this.image,
@@ -22,13 +36,13 @@ class PetType extends Equatable{
     this.createdAt,
     this.updatedAt,
     this.v,
-    this.petTypeId,
+    this.rowId,
     this.active,
   });
 
   String id;
-  PetType language;
-  List<dynamic> image;
+  Row language;
+  List<Image> image;
   String name;
   String tenant;
   String createdBy;
@@ -36,13 +50,13 @@ class PetType extends Equatable{
   DateTime createdAt;
   DateTime updatedAt;
   int v;
-  String petTypeId;
+  String rowId;
   bool active;
 
-  factory PetType.fromJson(Map<String, dynamic> json) => PetType(
+  factory Row.fromJson(Map<String, dynamic> json) => Row(
     id: json["_id"],
-    language: json["language"] == null ? null : PetType.fromJson(json["language"]),
-    image: json["image"] == null ? null : List<dynamic>.from(json["image"].map((x) => x)),
+    language: json["language"] == null ? null : Row.fromJson(json["language"]),
+    image: json["image"] == null ? null : List<Image>.from(json["image"].map((x) => Image.fromJson(x))),
     name: json["name"],
     tenant: json["tenant"],
     createdBy: json["createdBy"],
@@ -50,14 +64,14 @@ class PetType extends Equatable{
     createdAt: DateTime.parse(json["createdAt"]),
     updatedAt: DateTime.parse(json["updatedAt"]),
     v: json["__v"],
-    petTypeId: json["id"],
+    rowId: json["id"],
     active: json["active"] == null ? null : json["active"],
   );
 
   Map<String, dynamic> toJson() => {
     "_id": id,
     "language": language == null ? null : language.toJson(),
-    "image": image == null ? null : List<dynamic>.from(image.map((x) => x)),
+    "image": image == null ? null : List<dynamic>.from(image.map((x) => x.toJson())),
     "name": name,
     "tenant": tenant,
     "createdBy": createdBy,
@@ -65,11 +79,61 @@ class PetType extends Equatable{
     "createdAt": createdAt.toIso8601String(),
     "updatedAt": updatedAt.toIso8601String(),
     "__v": v,
-    "id": petTypeId,
+    "id": rowId,
     "active": active == null ? null : active,
+  };
+}
+
+class Image {
+  Image({
+    this.id,
+    this.name,
+    this.sizeInBytes,
+    this.publicUrl,
+    this.privateUrl,
+    this.createdAt,
+    this.updatedAt,
+    this.imageId,
+    this.downloadUrl,
+  });
+
+  String id;
+  String name;
+  int sizeInBytes;
+  dynamic publicUrl;
+  String privateUrl;
+  DateTime createdAt;
+  DateTime updatedAt;
+  String imageId;
+  String downloadUrl;
+
+  factory Image.fromJson(Map<String, dynamic> json) => Image(
+    id: json["_id"],
+    name: json["name"],
+    sizeInBytes: json["sizeInBytes"],
+    publicUrl: json["publicUrl"],
+    privateUrl: json["privateUrl"],
+    createdAt: DateTime.parse(json["createdAt"]),
+    updatedAt: DateTime.parse(json["updatedAt"]),
+    imageId: json["id"],
+    downloadUrl: json["downloadUrl"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "name": name,
+    "sizeInBytes": sizeInBytes,
+    "publicUrl": publicUrl,
+    "privateUrl": privateUrl,
+    "createdAt": createdAt.toIso8601String(),
+    "updatedAt": updatedAt.toIso8601String(),
+    "id": imageId,
+    "downloadUrl": downloadUrl,
   };
 
   @override
-  // TODO: implement props
-  List<Object> get props => throw UnimplementedError();
+  List<Object> get props => [id, name];
+
+  @override
+  String toString() => 'PetType{ id: $id}';
 }

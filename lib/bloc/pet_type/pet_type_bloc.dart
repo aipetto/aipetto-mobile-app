@@ -18,7 +18,6 @@ class PetTypeBloc extends Bloc<PetTypeEvent, PetTypeState>{
   @override
   PetTypeState get initialState => PetTypeEmpty();
 
-
   @override
   Stream<PetTypeState> mapEventToState( PetTypeEvent event ) async* {
     if(event is FetchPetType){

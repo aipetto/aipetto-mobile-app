@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _loadScreen() async {
-    await Prefs.load();
+
     context.bloc<ThemeBloc>().add(ThemeChanged(
         theme: Prefs.getBool(Prefs.DARKTHEME, def: false)
             ? AppTheme.DarkTheme

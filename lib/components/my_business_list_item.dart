@@ -1,8 +1,8 @@
-import 'package:aipetto/model/business.dart';
+import 'package:aipetto/model/business/business.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../model/business.dart';
+import '../model/business/business.dart';
 import 'custom_button.dart';
 
 class MyBusinessListItem extends StatelessWidget {

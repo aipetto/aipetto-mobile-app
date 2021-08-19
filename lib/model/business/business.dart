@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'working_day.dart';
+import '../working_day.dart';
 
 class Business extends Equatable{
   String id;

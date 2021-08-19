@@ -137,3 +137,10 @@ class Image {
   @override
   String toString() => 'PetType{ id: $id}';
 }
+
+class PetTypeSelected{
+  final String id;
+  final String name;
+
+  PetTypeSelected(this.id, this.name);
+}

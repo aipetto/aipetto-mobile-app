@@ -1,5 +1,5 @@
 import 'package:aipetto/components/service_type_item.dart';
-import 'package:aipetto/model/type_services.dart';
+import 'package:aipetto/model/business_service_type/type_services.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

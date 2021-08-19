@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../data/pref_manager.dart';
-import '../../../model/notification.dart' as notif;
+import '../../../model/notification/notification.dart' as notif;
 
 class NotificationListItem extends StatelessWidget {
   final notif.Notification notification;

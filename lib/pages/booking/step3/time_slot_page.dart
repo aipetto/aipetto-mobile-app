@@ -1,4 +1,4 @@
-import 'package:aipetto/model/business.dart';
+import 'package:aipetto/model/business/business.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -7,7 +7,7 @@ import '../../../components/day_slot_item.dart';
 import '../../../components/business_place_item.dart';
 import '../../../components/time_slot_item.dart';
 import '../../../data/pref_manager.dart';
-import '../../../model/veterinarian.dart';
+import '../../../model/veterinarian/veterinarian.dart';
 import '../../../routes/routes.dart';
 
 class TimeSlotPage extends StatefulWidget {

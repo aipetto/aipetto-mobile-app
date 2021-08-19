@@ -8,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
 part 'user_geolocation_event.dart';
 part 'user_geolocation_state.dart';
 
+
 class UserGeolocationBloc extends Bloc<UserGeolocationEvent, UserGeolocationState>{
   UserGeolocationBloc() : super(UserGeolocationState());
 

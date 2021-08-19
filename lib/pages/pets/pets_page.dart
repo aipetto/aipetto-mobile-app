@@ -2,7 +2,7 @@ import 'package:aipetto/components/pets_page_list_item.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../model/pet.dart';
+import '../../model/pet/pet.dart';
 
 class MyPetsListPage extends StatelessWidget {
   @override

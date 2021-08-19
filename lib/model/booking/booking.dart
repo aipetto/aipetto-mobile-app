@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'veterinarian.dart';
+import '../veterinarian/veterinarian.dart';
 import 'package:equatable/equatable.dart';
 
 class Booking extends Equatable{

@@ -1,7 +1,7 @@
 import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 
-import '../model/business.dart';
+import '../model/business/business.dart';
 import 'custom_button.dart';
 
 class ReservedPastBussinessListItem extends StatelessWidget {

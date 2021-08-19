@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'working_day.dart';
+import '../working_day.dart';
 
 class Veterinarian {
   String id;

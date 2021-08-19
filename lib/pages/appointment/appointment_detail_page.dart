@@ -1,4 +1,4 @@
-import 'package:aipetto/model/business.dart';
+import 'package:aipetto/model/business/business.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -7,7 +7,7 @@ import '../../components/custom_button.dart';
 import '../../components/business_place_item.dart';
 import '../../utils/constants.dart';
 import '../../data/pref_manager.dart';
-import '../../model/veterinarian.dart';
+import '../../model/veterinarian/veterinarian.dart';
 
 class AppointmentDetailPage extends StatefulWidget {
   @override

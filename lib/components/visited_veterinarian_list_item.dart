@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/veterinarian.dart';
+import '../model/veterinarian/veterinarian.dart';
 
 class VisitedVeterinarianListItem extends StatelessWidget {
   final Veterinarian veterinarian;

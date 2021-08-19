@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/my_veterinarian_list_item.dart';
-import '../../model/veterinarian.dart';
+import '../../model/veterinarian/veterinarian.dart';
 
 class MyVeterinarianListPage extends StatelessWidget {
   @override

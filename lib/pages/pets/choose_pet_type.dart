@@ -1,4 +1,5 @@
 import 'package:aipetto/components/pet_type_item.dart';
+import 'package:aipetto/model/pet_type/pet_type.dart' as PetType;
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +60,8 @@ class ChoosePetTypePage extends StatelessWidget {
                                 return PetTypeItem(
                                   petType: state.petType.rows[index],
                                   onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                        Routes.addNewPet
+                                    Navigator.of(context).pushNamed(Routes.addNewPet,
+                                        arguments: PetType.PetTypeSelected(state.petType.rows[index].id, state.petType.rows[index].name)
                                     );
                                   },
                                 );

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../model/notification.dart';
+import '../../model/notification/notification.dart';
 import 'widgets/notification_list_item.dart';
 
 class NotificationsPage extends StatelessWidget {

@@ -1,3 +1,4 @@
+import 'package:aipetto/model/pet_type/pet_type.dart';
 import 'package:aipetto/pages/access_gps/acccess_gps_page.dart';
 import 'package:aipetto/pages/access_gps/address_search_page.dart';
 import 'package:aipetto/pages/access_gps/loading_page.dart';
@@ -40,7 +41,6 @@ import 'routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    //final args = settings.arguments;
 
     switch (settings.name) {
       case Routes.splash:
@@ -94,8 +94,12 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => BusinessProfilePage());
 
       case Routes.addNewPet:
+        final args = settings.arguments as PetTypeSelected;
         return CupertinoPageRoute(
-            builder: (_) => AddNewPetPage(),
+            builder: (_) => AddNewPetPage(
+              petTypeId: args.id,
+              petTypeName: args.name
+            ),
             fullscreenDialog: true
         );
 

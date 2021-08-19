@@ -1,4 +1,4 @@
-import 'package:aipetto/model/pet_type.dart' as PetTypeModel;
+import 'package:aipetto/model/pet_type/pet_type.dart' as PetTypeModel;
 import 'package:flutter/material.dart';
 
 class PetTypeItem extends StatelessWidget {

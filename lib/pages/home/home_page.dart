@@ -1,7 +1,7 @@
 import 'package:aipetto/components/pets_of_owner_list_item.dart';
 import 'package:aipetto/components/reserved_past_business_list_item.dart';
-import 'package:aipetto/model/business.dart';
-import 'package:aipetto/model/pet.dart';
+import 'package:aipetto/model/business/business.dart';
+import 'package:aipetto/model/pet/pet.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

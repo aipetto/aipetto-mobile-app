@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../utils/constants.dart';
-import '../model/veterinarian.dart';
+import '../model/veterinarian/veterinarian.dart';
 
 class VeterinarianItem extends StatelessWidget {
   final Veterinarian veterinarian;

@@ -1,6 +1,6 @@
 import 'package:aipetto/bloc/user_geolocation/user_geolocation_bloc.dart';
 import 'package:aipetto/components/business_place_item.dart';
-import 'package:aipetto/model/business.dart';
+import 'package:aipetto/model/business/business.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

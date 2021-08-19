@@ -1,4 +1,4 @@
-import 'package:aipetto/model/business.dart';
+import 'package:aipetto/model/business/business.dart';
 import 'package:flutter/material.dart';
 
 class BusinessPlaceItem extends StatelessWidget {

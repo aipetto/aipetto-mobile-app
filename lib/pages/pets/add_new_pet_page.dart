@@ -1,6 +1,12 @@
+import 'package:aipetto/model/pet_type/pet_type.dart' as PetType;
 import 'package:flutter/material.dart';
 
 class AddNewPetPage extends StatelessWidget {
+
+  final String petTypeId;
+  final String petTypeName;
+
+  const AddNewPetPage({Key key, this.petTypeId, this.petTypeName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,6 +15,8 @@ class AddNewPetPage extends StatelessWidget {
     final String textContent = "Quickly and easily";
     final String bgImg = 'assets/images/aipetto/cafe_pet_friendly.jpg';
     final String walkImg = 'assets/images/illustrations/pet-playing.png';
+
+    //final args = ModalRoute.of(context).settings.arguments as PetType.PetTypeSelected;
 
     return Scaffold(
       appBar: AppBar(
@@ -94,7 +102,19 @@ class AddNewPetPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 38),
                             child: Center(
                               child: Text(
-                                'Get pet photo and basic info form',
+                                petTypeId,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 38),
+                            child: Center(
+                              child: Text(
+                                petTypeName,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,

@@ -18,9 +18,12 @@ class PetTypeItem extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(
             children: <Widget>[
-              CircleAvatar(
+             petType.image.isEmpty ? CircleAvatar(
+               backgroundColor: Colors.grey[300],
+               radius: 25,
+             ) : CircleAvatar(
                 backgroundColor: Colors.grey[300],
-                backgroundImage: NetworkImage(petType.image.first.downloadUrl ?? ''),
+                backgroundImage: NetworkImage(petType.image.first.downloadUrl),
                 radius: 25,
               ),
               SizedBox(

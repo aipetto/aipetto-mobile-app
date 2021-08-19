@@ -36,6 +36,17 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
         title: Text(
           'businesses'.tr(),
         ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {  Navigator.of(context).pushNamed(
+                  Routes.home
+              ); },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
         actions: <Widget>[
           IconButton(
             onPressed: () {

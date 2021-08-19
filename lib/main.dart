@@ -16,8 +16,8 @@ import 'utils/themebloc/theme_bloc.dart';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Prefs.load();
   await EasyLocalization.ensureInitialized();
+  await Prefs.load();
 
   final PetTypeRepository petTypeRepository = PetTypeRepository(
       petTypeClient: PetTypeApiClient(

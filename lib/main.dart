@@ -19,16 +19,9 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await Prefs.load();
 
-  final PetTypeRepository petTypeRepository = PetTypeRepository(
-      petTypeClient: PetTypeApiClient(
-          httpClient: http.Client(),
-  ));
-
   runApp(
     EasyLocalization(
-      child: MyApp(
-        petTypeRepository: petTypeRepository,
-      ),
+      child: MyApp(),
       supportedLocales: [
         Locale('es', 'AR'),
         Locale('pt', 'BR'),
@@ -42,9 +35,10 @@ void main() async {
 
 class MyApp extends StatelessWidget {
 
-  final PetTypeRepository petTypeRepository;
-
-  const MyApp({Key key, this.petTypeRepository}) : super(key: key);
+  final PetTypeRepository petTypeRepository = PetTypeRepository(
+      petTypeClient: PetTypeApiClient(
+        httpClient: http.Client(),
+      ));
 
   @override
   Widget build(BuildContext context) {

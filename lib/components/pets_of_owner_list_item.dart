@@ -20,7 +20,7 @@ class PetsOfOwnerListItem extends StatelessWidget {
               CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.grey,
-                backgroundImage: AssetImage(pet.profileImage),
+                backgroundImage: AssetImage(pet.photos[0].photo[0].publicUrl),
               ),
               SizedBox(
                 height: 15,

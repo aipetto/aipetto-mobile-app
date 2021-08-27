@@ -17,7 +17,7 @@ class MyPetListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Image.asset(
-              pet.profileImage,
+              pet.photos[0].photo[0].publicUrl,
               width: 90,
               height: 90,
             ),

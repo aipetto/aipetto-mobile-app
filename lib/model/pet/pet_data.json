@@ -1,0 +1,539 @@
+{
+  "rows": [
+    {
+      "petOwners": [
+        {
+          "_id": "606c9c528269632780bde0eb",
+          "id": "606c9c528269632780bde0eb",
+          "firstName": "Jhony",
+          "lastName": "Vidal",
+          "email": "mrjhonyvidal@gmail.com"
+        }
+      ],
+      "photos": [
+        {
+          "_id": "60e99e37ff61ec824e9b4391",
+          "longitude": "-77.0364",
+          "latitude": "38.8951",
+          "photo": [
+            {
+              "_id": "60e99e37ff61ec304c9b4392",
+              "name": "Desktop - 1.jpg",
+              "sizeInBytes": 240952,
+              "publicUrl": null,
+              "privateUrl": "tenant/606c9c61826963485fbde0ed/petPhotos/photo/c8b1b12c-58b8-4a04-ab16-787507b8d5a2.jpg",
+              "createdAt": "2021-07-10T13:21:38.150Z",
+              "updatedAt": "2021-07-10T13:21:38.150Z",
+              "id": "60e99e37ff61ec304c9b4392"
+            },
+            {
+              "_id": "60e99e37ff61ec2ec69b4394",
+              "name": "Screenshot from 2021-07-08 02-11-22.png",
+              "sizeInBytes": 28240,
+              "publicUrl": null,
+              "privateUrl": "tenant/606c9c61826963485fbde0ed/petPhotos/photo/d620a4b2-c3e3-427f-9fbd-e8f4c9bac865.png",
+              "createdAt": "2021-07-10T13:21:38.150Z",
+              "updatedAt": "2021-07-10T13:21:38.150Z",
+              "id": "60e99e37ff61ec2ec69b4394"
+            },
+            {
+              "_id": "60e99ee2ff61ec28ec9b439b",
+              "name": "Desktop - 1 (1).png",
+              "sizeInBytes": 43279,
+              "publicUrl": null,
+              "privateUrl": "tenant/606c9c61826963485fbde0ed/petPhotos/photo/2f1d6c14-550b-4f65-83d3-ce8e8bc00d9d.png",
+              "updatedAt": "2021-07-10T13:21:38.150Z",
+              "createdAt": "2021-07-10T13:21:38.150Z",
+              "id": "60e99ee2ff61ec28ec9b439b"
+            }
+          ],
+          "petId": "606cde06850d95778b561c9b",
+          "description": "Super photos of my happy pet",
+          "tenant": "606c9c61826963485fbde0ed",
+          "createdBy": "606c9c528269632780bde0eb",
+          "updatedBy": "606c9c528269632780bde0eb",
+          "createdAt": "2021-07-10T13:18:47.940Z",
+          "updatedAt": "2021-07-10T13:21:38.150Z",
+          "__v": 0,
+          "id": "60e99e37ff61ec824e9b4391"
+        }
+      ],
+      "vaccines": [],
+      "hasBeenVaccinated": false,
+      "hasBeenDewormed": false,
+      "hasBeenSterilizedSpayed": false,
+      "isLost": false,
+      "usersAuthorized": [
+        {
+          "_id": "607b7f4ffb011dcdd9cdceed",
+          "id": "607b7f4ffb011dcdd9cdceed",
+          "firstName": "Eleph",
+          "lastName": "Webb",
+          "email": "elephwebb@gmail.com"
+        }
+      ],
+      "businessAuthorized": [
+        {
+          "location": {
+            "type": "Point",
+            "coordinates": [
+              -58.4046521,
+              -34.5895193
+            ]
+          },
+          "services": [],
+          "categories": [],
+          "_id": "606e1a0da3629fd6ab022116",
+          "name": "Branch aipetto Buenos Aires - Argentina",
+          "tenant": "606c9c61826963485fbde0ed",
+          "createdBy": "606c9c528269632780bde0eb",
+          "updatedBy": "606c9c528269632780bde0eb",
+          "createdAt": "2021-04-07T20:46:05.091Z",
+          "updatedAt": "2021-08-25T04:53:54.004Z",
+          "__v": 0,
+          "addressPostCode": "C1425",
+          "addressStreet": "Juncal 2720 CABA, Argentina",
+          "addressStreetNumber": "2720",
+          "businessID": "CUITAQUI",
+          "contactEmail": null,
+          "contactName": null,
+          "contactPhone": null,
+          "contactWhatsApp": null,
+          "country": "6096a120e384f299a7a379f2",
+          "businessLogo": [],
+          "facebook": null,
+          "instagram": null,
+          "linkedin": null,
+          "notes": null,
+          "streetComplement": null,
+          "website": null,
+          "id": "606e1a0da3629fd6ab022116"
+        },
+        {
+          "services": [
+            "6096fd71fd5e8b74b1972da6",
+            "6096fd81fd5e8b2456972da8"
+          ],
+          "categories": [],
+          "_id": "60719bebe226dc0cc53266fc",
+          "name": "Belnomo Associates Ltd",
+          "tenant": "606c9c61826963485fbde0ed",
+          "createdBy": "607194203f3e4672a6564ef9",
+          "updatedBy": "606c9c528269632780bde0eb",
+          "createdAt": "2021-04-10T12:36:59.170Z",
+          "updatedAt": "2021-07-30T06:20:36.480Z",
+          "__v": 0,
+          "addressPostCode": null,
+          "addressStreet": null,
+          "addressStreetNumber": null,
+          "businessID": "ENGLANDBUSINESS-ID",
+          "contactEmail": null,
+          "contactName": null,
+          "contactPhone": null,
+          "contactWhatsApp": null,
+          "country": "6096a158e384f299a7a379f8",
+          "city": null,
+          "state": null,
+          "businessLogo": [],
+          "id": "60719bebe226dc0cc53266fc"
+        }
+      ],
+      "isLookingForMatch": true,
+      "diseases": [],
+      "isGuideDog": false,
+      "matches": [
+        {
+          "petOwners": [
+            "606c9c528269632780bde0eb"
+          ],
+          "photos": [],
+          "vaccines": [],
+          "hasBeenVaccinated": false,
+          "hasBeenDewormed": false,
+          "hasBeenSterilizedSpayed": false,
+          "isLost": false,
+          "usersAuthorized": [],
+          "businessAuthorized": [],
+          "isLookingForMatch": false,
+          "diseases": [],
+          "isGuideDog": false,
+          "matches": [],
+          "petFriends": [],
+          "hasMicrochip": false,
+          "_id": "60dcdc39cc92f6166f70636f",
+          "type": "60719b28e226dcd2853266f5",
+          "breed": "6096a8ee9dc4296c217623fe",
+          "sex": "female",
+          "profileImage": [
+            {
+              "_id": "60dcdc39cc92f6166f706370",
+              "name": "WhatsApp Image 2021-06-29 at 5.16.12 PM.jpeg",
+              "sizeInBytes": 108947,
+              "publicUrl": null,
+              "privateUrl": "tenant/606c9c61826963485fbde0ed/pet/profileImage/582b79b4-c239-432e-8066-ca20bce26f27.jpeg",
+              "createdAt": "2021-06-30T21:03:53.563Z",
+              "updatedAt": "2021-06-30T21:03:53.563Z",
+              "id": "60dcdc39cc92f6166f706370"
+            }
+          ],
+          "color": "black",
+          "age": 1,
+          "birthdate": "2020-11-26",
+          "nickname": "Maguie",
+          "name": "Maguinolia",
+          "customerId": null,
+          "tenant": "606c9c61826963485fbde0ed",
+          "createdBy": "606c9c528269632780bde0eb",
+          "updatedBy": "606c9c528269632780bde0eb",
+          "createdAt": "2021-06-30T21:03:53.563Z",
+          "updatedAt": "2021-06-30T21:03:53.563Z",
+          "__v": 0,
+          "id": "60dcdc39cc92f6166f70636f"
+        }
+      ],
+      "petFriends": [
+        {
+          "petOwners": [],
+          "photos": [],
+          "vaccines": [],
+          "hasBeenVaccinated": false,
+          "hasBeenDewormed": false,
+          "hasBeenSterilizedSpayed": false,
+          "isLost": false,
+          "usersAuthorized": [],
+          "businessAuthorized": [],
+          "isLookingForMatch": false,
+          "diseases": [],
+          "isGuideDog": false,
+          "matches": [],
+          "petFriends": [],
+          "hasMicrochip": false,
+          "_id": "60719bbce226dc41f73266f8",
+          "type": "60719b28e226dcd2853266f5",
+          "breed": null,
+          "sex": "male",
+          "profileImage": [],
+          "color": null,
+          "age": 0,
+          "birthdate": "2030-01-01",
+          "nickname": null,
+          "name": "McGiver",
+          "tenant": "606c9c61826963485fbde0ed",
+          "createdBy": "607194203f3e4672a6564ef9",
+          "updatedBy": "606c9c528269632780bde0eb",
+          "createdAt": "2021-04-10T12:36:12.755Z",
+          "updatedAt": "2021-05-08T14:51:13.139Z",
+          "__v": 0,
+          "id": "60719bbce226dc41f73266f8"
+        }
+      ],
+      "hasMicrochip": false,
+      "_id": "60e9aad7ea50b020af67b3c4",
+      "numberOfLikes": 245,
+      "biography": "Este formulário vai sofrer modificações como o formato da data de nascimento ou mesmo que não mostre o ID em PetPhotos... Também acredito que este formulário e todos aqueles que tem muitos campos precisam ter outra disposição como 2 colunas.",
+      "health": "healthy",
+      "furLength": "medium",
+      "maturitySize": "medium",
+      "type": {
+        "_id": "60719b28e226dcd2853266f5",
+        "breeds": [
+          "60719ae8e226dc03d63266f3",
+          "6071c705a1c507205a316b36"
+        ],
+        "image": [
+          {
+            "_id": "610eb89815221d3b24e96e20",
+            "name": "dog.png",
+            "sizeInBytes": 25717,
+            "publicUrl": null,
+            "privateUrl": "tenant/606c9c61826963485fbde0ed/petTypes/image/2f610544-90c7-470a-b1e5-40a288aaab9b.png",
+            "updatedAt": "2021-08-07T16:45:12.274Z",
+            "createdAt": "2021-08-07T16:45:12.274Z",
+            "id": "610eb89815221d3b24e96e20"
+          }
+        ],
+        "name": "Dog",
+        "tenant": "606c9c61826963485fbde0ed",
+        "createdBy": "607194203f3e4672a6564ef9",
+        "updatedBy": "606c9c528269632780bde0eb",
+        "createdAt": "2021-04-10T12:33:44.608Z",
+        "updatedAt": "2021-08-07T16:45:12.274Z",
+        "__v": 0,
+        "language": "6096a50fb57043bb3ae7b537",
+        "id": "60719b28e226dcd2853266f5"
+      },
+      "breed": {
+        "_id": "6096a8f29dc4290fbf76243a",
+        "language": "6096a50fb57043bb3ae7b537",
+        "name": "Cesky Terrier",
+        "importHash": "881b8f477a6f50d812cff49cc828bd96",
+        "tenant": "606c9c61826963485fbde0ed",
+        "createdBy": "606c9c528269632780bde0eb",
+        "updatedBy": "606c9c528269632780bde0eb",
+        "image": [],
+        "createdAt": "2021-05-08T15:06:26.066Z",
+        "updatedAt": "2021-05-08T15:06:26.066Z",
+        "__v": 0,
+        "id": "6096a8f29dc4290fbf76243a"
+      },
+      "sex": "male",
+      "secondColor": "white",
+      "color": "black",
+      "age": 72,
+      "birthdate": "2015-12-27",
+      "profileImage": [
+        {
+          "_id": "60e9aad7ea50b04fc867b3c5",
+          "name": "IMG_20210530_134257_resized_20210616_021224456.jpg",
+          "sizeInBytes": 527626,
+          "publicUrl": null,
+          "privateUrl": "tenant/606c9c61826963485fbde0ed/pet/profileImage/84fc6e0a-4019-4b87-9998-19c7e9af9cd6.jpg",
+          "createdAt": "2021-07-10T14:12:39.676Z",
+          "updatedAt": "2021-07-10T14:12:39.676Z",
+          "id": "60e9aad7ea50b04fc867b3c5",
+          "downloadUrl": "http://localhost:8080/api/file/download?privateUrl=tenant/606c9c61826963485fbde0ed/pet/profileImage/84fc6e0a-4019-4b87-9998-19c7e9af9cd6.jpg"
+        },
+        {
+          "_id": "60e9aad7ea50b06eb567b3c6",
+          "name": "alvan-nee-T-0EW-SEbsE-unsplash.jpg",
+          "sizeInBytes": 1330686,
+          "publicUrl": null,
+          "privateUrl": "tenant/606c9c61826963485fbde0ed/pet/profileImage/6b89ac3b-6f5b-4f15-b9cb-1f6e51edbd2a.jpg",
+          "createdAt": "2021-07-10T14:12:39.676Z",
+          "updatedAt": "2021-07-10T14:12:39.676Z",
+          "id": "60e9aad7ea50b06eb567b3c6",
+          "downloadUrl": "http://localhost:8080/api/file/download?privateUrl=tenant/606c9c61826963485fbde0ed/pet/profileImage/6b89ac3b-6f5b-4f15-b9cb-1f6e51edbd2a.jpg"
+        }
+      ],
+      "nickname": "SuperPet",
+      "name": "Super Pet com novos campos no Pet Model",
+      "secondBreedMixed": null,
+      "customerId": null,
+      "tenant": "606c9c61826963485fbde0ed",
+      "createdBy": "606c9c528269632780bde0eb",
+      "updatedBy": "606c9c528269632780bde0eb",
+      "createdAt": "2021-07-10T14:12:39.677Z",
+      "updatedAt": "2021-07-10T14:12:39.677Z",
+      "__v": 0,
+      "id": "60e9aad7ea50b020af67b3c4"
+    },
+    {
+      "petOwners": [
+        {
+          "_id": "606c9c528269632780bde0eb",
+          "id": "606c9c528269632780bde0eb",
+          "firstName": "Jhony",
+          "lastName": "Vidal",
+          "email": "mrjhonyvidal@gmail.com"
+        }
+      ],
+      "photos": [],
+      "vaccines": [],
+      "hasBeenVaccinated": false,
+      "hasBeenDewormed": false,
+      "hasBeenSterilizedSpayed": false,
+      "isLost": false,
+      "usersAuthorized": [],
+      "businessAuthorized": [],
+      "isLookingForMatch": false,
+      "diseases": [],
+      "isGuideDog": false,
+      "matches": [],
+      "petFriends": [],
+      "hasMicrochip": false,
+      "_id": "60dcdc39cc92f6166f70636f",
+      "type": {
+        "_id": "60719b28e226dcd2853266f5",
+        "breeds": [
+          "60719ae8e226dc03d63266f3",
+          "6071c705a1c507205a316b36"
+        ],
+        "image": [
+          {
+            "_id": "610eb89815221d3b24e96e20",
+            "name": "dog.png",
+            "sizeInBytes": 25717,
+            "publicUrl": null,
+            "privateUrl": "tenant/606c9c61826963485fbde0ed/petTypes/image/2f610544-90c7-470a-b1e5-40a288aaab9b.png",
+            "updatedAt": "2021-08-07T16:45:12.274Z",
+            "createdAt": "2021-08-07T16:45:12.274Z",
+            "id": "610eb89815221d3b24e96e20"
+          }
+        ],
+        "name": "Dog",
+        "tenant": "606c9c61826963485fbde0ed",
+        "createdBy": "607194203f3e4672a6564ef9",
+        "updatedBy": "606c9c528269632780bde0eb",
+        "createdAt": "2021-04-10T12:33:44.608Z",
+        "updatedAt": "2021-08-07T16:45:12.274Z",
+        "__v": 0,
+        "language": "6096a50fb57043bb3ae7b537",
+        "id": "60719b28e226dcd2853266f5"
+      },
+      "breed": {
+        "_id": "6096a8ee9dc4296c217623fe",
+        "language": "6096a50fb57043bb3ae7b537",
+        "name": "French Bulldog",
+        "importHash": "21e654f18b5d5216ccbe9d2e70665e88",
+        "tenant": "606c9c61826963485fbde0ed",
+        "createdBy": "606c9c528269632780bde0eb",
+        "updatedBy": "606c9c528269632780bde0eb",
+        "image": [],
+        "createdAt": "2021-05-08T15:06:22.116Z",
+        "updatedAt": "2021-05-08T15:06:22.116Z",
+        "__v": 0,
+        "id": "6096a8ee9dc4296c217623fe"
+      },
+      "sex": "female",
+      "profileImage": [
+        {
+          "_id": "60dcdc39cc92f6166f706370",
+          "name": "WhatsApp Image 2021-06-29 at 5.16.12 PM.jpeg",
+          "sizeInBytes": 108947,
+          "publicUrl": null,
+          "privateUrl": "tenant/606c9c61826963485fbde0ed/pet/profileImage/582b79b4-c239-432e-8066-ca20bce26f27.jpeg",
+          "createdAt": "2021-06-30T21:03:53.563Z",
+          "updatedAt": "2021-06-30T21:03:53.563Z",
+          "id": "60dcdc39cc92f6166f706370",
+          "downloadUrl": "http://localhost:8080/api/file/download?privateUrl=tenant/606c9c61826963485fbde0ed/pet/profileImage/582b79b4-c239-432e-8066-ca20bce26f27.jpeg"
+        }
+      ],
+      "color": "black",
+      "age": 1,
+      "birthdate": "2020-11-26",
+      "nickname": "Maguie",
+      "name": "Maguinolia",
+      "customerId": null,
+      "tenant": "606c9c61826963485fbde0ed",
+      "createdBy": "606c9c528269632780bde0eb",
+      "updatedBy": "606c9c528269632780bde0eb",
+      "createdAt": "2021-06-30T21:03:53.563Z",
+      "updatedAt": "2021-06-30T21:03:53.563Z",
+      "__v": 0,
+      "id": "60dcdc39cc92f6166f70636f"
+    },
+    {
+      "petOwners": [],
+      "photos": [],
+      "vaccines": [],
+      "hasBeenVaccinated": false,
+      "hasBeenDewormed": false,
+      "hasBeenSterilizedSpayed": false,
+      "isLost": false,
+      "usersAuthorized": [],
+      "businessAuthorized": [],
+      "isLookingForMatch": false,
+      "diseases": [],
+      "isGuideDog": false,
+      "matches": [],
+      "petFriends": [],
+      "hasMicrochip": false,
+      "_id": "60719bbce226dc41f73266f8",
+      "type": {
+        "_id": "60719b28e226dcd2853266f5",
+        "breeds": [
+          "60719ae8e226dc03d63266f3",
+          "6071c705a1c507205a316b36"
+        ],
+        "image": [
+          {
+            "_id": "610eb89815221d3b24e96e20",
+            "name": "dog.png",
+            "sizeInBytes": 25717,
+            "publicUrl": null,
+            "privateUrl": "tenant/606c9c61826963485fbde0ed/petTypes/image/2f610544-90c7-470a-b1e5-40a288aaab9b.png",
+            "updatedAt": "2021-08-07T16:45:12.274Z",
+            "createdAt": "2021-08-07T16:45:12.274Z",
+            "id": "610eb89815221d3b24e96e20"
+          }
+        ],
+        "name": "Dog",
+        "tenant": "606c9c61826963485fbde0ed",
+        "createdBy": "607194203f3e4672a6564ef9",
+        "updatedBy": "606c9c528269632780bde0eb",
+        "createdAt": "2021-04-10T12:33:44.608Z",
+        "updatedAt": "2021-08-07T16:45:12.274Z",
+        "__v": 0,
+        "language": "6096a50fb57043bb3ae7b537",
+        "id": "60719b28e226dcd2853266f5"
+      },
+      "breed": null,
+      "sex": "male",
+      "profileImage": [],
+      "color": null,
+      "age": 0,
+      "birthdate": "2030-01-01",
+      "nickname": null,
+      "name": "McGiver",
+      "tenant": "606c9c61826963485fbde0ed",
+      "createdBy": "607194203f3e4672a6564ef9",
+      "updatedBy": "606c9c528269632780bde0eb",
+      "createdAt": "2021-04-10T12:36:12.755Z",
+      "updatedAt": "2021-05-08T14:51:13.139Z",
+      "__v": 0,
+      "id": "60719bbce226dc41f73266f8"
+    },
+    {
+      "petOwners": [],
+      "photos": [],
+      "vaccines": [],
+      "hasBeenVaccinated": false,
+      "hasBeenDewormed": false,
+      "hasBeenSterilizedSpayed": false,
+      "isLost": false,
+      "usersAuthorized": [],
+      "businessAuthorized": [],
+      "isLookingForMatch": false,
+      "diseases": [],
+      "isGuideDog": false,
+      "matches": [],
+      "petFriends": [],
+      "hasMicrochip": false,
+      "_id": "606cde06850d95778b561c9b",
+      "type": {
+        "_id": "606cddf1850d95c945561c97",
+        "breeds": [
+          "606cdde8850d952696561c95",
+          "606cde00850d958b87561c99"
+        ],
+        "image": [
+          {
+            "_id": "610eb8a476c2005a115dd7f2",
+            "name": "cat.png",
+            "sizeInBytes": 23150,
+            "publicUrl": null,
+            "privateUrl": "tenant/606c9c61826963485fbde0ed/petTypes/image/811a299e-02a9-445f-9266-8a124a8813ed.png",
+            "updatedAt": "2021-08-07T16:45:24.765Z",
+            "createdAt": "2021-08-07T16:45:24.765Z",
+            "id": "610eb8a476c2005a115dd7f2"
+          }
+        ],
+        "name": "Cat",
+        "tenant": "606c9c61826963485fbde0ed",
+        "createdBy": "606c9c528269632780bde0eb",
+        "updatedBy": "606c9c528269632780bde0eb",
+        "createdAt": "2021-04-06T22:17:21.792Z",
+        "updatedAt": "2021-08-07T16:45:24.765Z",
+        "__v": 0,
+        "language": "6096a50fb57043bb3ae7b537",
+        "id": "606cddf1850d95c945561c97"
+      },
+      "breed": null,
+      "sex": "male",
+      "profileImage": [],
+      "color": "black",
+      "age": 3,
+      "birthdate": "2018-04-05",
+      "nickname": "pretinho",
+      "name": "Snoopy",
+      "tenant": "606c9c61826963485fbde0ed",
+      "createdBy": "606c9c528269632780bde0eb",
+      "updatedBy": "606c9c528269632780bde0eb",
+      "createdAt": "2021-04-06T22:17:42.692Z",
+      "updatedAt": "2021-04-23T18:41:18.019Z",
+      "__v": 0,
+      "id": "606cde06850d95778b561c9b"
+    }
+  ],
+  "count": 4
+}

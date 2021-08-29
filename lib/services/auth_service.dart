@@ -1,26 +1,81 @@
 import 'dart:convert';
 
 import 'package:aipetto/config/environment.dart';
+import 'package:aipetto/model/user/user.dart';
+import 'package:aipetto/storage/secure_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class AuthService{
+abstract class AuthenticationService {
+  Future<User> getCurrentUser();
+  Future<User> signInWithEmailAndPassword(String email, String password);
+  Future<void> signOut();
+}
 
- Future login(String email, String password) async {
+class AipettoCoreAuthenticationService extends AuthenticationService {
+  final _baseUrl = Environment.aipettoCoreApi;
+  final http.Client httpClient;
 
-   final data = {
-     "email": email,
-     "password": password,
-     "invitationToken": "",
-     "tenantId": ""
-   };
+  AipettoCoreAuthenticationService({ @required this.httpClient})
+      : assert(httpClient != null);
 
-  final resp = await http.post('${Environment.aipettoCoreApi}/auth/sign-in',
-        body: jsonEncode(data),
+  @override
+  Future<User> getCurrentUser() async {
+    // TODO Refactor extracting secureStorage instantiation here but injecting from out of authentication service class
+    final SecureStorage secureStorageRepository = new SecureStorage();
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final resp = await http.get(Uri.parse('$_baseUrl/auth/me'), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if (resp.statusCode == 200) {
+      return userFromJson(resp.body);
+    }
+    return null;
+  }
+
+  @override
+  Future<User> signInWithEmailAndPassword(String email, String password) async {
+    // TODO Refactor extracting secureStorage instantiation here but injecting from out of authentication service class
+    final SecureStorage secureStorageRepository = new SecureStorage();
+
+    final authData = {
+      'email': email,
+      'password': password,
+      'invitationToken': "",
+      'tenantId': ""
+    };
+
+    final getJwtResponse = await this.httpClient.post(Uri.parse('$_baseUrl/auth/sign-in'),
+        body: jsonEncode(authData),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-type': 'application/json'
         }
-  );
+    );
 
-  print( resp.body );
- }
+    if (getJwtResponse.statusCode == 200) {
+      await secureStorageRepository.persistToken(getJwtResponse.body);
+
+      final userResp = await http.get(Uri.parse('$_baseUrl/auth/me'), headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${getJwtResponse.body}',
+      });
+
+      if (userResp.statusCode == 200) {
+        return userFromJson(userResp.body);
+      }
+    }
+    return null;
+  }
+
+  @override
+  Future<void> signOut() async {
+    // TODO Refactor extracting secureStorage instantiation here but injecting from out of authentication service class
+    final SecureStorage secureStorageRepository = new SecureStorage();
+    await secureStorageRepository.deleteToken();
+  }
 }

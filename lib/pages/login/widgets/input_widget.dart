@@ -1,5 +1,4 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/services/auth_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +40,7 @@ class _InputWidgetState extends State<InputWidget> {
             print(_emailController.text);
             print(_passwordController.text);
 
-            // final authService = Provider.of<AuthService>(context, listen: false);
+            // final authService = Provider.of<AipettoCoreAuthenticationService>(context, listen: false);
             // authService.login(_emailController, _passwordController);
 
              Navigator.of(context)

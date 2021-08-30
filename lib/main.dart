@@ -1,14 +1,14 @@
-import 'package:aipetto/bloc/pet_type/pet_type_bloc.dart';
-import 'package:aipetto/data/pref_manager.dart';
-import 'package:aipetto/repositories/petType/petTypeApiClient.dart';
-import 'package:aipetto/repositories/petType/pet_type_repository.dart';
+import 'package:aipetto/config/pref_manager.dart';
+import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
+import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aipetto/bloc/user_geolocation/user_geolocation_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
+import 'modules/petType/repository/pet_type_repository.dart';
+import 'modules/petType/services/petTypeApiClient.dart';
 import 'routes/route_generator.dart';
 import 'routes/routes.dart';
 import 'utils/themebloc/theme_bloc.dart';

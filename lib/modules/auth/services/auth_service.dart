@@ -4,6 +4,7 @@ import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 
 abstract class AuthenticationService {
@@ -72,9 +73,47 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
     return null;
   }
 
+  GoogleSignIn _googleSignIn = GoogleSignIn(
+    // With this scope it allows us have name, email and profile photo
+    scopes: <String>[
+      'email',
+    ],
+  );
+
+  Future signInWithGoogle() async {
+    final _baseUrl = Environment.aipettoCoreApi;
+    final _baseHost = Environment.aipettoCoreHost;
+
+    try{
+      final GoogleSignInAccount account = await _googleSignIn.signIn();
+      final googleKey = await account.authentication;
+
+      final signInWithGoogleEndpoint = Uri(
+          scheme: 'http',
+          host: '$_baseHost',
+          path: '/api/auth/mobile/google'
+      );
+
+      final googleTokenJson = {
+        'token': googleKey.idToken
+      };
+
+      return await http.post(Uri.parse('$_baseUrl/auth/mobile/google'),
+          body: jsonEncode(googleTokenJson),
+          headers: {
+            'Content-type': 'application/json'
+          }
+      );
+    } catch (e) {
+      print('Error Google Sign in');
+      print(e);
+      return null;
+    }
+  }
+
   @override
   Future<void> signOut() async {
-    // TODO Refactor extracting secureStorage instantiation here but injecting from out of authentication service class
+    await _googleSignIn.signOut();
     final SecureStorage secureStorageRepository = new SecureStorage();
     await secureStorageRepository.deleteToken();
   }

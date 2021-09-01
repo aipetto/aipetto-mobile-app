@@ -15,78 +15,38 @@ class User extends Equatable{
     this.emailVerified,
     this.id,
     this.email,
-    this.providerId,
-    this.provider,
     this.firstName,
     this.lastName,
-    this.fullName,
-    this.avatars,
     this.tenants,
-    this.createdAt,
-    this.updatedAt,
-    this.v,
-    this.updatedBy,
-    this.phoneNumber,
-    this.jwtTokenInvalidBefore,
-    this.userId,
+    this.avatars,
   });
 
   bool emailVerified;
   String id;
   String email;
-  String providerId;
-  String provider;
   String firstName;
   String lastName;
-  String fullName;
-  List<Avatar> avatars;
-  List<TenantElement> tenants;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String updatedBy;
-  dynamic phoneNumber;
-  DateTime jwtTokenInvalidBefore;
-  String userId;
+  List<TenantElement> tenants = [];
+  List<Avatar> avatars = [];
 
   factory User.fromJson(Map<String, dynamic> json) => User(
     emailVerified: json["emailVerified"],
     id: json["_id"],
     email: json["email"],
-    providerId: json["providerId"],
-    provider: json["provider"],
     firstName: json["firstName"],
     lastName: json["lastName"],
-    fullName: json["fullName"],
-    avatars: List<Avatar>.from(json["avatars"].map((x) => Avatar.fromJson(x))),
     tenants: List<TenantElement>.from(json["tenants"].map((x) => TenantElement.fromJson(x))),
-    createdAt: DateTime.parse(json["createdAt"]),
-    updatedAt: DateTime.parse(json["updatedAt"]),
-    v: json["__v"],
-    updatedBy: json["updatedBy"],
-    phoneNumber: json["phoneNumber"],
-    jwtTokenInvalidBefore: DateTime.parse(json["jwtTokenInvalidBefore"]),
-    userId: json["id"],
+    avatars: List<Avatar>.from(json["avatars"].map((x) => Avatar.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "emailVerified": emailVerified,
     "_id": id,
     "email": email,
-    "providerId": providerId,
-    "provider": provider,
     "firstName": firstName,
     "lastName": lastName,
-    "fullName": fullName,
-    "avatars": List<dynamic>.from(avatars.map((x) => x.toJson())),
     "tenants": List<dynamic>.from(tenants.map((x) => x.toJson())),
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
-    "__v": v,
-    "updatedBy": updatedBy,
-    "phoneNumber": phoneNumber,
-    "jwtTokenInvalidBefore": jwtTokenInvalidBefore.toIso8601String(),
-    "id": userId,
+    "avatars": List<dynamic>.from(avatars.map((x) => x.toJson())),
   };
 
   @override

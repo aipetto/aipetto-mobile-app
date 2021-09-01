@@ -1,6 +1,10 @@
+import 'package:aipetto/modules/auth/bloc/authentication.dart';
+import 'package:aipetto/modules/auth/bloc/authentication_bloc.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerPage extends StatelessWidget {
   final Function onTap;
@@ -8,6 +12,26 @@ class DrawerPage extends StatelessWidget {
   const DrawerPage({Key key, @required this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    final authBloc = BlocProvider.of<AuthenticationBloc>(context);
+    String profileImage;
+    String firstName;
+    String lastName;
+
+    final state = BlocProvider.of<AuthenticationBloc>(context).state;
+    if (state is AuthenticationAuthenticated) {
+       if(state.user.avatars != null){
+         profileImage = state.user.avatars.first.publicUrl;
+       }
+       if(state.user.firstName != null){
+         firstName = state.user.firstName;
+       }
+
+       if(state.user.lastName != null){
+         lastName = state.user.lastName;
+       }
+    }
+
     return GestureDetector(
       onTap: onTap,
       child: Scaffold(
@@ -27,16 +51,14 @@ class DrawerPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       CircleAvatar(
                         radius: 50,
                         backgroundColor: Colors.grey,
-                        backgroundImage: AssetImage(
-                          'assets/images/pets/snoopy-jvo.jpg',
-                        ),
+                        backgroundImage: NetworkImage(profileImage),
                       ),
                       SizedBox(
                         height: 10,
@@ -44,7 +66,7 @@ class DrawerPage extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Text(
-                            'Mr Jhony Vidal',
+                            '$firstName $lastName',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -82,6 +104,12 @@ class DrawerPage extends StatelessWidget {
                   text: 'settings',
                   onTap: () => Navigator.of(context).pushNamed(Routes.appSettings),
                 ),
+                IconButton(
+                    icon: Icon(FontAwesomeIcons.doorOpen),
+                    onPressed: () {
+                      authBloc.add(UserLoggedOut());
+                    }
+                )
               ],
             ),
           ),

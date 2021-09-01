@@ -5,11 +5,17 @@ import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:aipetto/modules/home/widgets/app_bar_title_widget.dart';
 import 'package:aipetto/modules/home/widgets/nav_bar_item_widget.dart';
 import 'package:aipetto/modules/message/pages/messages_page.dart';
+import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+
+  final User user;
+
+  const Home({Key key, this.user}) : super(key: key);
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -50,7 +56,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final _pages = [
-      HomePage(),
+      HomePage(user: widget.user),
       Container(),
       MessagesPage(),
     ];

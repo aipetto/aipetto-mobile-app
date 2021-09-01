@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'config/pref_manager.dart';
+import 'modules/auth/bloc/authentication_bloc.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+
   @override
   void initState() {
     super.initState();
@@ -25,14 +27,16 @@ class _SplashPageState extends State<SplashPage> {
   _loadScreen() async {
 
     context.bloc<ThemeBloc>().add(ThemeChanged(
-        theme: Prefs.getBool(Prefs.DARKTHEME, def: false)
+        theme: Prefs.getBool(Prefs.DARKTHEME, def: true)
             ? AppTheme.DarkTheme
             : AppTheme.LightTheme));
+
     Navigator.of(context).pushReplacementNamed(Routes.login);
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Container(
         width: double.infinity,

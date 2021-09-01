@@ -20,7 +20,7 @@ class NoAppointmentsWidget extends StatelessWidget {
           Text(
             'there_is_no_appontments'.tr(),
             style: TextStyle(
-              color: kColorDarkBlue,
+              color: kAmphibianColorBlueLight,
               fontSize: 20,
               fontFamily: 'NunitoSans',
               fontWeight: FontWeight.w700,
@@ -32,8 +32,8 @@ class NoAppointmentsWidget extends StatelessWidget {
           Text(
             'create_new_appointment'.tr(),
             style: TextStyle(
-              color: Colors.grey,
-              fontSize: 14,
+              color: Colors.white,
+              fontSize: 16,
               fontFamily: 'NunitoSans',
               fontWeight: FontWeight.w300,
             ),

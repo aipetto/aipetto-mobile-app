@@ -5,11 +5,17 @@ import 'package:aipetto/modules/home/widgets/no_appointments_widget.dart';
 import 'package:aipetto/modules/home/widgets/section_header_widget.dart';
 import 'package:aipetto/modules/pet/models/pet.dart';
 import 'package:aipetto/modules/pet/widgets/pets_of_owner_list_item.dart';
+import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+
+  final User user;
+
+  const HomePage({Key key, this.user}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -21,6 +27,9 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
+    final String userFirstName = widget.user.firstName;
+
     return Scaffold(
       body: SingleChildScrollView(
       child: Column(
@@ -38,13 +47,13 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '${'hello'.tr()},',
+                      '${'hello'.tr()} $userFirstName',
                       style: Theme.of(context).textTheme.headline6.copyWith(
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     Text(
-                      'how_are_you_today'.tr(),
+                      'good_to_see_you_here'.tr(),
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 14,

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "78452845368",
+    "project_id": "aipetto-312421",
+    "storage_bucket": "aipetto-312421.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78452845368:android:0a68df27971b4768dd2fcd",
+        "android_client_info": {
+          "package_name": "com.aipetto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78452845368-0fih14v8f9coehbrl4k9qtdllmcm798c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aipetto",
+            "certificate_hash": "cb17888235e31ceae6294e36df2385742e8047c6"
+          }
+        },
+        {
+          "client_id": "78452845368-7qjrm95540uvjnlpcfa3vkpr4vldgrte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqg2_S1j6iMxJIZQcDYyhsIpcN96J2-Ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78452845368-1lsq8ckua8p55oqsob4k1v68mqaiqc5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

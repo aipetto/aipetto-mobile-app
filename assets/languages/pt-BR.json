@@ -2,6 +2,7 @@
     "app_name": "aipetto",
     "app_slogan": "Serviços para seu pet na palma da sua mão em qualquer lugar",
     "sign_in": "Registrar",
+    "sign_in_google": "Entrar com Google",
     "forgot_yout_password": "Recuperar senha?",
     "social_login": "Social login",
     "dont_have_an_account": "Desculpe, mas ainda nao tem conta registrada",
@@ -26,8 +27,8 @@
     "health_data": "Dados de Saúde",
     "chat": "Chat",
     "pet_profile": "Perfil",
-    "hello": "Olá",
-    "how_are_you_today": "Como se sente hoje?",
+    "hello": "Oi",
+    "good_to_see_you_here": "Que bom ver você aqui",
     "there_is_no_appontments": "Nenhuma reserva agendada",
     "create_new_appointment": "Click abaixo para escolher um serviço.",
     "next_appointment": "Próxima Consulta",
@@ -215,7 +216,7 @@
     "details": "Detalhes",
     "reschedule": "Reagendar",
     "notifications": "Notifications",
-    "hello_again": "Bem-vindo ao aipetto",
+    "hello_again": "Bem-vindo",
     "login_to_your_account_to_continue": "Entre na sua conta",
     "welcome_to_app_name": "aipetto",
     "create_an_account_to_get_started": "Create an account to get started",
@@ -232,5 +233,7 @@
     "breed": "Raça",
     "breed_dot": "Raça:",
     "reservation_details": "Detalhes da reserva",
-    "reserve": "Agendar"
+    "reserve": "Agendar",
+    "unknown_failure_error": "Ocorreu um erro desconhecido, tente novamente em um instante",
+    "failure_to_login": "Verifique seus dados de acesso e tente novamente"
 }

@@ -1,6 +1,8 @@
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
 import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
+import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/splash_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

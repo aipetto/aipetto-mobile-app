@@ -39,7 +39,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
     offerList = getOfferList();
   }
 
-  void something(int value) {
+  void serviceSelectedToReserve(int value) {
     setState(() {
       _radioValue1 = value;
       print(_radioValue1);
@@ -199,7 +199,10 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       children: <Widget>[
                         Image.asset(categoryList[index].img, height: 40, width: 40),
                         8.height,
-                        Text(categoryList[index].categoryName, style: TextStyle(color: BHAppTextColorSecondary, fontSize: 16))
+                        Text(categoryList[index].categoryName, style: Theme.of(context)
+                            .textTheme
+                            .subtitle2
+                            .copyWith(fontSize: 14),)
                       ],
                     ),
                   );
@@ -209,7 +212,10 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
 
             Container(
               padding: EdgeInsets.only(right: 16, left: 16),
-              child: Text(BHTxtPopularServices, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: BHAppTextColorPrimary)),
+              child: Text(BHTxtPopularServices, style: Theme.of(context)
+                  .textTheme
+                  .subtitle2
+                  .copyWith(fontSize: 14),),
             ),
             ListView.builder(
               itemCount: servicesList.length,
@@ -261,7 +267,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                         value: servicesList[index].radioVal,
                         groupValue: _radioValue1,
                         activeColor: kAmphibianColorGreenLight,
-                        onChanged: (value) => something(value),
+                        onChanged: (value) => serviceSelectedToReserve(value),
                       ),
                     ],
                   ),

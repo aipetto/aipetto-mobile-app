@@ -39,7 +39,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>{
       }
 
     }catch (e) {
-      yield AuthenticationFailure(message: 'Unknown error ocurred');
+      yield AuthenticationFailure(message: 'Please check your internet connection');
     }
   }
 

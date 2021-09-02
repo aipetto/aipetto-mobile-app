@@ -46,16 +46,7 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
             );
           },
         ),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(Routes.filter);
-            },
-            icon: Icon(
-              Icons.filter_list,
-            ),
-          )
-        ],
+        actions: <Widget>[],
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -58,7 +58,7 @@ class DrawerPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 50,
                         backgroundColor: Colors.grey,
-                        backgroundImage: NetworkImage(profileImage),
+                        backgroundImage: profileImage != null ? NetworkImage(profileImage) : AssetImage('assets/images/logos/aipetto-logo-transparent.png'),
                       ),
                       SizedBox(
                         height: 10,
@@ -108,6 +108,7 @@ class DrawerPage extends StatelessWidget {
                     icon: Icon(FontAwesomeIcons.doorOpen),
                     onPressed: () {
                       authBloc.add(UserLoggedOut());
+                      Navigator.of(context).pushNamed(Routes.login);
                     }
                 )
               ],

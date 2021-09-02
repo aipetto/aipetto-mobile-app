@@ -27,11 +27,10 @@ class PetsOfOwnerListItem extends StatelessWidget {
               ),
               Text(
                 pet.name,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2
+                    .copyWith(fontSize: 14),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

@@ -48,7 +48,6 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
         ),
         Text(
           _customer ? '${'full_name'.tr()}*' : '${'customer_full_name'.tr()}*',
-          style: kInputTextStyle,
         ),
         CustomTextFormField(
           controller: _customerController,
@@ -110,7 +109,7 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'reservation_details'.tr(),
+          '$_color',
         ),
       ),
       body: SafeArea(
@@ -125,7 +124,7 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        color: _isdark ? Colors.transparent : Colors.white,
+                        color: Color(0xff4a4a4a),
                         child: BusinessPlaceItem(
                           business: businesses[0],
                         ),

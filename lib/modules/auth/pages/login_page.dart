@@ -57,10 +57,13 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ));
               }
+
+              if (state is AuthenticationAuthenticated) {
+                return _AuthForm();
+              }
+
               return Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
+                child: Text('$state'),
               );
             }
         ),
@@ -158,13 +161,8 @@ class _SignInFormState extends State<_SignInForm> {
     final _loginBloc = BlocProvider.of<LoginBloc>(context);
 
     _onGoogleSignInButtonPressed(){
-      if(_key.currentState.validate()) {
-        _loginBloc.add(GoogleSignInButtonPressed());
-      }else{
-        setState((){
-          _autoValidate = true;
-        });
-      }
+      //_loginBloc.add(GoogleSignInButtonPressed());
+      Navigator.of(context).pushNamed(Routes.home);
     }
 
     _onLoginButtonPressed(){
@@ -228,7 +226,7 @@ class _SignInFormState extends State<_SignInForm> {
                                             ],
                                           ),
                                           color: kAmphibianColorBlueDark,
-                                          onPressed: state is LoginLoading ? () {} : _onGoogleSignInButtonPressed,
+                                          onPressed: () { _onGoogleSignInButtonPressed(); },
                                         ),
 
                                         Expanded(

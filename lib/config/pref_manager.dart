@@ -97,7 +97,7 @@ class Prefs {
   }
 
   static bool isDark() {
-    return getBool(DARKTHEME, def: false);
+    return getBool(DARKTHEME, def: true);
   }
 
   static void clear() {

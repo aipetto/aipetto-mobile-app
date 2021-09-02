@@ -1,12 +1,9 @@
 import 'dart:async';
 
 import 'package:aipetto/routes/routes.dart';
-import 'package:aipetto/utils/app_themes.dart';
 import 'package:aipetto/utils/constants.dart';
-import 'package:aipetto/utils/themebloc/theme_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -23,11 +20,12 @@ class _SplashPageState extends State<SplashPage> {
 
   _loadScreen() async {
 
-    context.bloc<ThemeBloc>().add(ThemeChanged(
+    /**
+     context.bloc<ThemeBloc>().add(ThemeChanged(
         theme: AppTheme.DarkTheme
-    ));
+    ));**/
 
-    Navigator.of(context).pushReplacementNamed(Routes.login);
+    Navigator.of(context).pushReplacementNamed(Routes.home);
   }
 
   @override

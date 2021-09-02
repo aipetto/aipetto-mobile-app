@@ -2,7 +2,9 @@ import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
 import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
 import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/simple_bloc_provider.dart';
 import 'package:aipetto/splash_page.dart';
+import 'package:aipetto/utils/app_themes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +27,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Prefs.load();
+  // TODO Fix Bloc.observer = SimpleBlocProvider();
 
   runApp(
     EasyLocalization(
@@ -54,6 +57,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ThemeBloc()),
@@ -70,6 +74,11 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _buildWithTheme(BuildContext context, ThemeState state) {
+
+    context.bloc<ThemeBloc>().add(ThemeChanged(
+        theme: AppTheme.DarkTheme
+    ));
+
     return MaterialApp(
       builder: (context, child) {
         return ScrollConfiguration(
@@ -85,6 +94,12 @@ class MyApp extends StatelessWidget {
               user: state.user,
             );
           }
+          if (state is AuthenticationNotAuthenticated) {
+            return LoginPage();
+          }
+          if (state is AuthenticationLoading) {
+            return LoadingIndicator();
+          }
           return LoginPage();
         },
       ),
@@ -95,6 +110,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: state.themeData,
     );
+  }
+
+
+  Widget LoadingIndicator() {
+    return Center(
+      child: CircularProgressIndicator(
+      strokeWidth: 2,
+    ));
   }
 }
 

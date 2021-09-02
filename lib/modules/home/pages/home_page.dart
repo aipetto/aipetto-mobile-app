@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    final String userFirstName = widget.user.firstName;
+    //final String userFirstName = widget.user.firstName;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '${'hello'.tr()} $userFirstName',
+                      '${'hello'.tr()}',
                       style: Theme.of(context).textTheme.headline6.copyWith(
                         fontWeight: FontWeight.w400,
                       ),
@@ -99,13 +99,13 @@ class _HomePageState extends State<HomePage>
                                           SizedBox(
                                             height: 15,
                                           ),
+
                                           Text(
                                               'add_your_pet'.tr(),
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                              ),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle2
+                                                .copyWith(fontSize: 14),
                                               maxLines: 1,
                                               overflow: TextOverflow.ellipsis,
                                             )

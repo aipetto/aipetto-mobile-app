@@ -2,11 +2,13 @@ import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/components/labeled_text_form_field.dart';
 import 'package:aipetto/components/wave_header.dart';
 import 'package:aipetto/config/pref_manager.dart';
+import 'package:aipetto/main.dart';
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_bloc.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_event.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_state.dart';
 import 'package:aipetto/modules/auth/services/auth_service.dart';
+import 'package:aipetto/modules/home/component/home.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -59,7 +61,8 @@ class _LoginPageState extends State<LoginPage> {
               }
 
               if (state is AuthenticationAuthenticated) {
-                return _AuthForm();
+
+                return MyApp();
               }
 
               return Center(

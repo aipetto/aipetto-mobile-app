@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'package:meta/meta.dart';
 
 import 'package:aipetto/modules/petType/models/pet_type.dart';
 import 'package:aipetto/modules/petType/repository/pet_type_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 part 'pet_type_event.dart';
 part 'pet_type_state.dart';

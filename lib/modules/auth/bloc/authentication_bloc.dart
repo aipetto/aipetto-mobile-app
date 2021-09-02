@@ -1,8 +1,12 @@
-import 'package:aipetto/modules/auth/services/auth_service.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
+import 'package:equatable/equatable.dart';
 
-import 'authentication_event.dart';
-import 'authentication_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:aipetto/modules/user/models/user.dart';
+import 'package:aipetto/modules/auth/services/auth_service.dart';
+
+part 'authentication_event.dart';
+part 'authentication_state.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>{
 

@@ -1,7 +1,6 @@
-import 'package:aipetto/modules/user/models/user.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+part of 'authentication_bloc.dart';
 
+@immutable
 abstract class AuthenticationEvent extends Equatable{
 
     const AuthenticationEvent();

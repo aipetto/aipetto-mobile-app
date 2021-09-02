@@ -1,9 +1,6 @@
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
 import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
-import 'package:aipetto/routes/routes.dart';
-import 'package:aipetto/simple_bloc_provider.dart';
-import 'package:aipetto/splash_page.dart';
 import 'package:aipetto/utils/app_themes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,8 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import 'modules/auth/bloc/authentication_bloc.dart';
-import 'modules/auth/bloc/authentication_event.dart';
-import 'modules/auth/bloc/authentication_state.dart';
+
 import 'modules/auth/pages/login_page.dart';
 import 'modules/auth/services/auth_service.dart';
 import 'modules/home/component/home.dart';

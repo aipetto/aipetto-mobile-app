@@ -1,6 +1,4 @@
-import 'package:aipetto/modules/user/models/user.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+part of 'authentication_bloc.dart';
 
 abstract class AuthenticationState extends Equatable{
   const AuthenticationState();

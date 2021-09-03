@@ -235,5 +235,6 @@
     "reservation_details": "Reservation details",
     "reserve": "Book appointment",
     "unknown_failure_error": "Unknown error ocurred, please try again",
-    "failure_to_login": "Please check your email or password and try again"
+    "failure_to_login": "Please check your email or password and try again",
+    "failure_to_google_sign_in": "It was not possible to sign in with your Google Account"
 }

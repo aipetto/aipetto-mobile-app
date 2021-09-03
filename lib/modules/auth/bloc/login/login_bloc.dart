@@ -24,7 +24,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is LoginInWithEmailButtonPressed) {
       yield* _mapLoginWithEmailToState(event);
     }
-    // TODO add event and check GoogleSignInButtonPressed
+
+    if (event is GoogleSignInButtonPressed) {
+      yield* _mapLoginWithGoogleSignInToState(event);
+    }
   }
 
   Stream<LoginState> _mapLoginWithEmailToState(LoginInWithEmailButtonPressed event) async* {
@@ -41,6 +44,24 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     } on AuthenticationException catch(e){
       yield LoginFailure(error: e.message);
     } catch( err ){
+      yield LoginFailure(error: 'unknown_failure_error'.tr());
+    }
+  }
+
+  Stream<LoginState> _mapLoginWithGoogleSignInToState(GoogleSignInButtonPressed event) async* {
+    yield LoginLoading();
+    try {
+      final user = await _authenticationService.signInWithGoogle();
+      if (user != null) {
+        _authenticationBloc.add(UserLoggedIn(user: user));
+        yield LoginSuccess();
+        yield LoginInitial();
+      } else {
+        yield LoginFailure(error: 'failure_to_google_sign_in'.tr());
+      }
+    } on AuthenticationException catch(e) {
+      yield LoginFailure(error: e.message);
+    } catch(err) {
       yield LoginFailure(error: 'unknown_failure_error'.tr());
     }
   }

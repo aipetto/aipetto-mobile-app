@@ -14,22 +14,24 @@ class DrawerPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final authBloc = BlocProvider.of<AuthenticationBloc>(context);
-    String profileImage;
-    String firstName;
-    String lastName;
+    String profileImage = '';
+    String firstName = '';
+    String lastName = '';
 
     final state = BlocProvider.of<AuthenticationBloc>(context).state;
     if (state is AuthenticationAuthenticated) {
-       if(state.user.avatars != null){
-         profileImage = state.user.avatars.first.publicUrl;
-       }
-       if(state.user.firstName != null){
-         firstName = state.user.firstName;
-       }
 
-       if(state.user.lastName != null){
-         lastName = state.user.lastName;
-       }
+      if(state.user.avatars != null && state.user.avatars.first != null){
+        profileImage = state.user.avatars.first.publicUrl;
+      }
+
+      if(state.user.firstName != null){
+        firstName = state.user.firstName;
+      }
+
+      if(state.user.lastName != null){
+        lastName = state.user.lastName;
+      }
     }
 
     return GestureDetector(

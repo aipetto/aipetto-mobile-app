@@ -235,5 +235,6 @@
     "reservation_details": "Detalhes da reserva",
     "reserve": "Agendar",
     "unknown_failure_error": "Ocorreu um erro desconhecido, tente novamente em um instante",
-    "failure_to_login": "Verifique seus dados de acesso e tente novamente"
+    "failure_to_login": "Verifique seus dados de acesso e tente novamente",
+    "failure_to_google_sign_in": "Não foi possível entrar com sua conta de Google"
 }

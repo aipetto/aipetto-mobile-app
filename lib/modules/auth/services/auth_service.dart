@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 abstract class AuthenticationService {
   Future<User> getCurrentUser();
   Future<User> signInWithEmailAndPassword(String email, String password);
+  Future<User> signInWithGoogle();
   Future<void> signOut();
 }
 
@@ -19,24 +20,6 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
 
   AipettoCoreAuthenticationService({ @required this.httpClient})
       : assert(httpClient != null);
-
-  @override
-  Future<User> getCurrentUser() async {
-    // TODO Refactor extracting secureStorage instantiation here but injecting from out of authentication service class
-    final SecureStorage secureStorageRepository = new SecureStorage();
-    final jwtOnSecureStorage = await secureStorageRepository.getToken();
-
-    final resp = await http.get(Uri.parse('$_baseUrl/auth/me'), headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ${jwtOnSecureStorage}',
-    });
-
-    if (resp.statusCode == 200) {
-      return userFromJson(resp.body);
-    }
-    return null;
-  }
 
   @override
   Future<User> signInWithEmailAndPassword(String email, String password) async {
@@ -80,35 +63,60 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
     ],
   );
 
-  Future signInWithGoogle() async {
-    final _baseUrl = Environment.aipettoCoreApi;
-    final _baseHost = Environment.aipettoCoreHost;
-
+  Future<User> signInWithGoogle() async {
     try{
+      final SecureStorage secureStorageRepository = new SecureStorage();
       final GoogleSignInAccount account = await _googleSignIn.signIn();
       final googleKey = await account.authentication;
-
-      final signInWithGoogleEndpoint = Uri(
-          scheme: 'http',
-          host: '$_baseHost',
-          path: '/api/auth/mobile/google'
-      );
 
       final googleTokenJson = {
         'token': googleKey.idToken
       };
 
-      return await http.post(Uri.parse('$_baseUrl/auth/mobile/google'),
-          body: jsonEncode(googleTokenJson),
-          headers: {
-            'Content-type': 'application/json'
+      final getJwtResponse = await http.post(Uri.parse('$_baseUrl/auth/mobile/google'),
+          body: {
+            'token': googleKey.idToken
           }
       );
+
+      if (getJwtResponse.statusCode == 200) {
+        await secureStorageRepository.persistToken(getJwtResponse.body);
+
+        final userResp = await http.get(Uri.parse('$_baseUrl/auth/me'), headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${getJwtResponse.body}',
+        });
+
+        if (userResp.statusCode == 200) {
+          return userFromJson(userResp.body);
+        }
+      }
+      return null;
+
     } catch (e) {
       print('Error Google Sign in');
       print(e);
       return null;
     }
+  }
+
+  @override
+  Future<User> getCurrentUser() async {
+    // TODO Refactor extracting secureStorage instantiation here but injecting from out of authentication service class
+    final SecureStorage secureStorageRepository = new SecureStorage();
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final resp = await http.get(Uri.parse('$_baseUrl/auth/me'), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if (resp.statusCode == 200) {
+      return userFromJson(resp.body);
+    }
+    return null;
   }
 
   @override

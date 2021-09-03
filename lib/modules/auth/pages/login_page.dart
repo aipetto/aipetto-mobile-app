@@ -8,8 +8,8 @@ import 'package:aipetto/modules/auth/bloc/login/login_bloc.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_event.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_state.dart';
 import 'package:aipetto/modules/auth/services/auth_service.dart';
-import 'package:aipetto/modules/home/component/home.dart';
 import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/splash_page.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,13 +61,13 @@ class _LoginPageState extends State<LoginPage> {
               }
 
               if (state is AuthenticationAuthenticated) {
-
-                return MyApp();
+                return SplashPage();
               }
 
               return Center(
-                child: Text('$state'),
-              );
+                 child: CircularProgressIndicator(
+                 strokeWidth: 2,
+              ));
             }
         ),
       ),
@@ -164,8 +164,7 @@ class _SignInFormState extends State<_SignInForm> {
     final _loginBloc = BlocProvider.of<LoginBloc>(context);
 
     _onGoogleSignInButtonPressed(){
-      //_loginBloc.add(GoogleSignInButtonPressed());
-      Navigator.of(context).pushNamed(Routes.home);
+      _loginBloc.add(GoogleSignInButtonPressed());
     }
 
     _onLoginButtonPressed(){

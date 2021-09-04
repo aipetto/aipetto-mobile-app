@@ -29,7 +29,6 @@ class UserGeolocationBloc extends Bloc<UserGeolocationEvent, UserGeolocationStat
 
   @override
   Stream<UserGeolocationState> mapEventToState( UserGeolocationEvent event ) async* {
-    // print(event); Instance of OnGeolocationChange
     if (event is OnGeolocationChange ){
       yield state.copyWith(
         existLocation: true,

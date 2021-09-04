@@ -18,7 +18,7 @@ class BusinessServicesTypesApiClient {
     @required this.httpClient,
   }) : assert(httpClient != null);
 
-  Future<BusinessServiceType> fetchPetTypes() async {
+  Future<BusinessServiceType> fetchBusinessServiceTypes() async {
 
     final url = '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId';
     final response = await this.httpClient.get(url);
@@ -31,4 +31,3 @@ class BusinessServicesTypesApiClient {
     return BusinessServiceType.fromJson(json);
   }
 }
-

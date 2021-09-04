@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    //final String userFirstName = widget.user.firstName;
+    final String firstName = widget.user.firstName ?? '';
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '${'hello'.tr()}',
+                      '${'hello'.tr()} $firstName',
                       style: Theme.of(context).textTheme.headline6.copyWith(
                         fontWeight: FontWeight.w400,
                       ),

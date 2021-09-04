@@ -2,7 +2,6 @@ import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/components/labeled_text_form_field.dart';
 import 'package:aipetto/components/wave_header.dart';
 import 'package:aipetto/config/pref_manager.dart';
-import 'package:aipetto/main.dart';
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_bloc.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_event.dart';

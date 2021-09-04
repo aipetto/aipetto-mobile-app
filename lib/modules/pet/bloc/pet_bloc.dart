@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:aipetto/modules/pet/models/pet.dart';
-import 'package:aipetto/modules/pet/repository/pet_type_repository.dart';
+import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -20,12 +20,24 @@ class PetBloc extends Bloc<PetEvent, PetState>{
 
   @override
   Stream<PetState> mapEventToState( PetEvent event ) async* {
-    if(event is FetchPet){
+    if(event is FetchPets){
       yield PetLoading();
 
       try{
-        final Pet pet = await repository.fetchPet();
+        final Pet pet = await repository.fetchPets();
         yield PetLoaded(pet: pet);
+      }catch (_){
+        yield PetTypeError();
+      }
+    }
+
+    if(event is UpdatePet){
+      yield PetLoading();
+      try{
+        //await repository.updatePet(pet: );
+        // get current tenant from user state
+        // pass pet
+        yield PetLoaded();
       }catch (_){
         yield PetTypeError();
       }

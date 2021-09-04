@@ -50,6 +50,8 @@ class Pet {
     this.updatedAt,
     this.v,
     this.petId,
+    this.bloodType,
+    this.weight
   });
 
   List<PetOwner> petOwners;
@@ -92,6 +94,8 @@ class Pet {
   DateTime updatedAt;
   int v;
   String petId;
+  String bloodType;
+  String weight;
 
   factory Pet.fromJson(Map<String, dynamic> json) => Pet(
     petOwners: List<PetOwner>.from(json["petOwners"].map((x) => PetOwner.fromJson(x))),
@@ -134,6 +138,8 @@ class Pet {
     updatedAt: DateTime.parse(json["updatedAt"]),
     v: json["__v"],
     petId: json["id"],
+    bloodType: json["bloodType"],
+    weight: json["weight"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -177,7 +183,55 @@ class Pet {
     "updatedAt": updatedAt.toIso8601String(),
     "__v": v,
     "id": petId,
+    "bloodType": bloodType,
+    "weight": weight,
   };
+
+  Pet copyWith({
+    bool hasBeenVaccinated,
+    bool hasBeenDewormed,
+    bool hasBeenSterilizedSpayed,
+    bool isLookingForMatch,
+    List<dynamic> diseases,
+    bool isGuideDog,
+    bool hasMicrochip,
+    String biography,
+    String furLength,
+    String maturitySize,
+    Breed type,
+    Breed breed,
+    String sex,
+    String secondColor,
+    String color,
+    int age,
+    DateTime birthdate,
+    List<ProfileImage> profileImage,
+    String nickname,
+    String name,
+    dynamic secondBreedMixed,
+    String bloodType,
+  }) => Pet(
+      hasBeenVaccinated: hasBeenVaccinated ?? this.hasBeenVaccinated,
+      hasBeenDewormed: hasBeenDewormed ?? this.hasBeenDewormed,
+      hasBeenSterilizedSpayed: hasBeenSterilizedSpayed ?? this.hasBeenSterilizedSpayed,
+      isLookingForMatch: isLookingForMatch ?? this.isLookingForMatch,
+      hasMicrochip: hasMicrochip ?? this.hasMicrochip,
+      biography: biography ?? this.biography,
+      furLength: furLength ?? this.furLength,
+      maturitySize: maturitySize ?? this.maturitySize,
+      type: type ?? this.type,
+      breed: breed ?? this.breed,
+      sex: sex ?? this.sex,
+      secondColor: secondColor ?? this.secondColor,
+      color: color ?? this.color,
+      age: age ?? this.age,
+      birthdate: birthdate ?? this.birthdate,
+      profileImage: profileImage ?? this.profileImage,
+      nickname: nickname ?? this.nickname,
+      name: name ?? this.name,
+      secondBreedMixed: secondBreedMixed ?? this.secondBreedMixed,
+      bloodType: bloodType ?? this.bloodType
+  );
 }
 
 class Breed {

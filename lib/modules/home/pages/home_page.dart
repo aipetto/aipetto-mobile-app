@@ -27,8 +27,11 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    String firstName = '';
 
-    final String firstName = widget.user.firstName ?? '';
+    if (widget.user != null){
+       firstName = widget.user.firstName;
+    }
 
     return Scaffold(
       body: SingleChildScrollView(

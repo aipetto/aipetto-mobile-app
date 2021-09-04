@@ -109,7 +109,7 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '$_color',
+          'reservation_details'.tr(),
         ),
       ),
       body: SafeArea(

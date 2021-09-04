@@ -26,7 +26,7 @@ class NavBarItemWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 50,
+        height: 60,
         child: Center(
           child: image.isEmpty
               ? Container()

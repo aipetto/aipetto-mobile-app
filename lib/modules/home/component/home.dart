@@ -1,5 +1,6 @@
 import 'package:aipetto/components/custom_navigation_bar.dart';
 import 'package:aipetto/config/pref_manager.dart';
+import 'package:aipetto/modules/businessServiceReservation/pages/my_appointments_page.dart';
 import 'package:aipetto/modules/home/pages/drawer/drawer_page.dart';
 import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:aipetto/modules/home/widgets/app_bar_title_widget.dart';
@@ -58,6 +59,7 @@ class _HomeState extends State<Home> {
     final _pages = [
       HomePage(user: widget.user),
       Container(),
+      MyAppointmentsPage(),
       MessagesPage(),
     ];
     return Stack(
@@ -190,8 +192,15 @@ class _HomeState extends State<Home> {
                     onTap: () {
                       _selectPage(2);
                     },
-                    image: 'icon_messages',
+                    image: 'calendar',
                     isSelected: _selectedIndex == 2,
+                  ),
+                  NavBarItemWidget(
+                    onTap: () {
+                      _selectPage(3);
+                    },
+                    image: 'icon_messages',
+                    isSelected: _selectedIndex == 3,
                   ),
                 ],
                 currentIndex: _selectedIndex,

@@ -69,10 +69,6 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
       final GoogleSignInAccount account = await _googleSignIn.signIn();
       final googleKey = await account.authentication;
 
-      final googleTokenJson = {
-        'token': googleKey.idToken
-      };
-
       final getJwtResponse = await http.post(Uri.parse('$_baseUrl/auth/mobile/google'),
           body: {
             'token': googleKey.idToken

@@ -41,7 +41,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
 
-  // TODO Refactor to use MultiRepositoryProvider<T> class to inject repositories in our app
   final PetTypeRepository petTypeRepository = PetTypeRepository(
       petTypeClient: PetTypeApiClient(
         httpClient: http.Client(),
@@ -54,6 +53,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    /// TODO Refactor to use MultiRepositoryProvider<T> class to inject repositories in our app
+    /// Consume repository from the context MyBloc(myRepository: context.read<MyAmazingRepository>(),)..add( MyStateLoaded()))
+    /// TODO Refator to move BlocProviders down in the widget tree and not load all in the Main widget.
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ThemeBloc()),

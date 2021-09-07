@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aipetto/components/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,6 +9,12 @@ import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
 
 class NewPetWidget extends StatefulWidget {
+
+  final String petTypeId;
+  final String petTypeName;
+
+  const NewPetWidget({Key key, @required this.petTypeId, @required this.petTypeName}) : super(key: key);
+
   @override
   _NewPetWidgetState createState() => _NewPetWidgetState();
 }
@@ -216,6 +223,17 @@ class _NewPetWidgetState extends State<NewPetWidget> {
               keyboardType: TextInputType.number,
               hintText: 'in_kg'.tr(),
             ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: CustomButton(
+                onPressed: () {
+
+
+
+                },
+                text: 'add_new_pet'.tr(),
+              ),
+            )
           ],
         ),
       ),

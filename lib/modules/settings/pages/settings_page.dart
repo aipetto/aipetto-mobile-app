@@ -43,20 +43,7 @@ class _SettingsPageState extends State<SettingsPage>
               SettingsWidget(
                 color: _color,
               ),
-              GeneralWidget(
-                isDark: _isDark,
-                onDarkPressed: (darkTheme) {
-                  setState(() {
-                    _isDark = darkTheme;
-                    Prefs.setBool(Prefs.DARKTHEME, darkTheme);
-                    context.bloc<ThemeBloc>().add(ThemeChanged(
-                        theme: darkTheme
-                            ? AppTheme.DarkTheme
-                            : AppTheme.LightTheme));
-                    _color = _isDark ? kColorDark : Colors.grey[50];
-                  });
-                },
-              ),
+              GeneralWidget(isDark: _isDark),
               AccountWidget(
                 color: _color,
               ),

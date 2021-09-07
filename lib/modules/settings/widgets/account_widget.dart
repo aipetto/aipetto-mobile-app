@@ -1,5 +1,8 @@
+import 'package:aipetto/modules/auth/bloc/authentication_bloc.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AccountWidget extends StatelessWidget {
   final Color color;
@@ -10,6 +13,8 @@ class AccountWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final authBloc = BlocProvider.of<AuthenticationBloc>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -39,7 +44,10 @@ class AccountWidget extends StatelessWidget {
             Icons.exit_to_app,
             color: Colors.blue,
           ),
-          onTap: () {},
+          onTap: () {
+            authBloc.add(UserLoggedOut());
+            Navigator.of(context).pushNamed(Routes.login);
+          },
         ),
       ],
     );

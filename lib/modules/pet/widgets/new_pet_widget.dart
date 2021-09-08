@@ -1,8 +1,11 @@
 import 'dart:io';
 
 import 'package:aipetto/components/custom_button.dart';
+import 'package:aipetto/modules/pet/bloc/form/pet_form_bloc.dart';
+import 'package:aipetto/modules/pet/models/pet.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../components/text_form_field.dart';
@@ -20,32 +23,24 @@ class NewPetWidget extends StatefulWidget {
 }
 
 class _NewPetWidgetState extends State<NewPetWidget> {
-  var _selectedSex = 'male'.tr();
 
-  var _selectedBloodGroup = 'DEA-1.1';
-  var _selectedLookingForMatch = true;
-  var _sexItems = <String>['male'.tr(), 'female'.tr()];
-  static const _bloodItems = <String>[
-    'DEA-1.1',
-    'DEA-1.2',
-    'DEA-3',
-    'DEA-4',
-    'DEA-5',
-    'DEA-7',
-  ];
-  var _lookingForMatchAnswers = <String>['yes'.tr(), 'no'.tr()];
-
-  var _birthDate = '03/04/2016';
+  final GlobalKey<FormState> _key   = GlobalKey<FormState>();
+  final _name                       = TextEditingController();
+  final _nickname                   = TextEditingController();
+  ///var _selectedBloodGroup        = 'DEA-1.1';
+  var _selectedLookingForMatch      = false;
+  var _hasBeenVaccinated            = false;
+  var _hasBeenDewormed              = false;
+  var _hasBeenSterilizedSpayed      = true;
+  var _lookingForMatchAnswers       = <String>['yes'.tr(), 'no'.tr()]; ///var _isLookingForMatch = true;
+  var _isGuideDog                   = false;
+  var hasMicrochip                  = false;
+  /// Dynamic Dropdown consume Breed from API passing language
+  var _selectedSex                  = 'male'.tr();
+  var _birthDate                    = '03/04/2016';
+  var _sexItems                     = <String>['male'.tr(), 'female'.tr()];
 
   List<DropdownMenuItem<String>> _dropDownSex;
-  List<DropdownMenuItem<String>> _dropDownMarital;
-
-  List<DropdownMenuItem<String>> _dropDownBlood = _bloodItems
-      .map((String value) => DropdownMenuItem<String>(
-    value: value,
-    child: Text(value),
-  ))
-      .toList();
 
   File _image;
 
@@ -62,15 +57,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
         .map((String value) => DropdownMenuItem<String>(
       value: value,
       child: Text(value),
-    ))
-        .toList();
-
-    _dropDownMarital = _lookingForMatchAnswers
-        .map((String value) => DropdownMenuItem<String>(
-      value: value,
-      child: Text(value),
-    ))
-        .toList();
+    )).toList();
   }
 
   @override
@@ -81,161 +68,175 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    final _petFormBloc = BlocProvider.of<PetFormBloc>(context);
+
+    _onNewPetFormButtonPressed() {
+      //if(_key.currentState.validate()) {
+
+        final superPet = new Pet();
+
+        _petFormBloc.add(NewPetFormButtonPressed(superPet));
+      //}
+    }
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-      child: Form(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  _openBottomSheet(context);
-                },
-                child: _image == null
-                    ? CircleAvatar(
-                  radius: 80,
-                  backgroundColor: Colors.grey,
-                  //backgroundImage: NetworkImage(avatarUrl),
-                )
-                    : CircleAvatar(
-                  radius: 80,
-                  backgroundImage: FileImage(_image),
-                ),
-              ),
-            ),
-            Center(
-              child: FlatButton(
-                onPressed: () {
-                  _openBottomSheet(context);
-                },
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4)),
-                child: Text(
-                  'change_avatar'.tr(),
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+      child: BlocBuilder<PetFormBloc, PetFormState>(
+        builder: (context, state){
+
+          if(state is PetFormLoading){
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+        return Form(
+          key: _key,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    _openBottomSheet(context);
+                  },
+                  child: _image == null
+                      ? CircleAvatar(
+                    radius: 80,
+                    backgroundColor: Colors.grey,
+                    //backgroundImage: NetworkImage(avatarUrl),
+                  )
+                      : CircleAvatar(
+                    radius: 80,
+                    backgroundImage: FileImage(_image),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Text(
-              'name_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            CustomTextFormField(
-              hintText: 'Hachikō',
-              validator: (value) =>
-              value.isEmpty ? 'Please add a name' : null,
-            ),
-            SizedBox(height: 15),
-            Text(
-              'breed_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            CustomTextFormField(
-                hintText: 'Akita'
-            ),
-            SizedBox(height: 15),
-            Text(
-              'last_name_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            SizedBox(height: 15),
-            Text(
-              'sex_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            DropdownButton(
-              isExpanded: true,
-              value: _selectedSex,
-              //hint: ,
-              onChanged: (value) {
-                setState(() {
-                  _selectedSex = value;
-                });
-              },
-              items: _dropDownSex,
-            ),
-            SizedBox(height: 15),
-            Text(
-              'date_of_birth_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            ListTile(
-              contentPadding: EdgeInsets.all(0),
-              title: Text(_birthDate),
-              onTap: () {
-                showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(1900),
-                  lastDate: DateTime.now(),
-                ).then((DateTime value) {
-                  if (value != null) {
-                    setState(() {
-                      _birthDate = value.toString();
-                    });
-                  }
-                });
-              },
-            ),
-            SizedBox(height: 15),
-            Text(
-              'blood_group_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            DropdownButton(
-              isExpanded: true,
-              value: _selectedBloodGroup,
-              //hint: ,
-              onChanged: (value) {
-                setState(() {
-                  _selectedBloodGroup = value;
-                });
-              },
-              items: _dropDownBlood,
-            ),
-            SizedBox(height: 15),
-            Text(
-              'available_for_match'.tr(),
-              style: kInputTextStyle,
-            ),
-            SwitchListTile(
-              value: _selectedLookingForMatch,
-              onChanged: (_) {
-                setState(() {
-                  _selectedLookingForMatch = !_selectedLookingForMatch;
-                });
-              },
-            ),
-            SizedBox(height: 15),
-            Text(
-              'weight_dot'.tr(),
-              style: kInputTextStyle,
-            ),
-            CustomTextFormField(
-              keyboardType: TextInputType.number,
-              hintText: 'in_kg'.tr(),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: CustomButton(
-                onPressed: () {
-
-
-
-                },
-                text: 'add_new_pet'.tr(),
+              Center(
+                child: FlatButton(
+                  onPressed: () {
+                    _openBottomSheet(context);
+                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Text(
+                    'change_avatar'.tr(),
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
               ),
-            )
-          ],
-        ),
+              SizedBox(
+                height: 25,
+              ),
+              Text(
+                'name_dot'.tr(),
+                style: kInputTextStyle,
+              ),
+              CustomTextFormField(
+                controller: _name,
+                hintText: 'Hachikō',
+                validator: (value) =>
+                value.isEmpty ? 'Please add a name' : null,
+              ),
+              /**SizedBox(height: 15),
+              Text(
+                'breed_dot'.tr(),
+                style: kInputTextStyle,
+              ),
+              CustomTextFormField(
+                  hintText: 'Akita'
+              ),
+              SizedBox(height: 15),
+              Text(
+                'nickname'.tr(),
+                style: kInputTextStyle,
+              ),
+              CustomTextFormField(
+                  hintText: 'Akita'
+              ),
+              SizedBox(height: 15),
+              Text(
+                'sex_dot'.tr(),
+                style: kInputTextStyle,
+              ),
+              DropdownButton(
+                isExpanded: true,
+                value: _selectedSex,
+                //hint: ,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedSex = value;
+                  });
+                },
+                items: _dropDownSex,
+              ),
+              SizedBox(height: 15),
+              Text(
+                'date_of_birth_dot'.tr(),
+                style: kInputTextStyle,
+              ),
+              ListTile(
+                contentPadding: EdgeInsets.all(0),
+                title: Text(_birthDate),
+                onTap: () {
+                  showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime.now(),
+                  ).then((DateTime value) {
+                    if (value != null) {
+                      setState(() {
+                        _birthDate = value.toString();
+                      });
+                    }
+                  });
+                },
+              ),
+              SizedBox(height: 15),
+              Text(
+                'blood_group_dot'.tr(),
+                style: kInputTextStyle,
+              ),*/
+
+              SizedBox(height: 15),
+              Text(
+                'looking_for_match'.tr(),
+                 style: kInputTextStyle,
+              ),
+              SwitchListTile(
+                value: _selectedLookingForMatch,
+                onChanged: (_) {
+                  setState(() {
+                    _selectedLookingForMatch = !_selectedLookingForMatch;
+                  });
+                },
+              ),
+              SizedBox(height: 15),
+              /**Text(
+                'weight_dot'.tr(),
+                style: kInputTextStyle,
+              ),
+              CustomTextFormField(
+                keyboardType: TextInputType.number,
+                hintText: 'in_kg'.tr(),
+              ),**/
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                child:   CustomButton(
+                  onPressed: state is PetFormLoading ? () {} : _onNewPetFormButtonPressed,
+                  text: 'add_new_pet'.tr(),
+                ),
+              )
+            ],
+          ),
+        );
+       }
       ),
     );
   }

@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import 'modules/auth/bloc/authentication_bloc.dart';
-
 import 'modules/auth/pages/login_page.dart';
 import 'modules/auth/services/auth_service.dart';
 import 'modules/home/component/home.dart';
@@ -46,6 +45,7 @@ class MyApp extends StatelessWidget {
         httpClient: http.Client(),
       ));
 
+
   final AuthenticationService userRepository = AipettoCoreAuthenticationService(
       httpClient: http.Client()
   );
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => PetTypeBloc(repository: petTypeRepository)),
         BlocProvider<AuthenticationBloc>(create: ( context ) {
           return AuthenticationBloc(userRepository)..add(AppLoaded());
-        })
+        }),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: _buildWithTheme,

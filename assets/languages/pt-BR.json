@@ -19,7 +19,7 @@
     "nickname": "Apelido",
     "nickname_dot": "Apelido:",
     "sex_dot": "Sexo:",
-    "male": "Masculino",
+    "male": "Macho",
     "female": "Fêmea",
     "confirm_password_dot": "Confirmar password",
     "already_a_member": "Ja é um utilizador registrado",
@@ -237,5 +237,6 @@
     "reserve": "Agendar",
     "unknown_failure_error": "Ocorreu um erro desconhecido, tente novamente em um instante",
     "failure_to_login": "Verifique seus dados de acesso e tente novamente",
-    "failure_to_google_sign_in": "Não foi possível entrar com sua conta de Google"
+    "failure_to_google_sign_in": "Não foi possível entrar com sua conta de Google",
+    "looking_for_match": "Buscando cruza"
 }

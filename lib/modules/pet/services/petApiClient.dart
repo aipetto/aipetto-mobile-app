@@ -32,7 +32,7 @@ class PetApiClient {
     return Pet.fromJson(json);
   }
 
-  Future<Pet> fetchPet(Pet pet, TenantElement tenant) async {
+  Future<Pet> fetchPet(Pet pet, String tenant) async {
 
     final url = '$_baseUrl/tenant/{tenantId}/pet/{id}';
     final response = await this.httpClient.get(url);
@@ -45,7 +45,7 @@ class PetApiClient {
     return Pet.fromJson(json);
   }
 
-  Future<Pet> updatePet(Pet petInfoToUpdate, TenantElement tenant) async {
+  Future<Pet> updatePet(Pet petInfoToUpdate, String tenant) async {
 
     /**final pet = {
       'email': email,
@@ -70,7 +70,7 @@ class PetApiClient {
   }
 
 
-  Future<Pet> addPet(Pet pet, TenantElement tenant) async {
+  Future<Pet> addPet(Pet pet, String tenant) async {
 
     /**
       final pet = {

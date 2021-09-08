@@ -16,8 +16,8 @@
     "name_dot": "Name:",
     "first_name_dot": "First name:",
     "last_name_dot": "Last name:",
-    "nickname": "Surname",
-    "nickname_dot": "Surname:",
+    "nickname": "Nickname",
+    "nickname_dot": "Nickname:",
     "sex_dot": "Sex:",
     "male": "Male",
     "female": "Female",
@@ -237,5 +237,6 @@
     "reserve": "Book appointment",
     "unknown_failure_error": "Unknown error ocurred, please try again",
     "failure_to_login": "Please check your email or password and try again",
-    "failure_to_google_sign_in": "It was not possible to sign in with your Google Account"
+    "failure_to_google_sign_in": "It was not possible to sign in with your Google Account",
+    "looking_for_match": "Looking for Match"
 }

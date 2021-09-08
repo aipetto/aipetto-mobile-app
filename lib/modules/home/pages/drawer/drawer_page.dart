@@ -16,19 +16,19 @@ class DrawerPage extends StatelessWidget {
     String firstName = '';
     String lastName = '';
 
-    final state = BlocProvider.of<AuthenticationBloc>(context).state;
-    if (state is AuthenticationAuthenticated) {
+    final authenticationUserState = BlocProvider.of<AuthenticationBloc>(context).state;
+    if (authenticationUserState is AuthenticationAuthenticated) {
 
-      if(state.user.avatars != null && state.user.avatars.first != null){
-        profileImage = state.user.avatars.first.publicUrl;
+      if(authenticationUserState.user.avatars != null && authenticationUserState.user.avatars.first != null){
+        profileImage = authenticationUserState.user.avatars.first.publicUrl;
       }
 
-      if(state.user.firstName != null){
-        firstName = state.user.firstName;
+      if(authenticationUserState.user.firstName != null){
+        firstName = authenticationUserState.user.firstName;
       }
 
-      if(state.user.lastName != null){
-        lastName = state.user.lastName;
+      if(authenticationUserState.user.lastName != null){
+        lastName = authenticationUserState.user.lastName;
       }
     }
 

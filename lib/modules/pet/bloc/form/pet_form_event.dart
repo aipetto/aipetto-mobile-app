@@ -8,7 +8,13 @@ abstract class PetFormEvent extends Equatable{
 
 class NewPetFormButtonPressed extends PetFormEvent{
 
-  final String name;
+  final Pet pet;
+
+  NewPetFormButtonPressed(this.pet);
+
+  @override
+  List<Object> get props => [pet];
+  /**final String name;
   final bool hasBeenVaccinated;
   final bool hasBeenDewormed;
   final bool hasBeenSterilizedSpayed;
@@ -22,14 +28,14 @@ class NewPetFormButtonPressed extends PetFormEvent{
   final DateTime birthdate;
   final List<ProfileImage> profileImage;
   final String nickname;
-  final dynamic secondBreedMixed;
+  final dynamic secondBreedMixed;*/
   /// final String biography;
   /// final String furLength enum and static multi-language Short, Medium, Long;
   /// final String maturitySize enum and static multi-language Small, Medium, Large, Extra_Large;
   /// final Breed breed - Fetch from backend passing the language and also get the ML breed recognition;
   /// final String secondColor enum and static multi-language;
 
-  NewPetFormButtonPressed(
+  /**NewPetFormButtonPressed(
     this.name,
     this.hasBeenVaccinated,
     this.hasBeenDewormed,
@@ -51,4 +57,25 @@ class NewPetFormButtonPressed extends PetFormEvent{
     /// this.breed,
     /// this.secondColor,
    );
+
+
+  @override
+  List<Object> get props => [
+    name,
+    hasBeenVaccinated,
+    hasBeenDewormed,
+    hasBeenSterilizedSpayed,
+    isLookingForMatch,
+    isGuideDog,
+    hasMicrochip,
+    color,
+    age,
+    birthdate,
+    profileImage,
+    nickname,
+    secondBreedMixed,
+    type,
+    sex
+  ];
+   **/
 }

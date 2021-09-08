@@ -17,15 +17,15 @@ class PetRepository{
     return await petClient.fetchUserPets();
   }
 
-  Future<Pet> fetchPet(Pet pet, TenantElement tenant) async {
+  Future<Pet> fetchPet(Pet pet, String tenant) async {
     return await petClient.fetchPet(pet, tenant);
   }
 
-  Future<Pet> updatePet(Pet pet,  TenantElement tenant) async {
+  Future<Pet> updatePet(Pet pet, String tenant) async {
     return await petClient.updatePet(pet, tenant);
   }
 
-  Future<Pet> addPet(Pet pet,  TenantElement tenant) async {
+  Future<Pet> addPet(Pet pet, String tenant) async {
     return await petClient.addPet(pet, tenant);
   }
 }

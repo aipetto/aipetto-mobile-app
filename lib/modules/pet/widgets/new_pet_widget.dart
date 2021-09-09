@@ -76,7 +76,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
         final superPet = new Pet();
 
-        _petFormBloc.add(NewPetFormButtonPressed(superPet));
+        _petFormBloc.add(NewPetFormButtonPressed(pet: superPet));
       //}
     }
 

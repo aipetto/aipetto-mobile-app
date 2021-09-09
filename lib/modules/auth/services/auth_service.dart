@@ -6,6 +6,7 @@ import 'package:aipetto/modules/user/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
 
 abstract class AuthenticationService {
   Future<User> getCurrentUser();
@@ -85,7 +86,29 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
         });
 
         if (userResp.statusCode == 200) {
-          return userFromJson(userResp.body);
+          final userDTOFromResponse = userFromJson(userResp.body);
+
+          final jwtOnSecureStorage = await secureStorageRepository.getToken();
+          var uuid = Uuid();
+
+          if(userDTOFromResponse.tenants.isEmpty){
+              final newTenantName = {
+                'data': {
+                  'name': 'aipetto' + uuid.v4(),
+                  'url':  'default'
+                }
+              };
+              // Create random tenant and role petOwner for users signed in via Google Sign
+              await this.httpClient.post(Uri.parse('$_baseUrl/tenant'),
+                body: jsonEncode(newTenantName),
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                  'Authorization': 'Bearer ${jwtOnSecureStorage}'
+                }
+            );
+          }
+          return userDTOFromResponse;
         }
       }
       return null;

@@ -26,7 +26,7 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState>{
 
   @override
   Future<void> close() {
-    userAuthenticationBlocSubscription.cancel();
+    userAuthenticationBlocSubscription?.cancel();
     return super.close();
   }
 
@@ -39,10 +39,13 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState>{
 
   Stream<PetFormState> _mapNewPetToState(NewPetFormButtonPressed event) async* {
     yield PetFormLoading();
+    final userAuthenticationState = userAuthenticationBloc.state;
     try{
       userAuthenticationBloc.listen((AuthenticationState) {
-          print(AuthenticationState);
+          print('ok');
       });
+      print('1ahok');
+      yield PetFormSuccess();
       ///final authenticationUserState = BlocProvider.of<AuthenticationBloc>(context).state;
       /// final pet = await repository.addPet(event.pet, state.user.tenants.first.id);
     } catch (err ) {

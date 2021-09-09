@@ -2,12 +2,9 @@ import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/settings/widgets/account_widget.dart';
 import 'package:aipetto/modules/settings/widgets/general_widget.dart';
 import 'package:aipetto/modules/settings/widgets/settings_widget.dart';
-import 'package:aipetto/utils/app_themes.dart';
 import 'package:aipetto/utils/constants.dart';
-import 'package:aipetto/utils/themebloc/theme_bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
   @override

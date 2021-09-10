@@ -93,7 +93,6 @@ class _AuthForm extends StatelessWidget {
   }
 }
 
-
 class _SignInForm extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _SignInFormState();

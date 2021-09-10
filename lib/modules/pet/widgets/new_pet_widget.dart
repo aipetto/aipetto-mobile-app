@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:aipetto/components/custom_button.dart';
+import 'package:aipetto/modules/auth/bloc/authentication_bloc.dart';
 import 'package:aipetto/modules/pet/bloc/form/pet_form_bloc.dart';
 import 'package:aipetto/modules/pet/models/pet.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,11 +47,17 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   File _image;
 
   Future _getImage(ImageSource imageSource) async {
-    var image = await ImagePicker.pickImage(source: imageSource);
+     final picker = new ImagePicker();
+     final PickedFile _pickedFile = await picker.getImage(source: imageSource);
     setState(() {
-      _image = image;
+      _image = File.fromUri(Uri(path: _pickedFile.path));
     });
-    //uploadPic();
+
+    if( _pickedFile == null ){
+      print('No image selected');
+      return;
+    }
+    //uploadImage();
   }
 
   _initDropDowns() {
@@ -70,17 +78,34 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   Widget build(BuildContext context) {
 
     final _petFormBloc = BlocProvider.of<PetFormBloc>(context);
+    final AuthenticationState currentUser = BlocProvider.of<AuthenticationBloc>(context).state;
 
     _onNewPetFormButtonPressed() {
-      //if(_key.currentState.validate()) {
+      if(_key.currentState.validate()) {
 
-        final superPet = new Pet();
+        if(currentUser is AuthenticationAuthenticated){
+          final superPet = new Pet(
+            name: _name.text,
+            isLookingForMatch: _selectedLookingForMatch,
+            tenant: currentUser.user.tenants.first.id,
+            createdBy: currentUser.user.id,
+            updatedBy: currentUser.user.id,
+            ///profileImage: _image.path
+          );
 
-        _petFormBloc.add(NewPetFormButtonPressed(pet: superPet));
-      //}
+          _petFormBloc.add(NewPetFormButtonPressed(pet: superPet));
+        }
+      }
     }
 
-    return Padding(
+    return BlocListener<PetFormBloc, PetFormState>(
+        listener: (context, state) {
+
+        if (state is PetFormSuccess) {
+          Navigator.of(context).pushNamed(Routes.home);
+        }
+      },
+      child: Padding(
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
       child: BlocBuilder<PetFormBloc, PetFormState>(
         builder: (context, state){
@@ -103,12 +128,12 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   },
                   child: _image == null
                       ? CircleAvatar(
-                    radius: 80,
+                    radius: 100,
                     backgroundColor: Colors.grey,
                     //backgroundImage: NetworkImage(avatarUrl),
                   )
                       : CircleAvatar(
-                    radius: 80,
+                    radius: 100,
                     backgroundImage: FileImage(_image),
                   ),
                 ),
@@ -238,8 +263,9 @@ class _NewPetWidgetState extends State<NewPetWidget> {
         );
        }
       ),
-    );
-  }
+    ),
+   );
+ }
 
   _openBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -296,4 +322,11 @@ class _NewPetWidgetState extends State<NewPetWidget> {
           );
         });
   }
+
+  Future<String> uploadImage() async {
+    if( this._image == null) return null;
+
+
+  }
+
 }

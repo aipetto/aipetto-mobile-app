@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:aipetto/modules/pet/models/pet.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
-import 'package:aipetto/modules/user/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -25,7 +24,7 @@ class PetRepository{
     return await petClient.updatePet(pet, tenant);
   }
 
-  Future<Pet> addPet(Pet pet, String tenant) async {
-    return await petClient.addPet(pet, tenant);
+  Future<Pet> addPet(Pet pet) async {
+    return await petClient.addPet(pet);
   }
 }

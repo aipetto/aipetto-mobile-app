@@ -10,7 +10,14 @@ class PetFormInitial extends PetFormState{}
 
 class PetFormLoading extends PetFormState{}
 
-class PetFormSuccess extends PetFormState{}
+class PetFormSuccess extends PetFormState{
+  final Pet pet;
+
+  PetFormSuccess({@required this.pet});
+
+  @override
+  List<Object> get props => [pet];
+}
 
 class PetFormFailure extends PetFormState{
   final String error;

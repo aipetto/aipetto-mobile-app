@@ -1,10 +1,9 @@
+import 'package:aipetto/modules/pet/bloc/form/pet_form_bloc.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
-import 'package:flutter/material.dart';
-import 'package:aipetto/modules/auth/bloc/authentication_bloc.dart';
-import 'package:aipetto/modules/pet/bloc/form/pet_form_bloc.dart';
 import 'package:aipetto/modules/pet/widgets/new_pet_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
@@ -35,8 +34,7 @@ class _AddNewPetPageState extends State<AddNewPetPage> {
       ),
       body: BlocProvider(
           create: (_) => PetFormBloc(
-              repository: petRepository,
-              userAuthenticationBloc: BlocProvider.of<AuthenticationBloc>(context)
+              repository: petRepository
       ),
       child: Column(
         children: <Widget>[

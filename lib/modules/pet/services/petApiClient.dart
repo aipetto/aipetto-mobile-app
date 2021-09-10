@@ -4,10 +4,9 @@ import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
 import 'package:aipetto/modules/pet/models/pet.dart';
-import 'package:aipetto/modules/user/models/user.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
 
 class PetApiClient {
   final _baseUrl = Environment.aipettoCoreApi;
@@ -47,12 +46,6 @@ class PetApiClient {
 
   Future<Pet> updatePet(Pet petInfoToUpdate, String tenant) async {
 
-    /**final pet = {
-      'email': email,
-      'password': password,
-      'invitationToken': "",
-      'tenantId': ""
-    };**/
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final petUpdatedResponse = await this.httpClient.put(Uri.parse('$_baseUrl/tenant/:tenantId/pet/:id'),
@@ -70,21 +63,22 @@ class PetApiClient {
   }
 
 
-  Future<Pet> addPet(Pet pet, String tenant) async {
-
-    /**
-      final pet = {
-        'email': email,
-        'password': password,
-        'invitationToken': "",
-        'tenantId': ""
-        };
-     **/
+  Future<Pet> addPet(Pet pet) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
+    final petTenant = pet.tenant;
+    final newPetInfo = {
+      'data': {
+        "name": pet.name,
+        "isLookingForMatch": pet.isLookingForMatch,
+        "tenant": pet.tenant,
+        "createdBy": pet.createdBy,
+        "updatedBy": pet.updatedBy
+      }
+    };
 
-    final petUpdatedResponse = await this.httpClient.post(Uri.parse('$_baseUrl/tenant/:tenantId/pet'),
-        body: jsonEncode(pet),
+    final petUpdatedResponse = await this.httpClient.post(Uri.parse('$_baseUrl/tenant/$petTenant/petWithTenant'),
+        body: jsonEncode(newPetInfo),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
@@ -41,14 +40,6 @@ class _EditWidgetState extends State<EditWidget> {
       .toList();
 
   File _image;
-
-  Future _getImage(ImageSource imageSource) async {
-    var image = await ImagePicker.pickImage(source: imageSource);
-    setState(() {
-      _image = image;
-    });
-    //uploadPic();
-  }
 
   _initDropDowns() {
     _dropDownSex = _sexItems
@@ -251,7 +242,6 @@ class _EditWidgetState extends State<EditWidget> {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  _getImage(ImageSource.camera);
                 },
               ),
               ListTile(
@@ -270,7 +260,6 @@ class _EditWidgetState extends State<EditWidget> {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  _getImage(ImageSource.gallery);
                 },
               ),
             ],

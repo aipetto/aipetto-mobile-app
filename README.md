@@ -68,12 +68,21 @@ flutter build apk --release
 flutter build appbundle --release
 ```
 
-### Release on iOS
+### Install and Release on iOS
 ```
-flutter clean
-rm ios/Podfile.lock pubspec.lock
-rm ios/Podfile.lock pubspec.lock
-rm -rf ios/Pods ios/Runner.xcworkspace
-flutter build io --no-codesign
-flutter build ios --release
-````
+- [x] Fetch aipetto mobile app and build project
+- [x] Install Flutter SDK
+    - [x] Extract .zip and create folder dev on Users home
+    - [x] set Flutter SDK downloading .zip from Flutter documentation
+                check echo $SHELL
+                export PATH="$PATH:/Users/aipetto/dev/flutter/bin"
+    - [x] Generate Flutter Project: ml_breed_face_recognition
+    - [x]  Xcode License
+    - [x] Edit PATH Variable .zshrc echo $SHELL
+- [x] Install home-brew and command line tools
+- [x] Install Xcode command-line tool
+- [x] Install CocoaPods
+- [x] Install iOS Emulator
+- [x] Install Git and SSH
+
+```

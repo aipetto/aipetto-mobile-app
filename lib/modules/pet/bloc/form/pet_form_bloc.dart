@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:core';
+import 'dart:io';
 
 import 'package:aipetto/modules/auth/bloc/authentication_bloc.dart';
 import 'package:aipetto/modules/pet/models/pet.dart';
@@ -35,10 +36,10 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState>{
   Stream<PetFormState> _mapNewPetToState(NewPetFormButtonPressed event) async* {
     yield PetFormLoading();
     try{
-        await repository.addPet(event.pet);
+        await repository.addPet(event.pet, event.fileImageProfile);
         yield PetFormSuccess();
     } catch (err ) {
-      yield PetFormFailure('unknown_failure_error'.tr());
+      yield PetFormFailure('unknown_failure_error'. tr());
     }
   }
 }

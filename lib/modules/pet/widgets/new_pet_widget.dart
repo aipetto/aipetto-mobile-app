@@ -44,20 +44,19 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
   List<DropdownMenuItem<String>> _dropDownSex;
 
-  File _image;
+  File _imagePetProfile;
 
   Future _getImage(ImageSource imageSource) async {
-     final picker = new ImagePicker();
-     final PickedFile _pickedFile = await picker.getImage(source: imageSource);
+    final picker = new ImagePicker();
+    final PickedFile _pickedFile = await picker.getImage(source: imageSource);
     setState(() {
-      _image = File.fromUri(Uri(path: _pickedFile.path));
+      _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
     });
 
     if( _pickedFile == null ){
       print('No image selected');
       return;
     }
-    //uploadImage();
   }
 
   _initDropDowns() {
@@ -87,17 +86,15 @@ class _NewPetWidgetState extends State<NewPetWidget> {
           final superPet = new Pet(
             name: _name.text,
             isLookingForMatch: _selectedLookingForMatch,
-            tenant: currentUser.user.tenants.first.id,
+            tenant: currentUser.user.tenants.first.tenant.id,
             createdBy: currentUser.user.id,
             updatedBy: currentUser.user.id,
-            ///profileImage: _image.path
           );
 
-          _petFormBloc.add(NewPetFormButtonPressed(pet: superPet));
+          _petFormBloc.add(NewPetFormButtonPressed(pet: superPet, fileImageProfile: this._imagePetProfile));
         }
       }
     }
-
     return BlocListener<PetFormBloc, PetFormState>(
         listener: (context, state) {
 
@@ -126,7 +123,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   onTap: () {
                     _openBottomSheet(context);
                   },
-                  child: _image == null
+                  child: _imagePetProfile == null
                       ? CircleAvatar(
                     radius: 100,
                     backgroundColor: Colors.grey,
@@ -134,7 +131,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   )
                       : CircleAvatar(
                     radius: 100,
-                    backgroundImage: FileImage(_image),
+                    backgroundImage: FileImage(_imagePetProfile),
                   ),
                 ),
               ),
@@ -322,11 +319,4 @@ class _NewPetWidgetState extends State<NewPetWidget> {
           );
         });
   }
-
-  Future<String> uploadImage() async {
-    if( this._image == null) return null;
-
-
-  }
-
 }

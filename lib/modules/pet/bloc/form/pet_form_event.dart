@@ -9,8 +9,9 @@ abstract class PetFormEvent extends Equatable{
 class NewPetFormButtonPressed extends PetFormEvent{
 
   final Pet pet;
+  final File fileImageProfile;
 
-  NewPetFormButtonPressed({Pet this.pet});
+  NewPetFormButtonPressed({Pet this.pet, File this.fileImageProfile});
 
   @override
   List<Object> get props => [pet];

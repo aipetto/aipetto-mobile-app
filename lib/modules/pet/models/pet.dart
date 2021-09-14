@@ -97,7 +97,7 @@ class Pet {
   String bloodType;
   String weight;
 
-  factory Pet.fromJson(Map<String, dynamic> json) => Pet(
+  /**factory Pet.fromJson(Map<String, dynamic> json) => Pet(
     petOwners: List<PetOwner>.from(json["petOwners"].map((x) => PetOwner.fromJson(x))),
     photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
     vaccines: List<dynamic>.from(json["vaccines"].map((x) => x)),
@@ -140,6 +140,10 @@ class Pet {
     petId: json["id"],
     bloodType: json["bloodType"],
     weight: json["weight"]
+  ); **/
+
+  factory Pet.fromJson(Map<String, dynamic> json) => Pet(
+      name: json["name"]
   );
 
   Map<String, dynamic> toJson() => {

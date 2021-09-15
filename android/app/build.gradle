@@ -44,7 +44,7 @@ android {
         applicationId "com.aipetto"
         minSdkVersion 18
         targetSdkVersion 30
-        versionCode 10
+        versionCode 11
         versionName flutterVersionName
     }
 

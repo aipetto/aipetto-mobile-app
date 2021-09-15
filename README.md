@@ -67,7 +67,6 @@ flutter clean
 flutter build apk --release
 flutter build appbundle --release
 ```
-
 ### Install and Release on iOS
 ```
 - [x] Fetch aipetto mobile app and build project
@@ -85,4 +84,5 @@ flutter build appbundle --release
 - [x] Install iOS Emulator
 - [x] Install Git and SSH
 
+For iOS do flutter build ios --release and then open/run the project in Xcode
 ```

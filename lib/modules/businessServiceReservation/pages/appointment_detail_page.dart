@@ -13,7 +13,7 @@ class AppointmentDetailPage extends StatefulWidget {
 }
 
 class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
-  final bool _isdark = Prefs.isDark();
+  final bool _isdark = true;
 
   Color get _color => _isdark ? kColorDark : Colors.white;
 

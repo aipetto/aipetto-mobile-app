@@ -86,3 +86,100 @@ flutter build appbundle --release
 
 For iOS do flutter build ios --release and then open/run the project in Xcode
 ```
+
+#### Troubleshooting
+How to Fix Release APK Is Not Working Properly?
+Users can give a try to below code snippet.
+
+```
+flutter clean
+```
+and run the below command in the terminal.
+```
+flutter build apk --release
+```
+Open the file “android/app/src/main/AndroidManifest.xml” and add the proper user-permission:
+
+```
+<manifest>
+ <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+```
+
+
+Make  change in local.properties android project
+
+```
+sdk.dir=D:/SDK               //your android SDK location
+flutter.sdk=D:\\Flutter\\flutter  //your flutter SDK location
+flutter.versionName=1.0.0
+flutter.versionCode=2
+flutter.buildMode=release
+Changes in your android/app/build.gradle file
+buildTypes {
+       release {
+           // if everything ok then not add
+           //minifyEnabled true
+           //another you can remove minifyEnabled true
+           proguardFiles getDefaultProguardFile('proguard-
+            android.txt'), 'proguard-rules.pro'
+           signingConfig signingConfigs.release
+       }
+   }
+```
+You can also change in android/app/build.gradle defaultConfig method body.
+multiDexEnabled true
+If you want to migrate to androidx then do it setup.
+```
+dependencies {
+ Implementation 'junit:junit:4.12' androidTest
+ Implementation 'androidx.test:runner:1.1.1' androidTest
+ Implementation 'androidx.test.espresso:espresso-core:3.1.1'
+ implementation 'androidx.multidex:multidex:2.0.1'
+}
+```
+and clean before creating a build folder by following this cmd.
+```
+flutter clean
+
+flutter build apk --release
+
+flutter install
+
+flutter build bundle --release
+```
+Go to Release Apk location
+```
+cd build\app\outputs\apk\release
+```
+
+
+#### Google SignIn Certificates SHA-1 between Google Release Play Console and Firebase Authentication Project
+```
+navigate to the android folder in you project
+run this command ./gradlew signingReport
+find release SHA certificate fingerprint
+find debug SHA certificate fingerprint
+add them to the firebase account SHA certificate fingerprints
+redownload the google-services.json
+```
+
+##### Also
+
+In your Google Play Console, visit Setup > App signing
+
+Copy SHA-1 certificate fingerprint
+
+Copy SHA-1 from Google Play App signing key certificate
+
+In your Firebase Console, visit Settings > Project settings
+
+Click Add fingerprint
+
+Add fingerprint in Firebase console
+
+Paste copied SHA-1 certificate fingerprint into Certificate fingerprint textfield
+
+Click Save
+
+Paste SHA-1 certificate & save

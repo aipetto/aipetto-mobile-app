@@ -31,7 +31,7 @@ class _PetProfilePageState extends State<PetProfilePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    bool _isdark = Prefs.isDark();
+    bool _isdark = true;
 
     var _kTabs = [
       Tab(

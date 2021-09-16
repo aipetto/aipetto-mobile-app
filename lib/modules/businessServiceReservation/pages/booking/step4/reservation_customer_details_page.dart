@@ -14,7 +14,7 @@ class ReservationCustomerDetailsPage extends StatefulWidget {
 }
 
 class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDetailsPage> {
-  bool _isdark = Prefs.isDark();
+  bool _isdark = true;
   bool _customer = true;
   var _petNameController = TextEditingController();
   var _customerController = TextEditingController();

@@ -13,7 +13,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage>
     with AutomaticKeepAliveClientMixin<SettingsPage> {
-  bool _isDark = Prefs.isDark();
+  bool _isDark = true;
   Color _color;
 
   @override

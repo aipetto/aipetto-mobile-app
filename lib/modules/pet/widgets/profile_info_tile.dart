@@ -10,7 +10,7 @@ class ProfileInfoTile extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var _isDark = Prefs.isDark();
+    var _isDark = true;
     return Column(
       children: <Widget>[
         ListTile(

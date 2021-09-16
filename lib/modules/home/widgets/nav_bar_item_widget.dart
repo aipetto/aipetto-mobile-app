@@ -17,7 +17,7 @@ class NavBarItemWidget extends StatelessWidget {
 
   Color get _color => isSelected
       ? kColorPrimary
-      : Prefs.isDark()
+      : true
           ? Colors.grey[800]
           : Colors.grey;
 

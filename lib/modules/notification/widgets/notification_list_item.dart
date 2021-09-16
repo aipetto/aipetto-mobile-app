@@ -13,7 +13,7 @@ class NotificationListItem extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    bool isDark = Prefs.isDark();
+    bool isDark = true;
 
     return InkWell(
       onTap: onTap,

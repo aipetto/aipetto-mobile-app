@@ -173,7 +173,7 @@ class _HomeState extends State<Home> {
                   FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar: CustomNavigationBar(
                 backgroundColor:
-                    Prefs.isDark() ? Color(0xff121212) : Colors.white,
+                    true ? Color(0xff121212) : Colors.white,
                 strokeColor: kAmphibianColorGreenLight,
                 items: [
                   NavBarItemWidget(

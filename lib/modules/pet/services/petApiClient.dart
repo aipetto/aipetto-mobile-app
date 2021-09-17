@@ -141,7 +141,6 @@ class PetApiClient {
     await http.Response.fromStream(streamResponse);
     
     final List<ProfileImage> imageMultipartUploaded = [ new ProfileImage(
-       id: uuid,
        name: profileImage.path.split('/').last,  //file.name,
        sizeInBytes: profileImage.readAsBytesSync().lengthInBytes, //file.size,
        publicUrl: jsonResponseFileCredentials['uploadCredentials']['publicUrl'] ?? null,

@@ -304,48 +304,40 @@ class Breed {
 
 class ProfileImage {
   ProfileImage({
-    this.id,
     this.name,
     this.sizeInBytes,
     this.publicUrl,
     this.privateUrl,
     this.createdAt,
     this.updatedAt,
-    this.profileImageId,
     this.downloadUrl,
   });
 
-  String id;
   String name;
   int sizeInBytes;
   dynamic publicUrl;
   String privateUrl;
   DateTime createdAt;
   DateTime updatedAt;
-  String profileImageId;
   String downloadUrl;
 
   factory ProfileImage.fromJson(Map<String, dynamic> json) => ProfileImage(
-    id: json["_id"],
     name: json["name"],
     sizeInBytes: json["sizeInBytes"],
     publicUrl: json["publicUrl"],
     privateUrl: json["privateUrl"],
     createdAt: DateTime.parse(json["createdAt"]),
     updatedAt: DateTime.parse(json["updatedAt"]),
-    profileImageId: json["id"],
     downloadUrl: json["downloadUrl"] == null ? null : json["downloadUrl"],
   );
 
   Map<String, dynamic> toJson() => {
-    "_id": id,
     "name": name,
     "sizeInBytes": sizeInBytes,
     "publicUrl": publicUrl,
     "privateUrl": privateUrl,
     "createdAt": createdAt.toIso8601String(),
     "updatedAt": updatedAt.toIso8601String(),
-    "id": profileImageId,
     "downloadUrl": downloadUrl == null ? null : downloadUrl,
   };
 }

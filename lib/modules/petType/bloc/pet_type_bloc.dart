@@ -11,9 +11,9 @@ part 'pet_type_state.dart';
 
 class PetTypeBloc extends Bloc<PetTypeEvent, PetTypeState>{
 
-  final PetTypeRepository repository;
+  final PetTypeRepository petTypeRepository;
 
-  PetTypeBloc({ @required this.repository }) : assert(repository != null), super(null);
+  PetTypeBloc({ @required this.petTypeRepository}) : assert(petTypeRepository != null), super(null);
 
   @override
   PetTypeState get initialState => PetTypeEmpty();
@@ -24,7 +24,7 @@ class PetTypeBloc extends Bloc<PetTypeEvent, PetTypeState>{
       yield PetTypeLoading();
 
       try{
-        final PetType petType = await repository.fetchPetType();
+        final PetType petType = await petTypeRepository.fetchPetType();
         yield PetTypeLoaded(petType: petType);
       }catch (_){
         yield PetTypeError();

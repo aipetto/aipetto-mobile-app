@@ -1,5 +1,7 @@
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
+import 'package:aipetto/modules/pet/repository/pet_repository.dart';
+import 'package:aipetto/modules/pet/services/petApiClient.dart';
 import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
 import 'package:aipetto/utils/app_themes.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -12,6 +14,7 @@ import 'modules/auth/bloc/authentication_bloc.dart';
 import 'modules/auth/pages/login_page.dart';
 import 'modules/auth/services/auth_service.dart';
 import 'modules/home/component/home.dart';
+import 'modules/pet/bloc/pet_bloc.dart';
 import 'modules/petType/repository/pet_type_repository.dart';
 import 'modules/petType/services/petTypeApiClient.dart';
 import 'routes/route_generator.dart';
@@ -45,22 +48,26 @@ class MyApp extends StatelessWidget {
         httpClient: http.Client(),
       ));
 
-
   final AuthenticationService userRepository = AipettoCoreAuthenticationService(
       httpClient: http.Client()
   );
 
+  final PetRepository petRepository = PetRepository(petClient: PetApiClient(
+      httpClient: http.Client(),
+  ));
+
   @override
   Widget build(BuildContext context) {
 
-    /// TODO Refactor to use MultiRepositoryProvider<T> class to inject repositories in our app
-    /// Consume repository from the context MyBloc(myRepository: context.read<MyAmazingRepository>(),)..add( MyStateLoaded()))
-    /// TODO Refator to move BlocProviders down in the widget tree and not load all in the Main widget.
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ThemeBloc()),
         BlocProvider(create: (_) => UserGeolocationBloc()),
-        BlocProvider(create: (_) => PetTypeBloc(repository: petTypeRepository)),
+        BlocProvider(create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)),
+        BlocProvider(create: (_) => PetBloc(
+            authenticationService: userRepository,
+            petRepository: petRepository)
+        ),
         BlocProvider<AuthenticationBloc>(create: ( context ) {
           return AuthenticationBloc(userRepository)..add(AppLoaded());
         }),

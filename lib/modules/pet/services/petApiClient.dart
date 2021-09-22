@@ -23,9 +23,9 @@ class PetApiClient {
     @required this.httpClient,
   }) : assert(httpClient != null);
 
-  Future<Pet> fetchUserPets() async {
+  Future<Pet> fetchUserPets(String userTenantId) async {
 
-    final url = '$_baseUrl/tenant/{tenantId}/pet/{id}?filter%5Blanguage%5D=$languageId';
+    final url = '$_baseUrl/tenant/{tenantId}/pet';
     final response = await this.httpClient.get(url);
 
     if( response.statusCode != 200 ){
@@ -49,7 +49,7 @@ class PetApiClient {
     return Pet.fromJson(json);
   }
 
-  Future<Pet> updatePet(Pet petInfoToUpdate, String tenant) async {
+  Future<Pet> updatePet(Pet petInfoToUpdate) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
@@ -66,7 +66,6 @@ class PetApiClient {
     final json = jsonDecode(petUpdatedResponse.body);
     return Pet.fromJson(json);
   }
-
 
   Future<Pet> addPet(Pet pet, File profileImage) async {
 

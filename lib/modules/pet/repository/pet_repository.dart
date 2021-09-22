@@ -13,16 +13,16 @@ class PetRepository{
     @required this.petClient }) : assert(petClient != null );
 
 
-  Future<Pet> fetchPets() async {
-    return await petClient.fetchUserPets();
+  Future<Pet> fetchPets(String userTenantId) async {
+    return await petClient.fetchUserPets(userTenantId);
   }
 
-  Future<Pet> fetchPet(Pet pet, String tenant) async {
-    return await petClient.fetchPet(pet, tenant);
+  Future<Pet> fetchPet(Pet pet) async {
+    return await petClient.fetchPet(pet);
   }
 
   Future<Pet> updatePet(Pet pet, String tenant) async {
-    return await petClient.updatePet(pet, tenant);
+    return await petClient.updatePet(pet);
   }
 
   Future<Pet> addPet(Pet pet, File profileImage) async {

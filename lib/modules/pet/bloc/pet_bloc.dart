@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:aipetto/modules/auth/services/auth_service.dart';
-import 'package:aipetto/modules/pet/models/pet.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:bloc/bloc.dart';
@@ -27,13 +27,22 @@ class PetBloc extends Bloc<PetEvent, PetState>{
   Stream<PetState> mapEventToState( PetEvent event ) async* {
     if(event is FetchPets){
       yield PetLoading();
-
       try{
         final User currentUser = await authenticationService.getCurrentUser();
-        final Pet pet = await petRepository.fetchPets(currentUser.tenants.first.tenant.id);
-        yield PetLoaded(pet: pet);
+        final List<Pet> pets = await petRepository.fetchPets(currentUser.tenants.first.tenant.id);
+        yield PetsLoaded(pets: pets);
       }catch (_){
-        yield PetTypeError();
+        yield PetError();
+      }
+    }
+
+    if(event is FetchPet){
+      yield PetLoading();
+      try{
+        //final Pet pet = await petRepository.fetchPet(event.pet);
+        //yield PetLoaded(pet: pet);
+      }catch (_){
+        yield PetError();
       }
     }
 
@@ -45,7 +54,7 @@ class PetBloc extends Bloc<PetEvent, PetState>{
           // Inside petRepository Prototype pattern pet.copyWith(onlyNewFieldsToUpdate)
         yield PetLoaded();
       }catch (_){
-        yield PetTypeError();
+        yield PetError();
       }
     }
   }

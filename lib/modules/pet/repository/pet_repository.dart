@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:aipetto/modules/pet/models/pet.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -13,7 +13,7 @@ class PetRepository{
     @required this.petClient }) : assert(petClient != null );
 
 
-  Future<Pet> fetchPets(String userTenantId) async {
+  Future<List<Pet>> fetchPets(String userTenantId) async {
     return await petClient.fetchUserPets(userTenantId);
   }
 

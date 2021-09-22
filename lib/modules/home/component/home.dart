@@ -59,7 +59,6 @@ class _HomeState extends State<Home> {
     final _pages = [
       HomePage(user: widget.user),
       Container(),
-      MyAppointmentsPage(),
       MessagesPage(),
     ];
     return Stack(
@@ -190,17 +189,10 @@ class _HomeState extends State<Home> {
                   ),
                   NavBarItemWidget(
                     onTap: () {
-                      _selectPage(2);
-                    },
-                    image: 'calendar',
-                    isSelected: _selectedIndex == 2,
-                  ),
-                  NavBarItemWidget(
-                    onTap: () {
                       _selectPage(3);
                     },
                     image: 'icon_messages',
-                    isSelected: _selectedIndex == 3,
+                    isSelected: _selectedIndex == 2,
                   ),
                 ],
                 currentIndex: _selectedIndex,

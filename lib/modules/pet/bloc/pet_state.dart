@@ -12,6 +12,15 @@ class PetEmpty extends PetState{}
 
 class PetLoading extends PetState{}
 
+class PetsLoaded extends PetState{
+  final List<Pet> pets;
+
+  PetsLoaded({@required this.pets}) : assert(pets != null);
+
+  @override
+  List<Object> get props => [pets];
+}
+
 class PetLoaded extends PetState{
   final Pet pet;
 
@@ -21,4 +30,4 @@ class PetLoaded extends PetState{
   List<Object> get props => [pet];
 }
 
-class PetTypeError extends PetState{}
+class PetError extends PetState{}

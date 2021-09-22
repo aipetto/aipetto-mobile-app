@@ -1,8 +1,28 @@
 // To parse this JSON data, do
 //
-//     final pet = petFromJson(jsonString);
+//     final pets = petsFromJson(jsonString);
 
 import 'dart:convert';
+
+Pets petsFromJson(String str) => Pets.fromJson(json.decode(str));
+
+String petsToJson(Pets data) => json.encode(data.toJson());
+
+class Pets {
+  Pets({
+    this.pets,
+  });
+
+  List<Pet> pets;
+
+  factory Pets.fromJson(Map<String, dynamic> json) => Pets(
+    pets: List<Pet>.from(json["rows"].map((x) => Pet.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "rows": List<dynamic>.from(pets.map((x) => x.toJson())),
+  };
+}
 
 Pet petFromJson(String str) => Pet.fromJson(json.decode(str));
 
@@ -98,49 +118,49 @@ class Pet {
   String weight;
 
   /**factory Pet.fromJson(Map<String, dynamic> json) => Pet(
-    petOwners: List<PetOwner>.from(json["petOwners"].map((x) => PetOwner.fromJson(x))),
-    photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
-    vaccines: List<dynamic>.from(json["vaccines"].map((x) => x)),
-    hasBeenVaccinated: json["hasBeenVaccinated"],
-    hasBeenDewormed: json["hasBeenDewormed"],
-    hasBeenSterilizedSpayed: json["hasBeenSterilizedSpayed"],
-    isLost: json["isLost"],
-    usersAuthorized: List<PetOwner>.from(json["usersAuthorized"].map((x) => PetOwner.fromJson(x))),
-    businessAuthorized: List<BusinessAuthorized>.from(json["businessAuthorized"].map((x) => BusinessAuthorized.fromJson(x))),
-    isLookingForMatch: json["isLookingForMatch"],
-    diseases: List<dynamic>.from(json["diseases"].map((x) => x)),
-    isGuideDog: json["isGuideDog"],
-    matches: List<Match>.from(json["matches"].map((x) => Match.fromJson(x))),
-    petFriends: List<Match>.from(json["petFriends"].map((x) => Match.fromJson(x))),
-    hasMicrochip: json["hasMicrochip"],
-    id: json["_id"],
-    numberOfLikes: json["numberOfLikes"],
-    biography: json["biography"],
-    health: json["health"],
-    furLength: json["furLength"],
-    maturitySize: json["maturitySize"],
-    type: Breed.fromJson(json["type"]),
-    breed: Breed.fromJson(json["breed"]),
-    sex: json["sex"],
-    secondColor: json["secondColor"],
-    color: json["color"],
-    age: json["age"],
-    birthdate: DateTime.parse(json["birthdate"]),
-    profileImage: List<ProfileImage>.from(json["profileImage"].map((x) => ProfileImage.fromJson(x))),
-    nickname: json["nickname"],
-    name: json["name"],
-    secondBreedMixed: json["secondBreedMixed"],
-    customerId: json["customerId"],
-    tenant: json["tenant"],
-    createdBy: json["createdBy"],
-    updatedBy: json["updatedBy"],
-    createdAt: DateTime.parse(json["createdAt"]),
-    updatedAt: DateTime.parse(json["updatedAt"]),
-    v: json["__v"],
-    petId: json["id"],
-    bloodType: json["bloodType"],
-    weight: json["weight"]
-  ); **/
+      petOwners: List<PetOwner>.from(json["petOwners"].map((x) => PetOwner.fromJson(x))),
+      photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
+      vaccines: List<dynamic>.from(json["vaccines"].map((x) => x)),
+      hasBeenVaccinated: json["hasBeenVaccinated"],
+      hasBeenDewormed: json["hasBeenDewormed"],
+      hasBeenSterilizedSpayed: json["hasBeenSterilizedSpayed"],
+      isLost: json["isLost"],
+      usersAuthorized: List<PetOwner>.from(json["usersAuthorized"].map((x) => PetOwner.fromJson(x))),
+      businessAuthorized: List<BusinessAuthorized>.from(json["businessAuthorized"].map((x) => BusinessAuthorized.fromJson(x))),
+      isLookingForMatch: json["isLookingForMatch"],
+      diseases: List<dynamic>.from(json["diseases"].map((x) => x)),
+      isGuideDog: json["isGuideDog"],
+      matches: List<Match>.from(json["matches"].map((x) => Match.fromJson(x))),
+      petFriends: List<Match>.from(json["petFriends"].map((x) => Match.fromJson(x))),
+      hasMicrochip: json["hasMicrochip"],
+      id: json["_id"],
+      numberOfLikes: json["numberOfLikes"],
+      biography: json["biography"],
+      health: json["health"],
+      furLength: json["furLength"],
+      maturitySize: json["maturitySize"],
+      type: Breed.fromJson(json["type"]),
+      breed: Breed.fromJson(json["breed"]),
+      sex: json["sex"],
+      secondColor: json["secondColor"],
+      color: json["color"],
+      age: json["age"],
+      birthdate: DateTime.parse(json["birthdate"]),
+      profileImage: List<ProfileImage>.from(json["profileImage"].map((x) => ProfileImage.fromJson(x))),
+      nickname: json["nickname"],
+      name: json["name"],
+      secondBreedMixed: json["secondBreedMixed"],
+      customerId: json["customerId"],
+      tenant: json["tenant"],
+      createdBy: json["createdBy"],
+      updatedBy: json["updatedBy"],
+      createdAt: DateTime.parse(json["createdAt"]),
+      updatedAt: DateTime.parse(json["updatedAt"]),
+      v: json["__v"],
+      petId: json["id"],
+      bloodType: json["bloodType"],
+      weight: json["weight"]
+      ); **/
 
   factory Pet.fromJson(Map<String, dynamic> json) => Pet(
       name: json["name"]
@@ -742,9 +762,9 @@ final veterinarians = [
 
 final pets = [
   Pet(
-    name: 'Snoopy',
-    nickname: 'Duchinho',
-    photos: [Photo(photo: [ProfileImage(publicUrl: 'assets/images/pets/snoopy.jpg')])]
+      name: 'Snoopy',
+      nickname: 'Duchinho',
+      photos: [Photo(photo: [ProfileImage(publicUrl: 'assets/images/pets/snoopy.jpg')])]
   ),
   Pet(
       name: 'Sparrow',

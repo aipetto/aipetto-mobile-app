@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:core';
 import 'dart:io';
 
-import 'package:aipetto/modules/pet/models/pet.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';

@@ -3,8 +3,7 @@ import 'package:aipetto/modules/businessServiceReservation/widgets/reserved_past
 import 'package:aipetto/modules/home/widgets/next_appointment_widget.dart';
 import 'package:aipetto/modules/home/widgets/no_appointments_widget.dart';
 import 'package:aipetto/modules/home/widgets/section_header_widget.dart';
-import 'package:aipetto/modules/pet/models/pet.dart';
-import 'package:aipetto/modules/pet/widgets/pets_of_owner_list_item.dart';
+import 'package:aipetto/modules/pet/widgets/pet_horizontal_listing.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -76,53 +75,7 @@ class _HomePageState extends State<HomePage>
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    Container(
-                      height: 100,
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: 15,
-                        ),
-                        itemCount: 6, /// TODO n + 1 Sum as we are taking the zero position to add new pet
-                        scrollDirection: Axis.horizontal,
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        itemBuilder: (context, index) {
-                          if(index == 0){
-                            return GestureDetector(
-                                    onTap: () {
-                                      FocusScope.of(context).requestFocus(FocusNode());
-                                      Navigator.of(context).pushNamed(Routes.choosePetType);
-                                    },
-                                    child:Column(
-                                        children: <Widget>[
-                                          CircleAvatar(
-                                            radius: 30,
-                                            backgroundColor: Colors.grey,
-                                            backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
-                                          ),
-                                          SizedBox(
-                                            height: 15,
-                                          ),
-
-                                          Text(
-                                              'add_your_pet'.tr(),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .subtitle2
-                                                .copyWith(fontSize: 14),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            )
-                                        ]
-                                      )
-                                 );
-                          }else{
-                            return PetsOfOwnerListItem(
-                              pet: pets[--index],
-                            );
-                          }
-                        },
-                      ),
-                    ),
+                    PetHorizontalList()
                   ],
                 ),
                 _noAppoints

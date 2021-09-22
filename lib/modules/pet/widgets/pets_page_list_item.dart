@@ -1,5 +1,5 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/modules/pet/models/pet.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

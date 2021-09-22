@@ -11,10 +11,12 @@ class FetchPets extends PetEvent{
   List<Object> get props => [];
 }
 
-class FormAddNewPetScreenSubmit{
-  final String name;
+class FetchPet extends PetEvent{
 
-  FormAddNewPetScreenSubmit(this.name);
+  FetchPet();
+
+  @override
+  List<Object> get props => [];
 }
 
 class UpdatePet extends PetEvent{

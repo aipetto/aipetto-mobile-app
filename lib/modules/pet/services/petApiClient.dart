@@ -5,7 +5,8 @@ import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/config/storage/images_file_storage.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
-import 'package:aipetto/modules/pet/models/pet.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;
@@ -23,9 +24,9 @@ class PetApiClient {
     @required this.httpClient,
   }) : assert(httpClient != null);
 
-  Future<Pet> fetchUserPets(String userTenantId) async {
+  Future<List<Pet>> fetchUserPets(String userTenantId) async {
 
-    final url = '$_baseUrl/tenant/{tenantId}/pet';
+    final url = '$_baseUrl/tenant/{userTenantId}/pet';
     final response = await this.httpClient.get(url);
 
     if( response.statusCode != 200 ){
@@ -33,12 +34,12 @@ class PetApiClient {
     }
 
     final json = jsonDecode(response.body);
-    return Pet.fromJson(json);
+    return Pets.fromJson(json).pets;
   }
 
-  Future<Pet> fetchPet(Pet pet, String tenant) async {
+  Future<Pet> fetchPet(Pet pet) async {
 
-    final url = '$_baseUrl/tenant/{tenantId}/pet/{id}';
+    final url = '$_baseUrl/tenant/${pet.tenant}/pet/{id}';
     final response = await this.httpClient.get(url);
 
     if( response.statusCode != 200 ){

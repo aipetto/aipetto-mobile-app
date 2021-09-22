@@ -1,4 +1,4 @@
-import 'package:aipetto/modules/pet/models/pet.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 

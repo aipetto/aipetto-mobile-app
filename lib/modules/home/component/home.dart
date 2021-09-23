@@ -189,7 +189,7 @@ class _HomeState extends State<Home> {
                   ),
                   NavBarItemWidget(
                     onTap: () {
-                      _selectPage(3);
+                      _selectPage(2);
                     },
                     image: 'icon_messages',
                     isSelected: _selectedIndex == 2,

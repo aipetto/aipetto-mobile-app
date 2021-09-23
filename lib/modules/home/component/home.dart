@@ -1,6 +1,4 @@
 import 'package:aipetto/components/custom_navigation_bar.dart';
-import 'package:aipetto/config/pref_manager.dart';
-import 'package:aipetto/modules/businessServiceReservation/pages/my_appointments_page.dart';
 import 'package:aipetto/modules/home/pages/drawer/drawer_page.dart';
 import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:aipetto/modules/home/widgets/app_bar_title_widget.dart';

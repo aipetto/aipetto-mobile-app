@@ -6,11 +6,10 @@ import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/config/storage/images_file_storage.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
-import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart' as p;
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
 
 class PetApiClient {
@@ -79,18 +78,18 @@ class PetApiClient {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
     final petTenant = pet.tenant;
 
-    List<ProfileImage> imageMultipartUploaded = await uploadMultipartImageToCloudStorage(
+    List<ProfileImage> imageMultipartUploaded = profileImage != null ? await uploadMultipartImageToCloudStorage(
         profileImage,
         pet,
         petTenant,
         jwtOnSecureStorage
-    );
+    ) : [];
 
     final newPetInfo = {
       'data': {
         "name": pet.name,
         "isLookingForMatch": pet.isLookingForMatch,
-        "profileImage": imageMultipartUploaded ?? [],
+        "profileImage": imageMultipartUploaded,
         "tenant": pet.tenant,
         "createdBy": pet.createdBy,
         "updatedBy": pet.updatedBy

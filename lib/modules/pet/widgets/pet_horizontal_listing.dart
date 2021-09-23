@@ -10,12 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class PetHorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PetBloc, PetState>(
+    return BlocConsumer<PetBloc, PetState>(
       builder: (context, state) {
         if(state is PetLoading) {
           return Flexible(child: Center(child: CircularProgressIndicator()));
-        } else if (state is PetError){
-           return Center(child: Text('error'));
+        }else if (state is PetError){
+          return Center(child: Text('error'));
         }else if (state is PetEmpty){
           BlocProvider.of<PetBloc>(context).add(FetchPets());
           return Center(child: GestureDetector(
@@ -33,7 +33,6 @@ class PetHorizontalList extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-
                     Text(
                       'add_your_pet'.tr(),
                       style: Theme.of(context)
@@ -47,6 +46,13 @@ class PetHorizontalList extends StatelessWidget {
               )
           ));
         }else{
+          final stateAsPetsLoadedState = state as PetsLoaded;
+          final pets = stateAsPetsLoadedState.pets;
+          return buildPetsHorizontalList(pets);
+        }
+      },
+      listener: (context, state) {
+        if(state is PetLoaded) {
           final stateAsPetsLoadedState = state as PetsLoaded;
           final pets = stateAsPetsLoadedState.pets;
           return buildPetsHorizontalList(pets);

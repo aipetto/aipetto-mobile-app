@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:aipetto/modules/auth/services/auth_service.dart';
+import 'package:aipetto/modules/pet/bloc/form/pet_form_bloc.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:aipetto/modules/user/models/user.dart';
@@ -15,6 +16,7 @@ class PetBloc extends Bloc<PetEvent, PetState>{
 
   final PetRepository petRepository;
   final AuthenticationService authenticationService;
+  StreamSubscription newPetFormSubscription;
 
   PetBloc({@required this.authenticationService, @required this.petRepository}) :
         assert(petRepository != null),
@@ -24,7 +26,21 @@ class PetBloc extends Bloc<PetEvent, PetState>{
   PetState get initialState => PetEmpty();
 
   @override
+  void dispose() {
+    newPetFormSubscription?.cancel();
+  }
+
+  @override
   Stream<PetState> mapEventToState( PetEvent event ) async* {
+
+    // TODO Check PetForm StreamSubscription to component/widget under the PetBloc in Widgets Tree
+    final PetFormBloc newPetFormBloc = PetFormBloc(repository: petRepository);
+    newPetFormSubscription = newPetFormBloc.listen((state) {
+      if(state is PetFormSuccess){
+        add(FetchPets());
+      }
+    });
+
     if(event is FetchPets){
       yield PetLoading();
       try{

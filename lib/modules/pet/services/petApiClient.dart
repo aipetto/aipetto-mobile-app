@@ -26,15 +26,21 @@ class PetApiClient {
 
   Future<List<Pet>> fetchUserPets(String userTenantId) async {
 
-    final url = '$_baseUrl/tenant/{userTenantId}/pet';
-    final response = await this.httpClient.get(url);
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final url = '$_baseUrl/tenant/$userTenantId/pet';
+    final response = await this.httpClient.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
 
     if( response.statusCode != 200 ){
       throw new Exception('Error gettings pet types');
     }
 
     final json = jsonDecode(response.body);
-    return Pets.fromJson(json).pets;
+    return Pets.fromJson(json).rows;
   }
 
   Future<Pet> fetchPet(Pet pet) async {

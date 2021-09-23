@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class PetsOfOwnerListItem extends StatelessWidget {
   final Pet pet;
 
-  const PetsOfOwnerListItem({Key key, @required this.pet})
-      : super(key: key);
+  const PetsOfOwnerListItem({@required this.pet});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +20,12 @@ class PetsOfOwnerListItem extends StatelessWidget {
               CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.grey,
-                backgroundImage: AssetImage(pet.photos[0].photo[0].publicUrl),
+                backgroundImage: (
+                    pet.photos != null &&
+                    pet.photos[0] != null &&
+                    pet.photos[0].photo[0] != null &&
+                    pet.photos[0].photo[0].publicUrl != null
+                ) ? NetworkImage(pet.photos[0].photo[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
               ),
               SizedBox(
                 height: 15,
@@ -30,7 +35,7 @@ class PetsOfOwnerListItem extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .subtitle2
-                    .copyWith(fontSize: 14),
+                    .copyWith(fontSize: 16),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

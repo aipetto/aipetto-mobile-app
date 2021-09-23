@@ -10,17 +10,17 @@ String petsToJson(Pets data) => json.encode(data.toJson());
 
 class Pets {
   Pets({
-    this.pets,
+    this.rows,
   });
 
-  List<Pet> pets;
+  List<Pet> rows;
 
   factory Pets.fromJson(Map<String, dynamic> json) => Pets(
-    pets: List<Pet>.from(json["rows"].map((x) => Pet.fromJson(x))),
+    rows: List<Pet>.from(json["rows"].map((x) => Pet.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "rows": List<dynamic>.from(pets.map((x) => x.toJson())),
+    "rows": List<dynamic>.from(rows.map((x) => x.toJson())),
   };
 }
 
@@ -758,32 +758,4 @@ final veterinarians = [
   Pet(
     nickname: 'Supet Pet',
   ),
-];
-
-final pets = [
-  Pet(
-      name: 'Snoopy',
-      nickname: 'Duchinho',
-      photos: [Photo(photo: [ProfileImage(publicUrl: 'assets/images/pets/snoopy.jpg')])]
-  ),
-  Pet(
-      name: 'Sparrow',
-      nickname: 'Piratinha',
-      photos: [Photo(photo: [ProfileImage(publicUrl: 'assets/images/pets/cat_3.jpg')])]
-  ),
-  Pet(
-      name: 'Big',
-      nickname: 'Bigguinho',
-      photos: [Photo(photo: [ProfileImage(publicUrl: 'assets/images/pets/pet_2.jpg')])]
-  ),
-  Pet(
-      name: 'Amanda',
-      nickname: 'Rainha',
-      photos: [Photo(photo: [ProfileImage(publicUrl: 'assets/images/pets/cat_1.jpg')])]
-  ),
-  Pet(
-      name: 'CDF',
-      nickname: 'Nerd',
-      photos: [Photo(photo: [ProfileImage(publicUrl: 'assets/images/pets/cat_2.jpg')])]
-  )
 ];

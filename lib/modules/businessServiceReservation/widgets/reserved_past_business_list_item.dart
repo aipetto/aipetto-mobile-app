@@ -10,22 +10,22 @@ class ReservedPastBussinessListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140,
+      height: 160,
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Colors.white,
+        color: Color(0xff7b7b7b),
         boxShadow: [
           BoxShadow(
-              color: Color(0x0c000000),
-              offset: Offset(0, 5),
-              blurRadius: 5,
+              color: Color(0xffc1c1c1),
+              offset: Offset(0, 1),
+              blurRadius: 1,
               spreadRadius: 0),
           BoxShadow(
-              color: Color(0x0c000000),
-              offset: Offset(0, -5),
-              blurRadius: 5,
+              color: Color(0xffc1c1c1),
+              offset: Offset(0, -1),
+              blurRadius: 1,
               spreadRadius: 0),
         ],
       ),
@@ -37,23 +37,28 @@ class ReservedPastBussinessListItem extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 CircleAvatar(
-                  radius: 30,
+                  radius: 40,
                   backgroundColor: Colors.grey,
                   backgroundImage: AssetImage(business.avatar),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  business.name,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
+                Container(
+                  width: 250,
+                  child: Center(
+                    child: Text(
+                      business.name,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.clip,
+                    ),
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.clip,
-                ),
+                )
               ],
             ),
       ),

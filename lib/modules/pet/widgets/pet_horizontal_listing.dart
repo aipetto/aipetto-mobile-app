@@ -13,11 +13,11 @@ class PetHorizontalList extends StatelessWidget {
     return BlocBuilder<PetBloc, PetState>(
       builder: (context, state) {
         if(state is PetLoading) {
-          return Expanded(child: Center(child: CircularProgressIndicator()));
-        //} else if (state is PetError){
-        //  return Center(child: Text('error'));
+          return Flexible(child: Center(child: CircularProgressIndicator()));
+        } else if (state is PetError){
+           return Center(child: Text('error'));
         }else if (state is PetEmpty){
-          //BlocProvider.of<PetBloc>(context).add(FetchPets());
+          BlocProvider.of<PetBloc>(context).add(FetchPets());
           return Center(child: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(FocusNode());
@@ -39,7 +39,7 @@ class PetHorizontalList extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
-                          .copyWith(fontSize: 14),
+                          .copyWith(fontSize: 16),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     )
@@ -62,7 +62,7 @@ class PetHorizontalList extends StatelessWidget {
         separatorBuilder: (context, index) => SizedBox(
           width: 15,
         ),
-        itemCount: 6, /// TODO n + 1 Sum as we are taking the zero position to add new pet
+        itemCount: pets.length + 1,
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.symmetric(horizontal: 20),
         itemBuilder: (context, index) {
@@ -82,7 +82,6 @@ class PetHorizontalList extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-
                       Text(
                         'add_your_pet'.tr(),
                         style: Theme.of(context)

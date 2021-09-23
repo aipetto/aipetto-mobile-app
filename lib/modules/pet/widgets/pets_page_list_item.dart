@@ -16,10 +16,15 @@ class MyPetListItem extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Row(
           children: <Widget>[
-            Image.asset(
-              pet.photos[0].photo[0].publicUrl,
-              width: 90,
-              height: 90,
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.grey,
+              backgroundImage: (
+                  pet.photos != null &&
+                      pet.photos[0] != null &&
+                      pet.photos[0].photo[0] != null &&
+                      pet.photos[0].photo[0].publicUrl != null
+              ) ? NetworkImage(pet.photos[0].photo[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
             ),
             SizedBox(
               width: 20,
@@ -35,8 +40,8 @@ class MyPetListItem extends StatelessWidget {
                         .subtitle2
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
-                  Text(
-                    pet.nickname + '\n',
+                  pet.nickname != null ? Text(
+                    pet.nickname  + '\n',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
@@ -44,7 +49,7 @@ class MyPetListItem extends StatelessWidget {
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                  ),
+                  ) : Text('')
                 ],
               ),
             ),

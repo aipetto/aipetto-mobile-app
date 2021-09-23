@@ -1,6 +1,5 @@
 import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/components/text_form_field.dart';
-import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/routes/routes.dart';

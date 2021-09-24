@@ -73,10 +73,13 @@ class _HomePageState extends State<HomePage>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Column(
+                SizedBox(
+                  height: 100,
+                  child: Column(
                   children: <Widget>[
-                    PetHorizontalList()
-                  ],
+                      PetHorizontalList()
+                    ],
+                  ),
                 ),
                 _noAppoints
                     ? NoAppointmentsWidget()

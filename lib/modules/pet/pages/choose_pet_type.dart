@@ -27,7 +27,7 @@ class ChoosePetTypePage extends StatelessWidget {
               appBar: AppBar(
                 centerTitle: true,
                 title: Text(
-                  'categories_title'.tr(),
+                 'pet_type_choose'.tr(),
                 ),
               ),
               body: Column(
@@ -38,15 +38,6 @@ class ChoosePetTypePage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Text(
-                                'pet_type_choose'.tr(),
-                                style: Theme.of(context).textTheme.headline6.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
                             state.petType.rows.length < 0 ? noValuesWidget() : StaggeredGridView.countBuilder(
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               crossAxisCount: 4,

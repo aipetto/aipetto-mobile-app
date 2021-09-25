@@ -1,6 +1,6 @@
 import 'package:aipetto/components/round_icon_button.dart';
-import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/exam/pages/visit_page.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/pages/pet_info_page.dart';
 import 'package:aipetto/modules/vaccine/pages/vaccine_page.dart';
 import 'package:aipetto/routes/routes.dart';
@@ -9,6 +9,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class PetProfilePage extends StatefulWidget {
+
+  final Pet pet;
+
+  const PetProfilePage({Key key, this.pet}) : super(key: key);
+
   @override
   _PetProfilePageState createState() => _PetProfilePageState();
 }
@@ -32,6 +37,7 @@ class _PetProfilePageState extends State<PetProfilePage>
   Widget build(BuildContext context) {
     super.build(context);
     bool _isdark = true;
+    final String petAgeInMonths = widget.pet.age != null ? '${widget.pet.age}' + 'details'.tr() : '';
 
     var _kTabs = [
       Tab(
@@ -61,11 +67,13 @@ class _PetProfilePageState extends State<PetProfilePage>
               Padding(
               padding: EdgeInsets.symmetric(vertical: 30),
                child: CircleAvatar(
-                  radius: 72,
-                  backgroundColor: Colors.transparent,
-                  backgroundImage: AssetImage(
-                    'assets/images/pets/Hachyko_bigger.jpg',
-                  ),
+                 radius: 82,
+                 backgroundColor: Colors.transparent,
+                 backgroundImage: (
+                     widget.pet.profileImage != null &&
+                         widget.pet.profileImage[0] != null &&
+                         widget.pet.profileImage[0].publicUrl != null
+                 ) ? NetworkImage(widget.pet.profileImage[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
                 ),
               ),
               SizedBox(
@@ -76,14 +84,14 @@ class _PetProfilePageState extends State<PetProfilePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Hachikō',
+                      widget.pet.name ?? '',
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                     SizedBox(
                       height: 3,
                     ),
                     Text(
-                      'Akita',
+                      widget.pet.breed ?? '',
                       style: TextStyle(
                         color: Colors.grey[350],
                         fontSize: 16,
@@ -93,7 +101,7 @@ class _PetProfilePageState extends State<PetProfilePage>
                       height: 5,
                     ),
                     Text(
-                      '7yr',
+                      '$petAgeInMonths',
 
                       style: Theme.of(context)
                           .textTheme

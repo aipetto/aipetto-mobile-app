@@ -117,7 +117,7 @@ class Pet {
   String bloodType;
   String weight;
 
-  /**factory Pet.fromJson(Map<String, dynamic> json) => Pet(
+  factory Pet.fromJson(Map<String, dynamic> json) => Pet(
       petOwners: List<PetOwner>.from(json["petOwners"].map((x) => PetOwner.fromJson(x))),
       photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
       vaccines: List<dynamic>.from(json["vaccines"].map((x) => x)),
@@ -134,36 +134,31 @@ class Pet {
       petFriends: List<Match>.from(json["petFriends"].map((x) => Match.fromJson(x))),
       hasMicrochip: json["hasMicrochip"],
       id: json["_id"],
-      numberOfLikes: json["numberOfLikes"],
-      biography: json["biography"],
-      health: json["health"],
-      furLength: json["furLength"],
-      maturitySize: json["maturitySize"],
-      type: Breed.fromJson(json["type"]),
-      breed: Breed.fromJson(json["breed"]),
-      sex: json["sex"],
-      secondColor: json["secondColor"],
-      color: json["color"],
+      //numberOfLikes: json["numberOfLikes"],
+      //biography: json["biography"],
+      //health: json["health"],
+      //furLength: json["furLength"],
+      //maturitySize: json["maturitySize"],
+      //type: Breed.fromJson(json["type"]),
+      //breed: Breed.fromJson(json["breed"]),
+      //sex: json["sex"],
+      //secondColor: json["secondColor"],
+      //color: json["color"],
       age: json["age"],
-      birthdate: DateTime.parse(json["birthdate"]),
+      //birthdate: DateTime.parse(json["birthdate"]),
       profileImage: List<ProfileImage>.from(json["profileImage"].map((x) => ProfileImage.fromJson(x))),
-      nickname: json["nickname"],
+      //nickname: json["nickname"],
       name: json["name"],
-      secondBreedMixed: json["secondBreedMixed"],
-      customerId: json["customerId"],
+      //secondBreedMixed: json["secondBreedMixed"],
+      //customerId: json["customerId"],
       tenant: json["tenant"],
       createdBy: json["createdBy"],
       updatedBy: json["updatedBy"],
       createdAt: DateTime.parse(json["createdAt"]),
       updatedAt: DateTime.parse(json["updatedAt"]),
-      v: json["__v"],
       petId: json["id"],
-      bloodType: json["bloodType"],
-      weight: json["weight"]
-      ); **/
-
-  factory Pet.fromJson(Map<String, dynamic> json) => Pet(
-      name: json["name"]
+      //bloodType: json["bloodType"],
+      //weight: json["weight"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -754,6 +749,13 @@ class Photo {
   };
 }
 
+class PetSelected{
+  final Pet pet;
+
+  PetSelected(this.pet);
+}
+
+// TODO Remove hardcode and consume from API
 final veterinarians = [
   Pet(
     nickname: 'Supet Pet',

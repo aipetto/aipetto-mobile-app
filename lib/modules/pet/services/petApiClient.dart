@@ -44,15 +44,14 @@ class PetApiClient {
 
   Future<Pet> fetchPet(Pet pet) async {
 
-    final url = '$_baseUrl/tenant/${pet.tenant}/pet/{id}';
+    final url = '$_baseUrl/tenant/${pet.tenant}/pet/${pet.id}';
     final response = await this.httpClient.get(url);
 
     if( response.statusCode != 200 ){
       throw new Exception('Error gettings pet information');
     }
 
-    final json = jsonDecode(response.body);
-    return Pet.fromJson(json);
+    return Pet.fromJson(jsonDecode(response.body));
   }
 
   Future<Pet> updatePet(Pet petInfoToUpdate) async {
@@ -148,9 +147,8 @@ class PetApiClient {
     final List<ProfileImage> imageMultipartUploaded = [ new ProfileImage(
        name: profileImage.path.split('/').last,  //file.name,
        sizeInBytes: profileImage.readAsBytesSync().lengthInBytes, //file.size,
-       publicUrl: jsonResponseFileCredentials['uploadCredentials']['publicUrl'] ?? null,
+       publicUrl: jsonResponseFileCredentials['downloadUrl'] ?? null,
        privateUrl: jsonResponseFileCredentials['privateUrl'],
-       downloadUrl: jsonResponseFileCredentials['downloadUrl'],
        createdAt: DateTime.now(),
        updatedAt: DateTime.now(),
     )];

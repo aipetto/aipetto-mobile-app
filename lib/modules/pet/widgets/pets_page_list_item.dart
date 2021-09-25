@@ -17,14 +17,13 @@ class MyPetListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             CircleAvatar(
-              radius: 30,
+              radius: 40,
               backgroundColor: Colors.grey,
               backgroundImage: (
-                  pet.photos != null &&
-                      pet.photos[0] != null &&
-                      pet.photos[0].photo[0] != null &&
-                      pet.photos[0].photo[0].publicUrl != null
-              ) ? NetworkImage(pet.photos[0].photo[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
+                  pet.profileImage != null &&
+                  pet.profileImage[0] != null &&
+                  pet.profileImage[0].publicUrl != null
+              ) ? NetworkImage(pet.profileImage[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
             ),
             SizedBox(
               width: 20,
@@ -60,7 +59,9 @@ class MyPetListItem extends StatelessWidget {
               text: 'details'.tr(),
               textSize: 14,
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.petProfile);
+                Navigator.of(context).pushNamed(Routes.petProfile,
+                    arguments: PetSelected(this.pet)
+                );
               },
               padding: EdgeInsets.symmetric(
                 vertical: 10,

@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: 100,
+                  height: 130,
                   child: Column(
                   children: <Widget>[
                       PetHorizontalList()

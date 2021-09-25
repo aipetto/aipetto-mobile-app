@@ -13,31 +13,33 @@ class PetsOfOwnerListItem extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(FocusNode());
-            Navigator.of(context).pushNamed(Routes.petProfile); /// TODO get the pet profile passing the pet.id
+            Navigator.of(context).pushNamed(Routes.petProfile,
+              arguments: PetSelected(this.pet)
+            );
           },
           child: Column(
             children: <Widget>[
               CircleAvatar(
-                radius: 30,
+                radius: 40,
                 backgroundColor: Colors.grey,
                 backgroundImage: (
-                    pet.photos != null &&
-                    pet.photos[0] != null &&
-                    pet.photos[0].photo[0] != null &&
-                    pet.photos[0].photo[0].publicUrl != null
-                ) ? NetworkImage(pet.photos[0].photo[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
+                    pet.profileImage != null &&
+                    pet.profileImage[0] != null &&
+                    pet.profileImage[0].publicUrl != null
+                ) ? NetworkImage(pet.profileImage[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
               ),
               SizedBox(
                 height: 15,
               ),
-              Text(
-                pet.name,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2
-                    .copyWith(fontSize: 16),
-                maxLines: 1,
+              RichText(
                 overflow: TextOverflow.ellipsis,
+                text: TextSpan(
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2
+                      .copyWith(fontSize: 16),
+                  text: pet.name
+                )
               ),
             ],
           ),

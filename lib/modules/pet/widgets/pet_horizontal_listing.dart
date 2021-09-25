@@ -26,7 +26,7 @@ class PetHorizontalList extends StatelessWidget {
               child:Column(
                   children: <Widget>[
                     CircleAvatar(
-                      radius: 30,
+                      radius: 40,
                       backgroundColor: Colors.grey,
                       backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
                     ),
@@ -63,7 +63,7 @@ class PetHorizontalList extends StatelessWidget {
 
   Widget buildPetsHorizontalList(List<Pet> pets){
     return Container(
-      height: 100,
+      height: 130,
       child: ListView.separated(
         separatorBuilder: (context, index) => SizedBox(
           width: 15,
@@ -81,7 +81,7 @@ class PetHorizontalList extends StatelessWidget {
                 child:Column(
                     children: <Widget>[
                       CircleAvatar(
-                        radius: 30,
+                        radius: 40,
                         backgroundColor: Colors.grey,
                         backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
                       ),

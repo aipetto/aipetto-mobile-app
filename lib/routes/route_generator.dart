@@ -19,6 +19,7 @@ import 'package:aipetto/modules/i18n/pages/change_laguage_page.dart';
 import 'package:aipetto/modules/message/pages/messages_detail_page.dart';
 import 'package:aipetto/modules/notification/pages/notification_settings_page.dart';
 import 'package:aipetto/modules/notification/pages/notifications_page.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/pages/add_new_pet_page.dart';
 import 'package:aipetto/modules/pet/pages/choose_pet_type.dart';
 import 'package:aipetto/modules/pet/pages/edit_profile_page.dart';
@@ -48,7 +49,10 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => LoginPage());
 
       case Routes.petProfile:
-        return CupertinoPageRoute(builder: (_) => PetProfilePage());
+        final args = settings.arguments as PetSelected;
+        return CupertinoPageRoute(builder: (BuildContext context) => PetProfilePage(
+          pet: args.pet
+        ));
 
       case Routes.signup:
         return CupertinoPageRoute(builder: (_) => SignupPage());

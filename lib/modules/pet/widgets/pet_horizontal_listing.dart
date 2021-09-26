@@ -15,7 +15,7 @@ class PetHorizontalList extends StatelessWidget {
         if(state is PetLoading) {
           return Flexible(child: Center(child: CircularProgressIndicator()));
         }else if (state is PetError){
-          return Center(child: Text('error'));
+          return Center(child: Text(''));
         }else if (state is PetEmpty){
           return Center(child: GestureDetector(
               onTap: () {

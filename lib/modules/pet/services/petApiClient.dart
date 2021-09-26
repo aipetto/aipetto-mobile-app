@@ -35,7 +35,7 @@ class PetApiClient {
     });
 
     if( response.statusCode != 200 ){
-      throw new Exception('Error gettings pet types');
+      throw new Exception('Error gettings user pets');
     }
 
     final json = jsonDecode(response.body);

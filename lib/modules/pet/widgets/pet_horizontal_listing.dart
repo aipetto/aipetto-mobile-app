@@ -17,7 +17,6 @@ class PetHorizontalList extends StatelessWidget {
         }else if (state is PetError){
           return Center(child: Text('error'));
         }else if (state is PetEmpty){
-          BlocProvider.of<PetBloc>(context).add(FetchPets());
           return Center(child: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(FocusNode());

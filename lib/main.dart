@@ -61,13 +61,15 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ThemeBloc()),
-        BlocProvider(create: (_) => UserGeolocationBloc()),
-        BlocProvider(create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)),
-        BlocProvider(create: (_) => PetBloc(
-            authenticationService: userRepository,
-            petRepository: petRepository)
-        ),
+        BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
+        BlocProvider<UserGeolocationBloc>(create: (_) => UserGeolocationBloc()),
+        BlocProvider<PetTypeBloc>(create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)),
+        BlocProvider<PetBloc>(create: ( context ) {
+          return PetBloc(
+              authenticationService: userRepository,
+              petRepository: petRepository
+          )..add(FetchPets());
+        }),
         BlocProvider<AuthenticationBloc>(create: ( context ) {
           return AuthenticationBloc(userRepository)..add(AppLoaded());
         }),

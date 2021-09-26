@@ -24,6 +24,7 @@ class PetsOfOwnerListItem extends StatelessWidget {
                 backgroundColor: Colors.grey,
                 backgroundImage: (
                     pet.profileImage != null &&
+                    pet.profileImage.length > 0 &&
                     pet.profileImage[0] != null &&
                     pet.profileImage[0].publicUrl != null
                 ) ? NetworkImage(pet.profileImage[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),

@@ -1,13 +1,19 @@
+import 'package:aipetto/modules/auth/services/auth_service.dart';
 import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/businessServiceReservation/widgets/reserved_past_business_list_item.dart';
 import 'package:aipetto/modules/home/widgets/next_appointment_widget.dart';
 import 'package:aipetto/modules/home/widgets/no_appointments_widget.dart';
 import 'package:aipetto/modules/home/widgets/section_header_widget.dart';
+import 'package:aipetto/modules/pet/bloc/pet_bloc.dart';
+import 'package:aipetto/modules/pet/repository/pet_repository.dart';
+import 'package:aipetto/modules/pet/services/petApiClient.dart';
 import 'package:aipetto/modules/pet/widgets/pet_horizontal_listing.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
 
@@ -32,8 +38,22 @@ class _HomePageState extends State<HomePage>
        firstName = widget.user.firstName;
     }
 
+    final PetRepository petRepository = PetRepository(petClient: PetApiClient(
+      httpClient: http.Client(),
+    ));
+
+    final AuthenticationService userRepository = AipettoCoreAuthenticationService(
+        httpClient: http.Client()
+    );
+
     return Scaffold(
-      body: SingleChildScrollView(
+      body: BlocProvider<PetBloc>(create: ( context ) {
+          return PetBloc(
+              authenticationService: userRepository,
+              petRepository: petRepository
+          )..add(FetchPets());
+        },
+      child:SingleChildScrollView(
       child: Column(
         children: <Widget>[
           Padding(
@@ -100,10 +120,10 @@ class _HomePageState extends State<HomePage>
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 40,
                           ),
                           Container(
-                            height: 160,
+                            height: 180,
                             child: ListView.separated(
                               separatorBuilder: (context, index) => SizedBox(
                                 width: 15,
@@ -126,6 +146,7 @@ class _HomePageState extends State<HomePage>
          ],
         ),
       ),
+    ),
     );
   }
 

@@ -147,7 +147,7 @@ class PetApiClient {
     final List<ProfileImage> imageMultipartUploaded = [ new ProfileImage(
        name: profileImage.path.split('/').last,  //file.name,
        sizeInBytes: profileImage.readAsBytesSync().lengthInBytes, //file.size,
-       publicUrl: jsonResponseFileCredentials['downloadUrl'] ?? null,
+       publicUrl: jsonResponseFileCredentials['downloadUrl'].split('?')[0] ?? null,
        privateUrl: jsonResponseFileCredentials['privateUrl'],
        createdAt: DateTime.now(),
        updatedAt: DateTime.now(),

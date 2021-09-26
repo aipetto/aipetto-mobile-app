@@ -1,9 +1,9 @@
 import 'package:aipetto/components/custom_navigation_bar.dart';
+import 'package:aipetto/modules/businessServiceReservation/pages/my_appointments_page.dart';
 import 'package:aipetto/modules/home/pages/drawer/drawer_page.dart';
 import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:aipetto/modules/home/widgets/app_bar_title_widget.dart';
 import 'package:aipetto/modules/home/widgets/nav_bar_item_widget.dart';
-import 'package:aipetto/modules/message/pages/messages_page.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
     final _pages = [
       HomePage(user: widget.user),
       Container(),
-      MessagesPage(),
+      MyAppointmentsPage(),
     ];
     return Stack(
       children: <Widget>[
@@ -140,8 +140,8 @@ class _HomeState extends State<Home> {
                 children: _pages,
               ),
               floatingActionButton: Container(
-                width: 80,
-                height: 80,
+                width: 100,
+                height: 100,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color(0x202e83f8),
@@ -160,6 +160,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Icon(
                         Icons.pets,
+                        size: 45,
                         color: Colors.white,
                       ),
                     ),
@@ -189,7 +190,7 @@ class _HomeState extends State<Home> {
                     onTap: () {
                       _selectPage(2);
                     },
-                    image: 'icon_messages',
+                    image: 'calendar',
                     isSelected: _selectedIndex == 2,
                   ),
                 ],

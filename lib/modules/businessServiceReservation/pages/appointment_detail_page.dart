@@ -246,6 +246,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
         title: Text(
           'appointment_details'.tr(),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: Column(

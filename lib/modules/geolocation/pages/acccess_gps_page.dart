@@ -25,6 +25,7 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async{
+    print('======================> $state');
     if( state == AppLifecycleState.resumed ) {
       if (await Permission.location.isGranted) {
         Navigator.of(context).pushNamed(Routes.loading);
@@ -115,16 +116,17 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
 
     switch( status) {
       case PermissionStatus.granted:
-        Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby);
+        Navigator.pushReplacementNamed(context, 'booking_step1_find_places_nearby');
         break;
       case PermissionStatus.denied:
+        Navigator.of(context).pushNamed(Routes.accessGPS);
+        break;
       case PermissionStatus.undetermined:
       case PermissionStatus.restricted:
       case PermissionStatus.limited:
       case PermissionStatus.permanentlyDenied:
-        //Navigator.pushReplacementNamed(context, 'access_gps');
-        Navigator.of(context).pushNamed(Routes.categories);
-        //openAppSettings();
+        openAppSettings();
     }
   }
 }
+

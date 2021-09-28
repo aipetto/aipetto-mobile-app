@@ -9,28 +9,7 @@ class LoadingPage extends StatefulWidget {
   _LoadingPageState createState() => _LoadingPageState();
 }
 
-class _LoadingPageState extends State<LoadingPage> with WidgetsBindingObserver {
-
-  @override
-  void initState() {
-    WidgetsBinding.instance.addObserver(this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) async{
-    if( state == AppLifecycleState.resumed ) {
-      if (await Geolocator.isLocationServiceEnabled()) {
-        Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby);
-      }
-    }
-  }
+class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {

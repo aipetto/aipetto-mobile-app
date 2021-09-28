@@ -30,6 +30,7 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -39,9 +40,7 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
           builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {  Navigator.of(context).pushNamed(
-                  Routes.home
-              ); },
+              onPressed: () { Navigator.of(context).pushNamed(Routes.home); },
               tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             );
           },

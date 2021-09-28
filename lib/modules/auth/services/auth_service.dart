@@ -94,8 +94,7 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
           if(userDTOFromResponse.tenants.isEmpty){
               final newTenantName = {
                 'data': {
-                  'name': 'aipetto' + uuid.v4(),
-                  'url':  'default'
+                  'name': 'aipetto' + uuid.v4()
                 }
               };
               // Create random tenant and role petOwner for users signed in via Google Sign

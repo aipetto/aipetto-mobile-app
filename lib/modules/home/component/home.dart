@@ -58,8 +58,8 @@ class _HomeState extends State<Home> {
     final _pages = [
       HomePage(user: widget.user),
       Container(),
+      MyAppointmentsPage(),
       MessagesPage(),
-      //MyAppointmentsPage(),
     ];
     return Stack(
       children: <Widget>[

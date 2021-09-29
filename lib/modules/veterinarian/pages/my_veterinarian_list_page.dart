@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../models/veterinarian.dart' as vets;
 
 class MyVeterinarianListPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

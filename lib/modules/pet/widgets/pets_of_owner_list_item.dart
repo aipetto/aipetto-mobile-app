@@ -10,41 +10,38 @@ class PetsOfOwnerListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).requestFocus(FocusNode());
-            Navigator.of(context).pushNamed(Routes.petProfile,
-              arguments: PetSelected(this.pet)
-            );
-          },
-          child: Column(
-            children: <Widget>[
-              CircleAvatar(
-                radius: 40,
-                backgroundColor: Colors.grey,
-                backgroundImage: (
-                    pet.profileImage != null &&
-                    pet.profileImage.length > 0 &&
-                    pet.profileImage[0] != null &&
-                    pet.profileImage[0].publicUrl != null
-                ) ? NetworkImage(pet.profileImage[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              RichText(
+      child: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(FocusNode());
+          Navigator.of(context)
+              .pushNamed(Routes.petProfile, arguments: PetSelected(this.pet));
+        },
+        child: Column(
+          children: <Widget>[
+            CircleAvatar(
+              radius: 40,
+              backgroundColor: Colors.grey,
+              backgroundImage: (pet.profileImage != null &&
+                      pet.profileImage.length > 0 &&
+                      pet.profileImage[0] != null &&
+                      pet.profileImage[0].publicUrl != null)
+                  ? NetworkImage(pet.profileImage[0].publicUrl)
+                  : AssetImage('assets/images/aipetto/pets.png'),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            RichText(
                 overflow: TextOverflow.ellipsis,
                 text: TextSpan(
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle2
-                      .copyWith(fontSize: 16),
-                  text: pet.name
-                )
-              ),
-            ],
-          ),
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2
+                        .copyWith(fontSize: 16),
+                    text: pet.name)),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

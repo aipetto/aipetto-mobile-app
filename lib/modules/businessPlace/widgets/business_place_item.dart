@@ -5,13 +5,15 @@ class BusinessPlaceItem extends StatelessWidget {
   final Business business;
   final Function onTap;
 
-  const BusinessPlaceItem({Key key, @required this.onTap, @required this.business}) : super(key: key);
+  const BusinessPlaceItem(
+      {Key key, @required this.onTap, @required this.business})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-      padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(20),
         child: Row(
           children: <Widget>[
             CircleAvatar(

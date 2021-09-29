@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 
 class TransitionCheckerBlocProvider extends BlocObserver {
-
   @override
   void onEvent(Bloc bloc, Object event) {
     super.onTransition(bloc, event);

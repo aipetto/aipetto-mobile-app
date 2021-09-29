@@ -43,8 +43,7 @@ class _InputWidgetState extends State<InputWidget> {
             // final authService = Provider.of<AipettoCoreAuthenticationService>(context, listen: false);
             // authService.login(_emailController, _passwordController);
 
-             Navigator.of(context)
-                .popAndPushNamed(Routes.home);
+            Navigator.of(context).popAndPushNamed(Routes.home);
           },
           text: 'login'.tr(),
         ),

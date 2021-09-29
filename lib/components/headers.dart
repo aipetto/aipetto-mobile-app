@@ -25,5 +25,4 @@ class _HeaderRoundedPainter extends CustomPainter {
     // TODO: implement shouldRepaint
     throw UnimplementedError();
   }
-  
 }

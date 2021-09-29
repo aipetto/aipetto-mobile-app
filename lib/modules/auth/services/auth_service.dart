@@ -19,7 +19,7 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
   final _baseUrl = Environment.aipettoCoreApi;
   final http.Client httpClient;
 
-  AipettoCoreAuthenticationService({ @required this.httpClient})
+  AipettoCoreAuthenticationService({@required this.httpClient})
       : assert(httpClient != null);
 
   @override
@@ -34,12 +34,10 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
       'tenantId': ""
     };
 
-    final getJwtResponse = await this.httpClient.post(Uri.parse('$_baseUrl/auth/sign-in'),
+    final getJwtResponse = await this.httpClient.post(
+        Uri.parse('$_baseUrl/auth/sign-in'),
         body: jsonEncode(authData),
-        headers: {
-          'Content-type': 'application/json'
-        }
-    );
+        headers: {'Content-type': 'application/json'});
 
     if (getJwtResponse.statusCode == 200) {
       await secureStorageRepository.persistToken(getJwtResponse.body);
@@ -65,21 +63,20 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
   );
 
   Future<User> signInWithGoogle() async {
-    try{
+    try {
       final SecureStorage secureStorageRepository = new SecureStorage();
       final GoogleSignInAccount account = await _googleSignIn.signIn();
       final googleKey = await account.authentication;
 
-      final getJwtResponse = await http.post(Uri.parse('$_baseUrl/auth/mobile/google'),
-          body: {
-            'token': googleKey.idToken
-          }
-      );
+      final getJwtResponse = await http.post(
+          Uri.parse('$_baseUrl/auth/mobile/google'),
+          body: {'token': googleKey.idToken});
 
       if (getJwtResponse.statusCode == 200) {
         await secureStorageRepository.persistToken(getJwtResponse.body);
 
-        final userResp = await http.get(Uri.parse('$_baseUrl/auth/me'), headers: {
+        final userResp =
+            await http.get(Uri.parse('$_baseUrl/auth/me'), headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer ${getJwtResponse.body}',
@@ -91,27 +88,23 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
           final jwtOnSecureStorage = await secureStorageRepository.getToken();
           var uuid = Uuid();
 
-          if(userDTOFromResponse.tenants.isEmpty){
-              final newTenantName = {
-                'data': {
-                  'name': 'aipetto' + uuid.v4()
-                }
-              };
-              // Create random tenant and role petOwner for users signed in via Google Sign
-              await this.httpClient.post(Uri.parse('$_baseUrl/tenant'),
+          if (userDTOFromResponse.tenants.isEmpty) {
+            final newTenantName = {
+              'data': {'name': 'aipetto' + uuid.v4()}
+            };
+            // Create random tenant and role petOwner for users signed in via Google Sign
+            await this.httpClient.post(Uri.parse('$_baseUrl/tenant'),
                 body: jsonEncode(newTenantName),
                 headers: {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json',
                   'Authorization': 'Bearer ${jwtOnSecureStorage}'
-                }
-            );
+                });
           }
           return userDTOFromResponse;
         }
       }
       return null;
-
     } catch (e) {
       print('Error Google Sign in');
       print(e);

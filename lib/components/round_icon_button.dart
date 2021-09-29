@@ -26,7 +26,7 @@ class RoundIconButton extends StatelessWidget {
       fillColor: color ?? Colors.white,
       child: Icon(
         icon,
-        color: iconColor ??kAmphibianColorGreenLight,
+        color: iconColor ?? kAmphibianColorGreenLight,
       ),
       constraints: BoxConstraints.tightFor(
         width: size ?? 56,

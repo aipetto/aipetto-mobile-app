@@ -12,13 +12,13 @@ import 'package:meta/meta.dart';
 part 'pet_form_event.dart';
 part 'pet_form_state.dart';
 
-class PetFormBloc extends Bloc<PetFormEvent, PetFormState>{
-
+class PetFormBloc extends Bloc<PetFormEvent, PetFormState> {
   final PetRepository repository;
 
   PetFormBloc({
     @required this.repository,
-  }) : assert(repository != null), super(null);
+  })  : assert(repository != null),
+        super(null);
 
   @override
   Future<void> close() {
@@ -34,11 +34,11 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState>{
 
   Stream<PetFormState> _mapNewPetToState(NewPetFormButtonPressed event) async* {
     yield PetFormLoading();
-    try{
-        await repository.addPet(event.pet, event.fileImageProfile);
-        yield PetFormSuccess();
-    } catch (err ) {
-      yield PetFormFailure('unknown_failure_error'. tr());
+    try {
+      await repository.addPet(event.pet, event.fileImageProfile);
+      yield PetFormSuccess();
+    } catch (err) {
+      yield PetFormFailure('unknown_failure_error'.tr());
     }
   }
 }

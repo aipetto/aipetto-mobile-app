@@ -19,12 +19,12 @@ class MyPetListItem extends StatelessWidget {
             CircleAvatar(
               radius: 40,
               backgroundColor: Colors.grey,
-              backgroundImage: (
-                  pet.profileImage != null &&
-                  pet.profileImage.length > 0 &&
-                  pet.profileImage[0] != null &&
-                  pet.profileImage[0].publicUrl != null
-              ) ? NetworkImage(pet.profileImage[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
+              backgroundImage: (pet.profileImage != null &&
+                      pet.profileImage.length > 0 &&
+                      pet.profileImage[0] != null &&
+                      pet.profileImage[0].publicUrl != null)
+                  ? NetworkImage(pet.profileImage[0].publicUrl)
+                  : AssetImage('assets/images/aipetto/pets.png'),
             ),
             SizedBox(
               width: 20,
@@ -40,16 +40,18 @@ class MyPetListItem extends StatelessWidget {
                         .subtitle2
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
-                  pet.nickname != null ? Text(
-                    pet.nickname  + '\n',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ) : Text('')
+                  pet.nickname != null
+                      ? Text(
+                          pet.nickname + '\n',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        )
+                      : Text('')
                 ],
               ),
             ),
@@ -61,8 +63,7 @@ class MyPetListItem extends StatelessWidget {
               textSize: 14,
               onPressed: () {
                 Navigator.of(context).pushNamed(Routes.petProfile,
-                    arguments: PetSelected(this.pet)
-                );
+                    arguments: PetSelected(this.pet));
               },
               padding: EdgeInsets.symmetric(
                 vertical: 10,

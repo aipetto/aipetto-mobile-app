@@ -15,7 +15,6 @@ import 'package:flutter/widgets.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 
-
 class BusinessProfilePage extends StatefulWidget {
   static String tag = '/NewSliverCustom';
 
@@ -23,7 +22,8 @@ class BusinessProfilePage extends StatefulWidget {
   BusinessProfilePageState createState() => BusinessProfilePageState();
 }
 
-class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTickerProviderStateMixin {
+class BusinessProfilePageState extends State<BusinessProfilePage>
+    with SingleTickerProviderStateMixin {
   int _radioValue1 = 0;
   TabController controller;
 
@@ -61,18 +61,27 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey,
-                  boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
+                  boxShadow: [
+                    BoxShadow(
+                        color: BHGreyColor.withOpacity(0.3),
+                        offset: Offset(0.0, 1.0),
+                        blurRadius: 2.0)
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       BHTxtInformation,
-                      style: TextStyle(color: BHAppTextColorPrimary, fontWeight: FontWeight.bold, fontSize: 16),
+                      style: TextStyle(
+                          color: BHAppTextColorPrimary,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                     8.height,
-                    Text(BHDetailTitle, style: TextStyle(color: Colors.black, fontSize: 16)),
+                    Text(BHDetailTitle,
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
                   ],
                 ),
               ),
@@ -82,14 +91,22 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey,
-                  boxShadow: [BoxShadow(color: Colors.black, offset: Offset(0.0, 1.0), blurRadius: 2.0)],
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black,
+                        offset: Offset(0.0, 1.0),
+                        blurRadius: 2.0)
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       BHTxtContact,
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                     8.height,
@@ -97,7 +114,9 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       children: [
                         Icon(Icons.call, size: 16),
                         8.width,
-                        Text('+1(55)1111 1111', style: TextStyle(color: Colors.black, fontSize: 14)),
+                        Text('+1(55)1111 1111',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 14)),
                       ],
                     ),
                     8.height,
@@ -105,7 +124,9 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       children: [
                         Icon(Icons.web, size: 16),
                         8.width,
-                        Text('www.aipetto.com', style: TextStyle(color: Colors.black, fontSize: 16)),
+                        Text('www.aipetto.com',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16)),
                       ],
                     )
                   ],
@@ -117,14 +138,22 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey,
-                  boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
+                  boxShadow: [
+                    BoxShadow(
+                        color: BHGreyColor.withOpacity(0.3),
+                        offset: Offset(0.0, 1.0),
+                        blurRadius: 2.0)
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       BHTxtOpeningTime,
-                      style: TextStyle(color: BHAppTextColorPrimary, fontWeight: FontWeight.bold, fontSize: 16),
+                      style: TextStyle(
+                          color: BHAppTextColorPrimary,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                     8.height,
@@ -132,12 +161,18 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Monday - Friday', style: TextStyle(color: Colors.black, fontSize: 16)),
+                        Text('Monday - Friday',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16)),
                         Column(
                           children: [
-                            Text('7:30 - 11:30 AM', style: TextStyle(color: Colors.black, fontSize: 16)),
+                            Text('7:30 - 11:30 AM',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16)),
                             8.height,
-                            Text('7:30 - 11:30 AM', style: TextStyle(color: Colors.black, fontSize: 16))
+                            Text('7:30 - 11:30 AM',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16))
                           ],
                         )
                       ],
@@ -146,8 +181,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Sunday', style: TextStyle(color: Colors.black, fontSize: 16)),
-                        Text('7:30 - 11:30 AM', style: TextStyle(color: Colors.black, fontSize: 16)),
+                        Text('Sunday',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16)),
+                        Text('7:30 - 11:30 AM',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16)),
                       ],
                     ),
                   ],
@@ -159,18 +198,27 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey,
-                  boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
+                  boxShadow: [
+                    BoxShadow(
+                        color: BHGreyColor.withOpacity(0.3),
+                        offset: Offset(0.0, 1.0),
+                        blurRadius: 2.0)
+                  ],
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       BHTxtAddress,
-                      style: TextStyle(color: BHAppTextColorPrimary, fontWeight: FontWeight.bold, fontSize: 16),
+                      style: TextStyle(
+                          color: BHAppTextColorPrimary,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                     8.width,
-                    Text('301 Dorthy walks,chicago,Us.', style: TextStyle(color: Colors.black, fontSize: 16)),
+                    Text('301 Dorthy walks,chicago,Us.',
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
                   ],
                 ),
               ),
@@ -181,7 +229,6 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
     }
 
     Widget serviceWidget() {
-
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,25 +244,31 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                     margin: EdgeInsets.all(8),
                     child: Column(
                       children: <Widget>[
-                        Image.asset(categoryList[index].img, height: 40, width: 40),
+                        Image.asset(categoryList[index].img,
+                            height: 40, width: 40),
                         8.height,
-                        Text(categoryList[index].categoryName, style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            .copyWith(fontSize: 14),)
+                        Text(
+                          categoryList[index].categoryName,
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2
+                              .copyWith(fontSize: 14),
+                        )
                       ],
                     ),
                   );
                 },
               ),
             ),
-
             Container(
               padding: EdgeInsets.only(right: 16, left: 16),
-              child: Text(BHTxtPopularServices, style: Theme.of(context)
-                  .textTheme
-                  .subtitle2
-                  .copyWith(fontSize: 14),),
+              child: Text(
+                BHTxtPopularServices,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2
+                    .copyWith(fontSize: 14),
+              ),
             ),
             ListView.builder(
               itemCount: servicesList.length,
@@ -229,7 +282,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: BHGreyColor.withOpacity(0.3),
-                    boxShadow: [BoxShadow(color: BHGreyColor.withOpacity(0.3), offset: Offset(0.0, 1.0), blurRadius: 2.0)],
+                    boxShadow: [
+                      BoxShadow(
+                          color: BHGreyColor.withOpacity(0.3),
+                          offset: Offset(0.0, 1.0),
+                          blurRadius: 2.0)
+                    ],
                   ),
                   child: Row(
                     children: [
@@ -244,7 +302,10 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                             alignment: Alignment.centerLeft,
                             child: Text(
                               servicesList[index].serviceName,
-                              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 18),
                             ),
                           ),
                           8.height,
@@ -252,12 +313,16 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                             children: [
                               Text(
                                 servicesList[index].time,
-                                style: TextStyle(color: Colors.white, fontSize: 16),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16),
                               ),
                               8.width,
                               Text(
                                 '\$${servicesList[index].price}',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: kAmphibianColorGreenLight),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: kAmphibianColorGreenLight),
                               ),
                             ],
                           ),
@@ -267,7 +332,8 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                         value: servicesList[index].radioVal,
                         groupValue: _radioValue1,
                         activeColor: kAmphibianColorGreenLight,
-                        fillColor: MaterialStateColor.resolveWith((states) => kAmphibianColorGreenLight),
+                        fillColor: MaterialStateColor.resolveWith(
+                            (states) => kAmphibianColorGreenLight),
                         onChanged: (value) => serviceSelectedToReserve(value),
                       ),
                     ],
@@ -276,15 +342,18 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
               },
             ),
             Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
-              child: CustomButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(Routes.bookingStep3ServiceAvailability); /// TODO get the pet profile passing the pet.id
-                },
-                text: 'reserve'.tr(),
-              )
-            ),
+                width: MediaQuery.of(context).size.width,
+                margin:
+                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
+                child: CustomButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(Routes.bookingStep3ServiceAvailability);
+
+                    /// TODO get the pet profile passing the pet.id
+                  },
+                  text: 'reserve'.tr(),
+                )),
           ],
         ),
       );
@@ -298,9 +367,13 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
             return <Widget>[
               Container(
                 child: SliverAppBar(
-                  leading: IconButton(icon: Icon(Icons.arrow_back,color: kAmphibianColorGreenLight),onPressed: (){
-                    finish(context);
-                  },),
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back,
+                        color: kAmphibianColorGreenLight),
+                    onPressed: () {
+                      finish(context);
+                    },
+                  ),
                   backgroundColor: kAmphibianColorGreenLight,
                   pinned: true,
                   elevation: 2,
@@ -325,19 +398,27 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Vet', style: TextStyle(color: whiteColor, fontSize: 16), textAlign: TextAlign.left),
+                                  Text('Vet',
+                                      style: TextStyle(
+                                          color: whiteColor, fontSize: 16),
+                                      textAlign: TextAlign.left),
                                   Container(
                                     height: 25,
                                     width: 75,
                                     margin: EdgeInsets.only(right: 16),
                                     child: FlatButton(
                                       onPressed: () {},
-                                      child: Text(BHBtnOpen, style: TextStyle(color: whiteColor, fontSize: 14)),
+                                      child: Text(BHBtnOpen,
+                                          style: TextStyle(
+                                              color: whiteColor, fontSize: 14)),
                                       color: kAmphibianColorGreenLight,
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                     ),
                                   )
                                 ],
@@ -356,10 +437,16 @@ class BusinessProfilePageState extends State<BusinessProfilePage> with SingleTic
                     indicatorColor: kAmphibianColorGreenLight,
                     tabs: [
                       Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabServices, style: TextStyle(fontSize: 18))),
+                        child: Align(
+                            alignment: Alignment.center,
+                            child: Text(BHTabServices,
+                                style: TextStyle(fontSize: 18))),
                       ),
                       Tab(
-                        child: Align(alignment: Alignment.center, child: Text(BHTabAbout, style: TextStyle(fontSize: 18))),
+                        child: Align(
+                            alignment: Alignment.center,
+                            child: Text(BHTabAbout,
+                                style: TextStyle(fontSize: 18))),
                       ),
                     ],
                     controller: controller,

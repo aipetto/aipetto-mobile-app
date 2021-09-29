@@ -14,7 +14,7 @@ class AppBarTitleWidget extends StatelessWidget {
               TextSpan(
                 text: 'aipetto',
                 style: TextStyle(
-                  color:kAmphibianColorGreenLight,
+                  color: kAmphibianColorGreenLight,
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
                 ),

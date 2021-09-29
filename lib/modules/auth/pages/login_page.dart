@@ -24,7 +24,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,41 +31,38 @@ class _LoginPageState extends State<LoginPage> {
         minimum: EdgeInsets.all(16),
         child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
             builder: (context, state) {
-              final authBloc = BlocProvider.of<AuthenticationBloc>(context);
-              if (state is AuthenticationNotAuthenticated) {
-                return _AuthForm();
-              }
+          final authBloc = BlocProvider.of<AuthenticationBloc>(context);
+          if (state is AuthenticationNotAuthenticated) {
+            return _AuthForm();
+          }
 
-              if (state is AuthenticationFailure) {
-                return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(state.message),
-                        FlatButton(
-                          textColor: Theme
-                              .of(context)
-                              .primaryColor,
-                          child: Text('Retry'),
-                          onPressed: () {
-                            authBloc.add(AppLoaded());
-                          },
-                        )
-                      ],
-                    ));
-              }
+          if (state is AuthenticationFailure) {
+            return Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(state.message),
+                FlatButton(
+                  textColor: Theme.of(context).primaryColor,
+                  child: Text('Retry'),
+                  onPressed: () {
+                    authBloc.add(AppLoaded());
+                  },
+                )
+              ],
+            ));
+          }
 
-              if (state is AuthenticationAuthenticated) {
-                return SplashPage();
-              }
+          if (state is AuthenticationAuthenticated) {
+            return SplashPage();
+          }
 
-              return Center(
-                 child: CircularProgressIndicator(
-                 strokeWidth: 2,
-              ));
-            }
-        ),
+          return Center(
+              child: CircularProgressIndicator(
+            strokeWidth: 2,
+          ));
+        }),
       ),
     );
   }
@@ -75,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
 class _AuthForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-    final AuthenticationService authService = AipettoCoreAuthenticationService(httpClient: http.Client());
+    final AuthenticationService authService =
+        AipettoCoreAuthenticationService(httpClient: http.Client());
     final authBloc = BlocProvider.of<AuthenticationBloc>(context);
 
     return Container(
@@ -89,13 +85,12 @@ class _AuthForm extends StatelessWidget {
   }
 }
 
-class _SignInForm extends StatefulWidget{
+class _SignInForm extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _SignInFormState();
 }
 
 class _SignInFormState extends State<_SignInForm> {
-
   var _language;
 
   @override
@@ -154,18 +149,18 @@ class _SignInFormState extends State<_SignInForm> {
 
   @override
   Widget build(BuildContext context) {
-
     final _loginBloc = BlocProvider.of<LoginBloc>(context);
 
-    _onGoogleSignInButtonPressed(){
+    _onGoogleSignInButtonPressed() {
       _loginBloc.add(GoogleSignInButtonPressed());
     }
 
-    _onLoginButtonPressed(){
-      if(_key.currentState.validate()) {
-        _loginBloc.add(LoginInWithEmailButtonPressed(email: _emailController.text, password: _passwordController.text));
-      }else{
-        setState((){
+    _onLoginButtonPressed() {
+      if (_key.currentState.validate()) {
+        _loginBloc.add(LoginInWithEmailButtonPressed(
+            email: _emailController.text, password: _passwordController.text));
+      } else {
+        setState(() {
           _autoValidate = true;
         });
       }
@@ -176,159 +171,166 @@ class _SignInFormState extends State<_SignInForm> {
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
           return BlocListener<LoginBloc, LoginState>(
               listener: (context, state) {
-                if (state is LoginFailure) {
-                  _showError(state.error);
-                }
-              },
-              child: BlocBuilder<LoginBloc, LoginState>(
-                  builder: (context, state){
-                    if(state is LoginLoading){
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    return Form(
-                      key: _key,
-                      autovalidateMode: _autoValidate ? AutovalidateMode.always : AutovalidateMode.disabled,
-                      child: SingleChildScrollView(
-                        physics: ClampingScrollPhysics(),
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            minHeight: viewportConstraints.maxHeight,
-                          ),
-                          child: IntrinsicHeight(
+            if (state is LoginFailure) {
+              _showError(state.error);
+            }
+          }, child:
+                  BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+            if (state is LoginLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return Form(
+              key: _key,
+              autovalidateMode: _autoValidate
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
+              child: SingleChildScrollView(
+                physics: ClampingScrollPhysics(),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: viewportConstraints.maxHeight,
+                  ),
+                  child: IntrinsicHeight(
+                    child: Column(
+                      children: <Widget>[
+                        WaveHeader(
+                          title: 'welcome_to_app_name'.tr(),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 38),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                WaveHeader(
-                                  title: 'welcome_to_app_name'.tr(),
+                                MaterialButton(
+                                  splashColor: Colors.transparent,
+                                  height: 40,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(FontAwesomeIcons.google,
+                                          color: Colors.white),
+                                      Text('sign_in_google'.tr(),
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17))
+                                    ],
+                                  ),
+                                  color: kAmphibianColorBlueDark,
+                                  onPressed: () {
+                                    _onGoogleSignInButtonPressed();
+                                  },
                                 ),
-
                                 Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 38),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        MaterialButton(
-                                          splashColor: Colors.transparent,
-
-                                          height: 40,
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Icon(FontAwesomeIcons.google, color: Colors.white),
-                                              Text('sign_in_google'.tr(), style: TextStyle(color: Colors.white, fontSize: 17 ))
-                                            ],
-                                          ),
-                                          color: kAmphibianColorBlueDark,
-                                          onPressed: () { _onGoogleSignInButtonPressed(); },
-                                        ),
-
+                                  child: SizedBox(
+                                    height: 20,
+                                  ),
+                                ),
+                                RadioListTile(
+                                  value: Language.portuguese,
+                                  onChanged: (value) => _changeLanguage(0),
+                                  groupValue: _language,
+                                  title: Text('portuguese'.tr()),
+                                ),
+                                Divider(
+                                  height: 0.5,
+                                  indent: 10,
+                                  endIndent: 10,
+                                ),
+                                RadioListTile(
+                                  value: Language.english,
+                                  onChanged: (value) => _changeLanguage(1),
+                                  groupValue: _language,
+                                  title: Text('english'.tr()),
+                                ),
+                                Divider(
+                                  height: 0.5,
+                                  indent: 10,
+                                  endIndent: 10,
+                                ),
+                                RadioListTile(
+                                  value: Language.spanish,
+                                  onChanged: (value) => _changeLanguage(2),
+                                  groupValue: _language,
+                                  title: Text('spanish'.tr()),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Center(
+                                  child: Text(
+                                    'login_to_your_account_to_continue'.tr(),
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    LabeledTextFormField(
+                                      title: 'email_dot'.tr(),
+                                      controller: _emailController,
+                                      keyboardType: TextInputType.emailAddress,
+                                      hintText: 'email@email.com',
+                                    ),
+                                    LabeledTextFormField(
+                                      title: 'password_dot'.tr(),
+                                      controller: _passwordController,
+                                      obscureText: true,
+                                      hintText: '* * * * * *',
+                                      padding: 0,
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    CustomButton(
+                                      onPressed: state is LoginLoading
+                                          ? () {}
+                                          : _onLoginButtonPressed,
+                                      text: 'login'.tr(),
+                                    ),
+                                    Row(
+                                      children: [
                                         Expanded(
-                                          child: SizedBox(
-                                            height: 20,
-                                          ),
+                                          child: Container(),
                                         ),
-                                        RadioListTile(
-                                          value: Language.portuguese,
-                                          onChanged: (value) => _changeLanguage(0),
-                                          groupValue: _language,
-                                          title: Text('portuguese'.tr()),
-                                        ),
-                                        Divider(
-                                          height: 0.5,
-                                          indent: 10,
-                                          endIndent: 10,
-                                        ),
-                                        RadioListTile(
-                                          value: Language.english,
-                                          onChanged: (value) => _changeLanguage(1),
-                                          groupValue: _language,
-                                          title: Text('english'.tr()),
-                                        ),
-                                        Divider(
-                                          height: 0.5,
-                                          indent: 10,
-                                          endIndent: 10,
-                                        ),
-                                        RadioListTile(
-                                          value: Language.spanish,
-                                          onChanged: (value) => _changeLanguage(2),
-                                          groupValue: _language,
-                                          title: Text('spanish'.tr()),
-                                        ),
-                                        SizedBox(
-                                          height: 30,
-                                        ),
-                                        Center(
+                                        FlatButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pushNamed(
+                                                Routes.forgotPassword);
+                                          },
                                           child: Text(
-                                            'login_to_your_account_to_continue'.tr(),
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w700,
-                                            ),
+                                            'forgot_yout_password'.tr(),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .button
+                                                .copyWith(fontSize: 14),
                                           ),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            LabeledTextFormField(
-                                              title: 'email_dot'.tr(),
-                                              controller: _emailController,
-                                              keyboardType: TextInputType.emailAddress,
-                                              hintText: 'email@email.com',
-                                            ),
-                                            LabeledTextFormField(
-                                              title: 'password_dot'.tr(),
-                                              controller: _passwordController,
-                                              obscureText: true,
-                                              hintText: '* * * * * *',
-                                              padding: 0,
-                                            ),
-                                            SizedBox(
-                                              height: 20,
-                                            ),
-                                            CustomButton(
-                                              onPressed: state is LoginLoading ? () {} : _onLoginButtonPressed,
-                                              text: 'login'.tr(),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Container(),
-                                                ),
-                                                FlatButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context).pushNamed(Routes.forgotPassword);
-                                                  },
-                                                  child: Text(
-                                                    'forgot_yout_password'.tr(),
-                                                    style:
-                                                    Theme.of(context).textTheme.button.copyWith(fontSize: 14),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-
-                                        SizedBox(
-                                          height: 20,
                                         ),
                                       ],
                                     ),
-                                  ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
                                 ),
                               ],
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  }
-              )
-          );
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }));
         },
       ),
     );
@@ -337,6 +339,6 @@ class _SignInFormState extends State<_SignInForm> {
   void _showError(String error) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(error),
-    ))  ;
+    ));
   }
 }

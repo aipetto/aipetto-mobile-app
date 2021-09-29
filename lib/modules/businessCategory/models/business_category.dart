@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class BusinessCategory extends Equatable{
-
+class BusinessCategory extends Equatable {
   String id;
 
   BusinessCategory({
@@ -26,7 +25,8 @@ class BusinessCategory extends Equatable{
 
   String toJson() => json.encode(toMap());
 
-  factory BusinessCategory.fromJson(String source) => BusinessCategory.fromMap(json.decode(source));
+  factory BusinessCategory.fromJson(String source) =>
+      BusinessCategory.fromMap(json.decode(source));
 
   @override
   List<Object> get props => [id];

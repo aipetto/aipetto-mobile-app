@@ -21,7 +21,6 @@ import 'routes/route_generator.dart';
 import 'utils/themebloc/theme_bloc.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Prefs.load();
@@ -41,35 +40,34 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-
   final PetTypeRepository petTypeRepository = PetTypeRepository(
       petTypeClient: PetTypeApiClient(
-        httpClient: http.Client(),
-      ));
+    httpClient: http.Client(),
+  ));
 
-  final AuthenticationService userRepository = AipettoCoreAuthenticationService(
-      httpClient: http.Client()
-  );
+  final AuthenticationService userRepository =
+      AipettoCoreAuthenticationService(httpClient: http.Client());
 
-  final PetRepository petRepository = PetRepository(petClient: PetApiClient(
-      httpClient: http.Client(),
+  final PetRepository petRepository = PetRepository(
+      petClient: PetApiClient(
+    httpClient: http.Client(),
   ));
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
         BlocProvider<UserGeolocationBloc>(create: (_) => UserGeolocationBloc()),
-        BlocProvider<PetTypeBloc>(create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)),
-        BlocProvider<PetBloc>(create: ( context ) {
+        BlocProvider<PetTypeBloc>(
+            create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)),
+        BlocProvider<PetBloc>(create: (context) {
           return PetBloc(
               authenticationService: userRepository,
-              petRepository: petRepository
-          )..add(FetchPets());
+              petRepository: petRepository)
+            ..add(FetchPets());
         }),
-        BlocProvider<AuthenticationBloc>(create: ( context ) {
+        BlocProvider<AuthenticationBloc>(create: (context) {
           return AuthenticationBloc(userRepository)..add(AppLoaded());
         }),
       ],
@@ -80,22 +78,18 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _buildWithTheme(BuildContext context, ThemeState state) {
-
-    context.bloc<ThemeBloc>().add(ThemeChanged(
-        theme: AppTheme.DarkTheme
-    ));
+    context.bloc<ThemeBloc>().add(ThemeChanged(theme: AppTheme.DarkTheme));
 
     return MaterialApp(
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: MyBehavior(),
-
           child: child,
         );
       },
       title: 'aipetto',
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-        builder: (context, state){
+        builder: (context, state) {
           if (state is AuthenticationAuthenticated) {
             return Home(
               user: state.user,
@@ -119,10 +113,9 @@ class MyApp extends StatelessWidget {
     );
   }
 
-
   Widget LoadingIndicator() {
     return Center(
-      child: CircularProgressIndicator(
+        child: CircularProgressIndicator(
       strokeWidth: 2,
     ));
   }

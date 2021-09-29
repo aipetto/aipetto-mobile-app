@@ -8,16 +8,18 @@ import 'package:aipetto/modules/auth/services/auth_service.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>{
-
+class AuthenticationBloc
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
   final AuthenticationService _authenticationService;
 
-  AuthenticationBloc(AuthenticationService authenticationService) : assert(authenticationService != null),
+  AuthenticationBloc(AuthenticationService authenticationService)
+      : assert(authenticationService != null),
         _authenticationService = authenticationService,
         super(AuthenticationInitial());
 
   @override
-  Stream<AuthenticationState> mapEventToState(AuthenticationEvent event) async* {
+  Stream<AuthenticationState> mapEventToState(
+      AuthenticationEvent event) async* {
     if (event is AppLoaded) {
       yield* _mapAppLoadedToState(event);
     }
@@ -33,27 +35,28 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>{
 
   Stream<AuthenticationState> _mapAppLoadedToState(AppLoaded event) async* {
     yield AuthenticationLoading();
-    try{
+    try {
       final currentUser = await _authenticationService.getCurrentUser();
 
-      if(currentUser != null) {
+      if (currentUser != null) {
         yield AuthenticationAuthenticated(user: currentUser);
       } else {
         yield AuthenticationNotAuthenticated();
       }
-
-    }catch (e) {
-      yield AuthenticationFailure(message: 'Please check your internet connection');
+    } catch (e) {
+      yield AuthenticationFailure(
+          message: 'Please check your internet connection');
     }
   }
 
-  Stream<AuthenticationState> _mapUserLoggedInToState(UserLoggedIn event) async* {
+  Stream<AuthenticationState> _mapUserLoggedInToState(
+      UserLoggedIn event) async* {
     yield AuthenticationAuthenticated(user: event.user);
   }
 
-  Stream<AuthenticationState> _mapUserLoggedOutToSave(UserLoggedOut event) async* {
+  Stream<AuthenticationState> _mapUserLoggedOutToSave(
+      UserLoggedOut event) async* {
     yield AuthenticationNotAuthenticated();
     await _authenticationService.signOut();
   }
-
 }

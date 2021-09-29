@@ -55,7 +55,8 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
         break;
     }
     //print("language" + _language.toString());
-    context.setLocale(Locale(Prefs.getString(Prefs.LANGUAGE), Prefs.getString(Prefs.LANGUAGE_REGION)));
+    context.setLocale(Locale(Prefs.getString(Prefs.LANGUAGE),
+        Prefs.getString(Prefs.LANGUAGE_REGION)));
   }
 
   @override

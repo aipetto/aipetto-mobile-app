@@ -1,25 +1,23 @@
 part of 'pet_bloc.dart';
 
 @immutable
-abstract class PetEvent extends Equatable{}
+abstract class PetEvent extends Equatable {}
 
-class FetchPets extends PetEvent{
-
+class FetchPets extends PetEvent {
   FetchPets();
 
   @override
   List<Object> get props => [];
 }
 
-class FetchPet extends PetEvent{
-
+class FetchPet extends PetEvent {
   FetchPet();
 
   @override
   List<Object> get props => [];
 }
 
-class UpdatePet extends PetEvent{
+class UpdatePet extends PetEvent {
   UpdatePet();
 
   @override

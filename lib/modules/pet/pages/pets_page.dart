@@ -9,42 +9,41 @@ class MyPetsListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PetBloc, PetState>(
-        builder: (context, state) {
-          if (state is PetLoading) {
-            return Expanded(child: Center(child: CircularProgressIndicator()));
-          } else if (state is PetError) {
-            return Center(child: Text('error'));
-          } else if (state is PetEmpty) {
-            return Center(child: Text('Empty'));
-          } else {
-            final stateAsPetsLoadedState = state as PetsLoaded;
-            final pets = stateAsPetsLoadedState.pets;
-            return buildPetVerticalList(pets);
-          }
-        },
+      builder: (context, state) {
+        if (state is PetLoading) {
+          return Expanded(child: Center(child: CircularProgressIndicator()));
+        } else if (state is PetError) {
+          return Center(child: Text('error'));
+        } else if (state is PetEmpty) {
+          return Center(child: Text('Empty'));
+        } else {
+          final stateAsPetsLoadedState = state as PetsLoaded;
+          final pets = stateAsPetsLoadedState.pets;
+          return buildPetVerticalList(pets);
+        }
+      },
     );
   }
 
-  Widget buildPetVerticalList(List<Pet> pets){
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'my_pets'.tr(),
-          ),
+  Widget buildPetVerticalList(List<Pet> pets) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'my_pets'.tr(),
         ),
-        body:
-        ListView.separated(
-          separatorBuilder: (context, index) => SizedBox(
-            height: 15,
-          ),
-          itemCount: pets.length,
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-          itemBuilder: (context, index) {
-            return MyPetListItem(
-              pet: pets[index],
-            );
-          },
+      ),
+      body: ListView.separated(
+        separatorBuilder: (context, index) => SizedBox(
+          height: 15,
         ),
-      );
+        itemCount: pets.length,
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+        itemBuilder: (context, index) {
+          return MyPetListItem(
+            pet: pets[index],
+          );
+        },
+      ),
+    );
   }
 }

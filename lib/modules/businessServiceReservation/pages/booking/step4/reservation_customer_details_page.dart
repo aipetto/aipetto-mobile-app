@@ -9,10 +9,12 @@ import 'package:flutter/material.dart';
 
 class ReservationCustomerDetailsPage extends StatefulWidget {
   @override
-  _ReservationCustomerDetailsPageState createState() => _ReservationCustomerDetailsPageState();
+  _ReservationCustomerDetailsPageState createState() =>
+      _ReservationCustomerDetailsPageState();
 }
 
-class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDetailsPage> {
+class _ReservationCustomerDetailsPageState
+    extends State<ReservationCustomerDetailsPage> {
   bool _isdark = true;
   bool _customer = true;
   var _petNameController = TextEditingController();
@@ -243,8 +245,7 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
                                         value: true,
                                         onChanged: (value) {
                                           setState(() {
-                                            _petNameController.text =
-                                                'Snoopy';
+                                            _petNameController.text = 'Snoopy';
                                             _customer = true;
                                           });
                                         },
@@ -316,7 +317,8 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: CustomButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Routes.bookingStepConfirmation);
+                  Navigator.of(context)
+                      .pushNamed(Routes.bookingStepConfirmation);
                 },
                 text: 'confirm'.tr(),
               ),

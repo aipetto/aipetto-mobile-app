@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class TypeServices extends Equatable{
+class TypeServices extends Equatable {
   int id;
   String name;
   String imagePath;

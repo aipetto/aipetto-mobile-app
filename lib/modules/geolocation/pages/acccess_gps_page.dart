@@ -9,23 +9,23 @@ class AccessGPSPage extends StatefulWidget {
   State<StatefulWidget> createState() => _AccessGPSPageState();
 }
 
-class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserver{
-
+class _AccessGPSPageState extends State<AccessGPSPage>
+    with WidgetsBindingObserver {
   @override
-  void initState(){
+  void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) async{
-    if( state == AppLifecycleState.resumed ) {
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state == AppLifecycleState.resumed) {
       if (await Permission.location.isGranted) {
         Navigator.of(context).pushNamed(Routes.loading);
       }
@@ -49,16 +49,17 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             Container(
               child: Stack(
                 alignment: Alignment.center,
                 children: <Widget>[
-                  walkImg != null ? Image.asset(walkImg, width: width * 0.3, height: h * 0.2, fit: BoxFit.fill) : Container(),
+                  walkImg != null
+                      ? Image.asset(walkImg,
+                          width: width * 0.3, height: h * 0.2, fit: BoxFit.fill)
+                      : Container(),
                 ],
               ),
             ),
-
             Text(
               'Enable location to suggest places near you.',
               style: TextStyle(
@@ -67,24 +68,20 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             SizedBox(
               height: 25,
             ),
-
             CupertinoButton(
-              child: Text('Usar GPS', style: TextStyle(color: Colors.white )),
+              child: Text('Usar GPS', style: TextStyle(color: Colors.white)),
               color: Colors.black,
               onPressed: () async {
                 final status = await Permission.location.request();
                 this.accessGPS(status);
               },
             ),
-
             SizedBox(
               height: 25,
             ),
-
             Text(
               'Or',
               style: TextStyle(
@@ -93,13 +90,12 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             SizedBox(
               height: 25,
             ),
-
             CupertinoButton(
-              child: Text('Buscar Endereço', style: TextStyle(color: Colors.white )),
+              child: Text('Buscar Endereço',
+                  style: TextStyle(color: Colors.white)),
               color: Colors.black,
               onPressed: () {
                 Navigator.of(context).pushNamed(Routes.addressSearch);
@@ -112,10 +108,10 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
   }
 
   void accessGPS(PermissionStatus status) {
-
-    switch( status) {
+    switch (status) {
       case PermissionStatus.granted:
-        Navigator.pushReplacementNamed(context, 'booking_step1_find_places_nearby');
+        Navigator.pushReplacementNamed(
+            context, 'booking_step1_find_places_nearby');
         break;
       case PermissionStatus.denied:
         Navigator.of(context).pushNamed(Routes.accessGPS);
@@ -128,4 +124,3 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
     }
   }
 }
-

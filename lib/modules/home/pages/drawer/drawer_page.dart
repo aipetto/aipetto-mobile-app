@@ -12,23 +12,23 @@ class DrawerPage extends StatelessWidget {
   const DrawerPage({Key key, @required this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     String profileImage = '';
     String firstName = '';
     String lastName = '';
 
-    final authenticationUserState = BlocProvider.of<AuthenticationBloc>(context).state;
+    final authenticationUserState =
+        BlocProvider.of<AuthenticationBloc>(context).state;
     if (authenticationUserState is AuthenticationAuthenticated) {
-
-      if(authenticationUserState.user.avatars != null && authenticationUserState.user.avatars.first != null){
+      if (authenticationUserState.user.avatars != null &&
+          authenticationUserState.user.avatars.first != null) {
         profileImage = authenticationUserState.user.avatars.first.publicUrl;
       }
 
-      if(authenticationUserState.user.firstName != null){
+      if (authenticationUserState.user.firstName != null) {
         firstName = authenticationUserState.user.firstName;
       }
 
-      if(authenticationUserState.user.lastName != null){
+      if (authenticationUserState.user.lastName != null) {
         lastName = authenticationUserState.user.lastName;
       }
     }
@@ -39,11 +39,11 @@ class DrawerPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/background_bones_pawn.jpg"),
-                colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstATop),
-                fit: BoxFit.cover)
-          ),
+              image: DecorationImage(
+                  image: AssetImage("assets/images/background_bones_pawn.jpg"),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.3), BlendMode.dstATop),
+                  fit: BoxFit.cover)),
           child: Padding(
             padding: EdgeInsets.symmetric(
               vertical: 35,
@@ -52,14 +52,18 @@ class DrawerPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       CircleAvatar(
                         radius: 50,
                         backgroundColor: Colors.grey,
-                        backgroundImage: profileImage != null ? NetworkImage(profileImage) : AssetImage('assets/images/logos/aipetto-logo-transparent.png'),
+                        backgroundImage: profileImage != null
+                            ? NetworkImage(profileImage)
+                            : AssetImage(
+                                'assets/images/logos/aipetto-logo-transparent.png'),
                       ),
                       SizedBox(
                         height: 10,

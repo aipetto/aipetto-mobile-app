@@ -26,7 +26,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
             },
             icon: Icon(
               _editing ? Icons.close : Icons.edit,
-              color:kAmphibianColorGreenLight,
+              color: kAmphibianColorGreenLight,
             ),
           )
         ],

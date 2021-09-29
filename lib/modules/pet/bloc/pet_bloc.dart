@@ -12,14 +12,13 @@ import 'package:meta/meta.dart';
 part 'pet_event.dart';
 part 'pet_state.dart';
 
-class PetBloc extends Bloc<PetEvent, PetState>{
-
+class PetBloc extends Bloc<PetEvent, PetState> {
   final PetRepository petRepository;
   final AuthenticationService authenticationService;
   StreamSubscription newPetFormSubscription;
 
-  PetBloc({@required this.authenticationService, @required this.petRepository}) :
-        assert(petRepository != null),
+  PetBloc({@required this.authenticationService, @required this.petRepository})
+      : assert(petRepository != null),
         super(PetEmpty());
 
   @override
@@ -31,45 +30,45 @@ class PetBloc extends Bloc<PetEvent, PetState>{
   }
 
   @override
-  Stream<PetState> mapEventToState( PetEvent event ) async* {
-
+  Stream<PetState> mapEventToState(PetEvent event) async* {
     // TODO Check PetForm StreamSubscription to component/widget under the PetBloc in Widgets Tree
     final PetFormBloc newPetFormBloc = PetFormBloc(repository: petRepository);
     newPetFormSubscription = newPetFormBloc.listen((state) {
-      if(state is PetFormSuccess){
+      if (state is PetFormSuccess) {
         add(FetchPets());
       }
     });
 
-    if(event is FetchPets){
+    if (event is FetchPets) {
       yield PetLoading();
-      try{
+      try {
         final User currentUser = await authenticationService.getCurrentUser();
-        final List<Pet> pets = await petRepository.fetchPets(currentUser.tenants.first.tenant.id);
+        final List<Pet> pets =
+            await petRepository.fetchPets(currentUser.tenants.first.tenant.id);
         yield PetsLoaded(pets: pets);
-      }catch (_){
+      } catch (_) {
         yield PetError();
       }
     }
 
-    if(event is FetchPet){
+    if (event is FetchPet) {
       yield PetLoading();
-      try{
+      try {
         //final Pet pet = await petRepository.fetchPet(event.pet);
         //yield PetLoaded(pet: pet);
-      }catch (_){
+      } catch (_) {
         yield PetError();
       }
     }
 
-    if(event is UpdatePet){
+    if (event is UpdatePet) {
       yield PetLoading();
-      try{
+      try {
         // get current tenant from user state
         // await petRepository.updatePet(pet);
-          // Inside petRepository Prototype pattern pet.copyWith(onlyNewFieldsToUpdate)
+        // Inside petRepository Prototype pattern pet.copyWith(onlyNewFieldsToUpdate)
         yield PetLoaded();
-      }catch (_){
+      } catch (_) {
         yield PetError();
       }
     }

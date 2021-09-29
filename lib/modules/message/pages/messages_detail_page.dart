@@ -49,11 +49,12 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
             SizedBox(
               width: 5,
             ),
-            Expanded(child: Text(
+            Expanded(
+                child: Text(
               'Dr Vidal CRMV 11111',
               style: Theme.of(context).textTheme.subtitle2.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+                    fontWeight: FontWeight.w700,
+                  ),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ))
@@ -84,7 +85,8 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
                     ),
                     MessageItem(
                       send: true,
-                      message: 'Buen día Vidal, Cómo estás? Le quería hacer una pequeña consulta respecto a la operación del jueves. Es necesário tomar algún cuidado extra de lo que recomendaste en la última visita?',
+                      message:
+                          'Buen día Vidal, Cómo estás? Le quería hacer una pequeña consulta respecto a la operación del jueves. Es necesário tomar algún cuidado extra de lo que recomendaste en la última visita?',
                     ),
                     SizedBox(
                       height: 10,
@@ -98,14 +100,16 @@ class _MessagesDetailPageState extends State<MessagesDetailPage> {
                     ),
                     MessageItem(
                       send: false,
-                      message: 'Bien, es importante que Snoopy no coma mucho en esta semana.',
+                      message:
+                          'Bien, es importante que Snoopy no coma mucho en esta semana.',
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     MessageItem(
                       send: false,
-                      message: 'Iremos pesarlo cuando venga a la clínica hoy, así estamos seguros que estamos por debajo de 36 kilos, la última vez que hicimos el check-up él pesaba 33 kilos.',
+                      message:
+                          'Iremos pesarlo cuando venga a la clínica hoy, así estamos seguros que estamos por debajo de 36 kilos, la última vez que hicimos el check-up él pesaba 33 kilos.',
                     ),
                   ],
                 ),
@@ -211,7 +215,7 @@ class MessageItem extends StatelessWidget {
                 bottomLeft: Radius.circular(send ? 20 : 0),
                 bottomRight: Radius.circular(send ? 0 : 20),
               ),
-              color: send ? Color(0xffeaf2fe) :kAmphibianColorGreenLight,
+              color: send ? Color(0xffeaf2fe) : kAmphibianColorGreenLight,
             ),
             child: SelectableText(
               message,

@@ -1,16 +1,15 @@
 part of 'pet_form_bloc.dart';
 
-abstract class PetFormState extends Equatable{
-
+abstract class PetFormState extends Equatable {
   @override
   List<Object> get props => [];
 }
 
-class PetFormInitial extends PetFormState{}
+class PetFormInitial extends PetFormState {}
 
-class PetFormLoading extends PetFormState{}
+class PetFormLoading extends PetFormState {}
 
-class PetFormSuccess extends PetFormState{
+class PetFormSuccess extends PetFormState {
   final Pet pet;
 
   PetFormSuccess({@required this.pet});
@@ -19,7 +18,7 @@ class PetFormSuccess extends PetFormState{
   List<Object> get props => [pet];
 }
 
-class PetFormFailure extends PetFormState{
+class PetFormFailure extends PetFormState {
   final String error;
 
   PetFormFailure(this.error);

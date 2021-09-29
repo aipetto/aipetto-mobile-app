@@ -26,7 +26,7 @@ class _EditPetProfilePageState extends State<EditPetProfilePage> {
             },
             icon: Icon(
               _editing ? Icons.close : Icons.edit,
-              color:kAmphibianColorGreenLight,
+              color: kAmphibianColorGreenLight,
             ),
           )
         ],

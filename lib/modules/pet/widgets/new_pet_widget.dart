@@ -14,33 +14,37 @@ import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
 
 class NewPetWidget extends StatefulWidget {
-
   final String petTypeId;
   final String petTypeName;
 
-  const NewPetWidget({Key key, @required this.petTypeId, @required this.petTypeName}) : super(key: key);
+  const NewPetWidget(
+      {Key key, @required this.petTypeId, @required this.petTypeName})
+      : super(key: key);
 
   @override
   _NewPetWidgetState createState() => _NewPetWidgetState();
 }
 
 class _NewPetWidgetState extends State<NewPetWidget> {
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+  final _name = TextEditingController();
+  final _nickname = TextEditingController();
 
-  final GlobalKey<FormState> _key   = GlobalKey<FormState>();
-  final _name                       = TextEditingController();
-  final _nickname                   = TextEditingController();
   ///var _selectedBloodGroup        = 'DEA-1.1';
-  var _selectedLookingForMatch      = false;
-  var _hasBeenVaccinated            = false;
-  var _hasBeenDewormed              = false;
-  var _hasBeenSterilizedSpayed      = true;
-  var _lookingForMatchAnswers       = <String>['yes'.tr(), 'no'.tr()]; ///var _isLookingForMatch = true;
-  var _isGuideDog                   = false;
-  var hasMicrochip                  = false;
+  var _selectedLookingForMatch = false;
+  var _hasBeenVaccinated = false;
+  var _hasBeenDewormed = false;
+  var _hasBeenSterilizedSpayed = true;
+  var _lookingForMatchAnswers = <String>['yes'.tr(), 'no'.tr()];
+
+  ///var _isLookingForMatch = true;
+  var _isGuideDog = false;
+  var hasMicrochip = false;
+
   /// Dynamic Dropdown consume Breed from API passing language
-  var _selectedSex                  = 'male'.tr();
-  var _birthDate                    = '03/04/2016';
-  var _sexItems                     = <String>['male'.tr(), 'female'.tr()];
+  var _selectedSex = 'male'.tr();
+  var _birthDate = '03/04/2016';
+  var _sexItems = <String>['male'.tr(), 'female'.tr()];
 
   List<DropdownMenuItem<String>> _dropDownSex;
 
@@ -53,7 +57,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
       _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
     });
 
-    if( _pickedFile == null ){
+    if (_pickedFile == null) {
       print('No image selected');
       return;
     }
@@ -62,9 +66,10 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   _initDropDowns() {
     _dropDownSex = _sexItems
         .map((String value) => DropdownMenuItem<String>(
-      value: value,
-      child: Text(value),
-    )).toList();
+              value: value,
+              child: Text(value),
+            ))
+        .toList();
   }
 
   @override
@@ -75,14 +80,13 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     final _petFormBloc = BlocProvider.of<PetFormBloc>(context);
-    final AuthenticationState currentUser = BlocProvider.of<AuthenticationBloc>(context).state;
+    final AuthenticationState currentUser =
+        BlocProvider.of<AuthenticationBloc>(context).state;
 
     _onNewPetFormButtonPressed() {
-      if(_key.currentState.validate()) {
-
-        if(currentUser is AuthenticationAuthenticated){
+      if (_key.currentState.validate()) {
+        if (currentUser is AuthenticationAuthenticated) {
           final superPet = new Pet(
             name: _name.text,
             isLookingForMatch: _selectedLookingForMatch,
@@ -92,83 +96,80 @@ class _NewPetWidgetState extends State<NewPetWidget> {
           );
 
           _petFormBloc.add(NewPetFormButtonPressed(
-              pet: superPet,
-              fileImageProfile: this._imagePetProfile)
-          );
+              pet: superPet, fileImageProfile: this._imagePetProfile));
         }
       }
     }
-    return BlocListener<PetFormBloc, PetFormState>(
-        listener: (context, state) {
 
+    return BlocListener<PetFormBloc, PetFormState>(
+      listener: (context, state) {
         if (state is PetFormSuccess) {
           Navigator.of(context).pushNamed(Routes.home);
         }
       },
       child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-      child: BlocBuilder<PetFormBloc, PetFormState>(
-        builder: (context, state){
-
-          if(state is PetFormLoading){
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+        child:
+            BlocBuilder<PetFormBloc, PetFormState>(builder: (context, state) {
+          if (state is PetFormLoading) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
 
-        return Form(
-          key: _key,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    _openBottomSheet(context);
-                  },
-                  child: _imagePetProfile == null
-                      ? CircleAvatar(
-                    radius: 100,
-                    backgroundColor: Colors.grey,
-                    //backgroundImage: NetworkImage(avatarUrl),
-                  )
-                      : CircleAvatar(
-                    radius: 100,
-                    backgroundImage: FileImage(_imagePetProfile),
+          return Form(
+            key: _key,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      _openBottomSheet(context);
+                    },
+                    child: _imagePetProfile == null
+                        ? CircleAvatar(
+                            radius: 100,
+                            backgroundColor: Colors.grey,
+                            //backgroundImage: NetworkImage(avatarUrl),
+                          )
+                        : CircleAvatar(
+                            radius: 100,
+                            backgroundImage: FileImage(_imagePetProfile),
+                          ),
                   ),
                 ),
-              ),
-              Center(
-                child: FlatButton(
-                  onPressed: () {
-                    _openBottomSheet(context);
-                  },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)),
-                  child: Text(
-                    'change_avatar'.tr(),
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                Center(
+                  child: FlatButton(
+                    onPressed: () {
+                      _openBottomSheet(context);
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4)),
+                    child: Text(
+                      'change_avatar'.tr(),
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Text(
-                'name_dot'.tr(),
-                style: kInputTextStyle,
-              ),
-              CustomTextFormField(
-                controller: _name,
-                hintText: 'Hachikō',
-                validator: (value) =>
-                value.isEmpty ? 'Please add a name' : null,
-              ),
-              /**SizedBox(height: 15),
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  'name_dot'.tr(),
+                  style: kInputTextStyle,
+                ),
+                CustomTextFormField(
+                  controller: _name,
+                  hintText: 'Hachikō',
+                  validator: (value) =>
+                      value.isEmpty ? 'Please add a name' : null,
+                ),
+                /**SizedBox(height: 15),
               Text(
                 'breed_dot'.tr(),
                 style: kInputTextStyle,
@@ -229,21 +230,21 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                 style: kInputTextStyle,
               ),*/
 
-              SizedBox(height: 15),
-              Text(
-                'looking_for_match'.tr(),
-                 style: kInputTextStyle,
-              ),
-              SwitchListTile(
-                value: _selectedLookingForMatch,
-                onChanged: (_) {
-                  setState(() {
-                    _selectedLookingForMatch = !_selectedLookingForMatch;
-                  });
-                },
-              ),
-              SizedBox(height: 15),
-              /**Text(
+                SizedBox(height: 15),
+                Text(
+                  'looking_for_match'.tr(),
+                  style: kInputTextStyle,
+                ),
+                SwitchListTile(
+                  value: _selectedLookingForMatch,
+                  onChanged: (_) {
+                    setState(() {
+                      _selectedLookingForMatch = !_selectedLookingForMatch;
+                    });
+                  },
+                ),
+                SizedBox(height: 15),
+                /**Text(
                 'weight_dot'.tr(),
                 style: kInputTextStyle,
               ),
@@ -251,21 +252,22 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                 keyboardType: TextInputType.number,
                 hintText: 'in_kg'.tr(),
               ),**/
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child:   CustomButton(
-                  onPressed: state is PetFormLoading ? () {} : _onNewPetFormButtonPressed,
-                  text: 'add_new_pet'.tr(),
-                ),
-              )
-            ],
-          ),
-        );
-       }
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: CustomButton(
+                    onPressed: state is PetFormLoading
+                        ? () {}
+                        : _onNewPetFormButtonPressed,
+                    text: 'add_new_pet'.tr(),
+                  ),
+                )
+              ],
+            ),
+          );
+        }),
       ),
-    ),
-   );
- }
+    );
+  }
 
   _openBottomSheet(BuildContext context) {
     showModalBottomSheet(

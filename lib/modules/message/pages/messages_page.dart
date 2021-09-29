@@ -23,7 +23,8 @@ class _MessagesPageState extends State<MessagesPage>
             },
             imagePath: 'assets/images/icon_veterinarian_1.png',
             name: 'Dr Vidal CRMV 11111',
-            message: 'Iremos pesarlo cuando venga a la clínica hoy, así estamos seguros que estamos por debajo de 36 kilos, la última vez que hicimos el check-up él pesaba 33 kilos.',
+            message:
+                'Iremos pesarlo cuando venga a la clínica hoy, así estamos seguros que estamos por debajo de 36 kilos, la última vez que hicimos el check-up él pesaba 33 kilos.',
             date: '11:05 AM',
             unread: 3,
             online: true,

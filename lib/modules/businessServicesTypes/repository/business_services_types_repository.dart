@@ -5,11 +5,11 @@ import 'package:aipetto/modules/businessServicesTypes/services/businessServicesT
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-class BusinessServiceTypesRepository{
+class BusinessServiceTypesRepository {
   final BusinessServicesTypesApiClient businessServiceTypesClient;
 
-  BusinessServiceTypesRepository({
-    @required this.businessServiceTypesClient }) : assert(businessServiceTypesClient != null );
+  BusinessServiceTypesRepository({@required this.businessServiceTypesClient})
+      : assert(businessServiceTypesClient != null);
 
   Future<BusinessServiceType> fetchBusinessServiceTypes() async {
     return await businessServiceTypesClient.fetchBusinessServiceTypes();

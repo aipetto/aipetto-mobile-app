@@ -114,17 +114,14 @@ class _EditWidgetState extends State<EditWidget> {
             ),
             CustomTextFormField(
               hintText: 'Hachikō',
-              validator: (value) =>
-                  value.isEmpty ? 'Please add a name' : null,
+              validator: (value) => value.isEmpty ? 'Please add a name' : null,
             ),
             SizedBox(height: 15),
             Text(
               'breed_dot'.tr(),
               style: kInputTextStyle,
             ),
-            CustomTextFormField(
-              hintText: 'Akita'
-            ),
+            CustomTextFormField(hintText: 'Akita'),
             SizedBox(height: 15),
             Text(
               'last_name_dot'.tr(),
@@ -195,8 +192,8 @@ class _EditWidgetState extends State<EditWidget> {
               onChanged: (_) {
                 setState(() {
                   _selectedLookingForMatch = !_selectedLookingForMatch;
-                 });
-             },
+                });
+              },
             ),
             SizedBox(height: 15),
             Text(

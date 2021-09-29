@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class Notification extends Equatable{
+class Notification extends Equatable {
   int id;
   String title;
   String body;
@@ -58,7 +58,8 @@ final notifications = [
   ),
   Notification(
     title: 'Consejos de salud',
-    body: 'Caminar tu pet 30 minutos por día puede reducir 90% de las enfermedades del corazón',
+    body:
+        'Caminar tu pet 30 minutos por día puede reducir 90% de las enfermedades del corazón',
     icon: 'assets/images/tip.png',
     date: '1d',
   ),
@@ -76,7 +77,8 @@ final notifications = [
   ),
   Notification(
     title: 'Recordatorio de Receta',
-    body: 'Entre en contacto con la veterinaria Liana sobre la última prescipción',
+    body:
+        'Entre en contacto con la veterinaria Liana sobre la última prescipción',
     icon: 'assets/images/reminder.png',
     date: '1 semana',
   ),

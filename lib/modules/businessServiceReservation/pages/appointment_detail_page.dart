@@ -106,7 +106,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               child: Text(
                 'get_direction'.tr().toUpperCase(),
                 style: TextStyle(
-                  color:kAmphibianColorGreenLight,
+                  color: kAmphibianColorGreenLight,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
@@ -279,33 +279,34 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                         padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 15),
                         child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).pushNamed(Routes.myAppointments);
-                                },
-                                child: RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          '${'manage_you_appointments_better'.tr()} ',
-                                      style: TextStyle(
-                                        color: Colors.grey[600],
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'my_appointments'.tr(),
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w400,
-                                          decoration: TextDecoration.underline,
-                                       ),
-                                    ),
-                                 ],
-                              ),
-                           ),
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(Routes.myAppointments);
+                          },
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text:
+                                      '${'manage_you_appointments_better'.tr()} ',
+                                  style: TextStyle(
+                                    color: Colors.grey[600],
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'my_appointments'.tr(),
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],

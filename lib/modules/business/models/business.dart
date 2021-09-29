@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class Business extends Equatable{
+class Business extends Equatable {
   String id;
   String name;
   String firstName;
@@ -85,7 +85,8 @@ class Business extends Equatable{
 
   String toJson() => json.encode(toMap());
 
-  factory Business.fromJson(String source) => Business.fromMap(json.decode(source));
+  factory Business.fromJson(String source) =>
+      Business.fromMap(json.decode(source));
 
   @override
   // TODO: implement props
@@ -97,7 +98,7 @@ final businesses = [
     name: 'Veterinária Bons Amigos',
     speciality: 'Vet',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
     rating: 4.5,
     price: 100,
@@ -106,7 +107,7 @@ final businesses = [
     name: 'Salón Pet Belleza Buenos Aires',
     speciality: 'Beauty',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/aipetto/grooming_color.png',
     rating: 4.5,
     price: 100,
@@ -115,7 +116,7 @@ final businesses = [
     name: 'Café Pet Friendly London',
     speciality: 'Human-Pet Spaces',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/aipetto/cafe_pet_friendly.jpg',
     rating: 4.5,
     price: 100,

@@ -16,7 +16,13 @@ class BHCallModel {
   String videoCallIcon;
   String audioCallIcon;
 
-  BHCallModel({this.img, this.name, this.callImg, this.callStatus, this.videoCallIcon, this.audioCallIcon});
+  BHCallModel(
+      {this.img,
+      this.name,
+      this.callImg,
+      this.callStatus,
+      this.videoCallIcon,
+      this.audioCallIcon});
 }
 
 class BHCategoryModel {
@@ -45,7 +51,8 @@ class BHIncludeServiceModel {
   String time;
   int price;
 
-  BHIncludeServiceModel({this.serviceImg, this.serviceName, this.time, this.price});
+  BHIncludeServiceModel(
+      {this.serviceImg, this.serviceName, this.time, this.price});
 }
 
 class BHGroomingModel {
@@ -71,8 +78,10 @@ class BHNotificationModel {
   String status;
   String callInfo;
 
-  BHNotificationModel({this.img, this.name, this.msg, this.status, this.callInfo});
+  BHNotificationModel(
+      {this.img, this.name, this.msg, this.status, this.callInfo});
 }
+
 class BHNotifyModel {
   String img;
   String name;
@@ -80,45 +89,47 @@ class BHNotifyModel {
   double rating;
   double distance;
 
-  BHNotifyModel({this.img, this.name, this.address, this.rating, this.distance});
+  BHNotifyModel(
+      {this.img, this.name, this.address, this.rating, this.distance});
 }
 
-class BHOfferModel{
-
+class BHOfferModel {
   String img;
   String offerName;
   String offerDate;
   int offerOldPrice;
   int offerNewPrice;
 
-  BHOfferModel({this.img, this.offerName, this.offerDate, this.offerOldPrice,
-    this.offerNewPrice});
+  BHOfferModel(
+      {this.img,
+      this.offerName,
+      this.offerDate,
+      this.offerOldPrice,
+      this.offerNewPrice});
 }
 
-
-class BHReviewModel{
-
+class BHReviewModel {
   String img;
   String name;
-  double rating ;
+  double rating;
   String day;
   String review;
 
   BHReviewModel({this.img, this.name, this.rating, this.day, this.review});
 }
 
-class BHServicesModel{
-
+class BHServicesModel {
   String img;
   String serviceName;
   String time;
   int price;
   int radioVal;
 
-  BHServicesModel({this.img, this.serviceName, this.time, this.price,this.radioVal});
+  BHServicesModel(
+      {this.img, this.serviceName, this.time, this.price, this.radioVal});
 }
 
-class BHSpecialOfferModel{
+class BHSpecialOfferModel {
   String img;
   String title;
   String subtitle;

@@ -9,28 +9,26 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ChooseBusinessPlacePage extends StatefulWidget {
-
   @override
-  _ChooseBusinessPlacePageState createState() =>_ChooseBusinessPlacePageState();
-
+  _ChooseBusinessPlacePageState createState() =>
+      _ChooseBusinessPlacePageState();
 }
-class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
 
+class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
   @override
-  void initState(){
+  void initState() {
     context.read<UserGeolocationBloc>().getCurrentLocation();
     super.initState();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     context.read<UserGeolocationBloc>().cancelGeoCurrentLocation();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -40,7 +38,9 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
           builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () { Navigator.of(context).pushNamed(Routes.home); },
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.home);
+              },
               tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             );
           },
@@ -67,18 +67,18 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color:kAmphibianColorGreenLight,
+                color: kAmphibianColorGreenLight,
               ),
               child: Row(
                 children: <Widget>[
-                RoundIconButton(
+                  RoundIconButton(
                     onPressed: () {},
                     icon: Icons.person_pin,
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                Expanded(
+                  Expanded(
                     child: Text(
                       'geo_location_address'.tr(),
                       style: TextStyle(
@@ -104,7 +104,10 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage>{
               itemBuilder: (context, index) {
                 return BusinessPlaceItem(
                   onTap: () {
-                    Navigator.of(context).pushNamed(Routes.bookingStep2DetailsOfPlace); /// TODO pass id selected in the list for the step 2 page
+                    Navigator.of(context)
+                        .pushNamed(Routes.bookingStep2DetailsOfPlace);
+
+                    /// TODO pass id selected in the list for the step 2 page
                   },
                   business: businesses[index],
                 );

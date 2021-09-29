@@ -1,19 +1,17 @@
 part of 'authentication_bloc.dart';
 
 @immutable
-abstract class AuthenticationEvent extends Equatable{
+abstract class AuthenticationEvent extends Equatable {
+  const AuthenticationEvent();
 
-    const AuthenticationEvent();
-
-    @override
-    List<Object> get props => [];
+  @override
+  List<Object> get props => [];
 }
 
 // Fired just after the app is launched
-class AppLoaded extends AuthenticationEvent{}
+class AppLoaded extends AuthenticationEvent {}
 
-class UserLoggedIn extends AuthenticationEvent{
-
+class UserLoggedIn extends AuthenticationEvent {
   final User user;
 
   UserLoggedIn({@required this.user});
@@ -23,4 +21,4 @@ class UserLoggedIn extends AuthenticationEvent{
 }
 
 // Fired when the user has logged out
-class UserLoggedOut extends AuthenticationEvent{}
+class UserLoggedOut extends AuthenticationEvent {}

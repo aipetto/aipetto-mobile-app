@@ -7,7 +7,8 @@ class VeterinarianItem extends StatelessWidget {
   final Veterinarian veterinarian;
   final Function onTap;
 
-  const VeterinarianItem({Key key, @required this.onTap, @required this.veterinarian})
+  const VeterinarianItem(
+      {Key key, @required this.onTap, @required this.veterinarian})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class VeterinarianItem extends StatelessWidget {
                       ),
                       Icon(
                         Icons.star,
-                        color:kAmphibianColorGreenLight,
+                        color: kAmphibianColorGreenLight,
                         size: 18,
                       ),
                       SizedBox(

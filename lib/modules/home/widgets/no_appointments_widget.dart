@@ -44,7 +44,7 @@ class NoAppointmentsWidget extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.arrow_downward),
               tooltip: 'create_new_appointment'.tr(),
-              color:kAmphibianColorGreenLight,
+              color: kAmphibianColorGreenLight,
               onPressed: () {
                 FocusScope.of(context).requestFocus(FocusNode());
                 Navigator.of(context).pushNamed(Routes.categories);

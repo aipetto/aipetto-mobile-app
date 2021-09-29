@@ -11,7 +11,6 @@ import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-
   final User user;
 
   const Home({Key key, this.user}) : super(key: key);
@@ -46,7 +45,9 @@ class _HomeState extends State<Home> {
   }
 
   _selectPage(int index) {
-    if (_pageController.hasClients) _pageController.animateToPage(index, duration: Duration(milliseconds: 250), curve: Curves.easeOut);
+    if (_pageController.hasClients)
+      _pageController.animateToPage(index,
+          duration: Duration(milliseconds: 250), curve: Curves.easeOut);
     setState(() {
       _selectedIndex = index;
     });
@@ -158,7 +159,7 @@ class _HomeState extends State<Home> {
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color:kAmphibianColorGreenLight,
+                        color: kAmphibianColorGreenLight,
                       ),
                       child: Icon(
                         Icons.pets,
@@ -172,8 +173,7 @@ class _HomeState extends State<Home> {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar: CustomNavigationBar(
-                backgroundColor:
-                    true ? Color(0xff121212) : Colors.white,
+                backgroundColor: true ? Color(0xff121212) : Colors.white,
                 strokeColor: kAmphibianColorGreenLight,
                 items: [
                   NavBarItemWidget(

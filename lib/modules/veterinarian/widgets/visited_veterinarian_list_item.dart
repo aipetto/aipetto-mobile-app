@@ -1,7 +1,6 @@
 import 'package:aipetto/modules/veterinarian/models/veterinarian.dart';
 import 'package:flutter/material.dart';
 
-
 class VisitedVeterinarianListItem extends StatelessWidget {
   final Veterinarian veterinarian;
 

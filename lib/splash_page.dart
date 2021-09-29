@@ -11,7 +11,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
     super.initState();
@@ -24,7 +23,6 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -36,12 +34,12 @@ class _SplashPageState extends State<SplashPage> {
               child: Container(),
             ),
             Center(
-                child: Image.asset("assets/images/logos/aipetto-logo-transparent.png",
-                    height: 250,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.contain
-                ),
-              ),
+              child: Image.asset(
+                  "assets/images/logos/aipetto-logo-transparent.png",
+                  height: 250,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.contain),
+            ),
             Expanded(
               flex: 3,
               child: Column(
@@ -73,7 +71,7 @@ class _SplashPageState extends State<SplashPage> {
               width: 150,
               height: 2,
               child: LinearProgressIndicator(
-                backgroundColor:kAmphibianColorGreenLight,
+                backgroundColor: kAmphibianColorGreenLight,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             ),
@@ -82,7 +80,7 @@ class _SplashPageState extends State<SplashPage> {
               child: Container(),
             )
           ],
-         ),
+        ),
       ),
     );
   }

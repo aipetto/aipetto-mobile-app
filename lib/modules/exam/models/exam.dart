@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class Exam extends Equatable{
-
+class Exam extends Equatable {
   String id;
 
   Exam({

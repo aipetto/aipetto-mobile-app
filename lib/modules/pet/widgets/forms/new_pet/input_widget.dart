@@ -112,7 +112,9 @@ class _InputWidgetState extends State<InputWidget> {
         ),
         CustomButton(
           onPressed: () => Navigator.of(context)
-              .popUntil(ModalRoute.withName(Routes.petProfile)), /// TODO pass for pet details page or back to home
+              .popUntil(ModalRoute.withName(Routes.petProfile)),
+
+          /// TODO pass for pet details page or back to home
           text: 'sign_up'.tr(),
         ),
       ],

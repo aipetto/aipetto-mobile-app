@@ -40,7 +40,6 @@ import 'routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-
     switch (settings.name) {
       case Routes.splash:
         return CupertinoPageRoute(builder: (_) => SplashPage());
@@ -50,9 +49,8 @@ class RouteGenerator {
 
       case Routes.petProfile:
         final args = settings.arguments as PetSelected;
-        return CupertinoPageRoute(builder: (BuildContext context) => PetProfilePage(
-          pet: args.pet
-        ));
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => PetProfilePage(pet: args.pet));
 
       case Routes.signup:
         return CupertinoPageRoute(builder: (_) => SignupPage());
@@ -76,16 +74,21 @@ class RouteGenerator {
         );
 
       case Routes.bookingStep1FindPlacesNearby:
-        return CupertinoPageRoute(builder: (BuildContext context) => ChooseBusinessPlacePage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => ChooseBusinessPlacePage());
 
       case Routes.bookingStep2DetailsOfPlace:
-        return CupertinoPageRoute(builder: (BuildContext context) => BusinessProfilePage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => BusinessProfilePage());
 
       case Routes.bookingStep3ServiceAvailability:
-        return CupertinoPageRoute(builder: (BuildContext context) => TimeSlotPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => TimeSlotPage());
 
       case Routes.bookingStep4ReservationDetails:
-        return CupertinoPageRoute(builder: (BuildContext context) => ReservationCustomerDetailsPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) =>
+                ReservationCustomerDetailsPage());
 
       /// AppointmentBookedPage()
 
@@ -98,12 +101,9 @@ class RouteGenerator {
       case Routes.addNewPet:
         final args = settings.arguments as PetTypeSelected;
         return CupertinoPageRoute(
-            builder: (BuildContext context) => AddNewPetPage(
-              petTypeId: args.id,
-              petTypeName: args.name
-            ),
-            fullscreenDialog: true
-        );
+            builder: (BuildContext context) =>
+                AddNewPetPage(petTypeId: args.id, petTypeName: args.name),
+            fullscreenDialog: true);
 
       case Routes.appointmentDetail:
         return CupertinoPageRoute(builder: (_) => AppointmentDetailPage());
@@ -115,7 +115,8 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => PrescriptionDetailPage());
 
       case Routes.chatDetail:
-        return CupertinoPageRoute(builder: (BuildContext context) => MessagesDetailPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => MessagesDetailPage());
 
       case Routes.veterinarianProfile:
         return CupertinoPageRoute(builder: (_) => VeterinarianProfilePage());
@@ -127,13 +128,16 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => EditUserProfilePage());
 
       case Routes.myPets:
-        return CupertinoPageRoute(builder: (BuildContext context) => MyPetsListPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => MyPetsListPage());
 
       case Routes.changeLanguage:
-        return CupertinoPageRoute(builder: (BuildContext context) => ChangeLanguagePage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => ChangeLanguagePage());
 
       case Routes.notificationSettings:
-        return CupertinoPageRoute(builder: (BuildContext context) => NotificationSettingsPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => NotificationSettingsPage());
 
       case Routes.appSettings:
         return CupertinoPageRoute(builder: (_) => SettingsPage());
@@ -142,22 +146,28 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => MyVeterinarianListPage());
 
       case Routes.myFavoriteBusinesses:
-        return CupertinoPageRoute(builder: (_) => MyFavoriteBusinessessListPage());
+        return CupertinoPageRoute(
+            builder: (_) => MyFavoriteBusinessessListPage());
 
       case Routes.myAppointments:
-        return CupertinoPageRoute(builder: (BuildContext context) => MyAppointmentsPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => MyAppointmentsPage());
 
       case Routes.accessGPS:
-        return CupertinoPageRoute(builder: (BuildContext context) => AccessGPSPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => AccessGPSPage());
 
       case Routes.choosePetType:
-        return TransparentRoute(builder: (BuildContext context) => ChoosePetTypePage());
+        return TransparentRoute(
+            builder: (BuildContext context) => ChoosePetTypePage());
 
       case Routes.addressSearch:
-        return CupertinoPageRoute(builder: (BuildContext context) => AddressSearchPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => AddressSearchPage());
 
       case Routes.loading:
-        return CupertinoPageRoute(builder: (BuildContext context) => LoadingPage());
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => LoadingPage());
 
       case Routes.notifications:
         return CupertinoPageRoute(
@@ -184,7 +194,6 @@ class RouteGenerator {
     });
   }
 }
-
 
 class TransparentRoute extends PageRoute<void> {
   TransparentRoute({

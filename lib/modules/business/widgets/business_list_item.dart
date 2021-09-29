@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 class MyBusinessListItem extends StatelessWidget {
   final Business business;
 
-  const MyBusinessListItem({Key key, @required this.business}) : super(key: key);
+  const MyBusinessListItem({Key key, @required this.business})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(

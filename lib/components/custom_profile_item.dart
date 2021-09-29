@@ -89,16 +89,14 @@ class CustomProfileItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text(
-                          buttonTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .button
-                              .copyWith(fontSize: 12),
-                          maxLines: 3,
-                          softWrap: false,
-                          overflow: TextOverflow.ellipsis
-                        ),
+                        Text(buttonTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .button
+                                .copyWith(fontSize: 12),
+                            maxLines: 3,
+                            softWrap: false,
+                            overflow: TextOverflow.ellipsis),
                         SizedBox(
                           width: 5,
                         ),

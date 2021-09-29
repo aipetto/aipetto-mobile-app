@@ -1,10 +1,9 @@
 part of 'pet_type_bloc.dart';
 
 @immutable
-abstract class PetTypeEvent extends Equatable{}
+abstract class PetTypeEvent extends Equatable {}
 
-class FetchPetType extends PetTypeEvent{
-
+class FetchPetType extends PetTypeEvent {
   FetchPetType();
 
   @override

@@ -9,7 +9,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class PetProfilePage extends StatefulWidget {
-
   final Pet pet;
 
   const PetProfilePage({Key key, this.pet}) : super(key: key);
@@ -21,7 +20,7 @@ class PetProfilePage extends StatefulWidget {
 class _PetProfilePageState extends State<PetProfilePage>
     with AutomaticKeepAliveClientMixin<PetProfilePage> {
   final _kTabTextStyle = TextStyle(
-    color:kAmphibianColorGreenLight,
+    color: kAmphibianColorGreenLight,
     fontSize: 16,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
@@ -37,7 +36,8 @@ class _PetProfilePageState extends State<PetProfilePage>
   Widget build(BuildContext context) {
     super.build(context);
     bool _isdark = true;
-    final String petAgeInMonths = widget.pet.age != null ? '${widget.pet.age}' + 'details'.tr() : '';
+    final String petAgeInMonths =
+        widget.pet.age != null ? '${widget.pet.age}' + 'details'.tr() : '';
 
     var _kTabs = [
       Tab(
@@ -53,119 +53,121 @@ class _PetProfilePageState extends State<PetProfilePage>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('pet_profile'.tr(), style: TextStyle(
-          fontSize: 16,
-        ),),
-      ),
-      body: Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(20),
-          //color: Colors.white,
-          child: Row(
-            children: <Widget>[
-              Padding(
-              padding: EdgeInsets.symmetric(vertical: 30),
-               child: CircleAvatar(
-                 radius: 82,
-                 backgroundColor: Colors.transparent,
-                 backgroundImage: (
-                     widget.pet.profileImage != null &&
-                         widget.pet.profileImage[0] != null &&
-                         widget.pet.profileImage[0].publicUrl != null
-                 ) ? NetworkImage(widget.pet.profileImage[0].publicUrl) : AssetImage('assets/images/aipetto/pets.png'),
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      widget.pet.name ?? '',
-                      style: Theme.of(context).textTheme.subtitle2,
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      widget.pet.breed ?? '',
-                      style: TextStyle(
-                        color: Colors.grey[350],
-                        fontSize: 16,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      '$petAgeInMonths',
-
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle2
-                          .copyWith(fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-              RoundIconButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(Routes.editPetProfile),
-                icon: Icons.edit,
-                size: 40,
-                color:kAmphibianColorGreenLight,
-                iconColor: Colors.white,
-              ),
-            ],
+        title: Text(
+          'pet_profile'.tr(),
+          style: TextStyle(
+            fontSize: 16,
           ),
         ),
-        SizedBox(
-          height: 15,
-        ),
-        Expanded(
-          child: DefaultTabController(
-            length: _kTabs.length,
-            child: Column(
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(20),
+            //color: Colors.white,
+            child: Row(
               children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: _isdark ? kColorDark : Color(0xfffbfcff),
-                    border: Border(
-                      top: BorderSide(
-                        width: 1,
-                        color: _isdark ? Colors.black87 : Colors.grey[200],
-                      ),
-                      bottom: BorderSide(
-                        width: 1,
-                        color: _isdark ? Colors.black87 : Colors.grey[200],
-                      ),
-                    ),
-                  ),
-                  child: TabBar(
-                    indicatorColor:kAmphibianColorGreenLight,
-                    labelStyle: _kTabTextStyle,
-                    unselectedLabelStyle:
-                        _kTabTextStyle.copyWith(color: Colors.grey),
-                    labelColor:kAmphibianColorGreenLight,
-                    unselectedLabelColor: Colors.grey,
-                    tabs: _kTabs,
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 30),
+                  child: CircleAvatar(
+                    radius: 82,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: (widget.pet.profileImage != null &&
+                            widget.pet.profileImage[0] != null &&
+                            widget.pet.profileImage[0].publicUrl != null)
+                        ? NetworkImage(widget.pet.profileImage[0].publicUrl)
+                        : AssetImage('assets/images/aipetto/pets.png'),
                   ),
                 ),
+                SizedBox(
+                  width: 20,
+                ),
                 Expanded(
-                  child: TabBarView(
-                    children: _kTabPages,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        widget.pet.name ?? '',
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Text(
+                        widget.pet.breed ?? '',
+                        style: TextStyle(
+                          color: Colors.grey[350],
+                          fontSize: 16,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        '$petAgeInMonths',
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle2
+                            .copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
+                ),
+                RoundIconButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(Routes.editPetProfile),
+                  icon: Icons.edit,
+                  size: 40,
+                  color: kAmphibianColorGreenLight,
+                  iconColor: Colors.white,
                 ),
               ],
             ),
           ),
-        )
-      ],
-    ),
+          SizedBox(
+            height: 15,
+          ),
+          Expanded(
+            child: DefaultTabController(
+              length: _kTabs.length,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: _isdark ? kColorDark : Color(0xfffbfcff),
+                      border: Border(
+                        top: BorderSide(
+                          width: 1,
+                          color: _isdark ? Colors.black87 : Colors.grey[200],
+                        ),
+                        bottom: BorderSide(
+                          width: 1,
+                          color: _isdark ? Colors.black87 : Colors.grey[200],
+                        ),
+                      ),
+                    ),
+                    child: TabBar(
+                      indicatorColor: kAmphibianColorGreenLight,
+                      labelStyle: _kTabTextStyle,
+                      unselectedLabelStyle:
+                          _kTabTextStyle.copyWith(color: Colors.grey),
+                      labelColor: kAmphibianColorGreenLight,
+                      unselectedLabelColor: Colors.grey,
+                      tabs: _kTabs,
+                    ),
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: _kTabPages,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 

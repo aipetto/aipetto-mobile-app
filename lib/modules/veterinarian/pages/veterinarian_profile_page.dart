@@ -95,7 +95,7 @@ class VeterinarianProfilePage extends StatelessWidget {
                 ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                    child: Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       CustomCircularIndicator(
@@ -182,7 +182,7 @@ class VeterinarianProfilePage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        fillColor:kAmphibianColorGreenLight,
+                        fillColor: kAmphibianColorGreenLight,
                         child: Container(
                           height: 48,
                           child: Center(

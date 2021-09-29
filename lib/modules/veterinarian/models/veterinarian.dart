@@ -83,7 +83,8 @@ class Veterinarian {
 
   String toJson() => json.encode(toMap());
 
-  factory Veterinarian.fromJson(String source) => Veterinarian.fromMap(json.decode(source));
+  factory Veterinarian.fromJson(String source) =>
+      Veterinarian.fromMap(json.decode(source));
 }
 
 class Veterinarians {
@@ -98,7 +99,7 @@ class Veterinarians {
   static List<Veterinarian> parserecipes(veterinarianJSON) {
     var dList = veterinarianJSON['veterinarians'] as List;
     List<Veterinarian> veterinarianList =
-    dList.map((data) => Veterinarian.fromJson(data)).toList();
+        dList.map((data) => Veterinarian.fromJson(data)).toList();
     return veterinarianList;
   }
 }
@@ -108,7 +109,7 @@ final veterinarians = [
     name: 'Dr Vidal CRMV 11111',
     speciality: 'Family Veterinarian, Cardiologist',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/icon_veterinarian_1.png',
     rating: 4.5,
     price: 100,
@@ -117,7 +118,7 @@ final veterinarians = [
     name: 'Trashae Hubbard',
     speciality: 'Family Veterinarian, Therapist',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/icon_veterinarian_2.png',
     rating: 4.7,
     price: 90,
@@ -126,7 +127,7 @@ final veterinarians = [
     name: 'Jesus Moruga',
     speciality: 'Family Veterinarian, Therapist',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/icon_veterinarian_3.png',
     rating: 4.3,
     price: 100,
@@ -135,7 +136,7 @@ final veterinarians = [
     name: 'Gabriel Moreira',
     speciality: 'Family Veterinarian, Therapist',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/icon_veterinarian_4.png',
     rating: 4.7,
     price: 100,
@@ -144,7 +145,7 @@ final veterinarians = [
     name: 'Liana Lee',
     speciality: 'Family Veterinarian, Therapist',
     about:
-    'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
+        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/icon_veterinarian_5.png',
     rating: 4.7,
     price: 100,

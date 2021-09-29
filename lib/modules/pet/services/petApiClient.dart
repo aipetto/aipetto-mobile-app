@@ -24,7 +24,6 @@ class PetApiClient {
   }) : assert(httpClient != null);
 
   Future<List<Pet>> fetchUserPets(String userTenantId) async {
-
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/tenant/$userTenantId/pet';
@@ -34,7 +33,7 @@ class PetApiClient {
       'Authorization': 'Bearer ${jwtOnSecureStorage}',
     });
 
-    if( response.statusCode != 200 ){
+    if (response.statusCode != 200) {
       throw new Exception('Error gettings user pets');
     }
 
@@ -43,11 +42,10 @@ class PetApiClient {
   }
 
   Future<Pet> fetchPet(Pet pet) async {
-
     final url = '$_baseUrl/tenant/${pet.tenant}/pet/${pet.id}';
     final response = await this.httpClient.get(url);
 
-    if( response.statusCode != 200 ){
+    if (response.statusCode != 200) {
       throw new Exception('Error gettings pet information');
     }
 
@@ -55,10 +53,10 @@ class PetApiClient {
   }
 
   Future<Pet> updatePet(Pet petInfoToUpdate) async {
-
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
-    final petUpdatedResponse = await this.httpClient.put(Uri.parse('$_baseUrl/tenant/:tenantId/pet/:id'),
+    final petUpdatedResponse = await this.httpClient.put(
+        Uri.parse('$_baseUrl/tenant/:tenantId/pet/:id'),
         body: jsonEncode(petInfoToUpdate),
         headers: {
           'Content-Type': 'application/json',
@@ -66,23 +64,22 @@ class PetApiClient {
           'Authorization': 'Bearer ${jwtOnSecureStorage}',
         });
 
-    if( petUpdatedResponse.statusCode != 200 ){ throw new Exception('Error updating pet');}
+    if (petUpdatedResponse.statusCode != 200) {
+      throw new Exception('Error updating pet');
+    }
 
     final json = jsonDecode(petUpdatedResponse.body);
     return Pet.fromJson(json);
   }
 
   Future<Pet> addPet(Pet pet, File profileImage) async {
-
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
     final petTenant = pet.tenant;
 
-    List<ProfileImage> imageMultipartUploaded = profileImage != null ? await uploadMultipartImageToCloudStorage(
-        profileImage,
-        pet,
-        petTenant,
-        jwtOnSecureStorage
-    ) : [];
+    List<ProfileImage> imageMultipartUploaded = profileImage != null
+        ? await uploadMultipartImageToCloudStorage(
+            profileImage, pet, petTenant, jwtOnSecureStorage)
+        : [];
 
     final newPetInfo = {
       'data': {
@@ -95,63 +92,73 @@ class PetApiClient {
       }
     };
 
-    final petUpdatedResponse = await this.httpClient.post(Uri.parse('$_baseUrl/tenant/$petTenant/pet'),
+    final petUpdatedResponse = await this.httpClient.post(
+        Uri.parse('$_baseUrl/tenant/$petTenant/pet'),
         body: jsonEncode(newPetInfo),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer ${jwtOnSecureStorage}',
-        }
-    );
+        });
 
-    if( petUpdatedResponse.statusCode != 200 ){ throw new Exception('Error adding pet'); }
+    if (petUpdatedResponse.statusCode != 200) {
+      throw new Exception('Error adding pet');
+    }
 
     final json = jsonDecode(petUpdatedResponse.body);
     return Pet.fromJson(json);
   }
 
-  Future<List<ProfileImage>> uploadMultipartImageToCloudStorage(File profileImage, Pet pet, String petTenant, String jwtOnSecureStorage) async {
-     var uuid = Uuid().v4();
+  Future<List<ProfileImage>> uploadMultipartImageToCloudStorage(
+      File profileImage,
+      Pet pet,
+      String petTenant,
+      String jwtOnSecureStorage) async {
+    var uuid = Uuid().v4();
     var extension = p.extension(profileImage.path);
     var filename = uuid + extension;
-    
-    final queryParameters =  {
-        'filename': filename,
-        'storageId': ImagesFileStorage.petProfileImage["id"],
-        'currentUserId': pet.createdBy,
-        'currentTenantId': pet.tenant
+
+    final queryParameters = {
+      'filename': filename,
+      'storageId': ImagesFileStorage.petProfileImage["id"],
+      'currentUserId': pet.createdBy,
+      'currentTenantId': pet.tenant
     };
-    
-    final uri = Uri.https('$_baseUrlHostOnly', 'api/tenant/$petTenant/file/credentials', queryParameters);
+
+    final uri = Uri.https('$_baseUrlHostOnly',
+        'api/tenant/$petTenant/file/credentials', queryParameters);
     final fileCredentials = await this.httpClient.get(uri, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}'
     });
     final jsonResponseFileCredentials = jsonDecode(fileCredentials.body);
-    
+
     // TODO upload image to server - REFACTOR and extract to own method
-    final imageUploadRequest = http.MultipartRequest('POST', Uri.parse(jsonResponseFileCredentials['uploadCredentials']['url']));
-    
-    jsonResponseFileCredentials['uploadCredentials']['fields'].forEach((k, v) => {
-      imageUploadRequest.fields[k] = v
-    });
-    
+    final imageUploadRequest = http.MultipartRequest('POST',
+        Uri.parse(jsonResponseFileCredentials['uploadCredentials']['url']));
+
+    jsonResponseFileCredentials['uploadCredentials']['fields']
+        .forEach((k, v) => {imageUploadRequest.fields[k] = v});
+
     final file = await http.MultipartFile.fromPath('file', profileImage.path);
     imageUploadRequest.files.add(file);
-    
+
     final streamResponse = await imageUploadRequest.send();
-    
+
     await http.Response.fromStream(streamResponse);
-    
-    final List<ProfileImage> imageMultipartUploaded = [ new ProfileImage(
-       name: profileImage.path.split('/').last,  //file.name,
-       sizeInBytes: profileImage.readAsBytesSync().lengthInBytes, //file.size,
-       publicUrl: jsonResponseFileCredentials['downloadUrl'].split('?')[0] ?? null,
-       privateUrl: jsonResponseFileCredentials['privateUrl'],
-       createdAt: DateTime.now(),
-       updatedAt: DateTime.now(),
-    )];
+
+    final List<ProfileImage> imageMultipartUploaded = [
+      new ProfileImage(
+        name: profileImage.path.split('/').last, //file.name,
+        sizeInBytes: profileImage.readAsBytesSync().lengthInBytes, //file.size,
+        publicUrl:
+            jsonResponseFileCredentials['downloadUrl'].split('?')[0] ?? null,
+        privateUrl: jsonResponseFileCredentials['privateUrl'],
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      )
+    ];
     return imageMultipartUploaded;
   }
 }

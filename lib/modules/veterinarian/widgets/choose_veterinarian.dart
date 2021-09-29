@@ -18,7 +18,8 @@ class ChooseVeterinarian extends StatelessWidget {
             height: 10,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: i < progress ? kAmphibianColorGreenLight : Colors.grey[300],
+              color:
+                  i < progress ? kAmphibianColorGreenLight : Colors.grey[300],
             ),
           ),
         ),
@@ -45,7 +46,7 @@ class ChooseVeterinarian extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Icons.filter_list,
-              color:kAmphibianColorGreenLight,
+              color: kAmphibianColorGreenLight,
             ),
           )
         ],
@@ -78,7 +79,7 @@ class ChooseVeterinarian extends StatelessWidget {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color:kAmphibianColorGreenLight,
+                color: kAmphibianColorGreenLight,
               ),
               child: Row(
                 children: <Widget>[

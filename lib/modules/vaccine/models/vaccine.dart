@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class Vaccine extends Equatable{
-
+class Vaccine extends Equatable {
   String id;
 
   Vaccine({
@@ -26,7 +25,8 @@ class Vaccine extends Equatable{
 
   String toJson() => json.encode(toMap());
 
-  factory Vaccine.fromJson(String source) => Vaccine.fromMap(json.decode(source));
+  factory Vaccine.fromJson(String source) =>
+      Vaccine.fromMap(json.decode(source));
 
   @override
   List<Object> get props => [id];

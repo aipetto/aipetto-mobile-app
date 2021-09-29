@@ -12,18 +12,19 @@ class BusinessServicesTypesApiClient {
   final http.Client httpClient;
 
   // TODO Refactor to apply better solution and not hard coded, only for MVP.
-  final languageId = Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50fb57043bb3ae7b537';
+  final languageId =
+      Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50fb57043bb3ae7b537';
 
   BusinessServicesTypesApiClient({
     @required this.httpClient,
   }) : assert(httpClient != null);
 
   Future<BusinessServiceType> fetchBusinessServiceTypes() async {
-
-    final url = '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId';
+    final url =
+        '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId';
     final response = await this.httpClient.get(url);
 
-    if( response.statusCode != 200 ){
+    if (response.statusCode != 200) {
       throw new Exception('Error gettings pet types');
     }
 

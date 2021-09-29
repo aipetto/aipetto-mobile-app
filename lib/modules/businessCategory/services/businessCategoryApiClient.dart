@@ -14,11 +14,8 @@ class BusinessCategoryApiClient {
     @required this.httpClient,
   }) : assert(httpClient != null);
 
-
   Future<BusinessCategory> fetchPetBusinessCategory() async {
-    final url = '$_baseUrl/business-category/autocomplete?query%5Blanguage%5D=$languageId';
-
-
+    final url =
+        '$_baseUrl/business-category/autocomplete?query%5Blanguage%5D=$languageId';
   }
 }
-

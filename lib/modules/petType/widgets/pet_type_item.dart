@@ -5,8 +5,7 @@ class PetTypeItem extends StatelessWidget {
   final PetTypeModel.Row petType;
   final Function onTap;
 
-  const PetTypeItem(
-      {Key key, @required this.petType, @required this.onTap})
+  const PetTypeItem({Key key, @required this.petType, @required this.onTap})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -18,14 +17,17 @@ class PetTypeItem extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(
             children: <Widget>[
-             petType.image.isEmpty ? CircleAvatar(
-               backgroundColor: Colors.grey[300],
-               radius: 25,
-             ) : CircleAvatar(
-                backgroundColor: Colors.grey[300],
-                backgroundImage: NetworkImage(petType.image.first.downloadUrl),
-                radius: 25,
-              ),
+              petType.image.isEmpty
+                  ? CircleAvatar(
+                      backgroundColor: Colors.grey[300],
+                      radius: 25,
+                    )
+                  : CircleAvatar(
+                      backgroundColor: Colors.grey[300],
+                      backgroundImage:
+                          NetworkImage(petType.image.first.downloadUrl),
+                      radius: 25,
+                    ),
               SizedBox(
                 width: 10,
               ),

@@ -12,22 +12,23 @@ class PetHorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<PetBloc, PetState>(
       builder: (context, state) {
-        if(state is PetLoading) {
+        if (state is PetLoading) {
           return Flexible(child: Center(child: CircularProgressIndicator()));
-        }else if (state is PetError){
+        } else if (state is PetError) {
           return Center(child: Text(''));
-        }else if (state is PetEmpty){
-          return Center(child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).requestFocus(FocusNode());
-                Navigator.of(context).pushNamed(Routes.choosePetType);
-              },
-              child:Column(
-                  children: <Widget>[
+        } else if (state is PetEmpty) {
+          return Center(
+              child: GestureDetector(
+                  onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    Navigator.of(context).pushNamed(Routes.choosePetType);
+                  },
+                  child: Column(children: <Widget>[
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.grey,
-                      backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
+                      backgroundImage:
+                          AssetImage('assets/images/pets/pet_1.jpg'),
                     ),
                     SizedBox(
                       height: 15,
@@ -41,17 +42,15 @@ class PetHorizontalList extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     )
-                  ]
-              )
-          ));
-        }else{
+                  ])));
+        } else {
           final stateAsPetsLoadedState = state as PetsLoaded;
           final pets = stateAsPetsLoadedState.pets;
           return buildPetsHorizontalList(pets);
         }
       },
       listener: (context, state) {
-        if(state is PetLoaded) {
+        if (state is PetLoaded) {
           final stateAsPetsLoadedState = state as PetsLoaded;
           final pets = stateAsPetsLoadedState.pets;
           return buildPetsHorizontalList(pets);
@@ -60,7 +59,7 @@ class PetHorizontalList extends StatelessWidget {
     );
   }
 
-  Widget buildPetsHorizontalList(List<Pet> pets){
+  Widget buildPetsHorizontalList(List<Pet> pets) {
     return Container(
       height: 130,
       child: ListView.separated(
@@ -71,35 +70,32 @@ class PetHorizontalList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.symmetric(horizontal: 20),
         itemBuilder: (context, index) {
-          if(index == 0){
+          if (index == 0) {
             return GestureDetector(
                 onTap: () {
                   FocusScope.of(context).requestFocus(FocusNode());
                   Navigator.of(context).pushNamed(Routes.choosePetType);
                 },
-                child:Column(
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.grey,
-                        backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        'add_your_pet'.tr(),
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            .copyWith(fontSize: 14),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      )
-                    ]
-                )
-            );
-          }else{
+                child: Column(children: <Widget>[
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.grey,
+                    backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'add_your_pet'.tr(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2
+                        .copyWith(fontSize: 14),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  )
+                ]));
+          } else {
             return PetsOfOwnerListItem(
               pet: pets[--index],
             );

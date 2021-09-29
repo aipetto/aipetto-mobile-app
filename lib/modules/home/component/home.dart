@@ -4,6 +4,7 @@ import 'package:aipetto/modules/home/pages/drawer/drawer_page.dart';
 import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:aipetto/modules/home/widgets/app_bar_title_widget.dart';
 import 'package:aipetto/modules/home/widgets/nav_bar_item_widget.dart';
+import 'package:aipetto/modules/message/pages/messages_page.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
@@ -57,7 +58,8 @@ class _HomeState extends State<Home> {
     final _pages = [
       HomePage(user: widget.user),
       Container(),
-      MyAppointmentsPage(),
+      MessagesPage(),
+      //MyAppointmentsPage(),
     ];
     return Stack(
       children: <Widget>[
@@ -193,6 +195,13 @@ class _HomeState extends State<Home> {
                     image: 'calendar',
                     isSelected: _selectedIndex == 2,
                   ),
+                  /**NavBarItemWidget(
+                      onTap: () {
+                      _selectPage(3);
+                      },
+                      image: 'messages',
+                      isSelected: _selectedIndex == 3,
+                      ),**/
                 ],
                 currentIndex: _selectedIndex,
                 elevation: 0,

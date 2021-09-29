@@ -73,6 +73,7 @@ class _PetProfilePageState extends State<PetProfilePage>
                     radius: 82,
                     backgroundColor: Colors.transparent,
                     backgroundImage: (widget.pet.profileImage != null &&
+                            widget.pet.profileImage.length > 0 &&
                             widget.pet.profileImage[0] != null &&
                             widget.pet.profileImage[0].publicUrl != null)
                         ? NetworkImage(widget.pet.profileImage[0].publicUrl)

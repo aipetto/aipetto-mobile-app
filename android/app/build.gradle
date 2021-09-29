@@ -40,11 +40,10 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.aipetto"
         minSdkVersion 18
         targetSdkVersion 30
-        versionCode 27
+        versionCode 28
         versionName flutterVersionName
     }
 

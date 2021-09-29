@@ -7,6 +7,7 @@ import 'package:aipetto/modules/auth/bloc/login/login_bloc.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_event.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_state.dart';
 import 'package:aipetto/modules/auth/services/auth_service.dart';
+import 'package:aipetto/modules/i18n/models/Language.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/splash_page.dart';
 import 'package:aipetto/utils/constants.dart';
@@ -16,9 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
-
-/// TODO apply architecture best practices and DDD extracting this to own language module
-enum Language { english, spanish, italian, portuguese }
 
 class LoginPage extends StatefulWidget {
   @override
@@ -78,8 +76,6 @@ class _AuthForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    /// TODO Refactor applying best practices DI and use Repository.of
-    ///  https://pub.dev/documentation/flutter_bloc/latest/flutter_bloc/RepositoryProvider-class.html
     final AuthenticationService authService = AipettoCoreAuthenticationService(httpClient: http.Client());
     final authBloc = BlocProvider.of<AuthenticationBloc>(context);
 

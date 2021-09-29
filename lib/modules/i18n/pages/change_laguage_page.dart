@@ -1,8 +1,7 @@
 import 'package:aipetto/config/pref_manager.dart';
+import 'package:aipetto/modules/i18n/models/Language.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-enum Language { english, spanish, italian, portuguese }
 
 class ChangeLanguagePage extends StatefulWidget {
   @override

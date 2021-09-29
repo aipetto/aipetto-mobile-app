@@ -9,13 +9,28 @@ class LoadingPage extends StatefulWidget {
   _LoadingPageState createState() => _LoadingPageState();
 }
 
-class _LoadingPageState extends State<LoadingPage> {
+class _LoadingPageState extends State<LoadingPage> with WidgetsBindingObserver {
+
+  Future checkGpsAndLocationEnabledAndRedirect;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    checkGpsAndLocationEnabledAndRedirect = checkGpsAndLocation();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: FutureBuilder(
-          future: this.checkGpsAndLocation(context),
+          future: checkGpsAndLocationEnabledAndRedirect,
           builder: (BuildContext context, AsyncSnapshot snapshot){
             if ( snapshot.hasData ) {
               return Center(child: Text(snapshot.data));
@@ -29,7 +44,7 @@ class _LoadingPageState extends State<LoadingPage> {
     );
   }
 
-  Future checkGpsAndLocation( BuildContext context ) async{
+  Future checkGpsAndLocation() async{
 
     final permissionGPS = await Permission.location.isGranted;
     final gpsActive = await Geolocator.isLocationServiceEnabled();

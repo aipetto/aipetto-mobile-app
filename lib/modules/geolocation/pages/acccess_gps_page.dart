@@ -25,7 +25,6 @@ class _AccessGPSPageState extends State<AccessGPSPage> with WidgetsBindingObserv
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async{
-    print('======================> $state');
     if( state == AppLifecycleState.resumed ) {
       if (await Permission.location.isGranted) {
         Navigator.of(context).pushNamed(Routes.loading);

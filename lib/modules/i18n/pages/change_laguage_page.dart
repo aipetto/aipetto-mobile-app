@@ -14,7 +14,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
   @override
   void initState() {
     super.initState();
-    switch (Prefs.getString('language', def: 'es')) {
+    switch (Prefs.getString('language', def: 'pt')) {
       case 'en':
         _language = Language.english;
         break;

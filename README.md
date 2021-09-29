@@ -2,12 +2,12 @@
 
 The packages we use:
 
-| Package                                                                              | Pub                                                                                                      |
-| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| Package                                                                              | Pub                                                                                             |
+| ---------------------------------------------------- | ------------------------------------------------------------------|
 | State Management
-| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| [bloc](https://github.com/felangel/bloc/tree/master/packages/bloc)                   | [![pub package](https://img.shields.io/pub/v/bloc.svg)](https://pub.dev/packages/bloc)                   |
-| [bloc_test](https://github.com/felangel/bloc/tree/master/packages/bloc_test)         | [![pub package](https://img.shields.io/pub/v/bloc_test.svg)](https://pub.dev/packages/bloc_test)         |
+| ---------------------------------------------------- | ------------------------------------------------------------------|
+| [bloc](https://github.com/felangel/bloc/tree/master/packages/bloc)                   | [![pub package](https://img.shields.io/pub/v/bloc.svg)](https://pub.dev/packages/bloc)          |
+| [bloc_test](https://github.com/felangel/bloc/tree/master/packages/bloc_test)         | [![pub package](https://img.shields.io/pub/v/bloc_test.svg)](https://pub.dev/packages/bloc_test)|
 
 ## Project Structure
 
@@ -67,7 +67,8 @@ flutter clean
 flutter build apk --release
 flutter build appbundle --release
 ```
-### Install and Release on iOS
+
+### Setup basic development environment in iOS
 ```
 - [x] Fetch aipetto mobile app and build project
 - [x] Install Flutter SDK
@@ -106,7 +107,6 @@ Open the file “android/app/src/main/AndroidManifest.xml” and add the proper 
 </manifest>
 ```
 
-
 Make  change in local.properties android project
 
 ```
@@ -141,11 +141,8 @@ dependencies {
 and clean before creating a build folder by following this cmd.
 ```
 flutter clean
-
 flutter build apk --release
-
 flutter install
-
 flutter build bundle --release
 ```
 Go to Release Apk location
@@ -153,8 +150,16 @@ Go to Release Apk location
 cd build\app\outputs\apk\release
 ```
 
-
 #### Google SignIn Certificates SHA-1 between Google Release Play Console and Firebase Authentication Project
+- In Google Play Console, visit Setup > App signing
+- Copy SHA-1 certificate fingerprint
+- Copy SHA-1 from Google Play App signing key certificate
+- In your Firebase Console, visit Settings > Project settings
+- Click Add fingerprint
+- Add fingerprint in Firebase console
+- Paste copied SHA-1 certificate fingerprint into Certificate fingerprint textfield
+- Click Save
+- Paste SHA-1 certificate & save
 ```
 navigate to the android folder in you project
 run this command ./gradlew signingReport
@@ -163,23 +168,3 @@ find debug SHA certificate fingerprint
 add them to the firebase account SHA certificate fingerprints
 redownload the google-services.json
 ```
-
-##### Also
-
-In your Google Play Console, visit Setup > App signing
-
-Copy SHA-1 certificate fingerprint
-
-Copy SHA-1 from Google Play App signing key certificate
-
-In your Firebase Console, visit Settings > Project settings
-
-Click Add fingerprint
-
-Add fingerprint in Firebase console
-
-Paste copied SHA-1 certificate fingerprint into Certificate fingerprint textfield
-
-Click Save
-
-Paste SHA-1 certificate & save

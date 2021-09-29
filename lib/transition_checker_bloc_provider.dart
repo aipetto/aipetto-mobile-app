@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-class SimpleBlocProvider extends BlocObserver {
+class TransitionCheckerBlocProvider extends BlocObserver {
 
   @override
   void onEvent(Bloc bloc, Object event) {

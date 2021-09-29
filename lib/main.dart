@@ -25,7 +25,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Prefs.load();
-  // TODO Fix Bloc.observer = SimpleBlocProvider();
 
   runApp(
     EasyLocalization(

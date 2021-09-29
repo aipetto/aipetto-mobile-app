@@ -19,12 +19,6 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _loadScreen() async {
-
-    /**
-     context.bloc<ThemeBloc>().add(ThemeChanged(
-        theme: AppTheme.DarkTheme
-    ));**/
-
     Navigator.of(context).pushReplacementNamed(Routes.home);
   }
 
@@ -34,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: kColorDarkBlue,
+        color: kAmphibianColorBlueDark,
         child: Column(
           children: <Widget>[
             Expanded(

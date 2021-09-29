@@ -50,8 +50,7 @@ class User extends Equatable{
   };
 
   @override
-  // TODO: implement props
-  List<Object> get props => throw UnimplementedError();
+  List<Object> get props => [id, emailVerified, email, firstName, lastName, tenants, avatars];
 }
 
 class Avatar {

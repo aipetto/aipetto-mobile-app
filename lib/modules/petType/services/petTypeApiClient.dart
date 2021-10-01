@@ -10,8 +10,10 @@ import 'package:http/http.dart' as http;
 class PetTypeApiClient {
   final _baseUrl = Environment.aipettoCoreApi;
   final http.Client httpClient;
+
+  // TODO Refactor to apply better solution and not hard coded default value: Portuguese
   final languageId =
-      Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50fb57043bb3ae7b537';
+      Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50ab5704301f1e7b535';
 
   PetTypeApiClient({
     @required this.httpClient,

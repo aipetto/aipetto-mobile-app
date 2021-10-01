@@ -14,4 +14,5 @@ class Environment {
   static String aipettoCoreHost = Platform.isAndroid
       ? 'aipetto-312421-sjvjr4rqhq-rj.a.run.app'
       : 'aipetto-312421-sjvjr4rqhq-rj.a.run.app';
+  static String aipettoCloudStorageHost = 'https://storage.googleapis.com/aipetto-platform-storage/';
 }

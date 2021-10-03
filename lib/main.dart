@@ -1,4 +1,6 @@
 import 'package:aipetto/config/pref_manager.dart';
+import 'package:aipetto/modules/businessServicesTypes/repository/business_services_types_repository.dart';
+import 'package:aipetto/modules/businessServicesTypes/services/businessServicesTypeApiClient.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
@@ -13,6 +15,7 @@ import 'package:http/http.dart' as http;
 import 'modules/auth/bloc/authentication_bloc.dart';
 import 'modules/auth/pages/login_page.dart';
 import 'modules/auth/services/auth_service.dart';
+import 'modules/businessServicesTypes/bloc/business_services_types_bloc.dart';
 import 'modules/home/component/home.dart';
 import 'modules/pet/bloc/pet_bloc.dart';
 import 'modules/petType/repository/pet_type_repository.dart';
@@ -40,6 +43,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
+  // TODO Refactor all repositories to use Repository Dependency Injection approach
   final PetTypeRepository petTypeRepository = PetTypeRepository(
       petTypeClient: PetTypeApiClient(
     httpClient: http.Client(),
@@ -53,6 +58,11 @@ class MyApp extends StatelessWidget {
     httpClient: http.Client(),
   ));
 
+  final BusinessServiceTypesRepository petServiceTypeRepository = BusinessServiceTypesRepository(
+      businessServiceTypesClient: BusinessServicesTypesApiClient(
+        httpClient: http.Client(),
+  ));
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -61,6 +71,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<UserGeolocationBloc>(create: (_) => UserGeolocationBloc()),
         BlocProvider<PetTypeBloc>(
             create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)),
+        BlocProvider<BusinessServicesTypesBloc>(
+            create: (_) => BusinessServicesTypesBloc(businessServiceTypeRepository: petServiceTypeRepository)),
         BlocProvider<PetBloc>(create: (context) {
           return PetBloc(
               authenticationService: userRepository,

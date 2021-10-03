@@ -11,10 +11,10 @@ part 'business_services_types_state.dart';
 
 class BusinessServicesTypesBloc
     extends Bloc<BusinessServicesTypesEvent, BusinessServicesTypesState> {
-  final BusinessServiceTypesRepository repository;
+  final BusinessServiceTypesRepository businessServiceTypeRepository;
 
-  BusinessServicesTypesBloc({@required this.repository})
-      : assert(repository != null),
+  BusinessServicesTypesBloc({@required this.businessServiceTypeRepository})
+      : assert(businessServiceTypeRepository != null),
         super(null);
 
   @override
@@ -28,7 +28,7 @@ class BusinessServicesTypesBloc
 
       try {
         final BusinessServiceType businessServiceType =
-            await repository.fetchBusinessServiceTypes();
+            await businessServiceTypeRepository.fetchBusinessServiceTypes();
         yield BusinessServicesTypesLoaded(
             businessServiceType: businessServiceType);
       } catch (_) {

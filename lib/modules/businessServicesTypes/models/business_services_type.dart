@@ -10,22 +10,22 @@ String businessServiceTypeToJson(BusinessServiceType data) => json.encode(data.t
 
 class BusinessServiceType {
   BusinessServiceType({
-    this.rows,
+    this.businessServiceTypesRows,
   });
 
-  List<Row> rows;
+  List<BusinessServiceTypeRow> businessServiceTypesRows;
 
   factory BusinessServiceType.fromJson(Map<String, dynamic> json) => BusinessServiceType(
-    rows: List<Row>.from(json["rows"].map((x) => Row.fromJson(x))),
+    businessServiceTypesRows: List<BusinessServiceTypeRow>.from(json["rows"].map((x) => BusinessServiceTypeRow.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "rows": List<dynamic>.from(rows.map((x) => x.toJson())),
+    "rows": List<dynamic>.from(businessServiceTypesRows.map((x) => x.toJson())),
   };
 }
 
-class Row {
-  Row({
+class BusinessServiceTypeRow {
+  BusinessServiceTypeRow({
     this.id,
     this.serviceImage,
     this.language,
@@ -53,7 +53,7 @@ class Row {
   int v;
   String rowId;
 
-  factory Row.fromJson(Map<String, dynamic> json) => Row(
+  factory BusinessServiceTypeRow.fromJson(Map<String, dynamic> json) => BusinessServiceTypeRow(
     id: json["_id"],
     serviceImage: List<ServiceImage>.from(json["serviceImage"].map((x) => ServiceImage.fromJson(x))),
     language: Category.fromJson(json["language"]),

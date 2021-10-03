@@ -1,12 +1,12 @@
-import 'package:aipetto/modules/petType/models/pet_type.dart' as PetType;
 import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
+import 'package:aipetto/modules/petType/models/pet_type.dart' as PetType;
 import 'package:aipetto/modules/petType/widgets/pet_type_item.dart';
+import 'package:aipetto/modules/shared/widgets/no_data_available_widget.dart';
 import 'package:aipetto/routes/routes.dart';
-import 'package:aipetto/utils/constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class ChoosePetTypePage extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class ChoosePetTypePage extends StatelessWidget {
           BlocProvider.of<PetTypeBloc>(context).add(FetchPetType());
         }
         if (state is PetTypeError) {
-          return noValuesWidget();
+          return NoDataAvailableWidget();
         }
         if (state is PetTypeLoaded) {
           return Scaffold(
@@ -36,7 +36,7 @@ class ChoosePetTypePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         state.petType.rows.length < 0
-                            ? noValuesWidget()
+                            ? NoDataAvailableWidget()
                             : StaggeredGridView.countBuilder(
                                 padding: EdgeInsets.symmetric(horizontal: 10),
                                 crossAxisCount: 4,
@@ -74,29 +74,5 @@ class ChoosePetTypePage extends StatelessWidget {
         );
       },
     );
-  }
-
-  Center noValuesWidget() {
-    return Center(
-        child: Column(
-      children: <Widget>[
-        SizedBox(
-          height: 20,
-        ),
-        Image.asset('assets/images/pet_sick_icon.png'),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          'Error',
-          style: TextStyle(
-            color: kColorDarkBlue,
-            fontSize: 20,
-            fontFamily: 'NunitoSans',
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ],
-    ));
   }
 }

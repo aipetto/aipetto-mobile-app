@@ -1,6 +1,4 @@
 import 'package:aipetto/config/pref_manager.dart';
-import 'package:aipetto/modules/businessServicesTypes/repository/business_services_types_repository.dart';
-import 'package:aipetto/modules/businessServicesTypes/services/businessServicesTypeApiClient.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
@@ -10,18 +8,17 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
 
 import 'modules/auth/bloc/authentication_bloc.dart';
 import 'modules/auth/pages/login_page.dart';
 import 'modules/auth/services/auth_service.dart';
-import 'modules/businessServicesTypes/bloc/business_services_types_bloc.dart';
 import 'modules/home/component/home.dart';
 import 'modules/pet/bloc/pet_bloc.dart';
 import 'modules/petType/repository/pet_type_repository.dart';
 import 'modules/petType/services/petTypeApiClient.dart';
 import 'routes/route_generator.dart';
 import 'utils/themebloc/theme_bloc.dart';
+import 'package:http/http.dart' as http;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,10 +55,7 @@ class MyApp extends StatelessWidget {
     httpClient: http.Client(),
   ));
 
-  final BusinessServiceTypesRepository petServiceTypeRepository = BusinessServiceTypesRepository(
-      businessServiceTypesClient: BusinessServicesTypesApiClient(
-        httpClient: http.Client(),
-  ));
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +64,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
         BlocProvider<UserGeolocationBloc>(create: (_) => UserGeolocationBloc()),
         BlocProvider<PetTypeBloc>(
-            create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)),
-        BlocProvider<BusinessServicesTypesBloc>(
-            create: (_) => BusinessServicesTypesBloc(businessServiceTypeRepository: petServiceTypeRepository)),
+            create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)..add(FetchPetType())),
         BlocProvider<PetBloc>(create: (context) {
           return PetBloc(
               authenticationService: userRepository,
@@ -132,6 +124,7 @@ class MyApp extends StatelessWidget {
     ));
   }
 }
+
 
 class MyBehavior extends ScrollBehavior {
   @override

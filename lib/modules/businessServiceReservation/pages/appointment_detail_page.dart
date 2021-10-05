@@ -1,11 +1,10 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 class AppointmentDetailPage extends StatefulWidget {
   @override
@@ -13,7 +12,7 @@ class AppointmentDetailPage extends StatefulWidget {
 }
 
 class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
-  final bool _isdark = true;
+  final bool _isdark = false;
 
   Color get _color => _isdark ? kColorDark : Colors.white;
 
@@ -32,7 +31,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
             Text(
               'date_and_time'.tr(),
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -49,7 +48,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
             Text(
               '${'in'.tr()} 13 ${'hours'.tr()}',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -245,6 +244,10 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
         centerTitle: true,
         title: Text(
           'appointment_details'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)
         ),
         automaticallyImplyLeading: false,
       ),
@@ -320,7 +323,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                 onPressed: () {
                   Navigator.of(context).pushNamed(Routes.home);
                 },
-                text: 'done'.tr(),
+                text: 'home'.tr(),
               ),
             ),
           ],

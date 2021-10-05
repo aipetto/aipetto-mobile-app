@@ -8,7 +8,11 @@ class NotificationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('notifications'.tr()),
+        title: Text('notifications'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: ListView.separated(
         separatorBuilder: (context, index) => Divider(

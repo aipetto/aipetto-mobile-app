@@ -20,7 +20,7 @@ class PetProfilePage extends StatefulWidget {
 class _PetProfilePageState extends State<PetProfilePage>
     with AutomaticKeepAliveClientMixin<PetProfilePage> {
   final _kTabTextStyle = TextStyle(
-    color: kAmphibianColorGreenLight,
+    color: kAmphibianColorBlueDarkAlternative,
     fontSize: 16,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
@@ -35,7 +35,7 @@ class _PetProfilePageState extends State<PetProfilePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    bool _isdark = true;
+    bool _isdark = false;
     final String petAgeInMonths =
         widget.pet.age != null ? '${widget.pet.age}' + 'details'.tr() : '';
 
@@ -55,9 +55,10 @@ class _PetProfilePageState extends State<PetProfilePage>
       appBar: AppBar(
         title: Text(
           'pet_profile'.tr(),
-          style: TextStyle(
-            fontSize: 16,
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1
+              .copyWith(fontWeight: FontWeight.w700, color: Colors.white, fontSize: 16)
         ),
       ),
       body: Column(
@@ -89,7 +90,10 @@ class _PetProfilePageState extends State<PetProfilePage>
                     children: <Widget>[
                       Text(
                         widget.pet.name ?? '',
-                        style: Theme.of(context).textTheme.subtitle2,
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle2
+                            .copyWith(fontSize: 18),
                       ),
                       SizedBox(
                         height: 3,
@@ -97,8 +101,8 @@ class _PetProfilePageState extends State<PetProfilePage>
                       Text(
                         widget.pet.breed ?? '',
                         style: TextStyle(
-                          color: Colors.grey[350],
-                          fontSize: 16,
+                          color: kAmphibianColorBlueDarkAlternative,
+                          fontSize: 18,
                         ),
                       ),
                       SizedBox(
@@ -140,11 +144,11 @@ class _PetProfilePageState extends State<PetProfilePage>
                       border: Border(
                         top: BorderSide(
                           width: 1,
-                          color: _isdark ? Colors.black87 : Colors.grey[200],
+                          color: _isdark ? Colors.black87 : kAmphibianColorBlueDarkAlternative,
                         ),
                         bottom: BorderSide(
                           width: 1,
-                          color: _isdark ? Colors.black87 : Colors.grey[200],
+                          color: _isdark ? Colors.black87 : kAmphibianColorBlueDarkAlternative,
                         ),
                       ),
                     ),
@@ -152,9 +156,9 @@ class _PetProfilePageState extends State<PetProfilePage>
                       indicatorColor: kAmphibianColorGreenLight,
                       labelStyle: _kTabTextStyle,
                       unselectedLabelStyle:
-                          _kTabTextStyle.copyWith(color: Colors.grey),
+                          _kTabTextStyle.copyWith(color: kAmphibianColorBlueDarkAlternative),
                       labelColor: kAmphibianColorGreenLight,
-                      unselectedLabelColor: Colors.grey,
+                      unselectedLabelColor: kAmphibianColorBlueDarkAlternative,
                       tabs: _kTabs,
                     ),
                   ),

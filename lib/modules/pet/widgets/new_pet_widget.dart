@@ -149,8 +149,8 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                     child: Text(
                       'change_avatar'.tr(),
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
+                        color: kAmphibianColorBlueDarkAlternative,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ),
                     ),

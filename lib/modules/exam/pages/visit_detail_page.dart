@@ -14,6 +14,10 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
       appBar: AppBar(
         title: Text(
           'visit_detail'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)
         ),
         centerTitle: true,
       ),

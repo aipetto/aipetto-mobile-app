@@ -51,7 +51,7 @@ class AppointmentBookedPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pushNamed(Routes.appointmentDetail);
                   },
-                  text: 'done'.tr(),
+                  text: 'details'.tr(),
                 ),
               ),
             ],

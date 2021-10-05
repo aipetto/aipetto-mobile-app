@@ -10,6 +10,10 @@ class MyFavoriteBusinessessListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'my_favorite_business_places'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)
         ),
       ),
       body: ListView.separated(

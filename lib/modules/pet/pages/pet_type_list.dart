@@ -30,6 +30,10 @@ class _PetTypeListState extends State<PetTypeList> {
                 centerTitle: true,
                 title: Text(
                   'pet_type_choose'.tr(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1
+                        .copyWith(fontWeight: FontWeight.w700, color: Colors.white, fontSize: 16)
                 ),
               ),
               body: Column(

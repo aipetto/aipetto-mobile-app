@@ -42,7 +42,13 @@ class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('my_appointments'.tr()),
+        title: Text(
+          'my_appointments'.tr(),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1
+              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+        ),
         elevation: 0,
       ),
       body: DefaultTabController(

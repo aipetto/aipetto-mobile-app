@@ -20,7 +20,6 @@ class ReservedPastBussinessListItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).pushNamed(Routes.businessProfile);
-
           /// TODO Add business_page + place_id -> there we bring information about the business_id or vice-versa
         },
         child: Column(

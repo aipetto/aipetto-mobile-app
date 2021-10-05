@@ -1,3 +1,4 @@
+import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/pref_manager.dart';
@@ -10,14 +11,14 @@ class ProfileInfoTile extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var _isDark = true;
+    var _isDark = false;
     return Column(
       children: <Widget>[
         ListTile(
           title: Text(
             title,
             style: TextStyle(
-              color: Colors.grey,
+              color: kAmphibianColorBlueDarkAlternative,
               fontSize: 14,
               fontWeight: FontWeight.w400,
             ),
@@ -29,7 +30,7 @@ class ProfileInfoTile extends StatelessWidget {
                   ? _isDark
                       ? Colors.white.withOpacity(0.87)
                       : Colors.black
-                  : Colors.grey,
+                  : kAmphibianColorBlueDarkAlternative,
               fontSize: 14,
               fontWeight: FontWeight.w400,
             ),
@@ -37,7 +38,7 @@ class ProfileInfoTile extends StatelessWidget {
         ),
         Divider(
           height: 0.5,
-          color: Colors.grey[200],
+          color: kAmphibianColorBlueDarkAlternative,
           indent: 15,
           endIndent: 15,
         ),

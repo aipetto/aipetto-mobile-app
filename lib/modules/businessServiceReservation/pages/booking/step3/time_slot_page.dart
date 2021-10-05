@@ -4,6 +4,7 @@ import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -37,6 +38,7 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
+                    color: kAmphibianColorBlueDarkAlternative,
                   ),
                 ),
               ],
@@ -74,7 +76,11 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('time_slot'.tr()),
+        title: Text('time_slot'.tr(),
+            style: Theme.of(context)
+            .textTheme
+            .subtitle1
+            .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,

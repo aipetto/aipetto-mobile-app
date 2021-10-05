@@ -36,7 +36,7 @@ class BusinessPlaceItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontWeight: FontWeight.w700),
+                        .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
                     height: 3,
@@ -44,8 +44,8 @@ class BusinessPlaceItem extends StatelessWidget {
                   Text(
                     business.speciality,
                     style: TextStyle(
-                      color: Colors.grey[350],
-                      fontSize: 14,
+                      color: Colors.grey[500],
+                      fontSize: 16,
                     ),
                   ),
                 ],

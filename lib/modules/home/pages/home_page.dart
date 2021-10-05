@@ -60,7 +60,9 @@ class _HomePageState extends State<HomePage>
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: <Widget>[
-                    ///TopHeaderRounded,
+                    SizedBox(
+                      height: 100,
+                    ),
                     Image.asset('assets/images/hand.png'),
                     SizedBox(
                       width: 10,
@@ -77,8 +79,8 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'good_to_see_you_here'.tr(),
                           style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14,
+                            color: Colors.black,
+                            fontSize: 16,
                             fontFamily: 'NunitoSans',
                             fontWeight: FontWeight.w400,
                           ),
@@ -99,27 +101,45 @@ class _HomePageState extends State<HomePage>
                         children: <Widget>[PetHorizontalList()],
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     _noAppoints
                         ? NoAppointmentsWidget()
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Column(
-                                  children: <Widget>[
-                                    SectionHeaderWidget(
-                                      title: 'next_appointment'.tr(),
-                                      onPressed: () => Navigator.of(context)
-                                          .pushNamed(Routes.myAppointments),
-                                    ),
-                                    NextAppointmentWidget(),
-                                  ],
+                              GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(context).requestFocus(FocusNode());
+                                  Navigator.of(context)
+                                      .pushNamed(Routes.myAppointments);
+                                },
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 20),
+                                  child: Column(
+                                    children: <Widget>[
+                                      SectionHeaderWidget(
+                                        title: 'next_appointment'.tr(),
+                                        onPressed: () => Navigator.of(context)
+                                            .pushNamed(Routes.myAppointments),
+                                      ),
+                                      NextAppointmentWidget(),
+                                    ],
+                                  ),
                                 ),
                               ),
                               SizedBox(
-                                height: 40,
+                                height: 20,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: SectionHeaderWidget(
+                                  title: 'my_favorite_business_places'.tr(),
+                                  onPressed: () => Navigator.of(context)
+                                      .pushNamed(Routes.myFavoriteBusinesses),
+                                ),
                               ),
                               Container(
                                 height: 180,
@@ -137,6 +157,9 @@ class _HomePageState extends State<HomePage>
                                     );
                                   },
                                 ),
+                              ),
+                              SizedBox(
+                                height: 20,
                               ),
                             ],
                           ),

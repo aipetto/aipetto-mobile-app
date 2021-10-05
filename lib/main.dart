@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _buildWithTheme(BuildContext context, ThemeState state) {
-    context.bloc<ThemeBloc>().add(ThemeChanged(theme: AppTheme.DarkTheme));
+    context.bloc<ThemeBloc>().add(ThemeChanged(theme: AppTheme.LightTheme));
 
     return MaterialApp(
       builder: (context, child) {

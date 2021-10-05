@@ -1,5 +1,6 @@
 import 'package:aipetto/components/custom_profile_item.dart';
 import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -68,8 +69,8 @@ class VaccineItem extends StatelessWidget {
             Text(
               time,
               style: TextStyle(
-                color: Colors.grey,
-                fontSize: 14,
+                color: kAmphibianColorBlueDarkAlternative,
+                fontSize: 16,
                 fontWeight: FontWeight.w300,
               ),
             )

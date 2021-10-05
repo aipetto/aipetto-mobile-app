@@ -16,7 +16,11 @@ class _EditPetProfilePageState extends State<EditPetProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('edit_profile'.tr()),
+        title: Text('edit_profile'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         actions: <Widget>[
           IconButton(
             onPressed: () {

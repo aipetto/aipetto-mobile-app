@@ -15,7 +15,7 @@ class ReservationCustomerDetailsPage extends StatefulWidget {
 
 class _ReservationCustomerDetailsPageState
     extends State<ReservationCustomerDetailsPage> {
-  bool _isdark = true;
+  bool _isdark = false;
   bool _customer = true;
   var _petNameController = TextEditingController();
   var _customerController = TextEditingController();
@@ -111,6 +111,10 @@ class _ReservationCustomerDetailsPageState
       appBar: AppBar(
         title: Text(
           'reservation_details'.tr(),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1
+              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
         ),
       ),
       body: SafeArea(
@@ -118,14 +122,14 @@ class _ReservationCustomerDetailsPageState
           children: <Widget>[
             Expanded(
               child: Container(
-                //color: _isdark ? Colors.transparent : Colors.grey[300],
+                color: _isdark ? Colors.transparent : Colors.grey[300],
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        color: Color(0xff4a4a4a),
+                        color: Colors.white,
                         child: BusinessPlaceItem(
                           business: businesses[0],
                         ),

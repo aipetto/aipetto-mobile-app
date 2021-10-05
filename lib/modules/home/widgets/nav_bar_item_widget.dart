@@ -7,11 +7,13 @@ class NavBarItemWidget extends StatelessWidget {
   final Function onTap;
   final String image;
   final bool isSelected;
+  final String menuText;
 
   const NavBarItemWidget({
     Key key,
     @required this.onTap,
     @required this.image,
+    @required this.menuText,
     @required this.isSelected,
   }) : super(key: key);
 
@@ -27,15 +29,20 @@ class NavBarItemWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 60,
-        child: Center(
-          child: image.isEmpty
-              ? Container()
-              : Image.asset(
-                  'assets/images/$image.png',
-                  height: 25,
-                  color: _color,
-                ),
-        ),
+        child: Column(
+          children: <Widget>[
+            Center(
+              child: image.isEmpty
+                  ? Container()
+                  : Image.asset(
+                'assets/images/$image.png',
+                height: 25,
+                color: _color,
+              ),
+            ),
+            Text('$menuText')
+          ],
+        )
       ),
     );
   }

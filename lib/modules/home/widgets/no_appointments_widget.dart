@@ -1,3 +1,4 @@
+import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -39,18 +40,17 @@ class NoAppointmentsWidget extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 100,
-            child: IconButton(
-              icon: const Icon(Icons.arrow_downward),
-              tooltip: 'create_new_appointment'.tr(),
-              color: kAmphibianColorGreenLight,
-              onPressed: () {
-                FocusScope.of(context).requestFocus(FocusNode());
-                Navigator.of(context).pushNamed(Routes.categories);
-              },
-            ),
-          ),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              margin:
+              EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
+              child: CustomButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed(Routes.categories);
+                },
+                text: 'reserve'.tr(),
+          )),
         ],
       ),
     );

@@ -16,7 +16,7 @@ class TimeSlotItem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey, width: 1),
+          border: Border.all(color: Colors.grey, width: 2),
           borderRadius: BorderRadius.circular(4),
         ),
         child: Column(
@@ -24,7 +24,7 @@ class TimeSlotItem extends StatelessWidget {
             Text(
               time.split(' ')[0],
               style: TextStyle(
-                color: kColorPrimary,
+                color: kAmphibianColorBlueDarkAlternative,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
@@ -32,7 +32,7 @@ class TimeSlotItem extends StatelessWidget {
             Text(
               time.split(' ')[1],
               style: TextStyle(
-                color: kColorPrimary,
+                color: kAmphibianColorBlueDarkAlternative,
                 fontSize: 10,
                 fontWeight: FontWeight.w500,
               ),

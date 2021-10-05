@@ -72,7 +72,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ),
       style: TextStyle(
         fontSize: 16,
-        color: Color(0xff575757),
+        color: kAmphibianColorBlueDarkAlternative,
         fontFamily: 'NunitoSans',
       ),
       cursorColor: kAmphibianColorGreenLight,

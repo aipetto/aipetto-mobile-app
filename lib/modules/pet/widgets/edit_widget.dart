@@ -78,12 +78,12 @@ class _EditWidgetState extends State<EditWidget> {
                 },
                 child: _image == null
                     ? CircleAvatar(
-                        radius: 80,
+                        radius: 100,
                         backgroundColor: Colors.grey,
                         //backgroundImage: NetworkImage(avatarUrl),
                       )
                     : CircleAvatar(
-                        radius: 80,
+                        radius: 100,
                         backgroundImage: FileImage(_image),
                       ),
               ),
@@ -98,8 +98,8 @@ class _EditWidgetState extends State<EditWidget> {
                 child: Text(
                   'change_avatar'.tr(),
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
+                    color: kAmphibianColorBlueDarkAlternative,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

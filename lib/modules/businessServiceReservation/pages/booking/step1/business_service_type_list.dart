@@ -26,12 +26,6 @@ class _BusinessServiceTypeListState extends State<BusinessServiceTypeList> {
         }
         if (state is BusinessServicesTypesLoaded) {
           return Scaffold(
-              appBar: AppBar(
-                centerTitle: true,
-                title: Text(
-                  'categories_title'.tr(),
-                ),
-              ),
               body: Column(
                 children: <Widget>[
                   Expanded(

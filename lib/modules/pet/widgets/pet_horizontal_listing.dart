@@ -1,6 +1,7 @@
 import 'package:aipetto/modules/pet/bloc/pet_bloc.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/widgets/pets_of_owner_list_item.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,7 +39,7 @@ class PetHorizontalList extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
-                          .copyWith(fontSize: 16),
+                          .copyWith(fontSize: 18),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     )
@@ -77,10 +78,16 @@ class PetHorizontalList extends StatelessWidget {
                   Navigator.of(context).pushNamed(Routes.choosePetType);
                 },
                 child: Column(children: <Widget>[
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.grey,
-                    backgroundImage: AssetImage('assets/images/pets/pet_1.jpg'),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(width: 2, color: kAmphibianColorBlueDarkAlternative)),
+                    child: Icon(
+                      Icons.add,
+                      color: kAmphibianColorGreenLight,
+                    ),
                   ),
                   SizedBox(
                     height: 15,
@@ -90,7 +97,7 @@ class PetHorizontalList extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontSize: 14),
+                        .copyWith(fontSize: 18),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   )

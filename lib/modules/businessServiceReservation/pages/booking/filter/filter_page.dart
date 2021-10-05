@@ -12,7 +12,7 @@ class FilterPage extends StatefulWidget {
 }
 
 class _FilterPageState extends State<FilterPage> {
-  final bool _isDark = true;
+  final bool _isDark = false;
   Color _color;
 
   @override

@@ -1,5 +1,6 @@
 import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +55,10 @@ class MyBusinessListItem extends StatelessWidget {
             CustomButton(
               text: 'details'.tr(),
               textSize: 14,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.businessProfile);
+                /// TODO Add business_page + place_id -> there we bring information about the business_id or vice-versa
+              },
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 5,

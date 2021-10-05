@@ -60,7 +60,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: kAmphibianColorBlueLight,
                   boxShadow: [
                     BoxShadow(
                         color: BHGreyColor.withOpacity(0.3),
@@ -90,7 +90,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: kAmphibianColorBlueLight,
                   boxShadow: [
                     BoxShadow(
                         color: Colors.black,
@@ -137,7 +137,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: kAmphibianColorBlueLight,
                   boxShadow: [
                     BoxShadow(
                         color: BHGreyColor.withOpacity(0.3),
@@ -197,7 +197,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: kAmphibianColorBlueLight,
                   boxShadow: [
                     BoxShadow(
                         color: BHGreyColor.withOpacity(0.3),
@@ -270,6 +270,20 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     .copyWith(fontSize: 14),
               ),
             ),
+            Container(
+                width: MediaQuery.of(context).size.width,
+                margin:
+                EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
+                child: CustomButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(Routes.bookingStep3ServiceAvailability);
+
+                    /// TODO get the pet profile passing the pet.id
+                  },
+                  text: 'reserve'.tr(),
+                )
+            ),
             ListView.builder(
               itemCount: servicesList.length,
               shrinkWrap: true,
@@ -281,7 +295,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: BHGreyColor.withOpacity(0.3),
+                    color: kAmphibianColorBlueLight,
                     boxShadow: [
                       BoxShadow(
                           color: BHGreyColor.withOpacity(0.3),
@@ -322,7 +336,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color: kAmphibianColorGreenLight),
+                                    color: kAmphibianColorBlueDarkAlternative),
                               ),
                             ],
                           ),
@@ -331,9 +345,9 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                       Radio(
                         value: servicesList[index].radioVal,
                         groupValue: _radioValue1,
-                        activeColor: kAmphibianColorGreenLight,
+                        activeColor: kAmphibianColorBlueDarkAlternative,
                         fillColor: MaterialStateColor.resolveWith(
-                            (states) => kAmphibianColorGreenLight),
+                            (states) => kAmphibianColorBlueDarkAlternative),
                         onChanged: (value) => serviceSelectedToReserve(value),
                       ),
                     ],
@@ -369,12 +383,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 child: SliverAppBar(
                   leading: IconButton(
                     icon: Icon(Icons.arrow_back,
-                        color: kAmphibianColorGreenLight),
+                        color: kAmphibianColorBlueDarkAlternative),
                     onPressed: () {
                       finish(context);
                     },
                   ),
-                  backgroundColor: kAmphibianColorGreenLight,
+                  backgroundColor: kAmphibianColorBlueDarkAlternative,
                   pinned: true,
                   elevation: 2,
                   expandedHeight: 300,
@@ -415,7 +429,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                                       child: Text(BHBtnOpen,
                                           style: TextStyle(
                                               color: whiteColor, fontSize: 14)),
-                                      color: kAmphibianColorGreenLight,
+                                      color: kAmphibianColorBlueDarkAlternative,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(5)),
@@ -434,7 +448,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     labelColor: Colors.black,
                     unselectedLabelColor: Colors.black,
                     isScrollable: true,
-                    indicatorColor: kAmphibianColorGreenLight,
+                    indicatorColor: kAmphibianColorBlueDarkAlternative,
                     tabs: [
                       Tab(
                         child: Align(

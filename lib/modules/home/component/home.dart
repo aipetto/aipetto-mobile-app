@@ -1,10 +1,12 @@
 import 'package:aipetto/components/custom_navigation_bar.dart';
+import 'package:aipetto/modules/businessServiceReservation/pages/booking/step1/choose_service_to_reserve_page.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/my_appointments_page.dart';
 import 'package:aipetto/modules/home/pages/drawer/drawer_page.dart';
 import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:aipetto/modules/home/widgets/app_bar_title_widget.dart';
 import 'package:aipetto/modules/home/widgets/nav_bar_item_widget.dart';
 import 'package:aipetto/modules/message/pages/messages_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
@@ -58,7 +60,7 @@ class _HomeState extends State<Home> {
     final size = MediaQuery.of(context).size;
     final _pages = [
       HomePage(user: widget.user),
-      Container(),
+      ChooseServiceToReservePage(),
       MyAppointmentsPage(),
       MessagesPage(),
     ];
@@ -80,13 +82,13 @@ class _HomeState extends State<Home> {
           transform: Matrix4.translationValues(xOffset, yOffset, 0)
             ..scale(scaleFactor)
             ..rotateY(isDrawerOpen ? -0.5 : 0),
-          duration: Duration(milliseconds: 250),
+          duration: Duration(milliseconds: 300),
           decoration: BoxDecoration(
             color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
+            borderRadius: BorderRadius.circular(isDrawerOpen ? 30 : 0.0),
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
+            borderRadius: BorderRadius.circular(isDrawerOpen ? 30 : 0.0),
             child: Scaffold(
               appBar: AppBar(
                 leading: isDrawerOpen
@@ -142,38 +144,8 @@ class _HomeState extends State<Home> {
                 },
                 children: _pages,
               ),
-              floatingActionButton: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0x202e83f8),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: GestureDetector(
-                    onTap: () {
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      Navigator.of(context).pushNamed(Routes.categories);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: kAmphibianColorGreenLight,
-                      ),
-                      child: Icon(
-                        Icons.pets,
-                        size: 45,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar: CustomNavigationBar(
-                backgroundColor: true ? Color(0xff121212) : Colors.white,
+                backgroundColor: false ? Color(0xff121212) : Colors.white,
                 strokeColor: kAmphibianColorGreenLight,
                 items: [
                   NavBarItemWidget(
@@ -181,27 +153,33 @@ class _HomeState extends State<Home> {
                       _selectPage(0);
                     },
                     image: 'icon_home',
+                    menuText: "home".tr(),
                     isSelected: _selectedIndex == 0,
                   ),
                   NavBarItemWidget(
-                    onTap: () {},
-                    image: '',
-                    isSelected: false,
+                      onTap: () {
+                      _selectPage(1);
+                      },
+                      image: 'pawprint',
+                      menuText: "services_title".tr(),
+                      isSelected: _selectedIndex == 1,
                   ),
                   NavBarItemWidget(
                     onTap: () {
                       _selectPage(2);
                     },
                     image: 'calendar',
+                    menuText: "my_appointments".tr(),
                     isSelected: _selectedIndex == 2,
                   ),
-                  /**NavBarItemWidget(
-                      onTap: () {
+                  NavBarItemWidget(
+                    onTap: () {
                       _selectPage(3);
-                      },
-                      image: 'messages',
-                      isSelected: _selectedIndex == 3,
-                      ),**/
+                    },
+                    image: 'messages',
+                    menuText: "conversation_messages".tr(),
+                    isSelected: _selectedIndex == 3,
+                  ),
                 ],
                 currentIndex: _selectedIndex,
                 elevation: 0,

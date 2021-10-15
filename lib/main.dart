@@ -87,7 +87,8 @@ class MyApp extends StatelessWidget {
             );
           }
           if (state is AuthenticationNotAuthenticated) {
-            return LoginPage();
+            return
+              LoginPage();
           }
           if (state is AuthenticationLoading) {
             return LoadingIndicator();

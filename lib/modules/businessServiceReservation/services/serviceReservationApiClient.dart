@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
 
@@ -7,6 +6,7 @@ abstract class ServiceReservationOperations {
   Future<Reservation> getReservationDetails(Reservation reservation);
   Future<Reservation> getFutureReservationsBooked(DateTime currentDateTime);
   Future<Reservation> getClosestFutureReservationBooked(DateTime currentDateTime);
+  Future<Reservation> postNewConfirmationReservation(Reservation reservation);
 }
 
 
@@ -32,6 +32,12 @@ class ServiceReservationApiClient implements ServiceReservationOperations{
   @override
   Future<Reservation> getReservationDetails(Reservation reservation) {
     // TODO: implement getReservationDetails
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Reservation> postNewConfirmationReservation(Reservation reservation) {
+    // TODO: implement postNewConfirmationReservation
     throw UnimplementedError();
   }
 

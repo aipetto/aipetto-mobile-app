@@ -5,7 +5,6 @@ import 'package:aipetto/modules/businessServiceReservation/services/serviceReser
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-
 class BusinessServiceReservationRepository {
   final ServiceReservationApiClient reservationClient;
 
@@ -15,7 +14,7 @@ class BusinessServiceReservationRepository {
     return await reservationClient.getReservationDetails(reservation);
   }
 
-  Future<Reservation> addNewReservation(Reservation reservation) async {
-    return await reservationClient.postNewConfirmationReservation(reservation);
+  Future<Reservation> addNewReservation(Reservation reservation, String businessPlaceTenantId) async {
+    return await reservationClient.postNewConfirmationReservation(reservation, businessPlaceTenantId);
   }
 }

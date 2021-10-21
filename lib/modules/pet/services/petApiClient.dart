@@ -92,7 +92,7 @@ class PetApiClient {
       }
     };
 
-    final petUpdatedResponse = await this.httpClient.post(
+    final petAddResponse = await this.httpClient.post(
         Uri.parse('$_baseUrl/tenant/$petTenant/pet'),
         body: jsonEncode(newPetInfo),
         headers: {
@@ -101,11 +101,11 @@ class PetApiClient {
           'Authorization': 'Bearer ${jwtOnSecureStorage}',
         });
 
-    if (petUpdatedResponse.statusCode != 200) {
+    if (petAddResponse.statusCode != 200) {
       throw new Exception('Error adding pet');
     }
 
-    final json = jsonDecode(petUpdatedResponse.body);
+    final json = jsonDecode(petAddResponse.body);
     return Pet.fromJson(json);
   }
 

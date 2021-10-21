@@ -8,8 +8,12 @@ abstract class ServiceReservationConfirmationEvent extends Equatable {
 
 class NewServiceReservationFormButtonPressed extends ServiceReservationConfirmationEvent {
   final Reservation reservation;
+  final String businessPlaceTenantId;
 
-  NewServiceReservationFormButtonPressed({Reservation this.reservation});
+  NewServiceReservationFormButtonPressed({
+    Reservation this.reservation,
+    String this.businessPlaceTenantId
+  });
 
   @override
   List<Object> get props => [reservation];

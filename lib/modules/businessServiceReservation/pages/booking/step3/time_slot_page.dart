@@ -81,6 +81,15 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
             .textTheme
             .subtitle1
             .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () => Navigator.pushNamed(
+                context, Routes.home),
+            icon: Icon(
+              Icons.home,
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,

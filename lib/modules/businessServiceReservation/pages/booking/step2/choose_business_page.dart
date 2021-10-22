@@ -43,13 +43,21 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
             return IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.home);
+                Navigator.of(context).pushNamed(Routes.categories);
               },
               tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             );
           },
         ),
-        actions: <Widget>[],
+        actions: <Widget>[
+          IconButton(
+            onPressed: () => Navigator.pushNamed(
+                context, Routes.home),
+            icon: Icon(
+              Icons.home,
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

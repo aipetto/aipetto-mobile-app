@@ -1,5 +1,6 @@
 import 'package:aipetto/modules/businessServiceReservation/pages/booking/step1/business_service_type_list.dart';
 import 'package:aipetto/modules/businessServicesTypes/bloc/business_services_types_bloc.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:aipetto/modules/businessServicesTypes/repository/business_services_types_repository.dart';
 import 'package:aipetto/modules/businessServicesTypes/services/businessServicesTypeApiClient.dart';
@@ -16,6 +17,19 @@ class ChooseServiceToReservePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.home);
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+      ),
       body: BlocProvider<BusinessServicesTypesBloc>(
           create: (_) => BusinessServicesTypesBloc(
               businessServiceTypeRepository: petServiceTypeRepository

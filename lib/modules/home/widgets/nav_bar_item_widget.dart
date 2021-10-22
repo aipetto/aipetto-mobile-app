@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/pref_manager.dart';
 import '../../../utils/constants.dart';
 
 class NavBarItemWidget extends StatelessWidget {
@@ -20,7 +19,7 @@ class NavBarItemWidget extends StatelessWidget {
   Color get _color => isSelected
       ? kColorPrimary
       : true
-          ? Colors.grey[800]
+          ? Colors.grey[900]
           : Colors.grey;
 
   @override
@@ -40,7 +39,11 @@ class NavBarItemWidget extends StatelessWidget {
                 color: _color,
               ),
             ),
-            Text('$menuText')
+            Text('$menuText',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),)
           ],
         )
       ),

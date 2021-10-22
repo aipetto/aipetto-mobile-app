@@ -60,12 +60,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: kAmphibianColorBlueLight,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: BHGreyColor.withOpacity(0.3),
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Column(
@@ -90,12 +90,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: kAmphibianColorBlueLight,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.black,
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Column(
@@ -137,12 +137,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: kAmphibianColorBlueLight,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: BHGreyColor.withOpacity(0.3),
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Column(
@@ -197,12 +197,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: kAmphibianColorBlueLight,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: BHGreyColor.withOpacity(0.3),
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Row(
@@ -295,12 +295,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: kAmphibianColorBlueLight,
+                    color: Colors.transparent,
                     boxShadow: [
                       BoxShadow(
-                          color: BHGreyColor.withOpacity(0.3),
+                          color: BHGreyColor.withOpacity(0.1),
                           offset: Offset(0.0, 1.0),
-                          blurRadius: 2.0)
+                          blurRadius: 1.0)
                     ],
                   ),
                   child: Row(
@@ -318,7 +318,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                               servicesList[index].serviceName,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 18),
                             ),
                           ),
@@ -328,11 +328,11 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                               Text(
                                 servicesList[index].time,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
+                                    color: Colors.black, fontSize: 16),
                               ),
                               8.width,
                               Text(
-                                '\$${servicesList[index].price}',
+                                '\R\$${servicesList[index].price}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -376,21 +376,37 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        appBar: AppBar(
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby);
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
+          actions: <Widget>[
+            IconButton(
+              onPressed: () => Navigator.pushNamed(
+                  context, Routes.home),
+              icon: Icon(
+                Icons.home,
+              ),
+            )
+          ],
+        ),
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               Container(
                 child: SliverAppBar(
-                  leading: IconButton(
-                    icon: Icon(Icons.arrow_back,
-                        color: kAmphibianColorBlueDarkAlternative),
-                    onPressed: () {
-                      finish(context);
-                    },
-                  ),
                   backgroundColor: kAmphibianColorBlueDarkAlternative,
-                  pinned: true,
+                  pinned: false,
                   elevation: 2,
+                  automaticallyImplyLeading: false,
                   expandedHeight: 300,
                   flexibleSpace: FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,

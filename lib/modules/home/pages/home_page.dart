@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       height: 100,
                     ),
-                    Image.asset('assets/images/hand.png'),
+                    Image.asset('assets/images/logo_aipetto_60_60.png'),
                     SizedBox(
                       width: 10,
                     ),

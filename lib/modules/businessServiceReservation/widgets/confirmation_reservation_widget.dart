@@ -12,12 +12,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ConfirmationServiceReservationWidget extends StatefulWidget {
 
-  // TODO - Receive from previous 3 pages (select place, select service&price, select date&time)
-  // businessId
-  // placeId
-  // timeAvailability
-  // dateAvailability
-  // serviceId
+  /// TODO Until we see a better solution (using Stream which can be accessed anytime), this will be work in cascade mode
+  /// Passing data between pages from top of Widgets down the tree
+
+  // Page 1
+    // Lat, Lng Get Address from Address Page or User Lng, Lat
+    // serviceReservationCart.copyWith(a)
+    // =====Page 2=====
+      // placeId
+        // businessId -> testTenantId 61096ec884e5ebfca16f0143
+        //serviceReservationCart.copyWith(...,b,c)
+          // =====Page 3=====
+          // serviceId
+          //serviceReservationCart.copyWith(...,c)
+
+          // =====AuthCheckerPage=====
+
+            // =====Page 4=====
+              // timeAvailability
+              // dateAvailability
+              // serviceReservationCart.copyWith(...,d, e)
+                // =====Page 5=====
+                  // serviceReservationCart.copyWith(...,customerName, customerEmail(checkIfExistInBusinessTenant), customerPhone, petModel(checkIfExistInBusinessTenantPetIdisUnique))
+                  // (POST serviceReservationCart)
 
   @override
   State<StatefulWidget> createState() => _ConfirmationServiceReservationWidgetState();

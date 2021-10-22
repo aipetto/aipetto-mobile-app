@@ -2,6 +2,7 @@ import 'package:aipetto/modules/businessServiceReservation/bloc/service_reservat
 import 'package:aipetto/modules/businessServiceReservation/repository/service_reservation.dart';
 import 'package:aipetto/modules/businessServiceReservation/services/serviceReservationApiClient.dart';
 import 'package:aipetto/modules/businessServiceReservation/widgets/confirmation_reservation_widget.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +36,15 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
               .subtitle1
               .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
         ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () => Navigator.pushNamed(
+                context, Routes.home),
+            icon: Icon(
+              Icons.home,
+            ),
+          )
+        ],
       ),
       body: BlocProvider(
         create: (_) => ServiceReservationFormBloc(repository: serviceReservationRepository),

@@ -1,4 +1,4 @@
-import 'package:aipetto/modules/businessServiceReservation/bloc/service_reservation_confirmation_bloc.dart';
+import 'package:aipetto/modules/businessServiceReservation/bloc/service_reservation_confirmation_form_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/repository/service_reservation.dart';
 import 'package:aipetto/modules/businessServiceReservation/services/serviceReservationApiClient.dart';
 import 'package:aipetto/modules/businessServiceReservation/widgets/confirmation_reservation_widget.dart';
@@ -47,7 +47,7 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
         ],
       ),
       body: BlocProvider(
-        create: (_) => ServiceReservationFormBloc(repository: serviceReservationRepository),
+        create: (_) => ServiceReservationConfirmationFormBloc(repository: serviceReservationRepository),
         child: SafeArea(
           child: Column(
             children: <Widget>[

@@ -3,7 +3,7 @@ import 'package:aipetto/components/text_form_field.dart';
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
 import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
-import 'package:aipetto/modules/businessServiceReservation/bloc/service_reservation_confirmation_bloc.dart';
+import 'package:aipetto/modules/businessServiceReservation/bloc/service_reservation_confirmation_form_bloc.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -66,7 +66,7 @@ class _ConfirmationServiceReservationWidgetState extends State<ConfirmationServi
   @override
   Widget build(BuildContext context) {
 
-    final _serviceReservationConfirmationBloc = BlocProvider.of<ServiceReservationFormBloc>(context);
+    final _serviceReservationConfirmationBloc = BlocProvider.of<ServiceReservationConfirmationFormBloc>(context);
     final AuthenticationState currentUser = BlocProvider.of<AuthenticationBloc>(context).state;
 
     _onConfirmationFormButtonPressed() {
@@ -81,13 +81,13 @@ class _ConfirmationServiceReservationWidgetState extends State<ConfirmationServi
       }
     }
 
-    return BlocListener<ServiceReservationFormBloc, ServiceReservationConfirmationState>(
+    return BlocListener<ServiceReservationConfirmationFormBloc, ServiceReservationConfirmationFormState>(
       listener: (context, state){
-        if (state is ServiceReservationSuccess) {
+        if (state is ServiceReservationFormSuccess) {
           Navigator.of(context).pushNamed(Routes.bookingStepConfirmation);
         }
       },
-      child: BlocBuilder<ServiceReservationFormBloc, ServiceReservationConfirmationState>(builder: (context, state){
+      child: BlocBuilder<ServiceReservationConfirmationFormBloc, ServiceReservationConfirmationFormState>(builder: (context, state){
 
       return Form(
         key: _key,
@@ -281,7 +281,7 @@ class _ConfirmationServiceReservationWidgetState extends State<ConfirmationServi
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: CustomButton(
-                onPressed: state is ServiceReservationLoading
+                onPressed: state is ServiceReservationFormLoading
                   ? () {}
                   : _onConfirmationFormButtonPressed,
                 text: 'confirm'.tr(),

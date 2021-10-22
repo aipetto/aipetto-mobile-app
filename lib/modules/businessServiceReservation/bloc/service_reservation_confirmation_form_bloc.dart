@@ -8,13 +8,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-part 'service_reservation_confirmation_event.dart';
-part 'service_reservation_confirmation_state.dart';
+part 'service_reservation_confirmation_form_event.dart';
+part 'service_reservation_confirmation_form_state.dart';
 
-class ServiceReservationFormBloc extends Bloc<ServiceReservationConfirmationEvent, ServiceReservationConfirmationState> {
+class ServiceReservationConfirmationFormBloc extends Bloc<ServiceReservationConfirmationFormEvent, ServiceReservationConfirmationFormState> {
   final BusinessServiceReservationRepository repository;
 
-  ServiceReservationFormBloc({
+  ServiceReservationConfirmationFormBloc({
     @required this.repository,
   })  : assert(repository != null),
         super(null);
@@ -25,14 +25,14 @@ class ServiceReservationFormBloc extends Bloc<ServiceReservationConfirmationEven
   }
 
   @override
-  Stream<ServiceReservationConfirmationState> mapEventToState(ServiceReservationConfirmationEvent event) async* {
-    if (event is NewServiceReservationFormButtonPressed) {
+  Stream<ServiceReservationConfirmationFormState> mapEventToState(ServiceReservationConfirmationFormEvent event) async* {
+    if (event is NewServiceReservationConfirmationFormButtonPressed) {
       yield* _mapNewPetToState(event);
     }
   }
 
-  Stream<ServiceReservationConfirmationState> _mapNewPetToState(NewServiceReservationFormButtonPressed event) async* {
-    yield ServiceReservationLoading();
+  Stream<ServiceReservationConfirmationFormState> _mapNewPetToState(NewServiceReservationConfirmationFormButtonPressed event) async* {
+    yield ServiceReservationFormLoading();
     try {
       /**
        await repository.addNewReservation(
@@ -40,9 +40,9 @@ class ServiceReservationFormBloc extends Bloc<ServiceReservationConfirmationEven
           event.businessPlaceTenantId
       );
       **/
-      yield ServiceReservationSuccess();
+      yield ServiceReservationFormSuccess();
     } catch (err) {
-      yield ServiceReservationFailure('unknown_failure_error'.tr());
+      yield ServiceReservationFormFailure('unknown_failure_error'.tr());
     }
   }
 }

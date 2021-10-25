@@ -3,6 +3,7 @@ import 'dart:core';
 
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
 import 'package:aipetto/modules/businessServiceReservation/repository/service_reservation.dart';
+import 'package:aipetto/modules/user/models/user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
@@ -34,12 +35,12 @@ class ServiceReservationConfirmationFormBloc extends Bloc<ServiceReservationConf
   Stream<ServiceReservationConfirmationFormState> _mapNewPetToState(NewServiceReservationConfirmationFormButtonPressed event) async* {
     yield ServiceReservationFormLoading();
     try {
-      /**
+
        await repository.addNewReservation(
           event.reservation,
-          event.businessPlaceTenantId
+          event.businessPlaceTenantId,
+          event.user
       );
-      **/
       yield ServiceReservationFormSuccess();
     } catch (err) {
       yield ServiceReservationFormFailure('unknown_failure_error'.tr());

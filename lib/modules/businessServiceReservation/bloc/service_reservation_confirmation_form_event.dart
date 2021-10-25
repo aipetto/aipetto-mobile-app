@@ -9,10 +9,12 @@ abstract class ServiceReservationConfirmationFormEvent extends Equatable {
 class NewServiceReservationConfirmationFormButtonPressed extends ServiceReservationConfirmationFormEvent {
   final Reservation reservation;
   final String businessPlaceTenantId;
+  final User user;
 
   NewServiceReservationConfirmationFormButtonPressed({
     Reservation this.reservation,
-    String this.businessPlaceTenantId
+    String this.businessPlaceTenantId,
+    User this.user
   });
 
   @override

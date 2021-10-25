@@ -4,6 +4,7 @@ import 'package:aipetto/modules/auth/bloc/authentication.dart';
 import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/service_reservation_confirmation_form_bloc.dart';
+import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -72,12 +73,26 @@ class _ConfirmationServiceReservationWidgetState extends State<ConfirmationServi
     _onConfirmationFormButtonPressed() {
       if (_key.currentState.validate()) {
 
-        print('ok send event');
-        /**
-         _serviceReservationConfirmationBloc.add(NewServiceReservationFormButtonPressed(
+        if(currentUser is AuthenticationAuthenticated){
+          final reservation = new Reservation(
+              serviceType: <ServiceType>[new ServiceType(id: '6133b1626a2c375bfcc14f27', name: 'Vacinação')],
+              businessId: new BusinessId(id: '610cbc1212bcbd59074e84fa'),
+              place: new Place(id: '610cb9c812bcbd22144e84f8'),
+              date: DateTime.parse('2021-10-24'),
+              totalPrice: 150,
+              time: "08_00AM",
+              tenant: '61096ec884e5ebfca16f0143',
+              createdBy: currentUser.user.id,
+              updatedBy: currentUser.user.id,
+              source: 'aipetto_app'
+          );
 
-        ));
-        **/
+          _serviceReservationConfirmationBloc.add(NewServiceReservationConfirmationFormButtonPressed(
+            reservation: reservation,
+            businessPlaceTenantId: '61096ec884e5ebfca16f0143',
+            user: currentUser.user
+          ));
+        }
       }
     }
 

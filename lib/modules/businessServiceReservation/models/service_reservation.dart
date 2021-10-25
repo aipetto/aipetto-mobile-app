@@ -32,6 +32,7 @@ class Reservation {
     this.v,
     this.digitalReservationDoc,
     this.reservationId,
+    this.source
   });
 
   List<ServiceType> serviceType;
@@ -55,6 +56,7 @@ class Reservation {
   int v;
   List<dynamic> digitalReservationDoc;
   String reservationId;
+  String source;
 
   factory Reservation.fromJson(Map<String, dynamic> json) => Reservation(
         serviceType: List<ServiceType>.from(
@@ -81,6 +83,7 @@ class Reservation {
         digitalReservationDoc:
             List<dynamic>.from(json["digitalReservationDoc"].map((x) => x)),
         reservationId: json["id"],
+        source: json["source"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -96,8 +99,7 @@ class Reservation {
         "time": time,
         "customerId": customerId,
         "businessId": businessId.toJson(),
-        "date":
-            "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+        "date": date.toIso8601String(),
         "discountCode": discountCode,
         "tenant": tenant,
         "createdBy": createdBy,
@@ -108,6 +110,7 @@ class Reservation {
         "digitalReservationDoc":
             List<dynamic>.from(digitalReservationDoc.map((x) => x)),
         "id": reservationId,
+        "source": source
       };
 }
 

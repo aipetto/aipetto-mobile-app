@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
 import 'package:aipetto/modules/businessServiceReservation/services/serviceReservationApiClient.dart';
+import 'package:aipetto/modules/user/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -14,7 +15,7 @@ class BusinessServiceReservationRepository {
     return await reservationClient.getReservationDetails(reservation);
   }
 
-  Future<Reservation> addNewReservation(Reservation reservation, String businessPlaceTenantId) async {
-    return await reservationClient.postNewConfirmationReservation(reservation, businessPlaceTenantId);
+  Future<Reservation> addNewReservation(Reservation reservation, String businessPlaceTenantId, User user) async {
+    return await reservationClient.postNewConfirmationReservation(reservation, businessPlaceTenantId, user);
   }
 }

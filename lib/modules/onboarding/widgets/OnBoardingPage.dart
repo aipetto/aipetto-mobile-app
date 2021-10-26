@@ -1,8 +1,11 @@
+import 'package:aipetto/config/pref_manager.dart';
+import 'package:aipetto/modules/i18n/models/Language.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class OnBoardingPage extends StatefulWidget {
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
+  var _language;
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
@@ -19,7 +23,56 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   }
 
   Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset('assets/$assetName', width: width);
+    return Image.asset('assets/images/$assetName', width: width);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    switch (Prefs.getString('language', def: 'pt')) {
+      case 'pt':
+        _language = Language.portuguese;
+        break;
+
+      case 'en':
+        _language = Language.english;
+        break;
+
+      case 'es':
+        _language = Language.spanish;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  _changeLanguage(int index) {
+    switch (index) {
+      case 0:
+        _language = Language.portuguese;
+        Prefs.setString(Prefs.LANGUAGE, 'pt');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'BR');
+        Prefs.setString(Prefs.LANGUAGE_ID, '6096a50ab5704301f1e7b535');
+        break;
+
+      case 1:
+        _language = Language.english;
+        Prefs.setString(Prefs.LANGUAGE, 'en');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'UK');
+        Prefs.setString(Prefs.LANGUAGE_ID, '6096a50fb57043bb3ae7b537');
+        break;
+
+      case 2:
+        _language = Language.spanish;
+        Prefs.setString(Prefs.LANGUAGE, 'es');
+        Prefs.setString(Prefs.LANGUAGE_REGION, 'AR');
+        Prefs.setString(Prefs.LANGUAGE_ID, '6096a507b570431faae7b533');
+        break;
+    }
+    context.setLocale(Locale(Prefs.getString(Prefs.LANGUAGE),
+        Prefs.getString(Prefs.LANGUAGE_REGION)));
   }
 
   @override
@@ -38,26 +91,64 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       key: introKey,
       globalBackgroundColor: Colors.white,
       globalHeader: Align(
-        alignment: Alignment.topRight,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top:16, right: 16),
-            child: _buildImage('logo_aipetto_300.png', 250),
-          ),
-        ),
+        alignment: Alignment.topRight
       ),
       globalFooter: SizedBox(
         width: double.infinity,
         height: 60,
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: kAmphibianColorGreenLight),
           child: const Text(
             'Start',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
           ),
           onPressed: () => _onIntroEnd(context),
         ),
       ),
       pages: [
+        PageViewModel(
+          title: 'Find all services your pet need in one place',
+          bodyWidget: Column(
+            children: <Widget>[
+              RadioListTile(
+                value: Language.portuguese,
+                onChanged: (value) => _changeLanguage(0),
+                groupValue: _language,
+                title: Text('portuguese'.tr()),
+              ),
+              Divider(
+                height: 0.5,
+                indent: 10,
+                endIndent: 10,
+              ),
+              RadioListTile(
+                value: Language.english,
+                onChanged: (value) => _changeLanguage(1),
+                groupValue: _language,
+                title: Text('english'.tr()),
+              ),
+              Divider(
+                height: 0.5,
+                indent: 10,
+                endIndent: 10,
+              ),
+              RadioListTile(
+                value: Language.spanish,
+                onChanged: (value) => _changeLanguage(2),
+                groupValue: _language,
+                title: Text('spanish'.tr()),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
+          image: _buildImage('img1.jpg'),
+          decoration: pageDecoration,
+        ),
         PageViewModel(
           title: 'All services your pet need in one place',
           body: 'Vaccine, Microchip, Wash, Emergency...',
@@ -65,15 +156,15 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: 'Contact with veterinarians 24/7',
+          title: 'Take your pet profile everywhere',
           body: 'Control your pet vaccines and exams',
-          image: _buildImage('img2jpg'),
+          image: _buildImage('img2.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: 'Info about pets',
+          title: 'All about pets',
           body: 'Ask anything',
-          image: _buildImage('img3jpg'),
+          image: _buildImage('img3.jpg'),
           footer: ElevatedButton(
             onPressed: () {
               introKey.currentState?.animateScroll(0);
@@ -112,7 +203,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
       ),
       dotsContainerDecorator: const ShapeDecoration(
-        color: Colors.black87,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),

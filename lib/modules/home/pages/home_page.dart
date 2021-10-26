@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage>
 
     final PetRepository petRepository = PetRepository(
         petClient: PetApiClient(
-      httpClient: http.Client(),
+        httpClient: http.Client(),
     ));
 
     final AuthenticationService userRepository =

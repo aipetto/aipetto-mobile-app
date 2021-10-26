@@ -1,11 +1,13 @@
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
+import 'package:aipetto/modules/onboarding/widgets/OnBoardingPage.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
 import 'package:aipetto/utils/app_themes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
@@ -48,6 +50,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
+    );
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
@@ -88,12 +94,12 @@ class MyApp extends StatelessWidget {
           }
           if (state is AuthenticationNotAuthenticated) {
             return
-              LoginPage();
+              OnBoardingPage();
           }
           if (state is AuthenticationLoading) {
             return LoadingIndicator();
           }
-          return LoginPage();
+          return OnBoardingPage();
         },
       ),
       onGenerateRoute: RouteGenerator.generateRoute,

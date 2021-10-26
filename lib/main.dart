@@ -12,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import 'modules/auth/bloc/authentication_bloc.dart';
-import 'modules/auth/pages/login_page.dart';
 import 'modules/auth/services/auth_service.dart';
 import 'modules/home/component/home.dart';
 import 'modules/pet/bloc/pet_bloc.dart';

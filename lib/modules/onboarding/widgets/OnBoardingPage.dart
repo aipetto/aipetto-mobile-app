@@ -149,12 +149,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: 'All services your pet need in one place',
-          body: 'Vaccine, Microchip, Wash, Emergency...',
-          image: _buildImage('img1.jpg'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
           title: 'Take your pet profile everywhere',
           body: 'Control your pet vaccines and exams',
           image: _buildImage('img2.jpg'),

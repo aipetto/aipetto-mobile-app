@@ -41,9 +41,11 @@ class _AccessGPSPageState extends State<AccessGPSPage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'categories_title'.tr(),
-        ),
+        title: Text('choose_a_business_place'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: Center(
         child: Column(
@@ -55,17 +57,9 @@ class _AccessGPSPageState extends State<AccessGPSPage>
                 children: <Widget>[
                   walkImg != null
                       ? Image.asset(walkImg,
-                          width: width * 0.3, height: h * 0.2, fit: BoxFit.fill)
+                          width: width * 0.4, height: h * 0.2, fit: BoxFit.fill)
                       : Container(),
                 ],
-              ),
-            ),
-            Text(
-              'Enable location to suggest places near you.',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(
@@ -80,18 +74,7 @@ class _AccessGPSPageState extends State<AccessGPSPage>
               },
             ),
             SizedBox(
-              height: 25,
-            ),
-            Text(
-              'Or',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 25,
+              height: 50,
             ),
             CupertinoButton(
               child: Text('Buscar Endereço',

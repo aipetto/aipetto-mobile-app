@@ -15,7 +15,7 @@ class NoDataAvailableWidget extends StatelessWidget {
           height: 10,
         ),
         Text(
-          'Error',
+          'Woof Woof',
           style: TextStyle(
             color: kColorDarkBlue,
             fontSize: 20,

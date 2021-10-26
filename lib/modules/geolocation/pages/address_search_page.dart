@@ -7,9 +7,11 @@ class AddressSearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'categories_title'.tr(),
-        ),
+        title: Text('add_location'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: Center(
         child: Text("Search address here"),

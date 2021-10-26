@@ -169,6 +169,7 @@
     "add_emergency_contact": "Adicionar contacto de emergência",
     "location": "Localização",
     "geo_location_address": "Seu endereço atual aqui",
+    "need_address": "Precisamos de uma localização para poder encontrar os negócios que fornecem os serviços que você está buscando",
     "add_location": "Adicionar localização",
     "take_a_photo": "Fotografia",
     "choose_a_photo": "Escolher uma fotografia",

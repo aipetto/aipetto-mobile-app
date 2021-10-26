@@ -8,6 +8,7 @@ class Routes {
   static const String filter = '/filter';
   static const String categories = '/categories';
   static const String accessGPS = '/access_gps';
+  static const String needAddress = '/need_address';
   static const String loading = '/loading';
   static const String choosePetType = '/pets_types';
   static const String addressSearch = '/address_search';

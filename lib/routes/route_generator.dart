@@ -14,6 +14,7 @@ import 'package:aipetto/modules/exam/pages/visit_detail_page.dart';
 import 'package:aipetto/modules/geolocation/pages/acccess_gps_page.dart';
 import 'package:aipetto/modules/geolocation/pages/address_search_page.dart';
 import 'package:aipetto/modules/geolocation/pages/loading_page.dart';
+import 'package:aipetto/modules/geolocation/pages/need_address_to_continue_page.dart';
 import 'package:aipetto/modules/home/component/home.dart';
 import 'package:aipetto/modules/i18n/pages/change_laguage_page.dart';
 import 'package:aipetto/modules/message/pages/messages_detail_page.dart';
@@ -46,7 +47,10 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => SplashPage());
 
       case Routes.login:
-        return CupertinoPageRoute(builder: (_) => LoginPage());
+        return CupertinoPageRoute(
+            builder: (context) => LoginPage(),
+            fullscreenDialog: true,
+        );
 
       case Routes.petProfile:
         final args = settings.arguments as PetSelected;
@@ -161,6 +165,10 @@ class RouteGenerator {
       case Routes.accessGPS:
         return CupertinoPageRoute(
             builder: (BuildContext context) => AccessGPSPage());
+
+      case Routes.needAddress:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => NeedAddressToContinuePage());
 
       case Routes.choosePetType:
         return TransparentRoute(

@@ -167,6 +167,15 @@ class _SignInFormState extends State<_SignInForm> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'sign_in'.tr(),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1
+              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+        ),
+      ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
           return BlocListener<LoginBloc, LoginState>(

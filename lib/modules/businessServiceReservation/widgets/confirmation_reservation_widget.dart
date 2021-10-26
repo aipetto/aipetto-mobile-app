@@ -78,7 +78,7 @@ class _ConfirmationServiceReservationWidgetState extends State<ConfirmationServi
               serviceType: <ServiceType>[new ServiceType(id: '6133b1626a2c375bfcc14f27', name: 'Vacinação')],
               businessId: new BusinessId(id: '610cbc1212bcbd59074e84fa'),
               place: new Place(id: '610cb9c812bcbd22144e84f8'),
-              date: DateTime.parse('2021-10-24'),
+              date: DateTime.parse('2021-10-26'),
               totalPrice: 150,
               time: "08_00AM",
               tenant: '61096ec884e5ebfca16f0143',

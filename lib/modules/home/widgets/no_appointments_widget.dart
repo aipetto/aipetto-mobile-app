@@ -42,8 +42,7 @@ class NoAppointmentsWidget extends StatelessWidget {
           ),
           Container(
               width: MediaQuery.of(context).size.width,
-              margin:
-              EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
+              margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
               child: CustomButton(
                 onPressed: () {
                   Navigator.of(context)

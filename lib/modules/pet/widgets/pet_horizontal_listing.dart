@@ -1,3 +1,4 @@
+import 'package:aipetto/modules/auth/widgets/cta_authentication_widget.dart';
 import 'package:aipetto/modules/pet/bloc/pet_bloc.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/widgets/pets_of_owner_list_item.dart';
@@ -16,7 +17,7 @@ class PetHorizontalList extends StatelessWidget {
         if (state is PetLoading) {
           return Flexible(child: Center(child: CircularProgressIndicator()));
         } else if (state is PetError) {
-          return Center(child: Text(''));
+          return CtaAuthenticationWidget();
         } else if (state is PetEmpty) {
           return Center(
               child: GestureDetector(

@@ -1,5 +1,6 @@
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/i18n/models/Language.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   var _language;
 
   void _onIntroEnd(context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => HomePage()),
-    );
+    Navigator.of(context).pushNamed(Routes.home);
   }
 
   Widget _buildImage(String assetName, [double width = 350]) {

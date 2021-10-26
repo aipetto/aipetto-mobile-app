@@ -26,7 +26,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: kAmphibianColorBlueDark,
+        color: kAmphibianColorBlueDarkAlternative,
         child: Column(
           children: <Widget>[
             Expanded(

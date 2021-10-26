@@ -19,6 +19,7 @@ import 'package:aipetto/modules/i18n/pages/change_laguage_page.dart';
 import 'package:aipetto/modules/message/pages/messages_detail_page.dart';
 import 'package:aipetto/modules/notification/pages/notification_settings_page.dart';
 import 'package:aipetto/modules/notification/pages/notifications_page.dart';
+import 'package:aipetto/modules/onboarding/widgets/OnBoardingPage.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/pages/add_new_pet_page.dart';
 import 'package:aipetto/modules/pet/pages/choose_pet_type.dart';
@@ -76,6 +77,10 @@ class RouteGenerator {
       case Routes.bookingStep1FindPlacesNearby:
         return CupertinoPageRoute(
             builder: (BuildContext context) => ChooseBusinessPlacePage());
+
+      case Routes.onboarding:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => OnBoardingPage());
 
       case Routes.bookingStep2DetailsOfPlace:
         return CupertinoPageRoute(

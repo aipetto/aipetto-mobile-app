@@ -195,9 +195,7 @@ class _SignInFormState extends State<_SignInForm> {
                   child: IntrinsicHeight(
                     child: Column(
                       children: <Widget>[
-                        WaveHeader(
-                          title: 'welcome_to_app_name'.tr(),
-                        ),
+                         Image.asset('assets/images/img3.jpg', width: 300),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 38),

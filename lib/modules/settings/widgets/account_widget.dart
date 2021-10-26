@@ -46,7 +46,7 @@ class AccountWidget extends StatelessWidget {
           ),
           onTap: () {
             authBloc.add(UserLoggedOut());
-            Navigator.of(context).pushNamed(Routes.login);
+            Navigator.of(context).pushNamed(Routes.onboarding);
           },
         ),
       ],

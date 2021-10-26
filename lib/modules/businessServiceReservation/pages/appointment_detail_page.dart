@@ -242,13 +242,11 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'appointment_details'.tr(),
+        title: Text('appointment_details'.tr(),
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)
-        ),
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         automaticallyImplyLeading: false,
       ),
       body: SafeArea(

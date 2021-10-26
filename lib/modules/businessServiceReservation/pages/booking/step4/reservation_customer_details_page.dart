@@ -14,16 +14,15 @@ class ReservationCustomerDetailsPage extends StatefulWidget {
       _ReservationCustomerDetailsPageState();
 }
 
-class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDetailsPage> {
-
+class _ReservationCustomerDetailsPageState
+    extends State<ReservationCustomerDetailsPage> {
   @override
   Widget build(BuildContext context) {
-
-    final BusinessServiceReservationRepository serviceReservationRepository = BusinessServiceReservationRepository(
-        reservationClient: ServiceReservationApiClient(
-          httpClient: http.Client(),
-        )
-    );
+    final BusinessServiceReservationRepository serviceReservationRepository =
+        BusinessServiceReservationRepository(
+            reservationClient: ServiceReservationApiClient(
+      httpClient: http.Client(),
+    ));
 
     bool _isdark = false;
 
@@ -38,8 +37,7 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: () => Navigator.pushNamed(
-                context, Routes.home),
+            onPressed: () => Navigator.pushNamed(context, Routes.home),
             icon: Icon(
               Icons.home,
             ),
@@ -47,7 +45,8 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
         ],
       ),
       body: BlocProvider(
-        create: (_) => ServiceReservationConfirmationFormBloc(repository: serviceReservationRepository),
+        create: (_) => ServiceReservationConfirmationFormBloc(
+            repository: serviceReservationRepository),
         child: SafeArea(
           child: Column(
             children: <Widget>[
@@ -55,15 +54,14 @@ class _ReservationCustomerDetailsPageState extends State<ReservationCustomerDeta
                 child: Container(
                   color: _isdark ? Colors.transparent : Colors.grey[300],
                   child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: ConfirmationServiceReservationWidget()
-                  ),
+                      scrollDirection: Axis.vertical,
+                      child: ConfirmationServiceReservationWidget()),
                 ),
               ),
             ],
           ),
         ),
-     ),
+      ),
     );
   }
 }

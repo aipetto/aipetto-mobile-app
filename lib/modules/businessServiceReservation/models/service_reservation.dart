@@ -10,30 +10,29 @@ Reservation reservationFromJson(String str) =>
 String reservationToJson(Reservation data) => json.encode(data.toJson());
 
 class Reservation {
-  Reservation({
-    this.serviceType,
-    this.serviceProviderIDs,
-    this.needTransportation,
-    this.id,
-    this.totalPriceWithDiscount,
-    this.totalPrice,
-    this.status,
-    this.place,
-    this.time,
-    this.customerId,
-    this.businessId,
-    this.date,
-    this.discountCode,
-    this.tenant,
-    this.createdBy,
-    this.updatedBy,
-    this.createdAt,
-    this.updatedAt,
-    this.v,
-    this.digitalReservationDoc,
-    this.reservationId,
-    this.source
-  });
+  Reservation(
+      {this.serviceType,
+      this.serviceProviderIDs,
+      this.needTransportation,
+      this.id,
+      this.totalPriceWithDiscount,
+      this.totalPrice,
+      this.status,
+      this.place,
+      this.time,
+      this.customerId,
+      this.businessId,
+      this.date,
+      this.discountCode,
+      this.tenant,
+      this.createdBy,
+      this.updatedBy,
+      this.createdAt,
+      this.updatedAt,
+      this.v,
+      this.digitalReservationDoc,
+      this.reservationId,
+      this.source});
 
   List<ServiceType> serviceType;
   List<dynamic> serviceProviderIDs;

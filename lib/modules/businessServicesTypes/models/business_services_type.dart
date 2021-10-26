@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-BusinessServiceType businessServiceTypeFromJson(String str) => BusinessServiceType.fromJson(json.decode(str));
+BusinessServiceType businessServiceTypeFromJson(String str) =>
+    BusinessServiceType.fromJson(json.decode(str));
 
-String businessServiceTypeToJson(BusinessServiceType data) => json.encode(data.toJson());
+String businessServiceTypeToJson(BusinessServiceType data) =>
+    json.encode(data.toJson());
 
 class BusinessServiceType {
   BusinessServiceType({
@@ -15,13 +17,16 @@ class BusinessServiceType {
 
   List<BusinessServiceTypeRow> businessServiceTypesRows;
 
-  factory BusinessServiceType.fromJson(Map<String, dynamic> json) => BusinessServiceType(
-    businessServiceTypesRows: List<BusinessServiceTypeRow>.from(json["rows"].map((x) => BusinessServiceTypeRow.fromJson(x))),
-  );
+  factory BusinessServiceType.fromJson(Map<String, dynamic> json) =>
+      BusinessServiceType(
+        businessServiceTypesRows: List<BusinessServiceTypeRow>.from(
+            json["rows"].map((x) => BusinessServiceTypeRow.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "rows": List<dynamic>.from(businessServiceTypesRows.map((x) => x.toJson())),
-  };
+        "rows":
+            List<dynamic>.from(businessServiceTypesRows.map((x) => x.toJson())),
+      };
 }
 
 class BusinessServiceTypeRow {
@@ -53,35 +58,37 @@ class BusinessServiceTypeRow {
   int v;
   String rowId;
 
-  factory BusinessServiceTypeRow.fromJson(Map<String, dynamic> json) => BusinessServiceTypeRow(
-    id: json["_id"],
-    serviceImage: List<ServiceImage>.from(json["serviceImage"].map((x) => ServiceImage.fromJson(x))),
-    language: Category.fromJson(json["language"]),
-    category: Category.fromJson(json["category"]),
-    name: json["name"],
-    tenant: json["tenant"],
-    createdBy: json["createdBy"],
-    updatedBy: json["updatedBy"],
-    createdAt: json["createdAt"],
-    updatedAt: json["updatedAt"],
-    v: json["__v"],
-    rowId: json["id"],
-  );
+  factory BusinessServiceTypeRow.fromJson(Map<String, dynamic> json) =>
+      BusinessServiceTypeRow(
+        id: json["_id"],
+        serviceImage: List<ServiceImage>.from(
+            json["serviceImage"].map((x) => ServiceImage.fromJson(x))),
+        language: Category.fromJson(json["language"]),
+        category: Category.fromJson(json["category"]),
+        name: json["name"],
+        tenant: json["tenant"],
+        createdBy: json["createdBy"],
+        updatedBy: json["updatedBy"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
+        v: json["__v"],
+        rowId: json["id"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "_id": id,
-    "serviceImage": List<dynamic>.from(serviceImage.map((x) => x.toJson())),
-    "language": language.toJson(),
-    "category": category.toJson(),
-    "name": name,
-    "tenant": tenant,
-    "createdBy": createdBy,
-    "updatedBy": updatedBy,
-    "createdAt": createdAt,
-    "updatedAt": updatedAt,
-    "__v": v,
-    "id": rowId,
-  };
+        "_id": id,
+        "serviceImage": List<dynamic>.from(serviceImage.map((x) => x.toJson())),
+        "language": language.toJson(),
+        "category": category.toJson(),
+        "name": name,
+        "tenant": tenant,
+        "createdBy": createdBy,
+        "updatedBy": updatedBy,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
+        "__v": v,
+        "id": rowId,
+      };
 }
 
 class Category {
@@ -116,36 +123,40 @@ class Category {
   bool active;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-    id: json["_id"],
-    pageUrl: json["pageUrl"],
-    categoryImage: json["categoryImage"] == null ? null : List<dynamic>.from(json["categoryImage"].map((x) => x)),
-    language: json["language"] == null ? null : json["language"],
-    name: json["name"],
-    tenant: json["tenant"],
-    createdBy: json["createdBy"],
-    updatedBy: json["updatedBy"],
-    createdAt: json["createdAt"],
-    updatedAt: json["updatedAt"],
-    v: json["__v"],
-    categoryId: json["id"],
-    active: json["active"] == null ? null : json["active"],
-  );
+        id: json["_id"],
+        pageUrl: json["pageUrl"],
+        categoryImage: json["categoryImage"] == null
+            ? null
+            : List<dynamic>.from(json["categoryImage"].map((x) => x)),
+        language: json["language"] == null ? null : json["language"],
+        name: json["name"],
+        tenant: json["tenant"],
+        createdBy: json["createdBy"],
+        updatedBy: json["updatedBy"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
+        v: json["__v"],
+        categoryId: json["id"],
+        active: json["active"] == null ? null : json["active"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "_id": id,
-    "pageUrl": pageUrl,
-    "categoryImage": categoryImage == null ? null : List<dynamic>.from(categoryImage.map((x) => x)),
-    "language": language == null ? null : language,
-    "name": name,
-    "tenant": tenant,
-    "createdBy": createdBy,
-    "updatedBy": updatedBy,
-    "createdAt": createdAt,
-    "updatedAt": updatedAt,
-    "__v": v,
-    "id": categoryId,
-    "active": active == null ? null : active,
-  };
+        "_id": id,
+        "pageUrl": pageUrl,
+        "categoryImage": categoryImage == null
+            ? null
+            : List<dynamic>.from(categoryImage.map((x) => x)),
+        "language": language == null ? null : language,
+        "name": name,
+        "tenant": tenant,
+        "createdBy": createdBy,
+        "updatedBy": updatedBy,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
+        "__v": v,
+        "id": categoryId,
+        "active": active == null ? null : active,
+      };
 }
 
 class ServiceImage {
@@ -172,26 +183,26 @@ class ServiceImage {
   String downloadUrl;
 
   factory ServiceImage.fromJson(Map<String, dynamic> json) => ServiceImage(
-    id: json["_id"],
-    name: json["name"],
-    sizeInBytes: json["sizeInBytes"],
-    publicUrl: json["publicUrl"],
-    privateUrl: json["privateUrl"],
-    createdAt: json["createdAt"],
-    updatedAt: json["updatedAt"],
-    serviceImageId: json["id"],
-    downloadUrl: json["downloadUrl"],
-  );
+        id: json["_id"],
+        name: json["name"],
+        sizeInBytes: json["sizeInBytes"],
+        publicUrl: json["publicUrl"],
+        privateUrl: json["privateUrl"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
+        serviceImageId: json["id"],
+        downloadUrl: json["downloadUrl"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "_id": id,
-    "name": name,
-    "sizeInBytes": sizeInBytes,
-    "publicUrl": publicUrl,
-    "privateUrl": privateUrl,
-    "createdAt": createdAt,
-    "updatedAt": updatedAt,
-    "id": serviceImageId,
-    "downloadUrl": downloadUrl,
-  };
+        "_id": id,
+        "name": name,
+        "sizeInBytes": sizeInBytes,
+        "publicUrl": publicUrl,
+        "privateUrl": privateUrl,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
+        "id": serviceImageId,
+        "downloadUrl": downloadUrl,
+      };
 }

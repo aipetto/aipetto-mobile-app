@@ -20,7 +20,8 @@ class BusinessServicesTypesApiClient {
   }) : assert(httpClient != null);
 
   Future<BusinessServiceType> fetchBusinessServiceTypes() async {
-    final url = '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId';
+    final url =
+        '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId';
     final response = await this.httpClient.get(url);
 
     if (response.statusCode != 200) {

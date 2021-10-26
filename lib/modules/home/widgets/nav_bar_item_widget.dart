@@ -27,26 +27,27 @@ class NavBarItemWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 60,
-        child: Column(
-          children: <Widget>[
-            Center(
-              child: image.isEmpty
-                  ? Container()
-                  : Image.asset(
-                'assets/images/$image.png',
-                height: 25,
-                color: _color,
+          height: 60,
+          child: Column(
+            children: <Widget>[
+              Center(
+                child: image.isEmpty
+                    ? Container()
+                    : Image.asset(
+                        'assets/images/$image.png',
+                        height: 25,
+                        color: _color,
+                      ),
               ),
-            ),
-            Text('$menuText',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),)
-          ],
-        )
-      ),
+              Text(
+                '$menuText',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
+            ],
+          )),
     );
   }
 }

@@ -60,7 +60,8 @@ class DrawerPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 50,
                         backgroundColor: Colors.grey,
-                        backgroundImage: profileImage != null && profileImage != ''
+                        backgroundImage: profileImage != null &&
+                                profileImage != ''
                             ? NetworkImage(profileImage)
                             : AssetImage(
                                 'assets/images/logos/aipetto-logo-transparent.png'),

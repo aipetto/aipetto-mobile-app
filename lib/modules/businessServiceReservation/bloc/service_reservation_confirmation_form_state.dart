@@ -5,11 +5,14 @@ abstract class ServiceReservationConfirmationFormState extends Equatable {
   List<Object> get props => [];
 }
 
-class ServiceReservationFormInitial extends ServiceReservationConfirmationFormState {}
+class ServiceReservationFormInitial
+    extends ServiceReservationConfirmationFormState {}
 
-class ServiceReservationFormLoading extends ServiceReservationConfirmationFormState {}
+class ServiceReservationFormLoading
+    extends ServiceReservationConfirmationFormState {}
 
-class ServiceReservationFormSuccess extends ServiceReservationConfirmationFormState {
+class ServiceReservationFormSuccess
+    extends ServiceReservationConfirmationFormState {
   final Reservation reservation;
 
   ServiceReservationFormSuccess({@required this.reservation});
@@ -18,7 +21,8 @@ class ServiceReservationFormSuccess extends ServiceReservationConfirmationFormSt
   List<Object> get props => [reservation];
 }
 
-class ServiceReservationFormFailure extends ServiceReservationConfirmationFormState {
+class ServiceReservationFormFailure
+    extends ServiceReservationConfirmationFormState {
   final String error;
 
   ServiceReservationFormFailure(this.error);

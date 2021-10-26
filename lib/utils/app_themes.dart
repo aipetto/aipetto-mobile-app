@@ -41,10 +41,14 @@ final appThemeData = {
     ),
     textTheme: TextTheme(
       button: kTextStyleButton,
-      subtitle1: kTextStyleSubtitle1.copyWith(color: kAmphibianColorBlueDarkAlternative),
-      subtitle2: kTextStyleSubtitle2.copyWith(color: kAmphibianColorBlueDarkAlternative),
-      bodyText2: kTextStyleBody2.copyWith(color: kAmphibianColorBlueDarkAlternative),
-      headline6: kTextStyleHeadline6.copyWith(color: kAmphibianColorBlueDarkAlternative),
+      subtitle1: kTextStyleSubtitle1.copyWith(
+          color: kAmphibianColorBlueDarkAlternative),
+      subtitle2: kTextStyleSubtitle2.copyWith(
+          color: kAmphibianColorBlueDarkAlternative),
+      bodyText2:
+          kTextStyleBody2.copyWith(color: kAmphibianColorBlueDarkAlternative),
+      headline6: kTextStyleHeadline6.copyWith(
+          color: kAmphibianColorBlueDarkAlternative),
     ),
     iconTheme: IconThemeData(
       color: kColorPrimary,

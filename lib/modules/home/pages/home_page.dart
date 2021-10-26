@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage>
 
     final PetRepository petRepository = PetRepository(
         petClient: PetApiClient(
-        httpClient: http.Client(),
+      httpClient: http.Client(),
     ));
 
     final AuthenticationService userRepository =
@@ -111,13 +111,14 @@ class _HomePageState extends State<HomePage>
                             children: <Widget>[
                               GestureDetector(
                                 onTap: () {
-                                  FocusScope.of(context).requestFocus(FocusNode());
+                                  FocusScope.of(context)
+                                      .requestFocus(FocusNode());
                                   Navigator.of(context)
                                       .pushNamed(Routes.myAppointments);
                                 },
                                 child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 20),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
                                   child: Column(
                                     children: <Widget>[
                                       SectionHeaderWidget(

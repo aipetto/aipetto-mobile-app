@@ -8,11 +8,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 class ChooseServiceToReservePage extends StatelessWidget {
-
-  final BusinessServiceTypesRepository petServiceTypeRepository = BusinessServiceTypesRepository(
-      businessServiceTypesClient: BusinessServicesTypesApiClient(
-        httpClient: http.Client(),
-      ));
+  final BusinessServiceTypesRepository petServiceTypeRepository =
+      BusinessServiceTypesRepository(
+          businessServiceTypesClient: BusinessServicesTypesApiClient(
+    httpClient: http.Client(),
+  ));
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +31,11 @@ class ChooseServiceToReservePage extends StatelessWidget {
         ),
       ),
       body: BlocProvider<BusinessServicesTypesBloc>(
-          create: (_) => BusinessServicesTypesBloc(
-              businessServiceTypeRepository: petServiceTypeRepository
-          )..add(FetchBusinessServicesTypes()),
+        create: (_) => BusinessServicesTypesBloc(
+            businessServiceTypeRepository: petServiceTypeRepository)
+          ..add(FetchBusinessServicesTypes()),
         child: BusinessServiceTypeList(),
       ),
     );
   }
 }
-

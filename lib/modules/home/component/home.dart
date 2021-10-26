@@ -157,12 +157,12 @@ class _HomeState extends State<Home> {
                     isSelected: _selectedIndex == 0,
                   ),
                   NavBarItemWidget(
-                      onTap: () {
+                    onTap: () {
                       _selectPage(1);
-                      },
-                      image: 'pawprint',
-                      menuText: "services_title".tr(),
-                      isSelected: _selectedIndex == 1,
+                    },
+                    image: 'pawprint',
+                    menuText: "services_title".tr(),
+                    isSelected: _selectedIndex == 1,
                   ),
                   NavBarItemWidget(
                     onTap: () {

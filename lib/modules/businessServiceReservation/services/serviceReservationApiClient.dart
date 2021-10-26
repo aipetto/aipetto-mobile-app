@@ -12,12 +12,13 @@ abstract class ServiceReservationOperations {
   Future<Reservation> getPastUserReservationsBooked(DateTime currentDateTime);
   Future<Reservation> getReservationDetails(Reservation reservation);
   Future<Reservation> getFutureReservationsBooked(DateTime currentDateTime);
-  Future<Reservation> getClosestFutureReservationBooked(DateTime currentDateTime);
-  Future postNewConfirmationReservation(Reservation reservation, String tenantId, User user);
+  Future<Reservation> getClosestFutureReservationBooked(
+      DateTime currentDateTime);
+  Future postNewConfirmationReservation(
+      Reservation reservation, String tenantId, User user);
 }
 
-class ServiceReservationApiClient implements ServiceReservationOperations{
-
+class ServiceReservationApiClient implements ServiceReservationOperations {
   final _baseUrl = Environment.aipettoCoreApi;
   final SecureStorage secureStorageRepository = SecureStorage();
   final http.Client httpClient;
@@ -27,7 +28,8 @@ class ServiceReservationApiClient implements ServiceReservationOperations{
   }) : assert(httpClient != null);
 
   @override
-  Future<Reservation> getClosestFutureReservationBooked(DateTime currentDateTime) {
+  Future<Reservation> getClosestFutureReservationBooked(
+      DateTime currentDateTime) {
     // TODO: implement getClosestFutureReservationBooked
     throw UnimplementedError();
   }
@@ -52,10 +54,7 @@ class ServiceReservationApiClient implements ServiceReservationOperations{
 
   @override
   Future postNewConfirmationReservation(
-      Reservation reservation,
-      String businessPlaceTenantId,
-      User user
-      ) async{
+      Reservation reservation, String businessPlaceTenantId, User user) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final newReservationConfirmationInfo = {
@@ -78,13 +77,14 @@ class ServiceReservationApiClient implements ServiceReservationOperations{
     };
 
     final reservationAddResponse = await this.httpClient.post(
-      Uri.parse('$_baseUrl/tenant/$businessPlaceTenantId/service-reservation'),
-      body: jsonEncode(newReservationConfirmationInfo),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${jwtOnSecureStorage}',
-      });
+        Uri.parse(
+            '$_baseUrl/tenant/$businessPlaceTenantId/service-reservation'),
+        body: jsonEncode(newReservationConfirmationInfo),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${jwtOnSecureStorage}',
+        });
 
     if (reservationAddResponse.statusCode != 200) {
       throw new Exception('Error adding reservation');

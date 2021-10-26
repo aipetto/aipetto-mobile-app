@@ -57,6 +57,7 @@ class MyBusinessListItem extends StatelessWidget {
               textSize: 14,
               onPressed: () {
                 Navigator.of(context).pushNamed(Routes.businessProfile);
+
                 /// TODO Add business_page + place_id -> there we bring information about the business_id or vice-versa
               },
               padding: EdgeInsets.symmetric(

@@ -53,13 +53,11 @@ class _PetProfilePageState extends State<PetProfilePage>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'pet_profile'.tr(),
-          style: Theme.of(context)
-              .textTheme
-              .subtitle1
-              .copyWith(fontWeight: FontWeight.w700, color: Colors.white, fontSize: 16)
-        ),
+        title: Text('pet_profile'.tr(),
+            style: Theme.of(context).textTheme.subtitle1.copyWith(
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+                fontSize: 16)),
       ),
       body: Column(
         children: <Widget>[
@@ -144,19 +142,23 @@ class _PetProfilePageState extends State<PetProfilePage>
                       border: Border(
                         top: BorderSide(
                           width: 1,
-                          color: _isdark ? Colors.black87 : kAmphibianColorBlueDarkAlternative,
+                          color: _isdark
+                              ? Colors.black87
+                              : kAmphibianColorBlueDarkAlternative,
                         ),
                         bottom: BorderSide(
                           width: 1,
-                          color: _isdark ? Colors.black87 : kAmphibianColorBlueDarkAlternative,
+                          color: _isdark
+                              ? Colors.black87
+                              : kAmphibianColorBlueDarkAlternative,
                         ),
                       ),
                     ),
                     child: TabBar(
                       indicatorColor: kAmphibianColorGreenLight,
                       labelStyle: _kTabTextStyle,
-                      unselectedLabelStyle:
-                          _kTabTextStyle.copyWith(color: kAmphibianColorBlueDarkAlternative),
+                      unselectedLabelStyle: _kTabTextStyle.copyWith(
+                          color: kAmphibianColorBlueDarkAlternative),
                       labelColor: kAmphibianColorGreenLight,
                       unselectedLabelColor: kAmphibianColorBlueDarkAlternative,
                       tabs: _kTabs,

@@ -12,7 +12,9 @@ import 'package:meta/meta.dart';
 part 'service_reservation_confirmation_form_event.dart';
 part 'service_reservation_confirmation_form_state.dart';
 
-class ServiceReservationConfirmationFormBloc extends Bloc<ServiceReservationConfirmationFormEvent, ServiceReservationConfirmationFormState> {
+class ServiceReservationConfirmationFormBloc extends Bloc<
+    ServiceReservationConfirmationFormEvent,
+    ServiceReservationConfirmationFormState> {
   final BusinessServiceReservationRepository repository;
 
   ServiceReservationConfirmationFormBloc({
@@ -26,21 +28,19 @@ class ServiceReservationConfirmationFormBloc extends Bloc<ServiceReservationConf
   }
 
   @override
-  Stream<ServiceReservationConfirmationFormState> mapEventToState(ServiceReservationConfirmationFormEvent event) async* {
+  Stream<ServiceReservationConfirmationFormState> mapEventToState(
+      ServiceReservationConfirmationFormEvent event) async* {
     if (event is NewServiceReservationConfirmationFormButtonPressed) {
       yield* _mapNewPetToState(event);
     }
   }
 
-  Stream<ServiceReservationConfirmationFormState> _mapNewPetToState(NewServiceReservationConfirmationFormButtonPressed event) async* {
+  Stream<ServiceReservationConfirmationFormState> _mapNewPetToState(
+      NewServiceReservationConfirmationFormButtonPressed event) async* {
     yield ServiceReservationFormLoading();
     try {
-
-       await repository.addNewReservation(
-          event.reservation,
-          event.businessPlaceTenantId,
-          event.user
-      );
+      await repository.addNewReservation(
+          event.reservation, event.businessPlaceTenantId, event.user);
       yield ServiceReservationFormSuccess();
     } catch (err) {
       yield ServiceReservationFormFailure('unknown_failure_error'.tr());

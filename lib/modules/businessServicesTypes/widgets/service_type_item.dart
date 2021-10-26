@@ -1,5 +1,6 @@
 import 'package:aipetto/config/environment.dart';
-import 'package:aipetto/modules/businessServicesTypes/models/business_services_type.dart' as BusinessServiceTypeModel;
+import 'package:aipetto/modules/businessServicesTypes/models/business_services_type.dart'
+    as BusinessServiceTypeModel;
 import 'package:flutter/material.dart';
 
 class ServiceTypeItem extends StatelessWidget {
@@ -19,15 +20,18 @@ class ServiceTypeItem extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(
             children: <Widget>[
-              serviceType.serviceImage.isNotEmpty ? CircleAvatar(
-                backgroundColor: Colors.grey[300],
-                backgroundImage: NetworkImage(Environment.aipettoCloudStorageHost + serviceType.serviceImage.first.privateUrl),
-                radius: 20,
-              ) :
-                CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.grey,
-              ),
+              serviceType.serviceImage.isNotEmpty
+                  ? CircleAvatar(
+                      backgroundColor: Colors.grey[300],
+                      backgroundImage: NetworkImage(
+                          Environment.aipettoCloudStorageHost +
+                              serviceType.serviceImage.first.privateUrl),
+                      radius: 20,
+                    )
+                  : CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.grey,
+                    ),
               SizedBox(
                 width: 10,
               ),

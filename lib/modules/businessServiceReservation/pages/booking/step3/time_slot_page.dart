@@ -78,13 +78,12 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
         centerTitle: true,
         title: Text('time_slot'.tr(),
             style: Theme.of(context)
-            .textTheme
-            .subtitle1
-            .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         actions: <Widget>[
           IconButton(
-            onPressed: () => Navigator.pushNamed(
-                context, Routes.home),
+            onPressed: () => Navigator.pushNamed(context, Routes.home),
             icon: Icon(
               Icons.home,
             ),

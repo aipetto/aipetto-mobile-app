@@ -39,7 +39,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-
   final AuthenticationService userRepository =
       AipettoCoreAuthenticationService(httpClient: http.Client());
 
@@ -93,8 +92,7 @@ class MyApp extends StatelessWidget {
             );
           }
           if (state is AuthenticationNotAuthenticated) {
-            return
-              OnBoardingPage();
+            return OnBoardingPage();
           }
           if (state is AuthenticationLoading) {
             return LoadingIndicator();
@@ -118,7 +116,6 @@ class MyApp extends StatelessWidget {
     ));
   }
 }
-
 
 class MyBehavior extends ScrollBehavior {
   @override

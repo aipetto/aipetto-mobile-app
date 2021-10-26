@@ -34,9 +34,9 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
         title: Text(
           'businesses'.tr(),
           style: Theme.of(context)
-            .textTheme
-            .subtitle1
-            .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+              .textTheme
+              .subtitle1
+              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
         ),
         leading: Builder(
           builder: (BuildContext context) {
@@ -51,8 +51,7 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: () => Navigator.pushNamed(
-                context, Routes.home),
+            onPressed: () => Navigator.pushNamed(context, Routes.home),
             icon: Icon(
               Icons.home,
             ),

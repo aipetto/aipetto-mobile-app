@@ -9,13 +9,16 @@ import 'package:meta/meta.dart';
 class BusinessServiceReservationRepository {
   final ServiceReservationApiClient reservationClient;
 
-  BusinessServiceReservationRepository({@required this.reservationClient}) : assert(reservationClient != null);
+  BusinessServiceReservationRepository({@required this.reservationClient})
+      : assert(reservationClient != null);
 
   Future<Reservation> fetchReservationDetail(Reservation reservation) async {
     return await reservationClient.getReservationDetails(reservation);
   }
 
-  Future<Reservation> addNewReservation(Reservation reservation, String businessPlaceTenantId, User user) async {
-    return await reservationClient.postNewConfirmationReservation(reservation, businessPlaceTenantId, user);
+  Future<Reservation> addNewReservation(
+      Reservation reservation, String businessPlaceTenantId, User user) async {
+    return await reservationClient.postNewConfirmationReservation(
+        reservation, businessPlaceTenantId, user);
   }
 }

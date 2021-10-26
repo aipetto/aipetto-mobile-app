@@ -273,7 +273,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
             Container(
                 width: MediaQuery.of(context).size.width,
                 margin:
-                EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
+                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
                 child: CustomButton(
                   onPressed: () {
                     Navigator.of(context)
@@ -282,8 +282,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     /// TODO get the pet profile passing the pet.id
                   },
                   text: 'reserve'.tr(),
-                )
-            ),
+                )),
             ListView.builder(
               itemCount: servicesList.length,
               shrinkWrap: true,
@@ -382,7 +381,8 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
               return IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby);
+                  Navigator.of(context)
+                      .pushNamed(Routes.bookingStep1FindPlacesNearby);
                 },
                 tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               );
@@ -390,8 +390,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
           ),
           actions: <Widget>[
             IconButton(
-              onPressed: () => Navigator.pushNamed(
-                  context, Routes.home),
+              onPressed: () => Navigator.pushNamed(context, Routes.home),
               icon: Icon(
                 Icons.home,
               ),

@@ -2,11 +2,10 @@ import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/i18n/models/Language.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -143,22 +142,22 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
             ],
           ),
-          image: _buildImage('img1.jpg'),
+          image: _buildImage('dog-house.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: 'Take your pet profile everywhere',
           body: 'Control your pet vaccines and exams',
-          image: _buildImage('img2.jpg'),
+          image: _buildImage('veterinarians.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: 'All about pets',
           body: 'Ask anything',
-          image: _buildImage('img3.jpg'),
+          image: _buildImage('owl-300.jpg'),
           footer: ElevatedButton(
             onPressed: () {
-              introKey.currentState?.animateScroll(0);
+              Navigator.of(context).pushReplacementNamed(Routes.chatAI);
             },
             child: const Text(
               'What would like to know?',

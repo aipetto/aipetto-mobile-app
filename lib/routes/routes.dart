@@ -26,6 +26,8 @@ class Routes {
   static const String appointmentDetail = '/appointment_detail';
   static const String visitDetail = '/visit_detail';
   static const String prescriptionDetail = '/prescription_detail';
+  static const String chat = '/chat';
+  static const String chatAI = '/chat-ai';
   static const String chatDetail = '/chat_detail';
   static const String veterinarianProfile = '/veterinarianProfile';
   static const String petProfile = '/pet_profile';

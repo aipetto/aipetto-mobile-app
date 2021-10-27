@@ -17,7 +17,9 @@ import 'package:aipetto/modules/geolocation/pages/loading_page.dart';
 import 'package:aipetto/modules/geolocation/pages/need_address_to_continue_page.dart';
 import 'package:aipetto/modules/home/component/home.dart';
 import 'package:aipetto/modules/i18n/pages/change_laguage_page.dart';
+import 'package:aipetto/modules/message/pages/chat_dialogflow_page.dart';
 import 'package:aipetto/modules/message/pages/messages_detail_page.dart';
+import 'package:aipetto/modules/message/pages/messages_page.dart';
 import 'package:aipetto/modules/notification/pages/notification_settings_page.dart';
 import 'package:aipetto/modules/notification/pages/notifications_page.dart';
 import 'package:aipetto/modules/onboarding/widgets/OnBoardingPage.dart';
@@ -126,6 +128,14 @@ class RouteGenerator {
       case Routes.chatDetail:
         return CupertinoPageRoute(
             builder: (BuildContext context) => MessagesDetailPage());
+
+      case Routes.chatAI:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => ChatDialogFlowPage());
+
+     case Routes.chat:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => MessagesPage());
 
       case Routes.veterinarianProfile:
         return CupertinoPageRoute(builder: (_) => VeterinarianProfilePage());

@@ -103,7 +103,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       ),
       pages: [
         PageViewModel(
-          title: 'Find all services your pet need in one place',
+          title: 'onboarding_find_services_one_place'.tr(),
           bodyWidget: Column(
             children: <Widget>[
               RadioListTile(
@@ -146,21 +146,20 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: 'Take your pet profile everywhere',
-          body: 'Control your pet vaccines and exams',
+          title: 'take_pet_profile_everywhere'.tr(),
+          body: 'control_pet_vaccines_exams'.tr(),
           image: _buildImage('veterinarians.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: 'All about pets',
-          body: 'Ask anything',
+          title: 'all_about_pets'.tr(),
+          body: '',
           image: _buildImage('owl-300.jpg'),
           footer: ElevatedButton(
             onPressed: () {
               Navigator.of(context).pushReplacementNamed(Routes.chatAI);
             },
-            child: const Text(
-              'What would like to know?',
+            child: Text('ask_anything'.tr(),
               style: TextStyle(color: Colors.black),
             ),
             style: ElevatedButton.styleFrom(
@@ -178,9 +177,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       showSkipButton: true,
       skipFlex: 0,
       nextFlex: 0,
-      skip: const Text('Skip'),
+      skip: Text('onboarding_skip'.tr()),
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: Text('onboarding_done'.tr(), style: TextStyle(fontWeight: FontWeight.w600)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb

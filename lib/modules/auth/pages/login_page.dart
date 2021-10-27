@@ -204,7 +204,7 @@ class _SignInFormState extends State<_SignInForm> {
                   child: IntrinsicHeight(
                     child: Column(
                       children: <Widget>[
-                        Image.asset('assets/images/img3.jpg', width: 300),
+                        Image.asset('assets/images/dog-house.jpg', width: 300),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 38),

@@ -240,5 +240,13 @@
     "unknown_failure_error": "Unknown error ocurred, please try again",
     "failure_to_login": "Please check your email or password and try again",
     "failure_to_google_sign_in": "It was not possible to sign in with your Google Account",
-    "looking_for_match": "Looking for Match"
+    "looking_for_match": "Looking for Match",
+    "onboarding_find_services_one_place": "Find all services your pet need in one place",
+    "take_pet_profile_everywhere": "Take your pet profile everywhere",
+    "control_pet_vaccines_exams": "Control your pet vaccines and exams",
+    "all_about_pets": "All about pets",
+    "ask_anything": "Ask anything",
+    "what_would_like_to_know" : "What would like to know?",
+    "onboarding_skip" : "Skip",
+    "onboarding_done" : "Done"
 }

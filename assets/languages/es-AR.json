@@ -239,5 +239,13 @@
     "unknown_failure_error": "Ocurrió un error desconocido, intente nuevamente.",
     "failure_to_login": "Corrobore que tus datos de acceso son correctos e intente nuevamente",
     "failure_to_google_sign_in": "No fue posible ingresar a tu cuenta usando tu cuenta de Google",
-    "looking_for_match": "Buscando cruza"
+    "looking_for_match": "Buscando cruza",
+    "onboarding_find_services_one_place": "Encuentre servicios para tu mascota en un sólo lugar",
+    "take_pet_profile_everywhere": "Lleve el perfil de tu mascota donde quiera que vayas",
+    "control_pet_vaccines_exams": "Controle las vacunas y examenes",
+    "all_about_pets": "Todo sobre mascotas",
+    "ask_anything": "Pregunte lo que quieras",
+    "what_would_like_to_know" : "¿Qué te gustaria saber?",
+    "onboarding_skip" : "Saltar",
+    "onboarding_done" : "Hecho"
 }

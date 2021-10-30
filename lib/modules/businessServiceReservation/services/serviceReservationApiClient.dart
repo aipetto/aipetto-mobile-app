@@ -9,13 +9,11 @@ import 'package:http/http.dart' as http;
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
 
 abstract class ServiceReservationOperations {
-  Future<Reservation> getPastUserReservationsBooked(DateTime currentDateTime);
-  Future<Reservation> getReservationDetails(Reservation reservation);
-  Future<Reservation> getFutureReservationsBooked(DateTime currentDateTime);
-  Future<Reservation> getClosestFutureReservationBooked(
-      DateTime currentDateTime);
-  Future postNewConfirmationReservation(
-      Reservation reservation, String tenantId, User user);
+  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateTime, String userTenant);
+  Future<Reservation> getReservationDetails(String reservationId, String userTenant);
+  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDateTime, String userTenant);
+  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDateTime, String userTenant);
+  Future postNewConfirmationReservation(Reservation reservation, String tenantId, User user);
 }
 
 class ServiceReservationApiClient implements ServiceReservationOperations {
@@ -28,30 +26,84 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }) : assert(httpClient != null);
 
   @override
-  Future<Reservation> getClosestFutureReservationBooked(
-      DateTime currentDateTime) {
-    // TODO: implement getClosestFutureReservationBooked
+  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDate, String userTenant) async {
 
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
-    throw UnimplementedError();
+    final url = '$_baseUrl/tenant/$userTenant/service-reservation?filter%5BdateRange%5D%5B%5D=$currentDate&orderBy=date_ASC&limit=1&offset=0';
+    final reservationsResponse = await this.httpClient.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if(reservationsResponse.statusCode != 200) {
+      throw new Exception('Error get closest future reservation');
+    }
+
+    final json = jsonDecode(reservationsResponse.body);
+    return ServiceReservations.fromJson(json).rows;
   }
 
   @override
-  Future<Reservation> getFutureReservationsBooked(DateTime currentDateTime) {
-    // TODO: implement getFutureReservationsBooked
-    throw UnimplementedError();
+  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDate, String userTenant) async {
+
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final url = '$_baseUrl/tenant/$userTenant/service-reservation?filter%5BdateRange%5D%5B%5D=$currentDate&orderBy=date_ASC';
+    final reservationsResponse = await this.httpClient.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if(reservationsResponse.statusCode != 200) {
+      throw new Exception('Error getting future reservations');
+    }
+
+    final json = jsonDecode(reservationsResponse.body);
+    return ServiceReservations.fromJson(json).rows;
   }
 
   @override
-  Future<Reservation> getPastUserReservationsBooked(DateTime currentDateTime) {
-    // TODO: implement getPastUserReservationsBooked
-    throw UnimplementedError();
+  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateLessOneDay, String userTenant) async {
+
+
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final url = '$_baseUrl/tenant/$userTenant/service-reservation?&filter%5BdateRange%5D%5B%5D=2021-09-01&filter%5BdateRange%5D%5B%5D=$currentDateLessOneDay&orderBy=date_DESC';
+    final reservationsResponse = await this.httpClient.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if(reservationsResponse.statusCode != 200) {
+      throw new Exception('Error getting past reservations');
+    }
+
+    final json = jsonDecode(reservationsResponse.body);
+    return ServiceReservations.fromJson(json).rows;
   }
 
   @override
-  Future<Reservation> getReservationDetails(Reservation reservation) {
-    // TODO: implement getReservationDetails
-    throw UnimplementedError();
+  Future<Reservation> getReservationDetails(String reservationId, String userTenant) async {
+
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final url = '$_baseUrl/tenant/$userTenant/service-reservation/$reservationId';
+    final serviceResponse = await this.httpClient.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if(serviceResponse.statusCode != 200) {
+      throw new Exception('Error get the reservation detail');
+    }
+
+    final json = jsonDecode(serviceResponse.body);
+    return Reservation.fromJson(json);
   }
 
   @override

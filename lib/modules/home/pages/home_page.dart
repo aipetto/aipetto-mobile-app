@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage>
                                   scrollDirection: Axis.horizontal,
                                   padding: EdgeInsets.symmetric(horizontal: 20),
                                   itemBuilder: (context, index) {
-                                    return ReservedPastBussinessListItem(
+                                    return ReservedPastBusinessListItem(
                                       business: businesses[index],
                                     );
                                   },

@@ -3,10 +3,10 @@ import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class ReservedPastBussinessListItem extends StatelessWidget {
+class ReservedPastBusinessListItem extends StatelessWidget {
   final Business business;
 
-  const ReservedPastBussinessListItem({Key key, @required this.business})
+  const ReservedPastBusinessListItem({Key key, @required this.business})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

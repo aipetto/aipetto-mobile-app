@@ -12,8 +12,20 @@ class BusinessServiceReservationRepository {
   BusinessServiceReservationRepository({@required this.reservationClient})
       : assert(reservationClient != null);
 
-  Future<Reservation> fetchReservationDetail(Reservation reservation) async {
-    return await reservationClient.getReservationDetails(reservation);
+  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDate, String userTenant) async {
+    return await reservationClient.getClosestFutureReservationBooked(currentDate, userTenant);
+  }
+
+  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDate, String userTenant) async {
+    return await reservationClient.getFutureReservationsBooked(currentDate, userTenant);
+  }
+
+  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateLessOneDay, String userTenant) async {
+    return await reservationClient.getPastUserReservationsBooked(currentDateLessOneDay, userTenant);
+  }
+
+  Future<Reservation> fetchReservationDetail(String reservationId, String userTenant) async {
+    return await reservationClient.getReservationDetails(reservationId, userTenant);
   }
 
   Future<Reservation> addNewReservation(
@@ -21,4 +33,5 @@ class BusinessServiceReservationRepository {
     return await reservationClient.postNewConfirmationReservation(
         reservation, businessPlaceTenantId, user);
   }
+
 }

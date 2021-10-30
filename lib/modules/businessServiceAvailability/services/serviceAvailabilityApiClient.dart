@@ -3,12 +3,11 @@ import 'dart:convert';
 import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
 import 'package:aipetto/modules/businessServiceAvailability/models/service_availabilities.dart';
-import 'package:aipetto/modules/businessServicesTypes/models/business_services_type.dart';
 import 'package:http/http.dart' as http;
 
 abstract class ServiceAvailabilityOperations {
   Future<List<ServiceAvailability>> getAvailabilityForServiceRegisteredToBusiness(
-      BusinessServiceType serviceId,
+      String serviceId,
       String businessTenant,
       String businessId
    );
@@ -22,7 +21,7 @@ class ServiceAvailabilityApiClient implements ServiceAvailabilityOperations {
   ServiceAvailabilityApiClient(this.httpClient);
 
   @override
-  Future<List<ServiceAvailability>> getAvailabilityForServiceRegisteredToBusiness(BusinessServiceType serviceId, String businessTenant, String businessId) async {
+  Future<List<ServiceAvailability>> getAvailabilityForServiceRegisteredToBusiness(String serviceId, String businessTenant, String businessId) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/tenant/:tenantId/business-place-service-availability?filter%5BserviceType%5D=$serviceId&filter%5BbusinessId%5D=$businessId';

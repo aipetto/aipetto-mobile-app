@@ -2,6 +2,7 @@ import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/components/text_form_field.dart';
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
 import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/confirmation/service_reservation_confirmation_form_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
@@ -80,7 +81,7 @@ class _ConfirmationServiceReservationWidgetState
                     id: '6133b1626a2c375bfcc14f27', name: 'Vacinação')
               ],
               businessId: new BusinessId(id: '610cbc1212bcbd59074e84fa'),
-              place: new Place(id: '610cb9c812bcbd22144e84f8'),
+              place: new BusinessPlace(id: '610cb9c812bcbd22144e84f8'),
               date: DateTime.parse('2021-10-29'),
               totalPrice: 150,
               time: "08_00AM",

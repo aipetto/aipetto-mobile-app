@@ -31,6 +31,8 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   Future<Reservation> getClosestFutureReservationBooked(
       DateTime currentDateTime) {
     // TODO: implement getClosestFutureReservationBooked
+
+
     throw UnimplementedError();
   }
 

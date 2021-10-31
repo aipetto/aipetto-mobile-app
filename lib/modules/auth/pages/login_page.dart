@@ -1,6 +1,5 @@
 import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/components/labeled_text_form_field.dart';
-import 'package:aipetto/components/wave_header.dart';
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
 import 'package:aipetto/modules/auth/bloc/login/login_bloc.dart';
@@ -168,13 +167,7 @@ class _SignInFormState extends State<_SignInForm> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'sign_in'.tr(),
-          style: Theme.of(context)
-              .textTheme
-              .subtitle1
-              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
-        ),
+        backgroundColor: Colors.transparent,
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewportConstraints) {

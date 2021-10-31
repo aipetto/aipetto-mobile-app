@@ -4,31 +4,24 @@ part of 'service_reservation_bloc.dart';
 abstract class ServiceReservationEvent extends Equatable {}
 
 class FetchNextClosestServiceReservation extends ServiceReservationEvent {
-  final DateTime currentTime;
-  final String userTenant;
-
-  FetchNextClosestServiceReservation(this.userTenant, this.currentTime);
+  FetchNextClosestServiceReservation();
 
   @override
-  List<Object> get props => [userTenant];
+  List<Object> get props => [];
 }
 
 class FetchFutureServiceReservation extends ServiceReservationEvent {
-  final DateTime currentTime;
-  final String userTenant;
 
-  FetchFutureServiceReservation(this.userTenant, this.currentTime);
+  FetchFutureServiceReservation();
 
   @override
-  List<Object> get props => [userTenant];
+  List<Object> get props => [];
 }
 
 class FetchPastServiceReservation extends ServiceReservationEvent {
-  final DateTime currentTime;
-  final String userTenant;
 
-  FetchPastServiceReservation(this.userTenant, this.currentTime);
+  FetchPastServiceReservation();
 
   @override
-  List<Object> get props => [userTenant];
+  List<Object> get props => [];
 }

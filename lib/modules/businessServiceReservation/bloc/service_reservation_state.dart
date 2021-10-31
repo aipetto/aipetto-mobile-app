@@ -38,4 +38,4 @@ class PastServiceReservationLoaded extends ServiceReservationState {
   List<Object> get props => [serviceReservations];
 }
 
-class ServiceAvailabilityError extends ServiceReservationState {}
+class ServiceReservationError extends ServiceReservationState {}

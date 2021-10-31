@@ -1,8 +1,8 @@
+import 'package:aipetto/modules/businessServiceReservation/pages/history_appointments_page.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'history_appointments_page.dart';
 import 'upcoming_appointments_page.dart';
 
 class MyAppointmentsPage extends StatefulWidget {
@@ -26,8 +26,8 @@ class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
   );
 
   final _kTabPages = [
-    UpcomingAppointmentsPage(),
-    HistoryAppointmentsPage(),
+    UpcomingParentAppointsPage(),
+    HistoryParentAppointmentsPage(),
   ];
 
   final _kTabs = [
@@ -40,6 +40,7 @@ class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
   ];
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -52,25 +53,25 @@ class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
         elevation: 0,
       ),
       body: DefaultTabController(
-        length: _kTabs.length,
-        child: Column(
-          children: <Widget>[
-            TabBar(
-              indicatorColor: kColorPrimary,
-              labelStyle: _kTabTextStyle,
-              unselectedLabelStyle: _kUnselectedTabTextStyle,
-              labelColor: kColorPrimary,
-              unselectedLabelColor: Colors.grey,
-              tabs: _kTabs,
-            ),
-            Expanded(
-              child: TabBarView(
-                children: _kTabPages,
+          length: _kTabs.length,
+          child: Column(
+            children: <Widget>[
+              TabBar(
+                indicatorColor: kColorPrimary,
+                labelStyle: _kTabTextStyle,
+                unselectedLabelStyle: _kUnselectedTabTextStyle,
+                labelColor: kColorPrimary,
+                unselectedLabelColor: Colors.grey,
+                tabs: _kTabs,
               ),
-            ),
-          ],
+              Expanded(
+                child: TabBarView(
+                  children: _kTabPages,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
     );
   }
 }

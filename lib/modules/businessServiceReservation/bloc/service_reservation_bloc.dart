@@ -39,7 +39,10 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         final DateTime currentDate = new DateTime.now();
         final User currentUser = await authenticationService.getCurrentUser();
         final List<Reservation> serviceReservations = await serviceReservationRepository.getFutureReservationsBooked(currentDate, currentUser.tenants.first.tenant.id);
-        yield FutureServiceReservationLoaded(serviceReservations: serviceReservations);
+        if (serviceReservations.length > 0){
+          yield FutureServiceReservationLoaded(serviceReservations: serviceReservations);
+        }
+        yield ServiceReservationEmpty();
       } catch (_) {
         yield ServiceReservationError();
       }
@@ -52,7 +55,10 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         final User currentUser = await authenticationService.getCurrentUser();
         final DateTime currentDateLessOneDay = currentDate.subtract(new Duration(days: 1));
         final List<Reservation> serviceReservations = await serviceReservationRepository.getPastUserReservationsBooked(currentDateLessOneDay, currentUser.tenants.first.tenant.id);
-        yield PastServiceReservationLoaded(serviceReservations: serviceReservations);
+        if (serviceReservations.length > 0) {
+          yield PastServiceReservationLoaded(serviceReservations: serviceReservations);
+        }
+        yield ServiceReservationEmpty();
       } catch (_) {
         yield ServiceReservationError();
       }

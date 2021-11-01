@@ -34,15 +34,13 @@ class UpcomingAppointmentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return BlocListener<ServiceReservationBloc, ServiceReservationState>(
-            listener: (context, state) { },
-            child: BlocBuilder<ServiceReservationBloc, ServiceReservationState>(
-                builder: (context, state){
-                  if (state == null  || state is ServiceReservationEmpty) {
+    return BlocBuilder<ServiceReservationBloc, ServiceReservationState>(
+            builder: (context, state){
+                  if (state == null) {
                     BlocProvider.of<ServiceReservationBloc>(context).add(FetchFutureServiceReservation());
                   }
                   if (state is ServiceReservationLoading) {
-                    return Flexible(child: Center(child: CircularProgressIndicator()));
+                    return Center(child: CircularProgressIndicator());
                   } else if (state is ServiceReservationError) {
                     return CtaAuthenticationWidget();
                   } else if (state is ServiceReservationEmpty) {
@@ -84,7 +82,6 @@ class UpcomingAppointmentsPage extends StatelessWidget {
                     );
                }
              }
-           )
           );
        }
 }

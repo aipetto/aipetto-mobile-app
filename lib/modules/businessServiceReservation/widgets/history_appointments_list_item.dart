@@ -12,7 +12,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Card(
+     return Card(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -83,7 +83,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                           child: _buildColumn(
                             context: context,
                             title: 'veterinarian'.tr(),
-                            subtitle: reservation.serviceProviderIDs.first.toString(),
+                            subtitle: ''///reservation.serviceProviderIDs.first.toString(),
                           ),
                         ),
                         Expanded(

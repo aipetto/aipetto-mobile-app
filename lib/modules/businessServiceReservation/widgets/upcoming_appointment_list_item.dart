@@ -67,7 +67,7 @@ class UpcomingAppointmentListItem extends StatelessWidget {
                                child: _buildColumn(
                                  context: context,
                                  title: 'veterinarian'.tr(),
-                                 subtitle: reservation.serviceProviderIDs.first.toString(),
+                                 subtitle: ''///reservation.serviceProviderIDs.first.toString(),
                                ),
                              ),
                              Expanded(

@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-  final bool _noAppoints = true;
+  final bool _noAppoints = false;
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage>
                                       SizedBox(
                                     width: 15,
                                   ),
-                                  itemCount: 3,
+                                  itemCount: 1,
                                   scrollDirection: Axis.horizontal,
                                   padding: EdgeInsets.symmetric(horizontal: 20),
                                   itemBuilder: (context, index) {

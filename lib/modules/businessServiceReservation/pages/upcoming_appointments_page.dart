@@ -16,8 +16,7 @@ class UpcomingParentAppointsPage extends StatelessWidget {
         httpClient: http.Client(),
       ));
 
-  final AuthenticationService userRepository =
-  AipettoCoreAuthenticationService(httpClient: http.Client());
+  final AuthenticationService userRepository = AipettoCoreAuthenticationService(httpClient: http.Client());
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +33,7 @@ class UpcomingParentAppointsPage extends StatelessWidget {
 class UpcomingAppointmentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return BlocListener<ServiceReservationBloc, ServiceReservationState>(
             listener: (context, state) { },
             child: BlocBuilder<ServiceReservationBloc, ServiceReservationState>(
@@ -56,9 +56,8 @@ class UpcomingAppointmentsPage extends StatelessWidget {
                         ],
                       ),
                     );
-                } else {
-                  final stateFutureServiceReservation = state as FutureServiceReservationLoaded;
-                  final reservations = stateFutureServiceReservation.serviceReservations;
+                } else if (state is FutureServiceReservationLoaded) {
+                  final reservations = state.serviceReservations;
                   return ListView.separated(
                     separatorBuilder: (context, index) => SizedBox(
                       height: 15,
@@ -72,6 +71,17 @@ class UpcomingAppointmentsPage extends StatelessWidget {
                       return UpcomingAppointmentListItem(reservation: reservations[index]);
                     },
                   );
+               } else {
+                    return Card(
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                              flex: 2,
+                              child: NoAppointmentsWidget()
+                          )
+                        ],
+                      ),
+                    );
                }
              }
            )

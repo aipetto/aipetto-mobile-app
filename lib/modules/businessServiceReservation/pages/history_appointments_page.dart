@@ -55,9 +55,8 @@ class HistoryAppointmentsPage extends StatelessWidget {
                     ],
                   ),
                 );
-              } else {
-                final stateFutureServiceReservation = state as PastServiceReservationLoaded;
-                final reservations = stateFutureServiceReservation.serviceReservations;
+              } else if (state is PastServiceReservationLoaded){
+                final reservations = state.serviceReservations;
                 return ListView.separated(
                   separatorBuilder: (context, index) => SizedBox(
                     height: 15,
@@ -70,6 +69,17 @@ class HistoryAppointmentsPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return HistoryAppointmentListItem(reservation: reservations[index]);
                   },
+                );
+              } else {
+                return Card(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                          flex: 2,
+                          child: NoAppointmentsWidget()
+                      )
+                    ],
+                  ),
                 );
               }
             }

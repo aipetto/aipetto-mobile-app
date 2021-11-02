@@ -13,6 +13,20 @@ const kAmphibianColorBlueDarkAlternative = Color(0xff2f455C);
 
 const kRedPinkColor = Color(0xffE55842);
 
+const kTabTextStyle = TextStyle(
+  color: kColorPrimaryDark,
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  fontStyle: FontStyle.normal,
+);
+
+const kUnselectedTabTextStyle = TextStyle(
+  color: Colors.grey,
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  fontStyle: FontStyle.normal,
+);
+
 /// ------------------------------------
 
 const kColorBlue = Color(0xff4245ef);

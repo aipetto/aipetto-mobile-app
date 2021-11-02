@@ -19,12 +19,6 @@ class PetProfilePage extends StatefulWidget {
 
 class _PetProfilePageState extends State<PetProfilePage>
     with AutomaticKeepAliveClientMixin<PetProfilePage> {
-  final _kTabTextStyle = TextStyle(
-    color: kAmphibianColorBlueDarkAlternative,
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-  );
 
   final _kTabPages = [
     PetInfoPage(),
@@ -62,23 +56,23 @@ class _PetProfilePageState extends State<PetProfilePage>
       body: Column(
         children: <Widget>[
           Container(
+           height: 250,
+           width: double.infinity,
+           child: ClipRRect(
+             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(45.0), bottomRight: Radius.circular(45.0)),
+             child: (widget.pet.profileImage != null &&
+                 widget.pet.profileImage.length > 0 &&
+                 widget.pet.profileImage[0] != null &&
+                 widget.pet.profileImage[0].publicUrl != null)
+                 ? Image.network(widget.pet.profileImage[0].publicUrl, fit: BoxFit.cover)
+                 : Image.asset('assets/images/aipetto/pets.png', fit: BoxFit.cover),
+           ),
+          ),
+          Container(
             padding: EdgeInsets.all(20),
             //color: Colors.white,
             child: Row(
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30),
-                  child: CircleAvatar(
-                    radius: 82,
-                    backgroundColor: Colors.transparent,
-                    backgroundImage: (widget.pet.profileImage != null &&
-                            widget.pet.profileImage.length > 0 &&
-                            widget.pet.profileImage[0] != null &&
-                            widget.pet.profileImage[0].publicUrl != null)
-                        ? NetworkImage(widget.pet.profileImage[0].publicUrl)
-                        : AssetImage('assets/images/aipetto/pets.png'),
-                  ),
-                ),
                 SizedBox(
                   width: 20,
                 ),
@@ -104,7 +98,7 @@ class _PetProfilePageState extends State<PetProfilePage>
                         ),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 3,
                       ),
                       Text(
                         '$petAgeInMonths',
@@ -128,7 +122,7 @@ class _PetProfilePageState extends State<PetProfilePage>
             ),
           ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           Expanded(
             child: DefaultTabController(
@@ -140,12 +134,6 @@ class _PetProfilePageState extends State<PetProfilePage>
                     decoration: BoxDecoration(
                       color: _isdark ? kColorDark : Color(0xfffbfcff),
                       border: Border(
-                        top: BorderSide(
-                          width: 1,
-                          color: _isdark
-                              ? Colors.black87
-                              : kAmphibianColorBlueDarkAlternative,
-                        ),
                         bottom: BorderSide(
                           width: 1,
                           color: _isdark
@@ -155,12 +143,11 @@ class _PetProfilePageState extends State<PetProfilePage>
                       ),
                     ),
                     child: TabBar(
-                      indicatorColor: kAmphibianColorGreenLight,
-                      labelStyle: _kTabTextStyle,
-                      unselectedLabelStyle: _kTabTextStyle.copyWith(
-                          color: kAmphibianColorBlueDarkAlternative),
-                      labelColor: kAmphibianColorGreenLight,
-                      unselectedLabelColor: kAmphibianColorBlueDarkAlternative,
+                      indicatorColor: kColorPrimary,
+                      labelStyle: kTabTextStyle,
+                      unselectedLabelStyle: kUnselectedTabTextStyle,
+                      labelColor: kColorPrimary,
+                      unselectedLabelColor: Colors.grey,
                       tabs: _kTabs,
                     ),
                   ),

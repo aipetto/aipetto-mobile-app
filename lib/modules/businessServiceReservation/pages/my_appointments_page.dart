@@ -11,19 +11,6 @@ class MyAppointmentsPage extends StatefulWidget {
 }
 
 class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
-  static const _kTabTextStyle = TextStyle(
-    color: kColorPrimaryDark,
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-  );
-
-  static const _kUnselectedTabTextStyle = TextStyle(
-    color: Colors.grey,
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-  );
 
   final _kTabPages = [
     UpcomingParentAppointsPage(),
@@ -58,8 +45,8 @@ class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
             children: <Widget>[
               TabBar(
                 indicatorColor: kColorPrimary,
-                labelStyle: _kTabTextStyle,
-                unselectedLabelStyle: _kUnselectedTabTextStyle,
+                labelStyle: kTabTextStyle,
+                unselectedLabelStyle: kUnselectedTabTextStyle,
                 labelColor: kColorPrimary,
                 unselectedLabelColor: Colors.grey,
                 tabs: _kTabs,

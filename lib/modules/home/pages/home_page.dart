@@ -2,7 +2,6 @@ import 'package:aipetto/modules/auth/services/auth_service.dart';
 import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/businessServiceReservation/widgets/reserved_past_business_list_item.dart';
 import 'package:aipetto/modules/home/widgets/next_appointment_widget.dart';
-import 'package:aipetto/modules/home/widgets/no_appointments_widget.dart';
 import 'package:aipetto/modules/home/widgets/section_header_widget.dart';
 import 'package:aipetto/modules/pet/bloc/pet_bloc.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
@@ -24,9 +23,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin<HomePage> {
-  final bool _noAppoints = false;
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage> {
 
   @override
   Widget build(BuildContext context) {
@@ -101,20 +98,21 @@ class _HomePageState extends State<HomePage>
                         children: <Widget>[PetHorizontalList()],
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    _noAppoints
-                        ? NoAppointmentsWidget()
-                        : Column(
+                    Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Image.asset('assets/images/adopt-dogs-call.jpg',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                               GestureDetector(
                                 onTap: () {
                                   FocusScope.of(context)
                                       .requestFocus(FocusNode());
                                   Navigator.of(context)
-                                      .pushNamed(Routes.myAppointments);
+                                      .pushNamed(Routes.categories);
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(

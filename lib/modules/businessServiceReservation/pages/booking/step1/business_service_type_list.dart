@@ -35,14 +35,8 @@ class _BusinessServiceTypeListState extends State<BusinessServiceTypeList> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        'choose_pet_service'.tr(),
-                        style: Theme.of(context).textTheme.headline6.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                      ),
+                    SizedBox(
+                      height: 20,
                     ),
                     StaggeredGridView.countBuilder(
                       padding: EdgeInsets.symmetric(horizontal: 10),

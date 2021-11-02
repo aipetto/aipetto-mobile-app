@@ -18,7 +18,7 @@ class MyFavoriteBusinessessListPage extends StatelessWidget {
         separatorBuilder: (context, index) => SizedBox(
           height: 15,
         ),
-        itemCount: 3,
+        itemCount: 1,
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
         itemBuilder: (context, index) {
           return MyBusinessListItem(

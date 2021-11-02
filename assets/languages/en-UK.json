@@ -248,5 +248,8 @@
     "ask_anything": "Ask anything",
     "what_would_like_to_know" : "What would like to know?",
     "onboarding_skip" : "Skip",
-    "onboarding_done" : "Done"
+    "onboarding_done" : "Done",
+    "cta_your_veterinarian_record" : "Already have your pet vaccines recorded?",
+    "cta_check_veterinarian_nearby": "Check if your veterinarian is registed",
+    "arent_they_cute": "They are so cute, aren`t they"
 }

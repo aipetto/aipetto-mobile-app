@@ -23,22 +23,11 @@ class NextAppointmentWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'tomorrow'.tr(),
+                      'choose_pet_service'.tr(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      DateTime.now().add(const Duration(days: 1)).toString(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
                       ),
                     ),
                   ],
@@ -46,67 +35,10 @@ class NextAppointmentWidget extends StatelessWidget {
               ),
               RoundIconButton(
                 onPressed: () {},
-                icon: Icons.map,
+                icon: Icons.pets,
               ),
             ],
           ),
-          Divider(
-            color: Colors.grey,
-            height: 40,
-            thickness: 0.5,
-          ),
-          Row(
-            children: <Widget>[
-              Container(
-                width: 56,
-                height: 56,
-                padding: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: Image.asset(
-                    'assets/images/icon_veterinarian_1.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Dr Vidal CRMV 11111',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      maxLines: 3,
-                      softWrap: false,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    Text(
-                      'veterinarian'.tr(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          )
         ],
       ),
     );

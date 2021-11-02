@@ -30,16 +30,6 @@ class NoAppointmentsWidget extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Text(
-            'create_new_appointment'.tr(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontFamily: 'NunitoSans',
-              fontWeight: FontWeight.w300,
-            ),
-            textAlign: TextAlign.center,
-          ),
           Container(
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),

@@ -49,7 +49,7 @@ class Reservation {
   List<dynamic> serviceProviderIDs;
   bool needTransportation;
   String id;
-  BusinessId businessId;
+  String businessId;
   String time;
   DateTime date;
   String customerTenant;
@@ -72,7 +72,7 @@ class Reservation {
     serviceProviderIDs: List<dynamic>.from(json["serviceProviderIDs"].map((x) => x)),
     needTransportation: json["needTransportation"],
     id: json["_id"],
-    businessId: BusinessId.fromJson(json["businessId"]),
+    businessId: json["businessId"],
     time: json["time"],
     date: DateTime.parse(json["date"]),
     customerTenant: json["customerTenant"],
@@ -96,7 +96,7 @@ class Reservation {
     "serviceProviderIDs": List<dynamic>.from(serviceProviderIDs.map((x) => x)),
     "needTransportation": needTransportation,
     "_id": id,
-    "businessId": businessId.toJson(),
+    "businessId": businessId,
     "time": time,
     "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
     "tenant": tenant,
@@ -149,8 +149,7 @@ class BusinessId {
     this.updatedBy,
     this.createdAt,
     this.updatedAt,
-    this.v,
-    this.businessIdId,
+    this.v
   });
 
   List<dynamic> services;
@@ -185,7 +184,6 @@ class BusinessId {
   String createdAt;
   String updatedAt;
   int v;
-  String businessIdId;
 
   factory BusinessId.fromJson(Map<String, dynamic> json) => BusinessId(
     services: List<dynamic>.from(json["services"].map((x) => x)),
@@ -220,7 +218,6 @@ class BusinessId {
     createdAt: json["createdAt"],
     updatedAt: json["updatedAt"],
     v: json["__v"],
-    businessIdId: json["id"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -256,7 +253,7 @@ class BusinessId {
     "createdAt": createdAt,
     "updatedAt": updatedAt,
     "__v": v,
-    "id": businessIdId,
+    "id": businessId,
   };
 }
 

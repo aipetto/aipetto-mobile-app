@@ -33,7 +33,7 @@ class UpcomingAppointmentListItem extends StatelessWidget {
                                child: _buildColumn(
                                  context: context,
                                  title: 'date'.tr(),
-                                 subtitle: reservation.date.toString()
+                                 subtitle: DateFormat('dd/MM/yy').format(reservation.date).toString()
                                ),
                              ),
                              SizedBox(

@@ -26,11 +26,11 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }) : assert(httpClient != null);
 
   @override
-  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDate, String userTenant) async {
+  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDate, String customerTenant) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
-    final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D=$currentDate&filter%5BuserTenant%5D=$userTenant&orderBy=date_ASC&limit=1&offset=0';
+    final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D%5B%5D=$currentDate&filter%5BcustomerTenant%5D=$customerTenant&orderBy=date_ASC&limit=1&offset=0';
     final reservationsResponse = await this.httpClient.get(url, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -46,11 +46,11 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }
 
   @override
-  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDate, String userTenant) async {
+  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDate, String customerTenant) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
-    final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D=$currentDate&filter%5BuserTenant%5D=$userTenant&orderBy=date_ASC';
+    final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D%5B%5D=$currentDate&filter%5BcustomerTenant%5D=$customerTenant&orderBy=date_ASC';
     final reservationsResponse = await this.httpClient.get(url, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -66,12 +66,12 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }
 
   @override
-  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateLessOneDay, String userTenant) async {
+  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateLessOneDay, String customerTenant) async {
 
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
-    final url = '$_baseUrl/customer-service-reservation?&filter%5BdateRange%5D=2021-09-01&filter%5BdateRange%5D=$currentDateLessOneDay&filter%5BuserTenant%5D=$userTenant&orderBy=date_DESC';
+    final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D%5B%5D=2021-09-01&filter%5BdateRange%5D%5B%5D=$currentDateLessOneDay&filter%5BcustomerTenant%5D=$customerTenant&orderBy=date_DESC';
     final reservationsResponse = await this.httpClient.get(url, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -114,8 +114,8 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
     final newReservationConfirmationInfo = {
       'data': {
         "serviceType": reservation.serviceType[0].id,
-        "businessId": reservation.businessId.id,
-        "placeId": reservation.place.id,
+        "businessId": reservation.businessId,
+        "place": reservation.place,
         "time": reservation.time,
         "date": DateFormat('yyyy-MM-dd').format(reservation.date).toString(),
         "customerTenant": reservation.customerTenant,

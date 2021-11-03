@@ -41,8 +41,9 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         final List<Reservation> serviceReservations = await serviceReservationRepository.getFutureReservationsBooked(currentDate, currentUser.tenants.first.tenant.id);
         if (serviceReservations.length > 0){
           yield FutureServiceReservationLoaded(serviceReservations: serviceReservations);
+        }else{
+          yield ServiceReservationEmpty();
         }
-        yield ServiceReservationEmpty();
       } catch (_) {
         yield ServiceReservationError();
       }
@@ -57,8 +58,9 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         final List<Reservation> serviceReservations = await serviceReservationRepository.getPastUserReservationsBooked(currentDateLessOneDay, currentUser.tenants.first.tenant.id);
         if (serviceReservations.length > 0) {
           yield PastServiceReservationLoaded(serviceReservations: serviceReservations);
+        } else {
+          yield ServiceReservationEmpty();
         }
-        yield ServiceReservationEmpty();
       } catch (_) {
         yield ServiceReservationError();
       }

@@ -9,10 +9,10 @@ import 'package:http/http.dart' as http;
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
 
 abstract class ServiceReservationOperations {
-  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateTime, String userTenant);
-  Future<Reservation> getReservationDetails(String reservationId, String userTenant);
-  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDateTime, String userTenant);
-  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDateTime, String userTenant);
+  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateTime, String customerTenant);
+  Future<Reservation> getReservationDetails(String reservationId, String customerTenant);
+  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDateTime, String customerTenant);
+  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDateTime, String customerTenant);
   Future postNewConfirmationReservation(Reservation reservation, String tenantId, User user);
 }
 

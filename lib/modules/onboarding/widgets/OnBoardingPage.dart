@@ -20,10 +20,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     Navigator.of(context).pushNamed(Routes.home);
   }
 
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset('assets/images/$assetName', width: width);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -113,7 +109,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 title: Text('portuguese'.tr()),
               ),
               Divider(
-                height: 0.5,
+                height: 0.0,
                 indent: 10,
                 endIndent: 10,
               ),
@@ -124,7 +120,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 title: Text('english'.tr()),
               ),
               Divider(
-                height: 0.5,
+                height: 0.0,
                 indent: 10,
                 endIndent: 10,
               ),
@@ -142,19 +138,19 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
             ],
           ),
-          image: _buildImage('dog-house.jpg'),
+          image: Image.asset('assets/images/dog-house.jpg', width: 250),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: 'take_pet_profile_everywhere'.tr(),
           body: 'control_pet_vaccines_exams'.tr(),
-          image: _buildImage('veterinarians.jpg'),
+          image: Image.asset('assets/images/veterinarians.jpg', width: 250),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: 'all_about_pets'.tr(),
           body: '',
-          image: _buildImage('owl-300.jpg'),
+          image: Image.asset('assets/images/owl-300.jpg', width: 200),
           footer: ElevatedButton(
             onPressed: () {
               Navigator.of(context).pushReplacementNamed(Routes.chatAI);
@@ -181,7 +177,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       next: const Icon(Icons.arrow_forward),
       done: Text('onboarding_done'.tr(), style: TextStyle(fontWeight: FontWeight.w600)),
       curve: Curves.fastLinearToSlowEaseIn,
-      controlsMargin: const EdgeInsets.all(16),
+      controlsMargin: const EdgeInsets.all(0),
       controlsPadding: kIsWeb
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),

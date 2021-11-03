@@ -29,6 +29,7 @@ class Reservation {
     this.businessId,
     this.time,
     this.date,
+    this.customerTenant,
     this.tenant,
     this.totalPrice,
     this.createdBy,
@@ -51,6 +52,7 @@ class Reservation {
   BusinessId businessId;
   String time;
   DateTime date;
+  String customerTenant;
   String tenant;
   int totalPrice;
   String createdBy;
@@ -73,6 +75,7 @@ class Reservation {
     businessId: BusinessId.fromJson(json["businessId"]),
     time: json["time"],
     date: DateTime.parse(json["date"]),
+    customerTenant: json["customerTenant"],
     tenant: json["tenant"],
     totalPrice: json["totalPrice"],
     createdBy: json["createdBy"],
@@ -97,6 +100,7 @@ class Reservation {
     "time": time,
     "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
     "tenant": tenant,
+    "customerTenant": customerTenant,
     "totalPrice": totalPrice,
     "createdBy": createdBy,
     "updatedBy": updatedBy,

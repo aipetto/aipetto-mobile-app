@@ -11,7 +11,7 @@ import 'package:aipetto/modules/businessServiceReservation/models/service_reserv
 abstract class ServiceReservationOperations {
   Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateTime, String customerTenant);
   Future<Reservation> getReservationDetails(String reservationId, String customerTenant);
-  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDateTime, String customerTenant);
+  Future<List<Reservation>> getFutureReservationsBooked(String currentDateTime, String customerTenant);
   Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDateTime, String customerTenant);
   Future postNewConfirmationReservation(Reservation reservation, String tenantId, User user);
 }
@@ -46,7 +46,7 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }
 
   @override
-  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDate, String customerTenant) async {
+  Future<List<Reservation>> getFutureReservationsBooked(String currentDate, String customerTenant) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 

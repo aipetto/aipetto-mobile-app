@@ -5,6 +5,7 @@ import 'package:aipetto/modules/businessServiceReservation/models/service_reserv
 import 'package:aipetto/modules/businessServiceReservation/repository/service_reservation.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
@@ -37,8 +38,9 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
       yield ServiceReservationLoading();
       try{
         final DateTime currentDate = new DateTime.now();
+        final String formatDate = DateFormat('yyyy-MM-dd').format(currentDate).toString();
         final User currentUser = await authenticationService.getCurrentUser();
-        final List<Reservation> serviceReservations = await serviceReservationRepository.getFutureReservationsBooked(currentDate, currentUser.tenants.first.tenant.id);
+        final List<Reservation> serviceReservations = await serviceReservationRepository.getFutureReservationsBooked(formatDate, currentUser.tenants.first.tenant.id);
         if (serviceReservations.length > 0){
           yield FutureServiceReservationLoaded(serviceReservations: serviceReservations);
         }else{

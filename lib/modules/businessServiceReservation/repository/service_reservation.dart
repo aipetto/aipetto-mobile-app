@@ -16,7 +16,7 @@ class BusinessServiceReservationRepository {
     return await reservationClient.getClosestFutureReservationBooked(currentDate, userTenant);
   }
 
-  Future<List<Reservation>> getFutureReservationsBooked(DateTime currentDate, String userTenant) async {
+  Future<List<Reservation>> getFutureReservationsBooked(String currentDate, String userTenant) async {
     return await reservationClient.getFutureReservationsBooked(currentDate, userTenant);
   }
 

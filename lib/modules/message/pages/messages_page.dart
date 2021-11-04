@@ -1,5 +1,6 @@
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MessagesPage extends StatefulWidget {
@@ -9,6 +10,8 @@ class MessagesPage extends StatefulWidget {
 
 class _MessagesPageState extends State<MessagesPage>
     with AutomaticKeepAliveClientMixin<MessagesPage> {
+
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -21,34 +24,12 @@ class _MessagesPageState extends State<MessagesPage>
             onTap: () {
               Navigator.of(context).pushNamed(Routes.chatDetail);
             },
-            imagePath: 'assets/images/icon_veterinarian_1.png',
-            name: 'Dr Vidal CRMV 11111',
-            message: 'Iremos pesarlo cuando venga a la clínica hoy, así estamos seguros que estamos por debajo de 36 kilos, la última vez que hicimos el check-up él pesaba 33 kilos.',
-            date: '11:05 AM',
-            unread: 3,
-            online: true,
-          ),
-          MessageListItem(
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.chatDetail);
-            },
-            imagePath: 'assets/images/aipetto/van_alternative.png',
-            name: 'José Villareal',
-            message: 'Qué horário podemos pasar a buscar tu mascota?',
-            date: '08:31 AM',
-            unread: 2,
-            online: false,
-          ),
-          MessageListItem(
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.chatDetail);
-            },
-            imagePath: 'assets/images/aipetto/unplash_tamara.jpg',
-            name: 'Tamara',
-            message: 'Amé tu bichito ❤ hace mucho que quiero cruzar mi perrita',
-            date: '03:48 PM',
+            imagePath: 'assets/images/owl-300.jpg',
+            name: 'Sofia',
+            message: 'chat_bot_ai_introduction_message'.tr(),
+            date: DateFormat('dd/MM/yyyy').format(DateTime.now()).toString(),
             unread: 1,
-            online: false,
+            online: true,
           ),
         ],
       ),

@@ -251,5 +251,8 @@
     "onboarding_done" : "Done",
     "cta_your_veterinarian_record" : "Already have your pet vaccines recorded?",
     "cta_check_veterinarian_nearby": "Check if your veterinarian is registed",
-    "arent_they_cute": "They are so cute, aren`t they"
+    "arent_they_cute": "They are so cute, aren`t they",
+    "chat_bot_ai_introduction_message": "Hi there, I`m happy you curious about pets, what would like to know today?",
+    "chat_send_message": "Write a question",
+    "sofia_the_owl": "Sofia, the wisdom owl"
 }

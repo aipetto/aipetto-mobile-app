@@ -250,5 +250,8 @@
     "onboarding_done" : "Hecho",
     "cta_your_veterinarian_record" : "Ya tiene las vacunas de tu mascota actualizada?",
     "cta_check_veterinarian_nearby": "Corrobore que tu veterinario está registrado",
-    "arent_they_cute": "Son tan lindos"
+    "arent_they_cute": "Son tan lindos",
+    "chat_bot_ai_introduction_message": "Hola, estoy contenta que estés curiosa sobre las mascotas, ¿qué te gustaría saber hoy?",
+    "chat_send_message": "Escriba tu pregunta",
+    "sofia_the_owl": "El búho inteligente"
 }

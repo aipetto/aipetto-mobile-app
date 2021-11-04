@@ -251,5 +251,8 @@
     "onboarding_done" : "Completar",
     "cta_your_veterinarian_record" : "Já tem as vacinas do seu pet atualizadas?",
     "cta_check_veterinarian_nearby": "Confira se seu veterinário está cadastrado",
-    "arent_they_cute": "Eles não a coisa mais fofa"
+    "arent_they_cute": "Eles não a coisa mais fofa",
+    "chat_bot_ai_introduction_message": "Oi, fico muito feliz que queira saber mais dos pets, o que gostaria de perguntar hoje?",
+    "chat_send_message": "Escreva sua pergunta",
+    "sofia_the_owl": "Sofia, a coruja sábia"
 }

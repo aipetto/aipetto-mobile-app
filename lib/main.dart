@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:in_app_update/in_app_update.dart';
 
 import 'modules/auth/bloc/authentication_bloc.dart';
 import 'modules/auth/services/auth_service.dart';

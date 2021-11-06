@@ -13,6 +13,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:in_app_update/in_app_update.dart';
 
 class HomePage extends StatefulWidget {
   final User user;
@@ -24,6 +25,45 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage> {
+
+  AppUpdateInfo _updateInfo;
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+
+  bool _flexibleUpdateAvailable = false;
+
+  Future<void> checkForUpdate() async {
+    InAppUpdate.checkForUpdate().then((info) {
+      setState(() {
+        _updateInfo = info;
+      });
+    }).catchError((e){
+      showSnack(e.toString());
+    });
+  }
+
+  void showSnack(String text) {
+    if(_scaffoldKey.currentContext != null){
+      ScaffoldMessenger.of(_scaffoldKey.currentContext)
+          .showSnackBar(SnackBar(content: Text(text)));
+    }
+  }
+
+  void initState() {
+    super.initState();
+    // Register a post frame callback to modify the widget
+    WidgetsBinding.instance.addPostFrameCallback((_) => inmediateUpdate());
+  }
+
+  inmediateUpdate() {
+    return _updateInfo?.updateAvailability ==
+        UpdateAvailability.updateAvailable
+        ? () {
+      // Performs an immediate update that is entirely handled by the Google Play API.
+      InAppUpdate.performImmediateUpdate()
+          .catchError((e) => showSnack(e.toString()));
+    }
+    : null;
+  }
 
   @override
   Widget build(BuildContext context) {

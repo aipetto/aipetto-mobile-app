@@ -12,6 +12,7 @@ class Business extends Equatable {
   String speciality;
   String about;
   String avatar;
+  String location;
   double rating;
   int price;
   int idSpeciality;
@@ -30,6 +31,7 @@ class Business extends Equatable {
     this.speciality,
     this.about,
     this.avatar,
+    this.location,
     this.rating,
     this.price,
     this.idSpeciality,
@@ -50,6 +52,7 @@ class Business extends Equatable {
       'speciality': speciality,
       'about': about,
       'avatar': avatar,
+      'location': location,
       'rating': rating,
       'price': price,
       'idSpeciality': idSpeciality,
@@ -73,6 +76,7 @@ class Business extends Equatable {
       speciality: map['speciality'],
       about: map['about'],
       avatar: map['avatar'],
+      location: map['location'],
       rating: map['rating'],
       price: map['price'],
       idSpeciality: map['idSpeciality'],
@@ -96,7 +100,8 @@ class Business extends Equatable {
 final businesses = [
   Business(
     name: 'Veterinária Bons Amigos',
-    speciality: 'Vet',
+    speciality: 'Vet, PetShop, Hotel',
+    location: 'Contagem - Minas Gerais',
     about:
         'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
     avatar: 'assets/images/logos/veterinariabonsamigos.jpg',

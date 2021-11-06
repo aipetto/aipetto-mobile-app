@@ -53,7 +53,7 @@ class _BusinessServiceTypeListState extends State<BusinessServiceTypeList> {
                           serviceType: state.businessServiceType
                               .businessServiceTypesRows[index],
                           onTap: () {
-                            Navigator.of(context).pushNamed(Routes.loading);
+                            Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby);
                           },
                         );
                       },

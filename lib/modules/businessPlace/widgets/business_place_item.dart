@@ -17,7 +17,7 @@ class BusinessPlaceItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             CircleAvatar(
-              radius: 20,
+              radius: 50,
               backgroundColor: Colors.transparent,
               child: Image.asset(
                 business.avatar,
@@ -43,6 +43,13 @@ class BusinessPlaceItem extends StatelessWidget {
                   ),
                   Text(
                     business.speciality,
+                    style: TextStyle(
+                      color: Colors.grey[500],
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    business.location,
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: 16,

@@ -1,15 +1,26 @@
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:flutter/material.dart';
 
 class BusinessPlaceItem extends StatelessWidget {
-  final Business business;
+  final BusinessPlace businessPlace;
   final Function onTap;
 
   const BusinessPlaceItem(
-      {Key key, @required this.onTap, @required this.business})
+      {Key key, @required this.onTap, @required this.businessPlace})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    final String businessCity = businessPlace.addressCity ?? '';
+    final String addressState = businessPlace.addressState ?? '';
+    final String addressCountry = businessPlace.addressCountry.name ?? '';
+
+    final String businessCompleteAddress = businessCity
+        + ', '
+        + addressState
+        + ' - '
+        + addressCountry;
+
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -20,7 +31,7 @@ class BusinessPlaceItem extends StatelessWidget {
               radius: 50,
               backgroundColor: Colors.transparent,
               child: Image.asset(
-                business.avatar,
+                businessPlace.photoLogo.first,
                 fit: BoxFit.fill,
               ),
             ),
@@ -32,7 +43,7 @@ class BusinessPlaceItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    business.name,
+                    businessPlace.name,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
@@ -42,14 +53,14 @@ class BusinessPlaceItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    business.speciality,
+                    businessPlace.services.first,
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: 16,
                     ),
                   ),
                   Text(
-                    business.location,
+                    businessCompleteAddress,
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: 16,

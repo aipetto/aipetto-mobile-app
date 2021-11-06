@@ -1,5 +1,5 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
@@ -263,7 +263,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
                         child: BusinessPlaceItem(
-                          business: businesses[0],
+                          businessPlace: businessesPlaces[0],
                         ),
                       ),
                       Divider(

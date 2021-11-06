@@ -1,7 +1,7 @@
 import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/components/text_form_field.dart';
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/confirmation/service_reservation_confirmation_form_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
@@ -12,30 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ConfirmationServiceReservationWidget extends StatefulWidget {
-  /// TODO Until we see a better solution (using Stream which can be accessed anytime), this will be work in cascade mode
-  /// Passing data between pages from top of Widgets down the tree
-
-  // Page 1
-  // Lat, Lng Get Address from Address Page or User Lng, Lat
-  // serviceReservationCart.copyWith(a)
-  // =====Page 2=====
-  // placeId
-  // businessId -> testTenantId 61096ec884e5ebfca16f0143
-  //serviceReservationCart.copyWith(...,b,c)
-  // =====Page 3=====
-  // serviceId
-  //serviceReservationCart.copyWith(...,c)
-
-  // =====AuthCheckerPage=====
-
-  // =====Page 4=====
-  // timeAvailability
-  // dateAvailability
-  // serviceReservationCart.copyWith(...,d, e)
-  // =====Page 5=====
-  // serviceReservationCart.copyWith(...,customerName, customerEmail(checkIfExistInBusinessTenant), customerPhone, petModel(checkIfExistInBusinessTenantPetIdisUnique))
-  // (POST serviceReservationCart)
-
   @override
   State<StatefulWidget> createState() =>
       _ConfirmationServiceReservationWidgetState();
@@ -116,7 +92,7 @@ class _ConfirmationServiceReservationWidgetState
               Container(
                 color: Colors.white,
                 child: BusinessPlaceItem(
-                  business: businesses[0],
+                  businessPlace: businessesPlaces[0],
                 ),
               ),
               Divider(

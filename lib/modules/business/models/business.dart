@@ -96,16 +96,3 @@ class Business extends Equatable {
   // TODO: implement props
   List<Object> get props => throw UnimplementedError();
 }
-
-final businesses = [
-  Business(
-    name: 'Veterinária Bons Amigos',
-    speciality: 'Vet, PetShop, Hotel',
-    location: 'Contagem - Minas Gerais',
-    about:
-        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
-    rating: 4.5,
-    price: 100,
-  )
-];

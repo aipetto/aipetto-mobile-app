@@ -1,5 +1,5 @@
-import 'package:aipetto/modules/business/models/business.dart';
 import 'package:aipetto/modules/business/widgets/business_list_item.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class MyFavoriteBusinessessListPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
         itemBuilder: (context, index) {
           return MyBusinessListItem(
-            business: businesses[index],
+            businessPlace: businessesPlaces[index],
           );
         },
       ),

@@ -1,5 +1,5 @@
 import 'package:aipetto/modules/auth/services/auth_service.dart';
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessServiceReservation/widgets/reserved_past_business_list_item.dart';
 import 'package:aipetto/modules/home/widgets/next_appointment_widget.dart';
 import 'package:aipetto/modules/home/widgets/section_header_widget.dart';
@@ -28,8 +28,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
 
   AppUpdateInfo _updateInfo;
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
-
-  bool _flexibleUpdateAvailable = false;
 
   Future<void> checkForUpdate() async {
     InAppUpdate.checkForUpdate().then((info) {
@@ -192,7 +190,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                   padding: EdgeInsets.symmetric(horizontal: 20),
                                   itemBuilder: (context, index) {
                                     return ReservedPastBusinessListItem(
-                                      business: businesses[index],
+                                      businessPlace: businessesPlaces[index],
                                     );
                                   },
                                 ),

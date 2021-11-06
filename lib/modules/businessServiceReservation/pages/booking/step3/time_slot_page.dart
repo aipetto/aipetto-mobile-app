@@ -1,7 +1,7 @@
 import 'package:aipetto/components/day_slot_item.dart';
 import 'package:aipetto/components/time_slot_item.dart';
 import 'package:aipetto/config/pref_manager.dart';
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
@@ -96,7 +96,7 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             BusinessPlaceItem(
-              business: businesses[0],
+              businessPlace: businessesPlaces[0],
             ),
             Container(
               width: double.infinity,

@@ -1,4 +1,4 @@
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -63,16 +63,14 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
               separatorBuilder: (context, index) => Divider(),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: businesses.length,
+              itemCount: businessesPlaces.length,
               itemBuilder: (context, index) {
                 return BusinessPlaceItem(
                   onTap: () {
                     Navigator.of(context)
-                        .pushNamed(Routes.bookingStep2DetailsOfPlace);
-
-                    /// TODO pass id selected in the list for the step 2 page
+                        .pushNamed(Routes.bookingStep2DetailsOfPlace, arguments: businessesPlaces[index].id);
                   },
-                  business: businesses[index],
+                  businessPlace: businessesPlaces[index],
                 );
               },
             ),

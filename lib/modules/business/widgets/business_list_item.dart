@@ -1,13 +1,13 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyBusinessListItem extends StatelessWidget {
-  final Business business;
+  final BusinessPlace businessPlace;
 
-  const MyBusinessListItem({Key key, @required this.business})
+  const MyBusinessListItem({Key key, @required this.businessPlace})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MyBusinessListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Image.asset(
-              business.avatar,
+              businessPlace.photoLogo.first,
               width: 80,
               height: 80,
             ),
@@ -30,14 +30,14 @@ class MyBusinessListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    business.name,
+                    businessPlace.name,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    business.speciality + '\n',
+                    businessPlace.services.first + '\n',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 14,

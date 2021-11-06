@@ -118,14 +118,7 @@ class _HomeState extends State<Home> {
                       ),
                 title: AppBarTitleWidget(),
                 actions: <Widget>[
-                  _selectedIndex == 2
-                      ? IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.add,
-                          ),
-                        )
-                      : IconButton(
+                      IconButton(
                           onPressed: () => Navigator.pushNamed(
                               context, Routes.notifications),
                           icon: Icon(

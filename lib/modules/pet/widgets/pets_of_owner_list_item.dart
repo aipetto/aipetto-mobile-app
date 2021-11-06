@@ -13,7 +13,7 @@ class PetsOfOwnerListItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
-          Navigator.of(context)
+            Navigator.of(context)
               .pushNamed(Routes.petProfile, arguments: PetSelected(this.pet));
         },
         child: Column(

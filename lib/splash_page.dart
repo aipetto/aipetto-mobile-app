@@ -6,6 +6,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
+  final String redirect_route;
+
+  const SplashPage({Key key, this.redirect_route}) : super(key: key);
+
   @override
   _SplashPageState createState() => _SplashPageState();
 }
@@ -18,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _loadScreen() async {
-    Navigator.of(context).pushReplacementNamed(Routes.home);
+    Navigator.of(context).pushReplacementNamed(widget.redirect_route ?? Routes.home);
   }
 
   @override

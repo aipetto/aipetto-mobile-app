@@ -277,7 +277,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 child: CustomButton(
                   onPressed: () {
                     Navigator.of(context)
-                        .pushNamed(Routes.bookingStep3ServiceAvailability);
+                        .pushNamed(Routes.checkAuthentication);
 
                     /// TODO get the pet profile passing the pet.id
                   },
@@ -361,7 +361,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 child: CustomButton(
                   onPressed: () {
                     Navigator.of(context)
-                        .pushNamed(Routes.bookingStep3ServiceAvailability);
+                        .pushNamed(Routes.checkAuthentication);
 
                     /// TODO get the pet profile passing the pet.id
                   },

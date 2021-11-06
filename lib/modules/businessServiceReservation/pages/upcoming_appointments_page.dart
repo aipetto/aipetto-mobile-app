@@ -5,6 +5,7 @@ import 'package:aipetto/modules/businessServiceReservation/repository/service_re
 import 'package:aipetto/modules/businessServiceReservation/services/serviceReservationApiClient.dart';
 import 'package:aipetto/modules/businessServiceReservation/widgets/upcoming_appointment_list_item.dart';
 import 'package:aipetto/modules/home/widgets/no_appointments_widget.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -42,7 +43,7 @@ class UpcomingAppointmentsPage extends StatelessWidget {
                   if (state is ServiceReservationLoading) {
                     return Center(child: CircularProgressIndicator());
                   } else if (state is ServiceReservationError) {
-                    return CtaAuthenticationWidget();
+                    return CtaAuthenticationWidget(urlToRedirect: Routes.myAppointments);
                   } else if (state is ServiceReservationEmpty) {
                     return Card(
                       child: Row(

@@ -10,6 +10,7 @@ class Routes {
   static const String accessGPS = '/access_gps';
   static const String needAddress = '/need_address';
   static const String loading = '/loading';
+  static const String checkAuthentication = '/check_auth';
   static const String choosePetType = '/pets_types';
   static const String addressSearch = '/address_search';
   static const String bookingStep1FindPlacesNearby =

@@ -17,7 +17,7 @@ class PetHorizontalList extends StatelessWidget {
         if (state is PetLoading) {
           return Flexible(child: Center(child: CircularProgressIndicator()));
         } else if (state is PetError) {
-          return CtaAuthenticationWidget();
+          return CtaAuthenticationWidget(urlToRedirect: Routes.home);
         } else if (state is PetEmpty) {
           return Center(
               child: GestureDetector(

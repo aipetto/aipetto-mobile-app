@@ -1,3 +1,5 @@
+import 'package:aipetto/modules/auth/models/redirect_url.dart';
+import 'package:aipetto/modules/auth/pages/check_authentication.dart';
 import 'package:aipetto/modules/auth/pages/forgot_password_page.dart';
 import 'package:aipetto/modules/auth/pages/login_page.dart';
 import 'package:aipetto/modules/business/pages/business_profile_page.dart';
@@ -49,8 +51,9 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => SplashPage());
 
       case Routes.login:
+        final args = settings.arguments as RedirectUrl;
         return CupertinoPageRoute(
-            builder: (context) => LoginPage(),
+            builder: (context) => LoginPage(previous_route: args.url),
             fullscreenDialog: true,
         );
 
@@ -191,6 +194,10 @@ class RouteGenerator {
       case Routes.loading:
         return CupertinoPageRoute(
             builder: (BuildContext context) => LoadingPage());
+
+      case Routes.checkAuthentication:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => CheckAuthenticationPage());
 
       case Routes.notifications:
         return CupertinoPageRoute(

@@ -18,6 +18,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
+
+  final String previous_route;
+
+  const LoginPage({Key key, this.previous_route}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -54,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
           }
 
           if (state is AuthenticationAuthenticated) {
-            return SplashPage();
+            return SplashPage(redirect_route: widget.previous_route);
           }
 
           return Center(
@@ -168,6 +173,16 @@ class _SignInFormState extends State<_SignInForm> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () => Navigator.pushNamed(
+                context, Routes.home),
+            icon: Icon(
+              Icons.close,
+            ),
+          ),
+        ],
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewportConstraints) {

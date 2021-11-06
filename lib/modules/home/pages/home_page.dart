@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50.0), bottomRight: Radius.circular(50.0)),
                                 child: Image.asset('assets/images/adopt-dogs-call.jpg',
                                   fit: BoxFit.cover,
                                 ),

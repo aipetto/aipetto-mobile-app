@@ -1,8 +1,12 @@
-import 'package:aipetto/modules/businessPlace/models/business_place.dart';
-import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
+import 'package:aipetto/modules/businessPlace/bloc/business_place_bloc.dart';
+import 'package:aipetto/modules/businessPlace/repository/business_place_repository.dart';
+import 'package:aipetto/modules/businessPlace/services/businessPlaceApiClient.dart';
+import 'package:aipetto/modules/businessServiceReservation/widgets/business_place_list_widget.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 class ChooseBusinessPlacePage extends StatefulWidget {
   @override
@@ -14,6 +18,13 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final BusinessPlaceRespository businessPlaceRepository =
+    BusinessPlaceRespository(
+        businessPlaceApiClient: BusinessPlaceApiClient(
+          httpClient: http.Client(),
+        ));
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -43,43 +54,10 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Text(
-                'choose_a_business_place'.tr(),
-                style: Theme.of(context).textTheme.headline6.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ListView.separated(
-              separatorBuilder: (context, index) => Divider(),
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: businessesPlaces.length,
-              itemBuilder: (context, index) {
-                return BusinessPlaceItem(
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(Routes.bookingStep2DetailsOfPlace,
-                        arguments: BusinessPlaceSelected(
-                            businessesPlaces[index].tenant,
-                            businessesPlaces[index].id));
-                  },
-                  businessPlace: businessesPlaces[index],
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      body: BlocProvider(
+        create: (_) => BusinessPlaceBloc(businessPlaceRepository: businessPlaceRepository),
+        child: BusinessPlaceListWidget()
+      )
     );
   }
 }

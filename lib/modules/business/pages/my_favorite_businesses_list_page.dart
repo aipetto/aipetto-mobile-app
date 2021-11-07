@@ -22,7 +22,7 @@ class MyFavoriteBusinessessListPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
         itemBuilder: (context, index) {
           return MyBusinessListItem(
-            businessPlace: businessesPlaces[index],
+            businessPlace: staticBusinessesPlaces[index],
           );
         },
       ),

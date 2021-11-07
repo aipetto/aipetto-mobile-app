@@ -1,3 +1,4 @@
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:aipetto/modules/businessServiceAvailability/models/service_availabilities.dart';

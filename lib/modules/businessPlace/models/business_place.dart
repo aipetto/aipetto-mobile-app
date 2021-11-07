@@ -14,11 +14,11 @@ class BusinessPlacesList {
   List<BusinessPlace> listPlaces;
 
   factory BusinessPlacesList.fromJson(Map<String, dynamic> json) => BusinessPlacesList(
-    listPlaces: List<BusinessPlace>.from(json["listPlaces"].map((x) => BusinessPlace.fromJson(x))),
+    listPlaces: List<BusinessPlace>.from(json["rows"].map((x) => BusinessPlace.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "listPlaces": List<dynamic>.from(listPlaces.map((x) => x.toJson())),
+    "rows": List<dynamic>.from(listPlaces.map((x) => x.toJson())),
   };
 }
 
@@ -426,7 +426,7 @@ class Location {
   };
 }
 
-final businessesPlaces = [
+final staticBusinessesPlaces = [
   BusinessPlace(
     id: '610cb9c812bcbd22144e84f8',
     tenant: '61096ec884e5ebfca16f0143',
@@ -435,14 +435,13 @@ final businessesPlaces = [
     addressCity: 'Contagem',
     addressState: 'Minas Gerais',
     addressCountry: AddressCountry(name: 'Brasil'),
-    photoLogo: ['assets/images/logos/veterinariabonsamigos.jpg'],
+    photoLogo: [{'privateUrl': 'assets/images/logos/veterinariabonsamigos.jpg'}],
   )
 ];
 
 class BusinessPlaceSelected {
-  final String tenantId;
-  final String placeId;
+  BusinessPlace businessPlace;
 
-  BusinessPlaceSelected(this.tenantId, this.placeId);
+  BusinessPlaceSelected(this.businessPlace);
 }
 

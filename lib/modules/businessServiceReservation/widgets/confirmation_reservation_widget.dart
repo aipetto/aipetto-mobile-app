@@ -92,7 +92,7 @@ class _ConfirmationServiceReservationWidgetState
               Container(
                 color: Colors.white,
                 child: BusinessPlaceItem(
-                  businessPlace: businessesPlaces[0],
+                  businessPlace: staticBusinessesPlaces[0],
                 ),
               ),
               Divider(

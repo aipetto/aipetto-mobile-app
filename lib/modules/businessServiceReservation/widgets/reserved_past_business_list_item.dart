@@ -19,16 +19,14 @@ class ReservedPastBusinessListItem extends StatelessWidget {
           color: kAmphibianColorBlueLight),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(Routes.businessProfile);
-
-          /// TODO Add business_page + place_id -> there we bring information about the business_id or vice-versa
+          Navigator.of(context).pushNamed(Routes.bookingStep2DetailsOfPlace, arguments: new BusinessPlaceSelected(staticBusinessesPlaces.first));
         },
         child: Column(
           children: <Widget>[
             CircleAvatar(
               radius: 50,
               backgroundColor: Colors.grey,
-              backgroundImage: AssetImage(businessPlace.photoLogo.first),
+              backgroundImage: AssetImage(businessPlace.photoLogo.first['privateUrl']),
             ),
             SizedBox(
               height: 10,

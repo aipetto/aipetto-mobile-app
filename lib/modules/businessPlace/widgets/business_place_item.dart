@@ -1,8 +1,10 @@
+import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:flutter/material.dart';
 
 class BusinessPlaceItem extends StatelessWidget {
   final BusinessPlace businessPlace;
+
   final Function onTap;
 
   const BusinessPlaceItem(
@@ -30,9 +32,18 @@ class BusinessPlaceItem extends StatelessWidget {
             CircleAvatar(
               radius: 50,
               backgroundColor: Colors.transparent,
-              child: Image.asset(
-                businessPlace.photoLogo.first,
-                fit: BoxFit.fill,
+              child: businessPlace.photoLogo.first['privateUrl'].startsWith('assets') ?
+              Image.asset(
+                businessPlace.photoLogo.first['privateUrl'],
+                height: 500,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+              ) :
+              Image.network(
+                Environment.aipettoCloudStorageHost + businessPlace.photoLogo.first['privateUrl'],
+                height: 500,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(
@@ -52,15 +63,16 @@ class BusinessPlaceItem extends StatelessWidget {
                   SizedBox(
                     height: 3,
                   ),
+                  ...businessPlace.services.map((service) {
+                    return Text(
+                        service ?? '',
+                        style: TextStyle(
+                        color: Colors.grey[500],
+                        fontSize: 16),
+                    );
+                  }),
                   Text(
-                    businessPlace.services.first,
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    businessCompleteAddress,
+                    businessCompleteAddress ?? '',
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: 16,

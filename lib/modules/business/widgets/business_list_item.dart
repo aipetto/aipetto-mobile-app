@@ -56,9 +56,8 @@ class MyBusinessListItem extends StatelessWidget {
               text: 'details'.tr(),
               textSize: 14,
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.businessProfile);
-
-                /// TODO Add business_page + place_id -> there we bring information about the business_id or vice-versa
+                Navigator.of(context).pushNamed(Routes.bookingStep2DetailsOfPlace,
+                    arguments: BusinessPlaceSelected(businessPlace));
               },
               padding: EdgeInsets.symmetric(
                 vertical: 10,

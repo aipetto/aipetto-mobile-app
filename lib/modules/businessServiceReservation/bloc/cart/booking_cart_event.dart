@@ -20,6 +20,18 @@ class AddBookingDateAndTime extends BookingCartEvent{
   AddBookingDateAndTime(this.availability);
 }
 
+class ChangeBookingCartService extends BookingCartEvent{
+  final String serviceId;
+
+  ChangeBookingCartService(this.serviceId);
+}
+
+class ChangeBookingCartAvailability extends BookingCartEvent{
+  final ServiceAvailability availability;
+
+  ChangeBookingCartAvailability(this.availability);
+}
+
 class GetBookingDateAndTime extends BookingCartEvent{
 
 }

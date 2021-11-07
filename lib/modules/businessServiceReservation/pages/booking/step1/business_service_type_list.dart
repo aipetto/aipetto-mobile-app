@@ -4,7 +4,6 @@ import 'package:aipetto/modules/businessServicesTypes/models/business_services_t
 import 'package:aipetto/modules/businessServicesTypes/widgets/service_type_item.dart';
 import 'package:aipetto/modules/shared/widgets/no_data_available_widget.dart';
 import 'package:aipetto/routes/routes.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

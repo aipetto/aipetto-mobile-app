@@ -96,7 +96,7 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             BusinessPlaceItem(
-              businessPlace: businessesPlaces[0],
+              businessPlace: staticBusinessesPlaces[0],
             ),
             Container(
               width: double.infinity,

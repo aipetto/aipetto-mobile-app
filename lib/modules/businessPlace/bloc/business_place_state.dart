@@ -29,4 +29,4 @@ class BusinessPlaceLoaded extends BusinessPlaceState {
   List<Object> get props => [businessPlace];
 }
 
-class PetError extends BusinessPlaceState {}
+class BusinessPlaceError extends BusinessPlaceState {}

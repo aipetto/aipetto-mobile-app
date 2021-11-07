@@ -95,7 +95,7 @@ class RouteGenerator {
       case Routes.bookingStep2DetailsOfPlace:
         final args = settings.arguments as BusinessPlaceSelected;
         return CupertinoPageRoute(
-            builder: (BuildContext context) => BusinessProfilePage(businessPlaceId: args.placeId, businessPlaceTenantId: args.tenantId));
+            builder: (BuildContext context) => BusinessProfilePage(businessPlace: args.businessPlace));
 
       case Routes.bookingStep3ServiceAvailability:
         return CupertinoPageRoute(
@@ -108,9 +108,6 @@ class RouteGenerator {
 
       case Routes.bookingStepConfirmation:
         return CupertinoPageRoute(builder: (_) => AppointmentBookedPage());
-
-      case Routes.businessProfile:
-        return CupertinoPageRoute(builder: (_) => BusinessProfilePage());
 
       case Routes.addNewPet:
         final args = settings.arguments as PetTypeSelected;

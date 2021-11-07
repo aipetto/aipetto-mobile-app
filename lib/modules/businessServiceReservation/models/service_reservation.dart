@@ -45,6 +45,7 @@ class Reservation {
     this.rowId,
   });
 
+
   List<ServiceType> serviceType;
   List<dynamic> serviceProviderIDs;
   bool needTransportation;
@@ -66,6 +67,32 @@ class Reservation {
   String updatedAt;
   int v;
   String rowId;
+
+  Reservation copyWith({
+    serviceType,
+    needTransportation,
+    businessId,
+    time,
+    date,
+    customerTenant,
+    tenant,
+    totalPrice,
+    source,
+    place,
+    discountCode
+  }) => Reservation(
+      serviceType: serviceType ?? this.serviceType,
+      needTransportation: needTransportation ?? this.needTransportation,
+      businessId: businessId ?? this.businessId,
+      time: time ?? this.time,
+      date: date ?? this.date,
+      customerTenant: customerTenant ?? this.customerTenant,
+      tenant: tenant ?? this.tenant,
+      totalPrice: totalPrice ?? this.totalPrice,
+      source: source ?? this.source,
+      place: place ?? this.place,
+      discountCode: discountCode ?? this.discountCode
+  );
 
   factory Reservation.fromJson(Map<String, dynamic> json) => Reservation(
     serviceType: List<ServiceType>.from(json["serviceType"].map((x) => ServiceType.fromJson(x))),

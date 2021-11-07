@@ -1,26 +1,24 @@
 import 'package:aipetto/components/custom_button.dart';
+import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/modules/business/models/businessGeneralModel.dart';
 import 'package:aipetto/modules/business/widgets/AppWidget.dart';
 import 'package:aipetto/modules/business/widgets/BHColors.dart';
 import 'package:aipetto/modules/business/widgets/BHConstants.dart';
 import 'package:aipetto/modules/business/widgets/BHDataProvider.dart';
-import 'package:aipetto/modules/business/widgets/BHImages.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:nb_utils/nb_utils.dart';
 
 class BusinessProfilePage extends StatefulWidget {
   static String tag = '/NewSliverCustom';
-  final String businessPlaceTenantId;
-  final String businessPlaceId;
+  final BusinessPlace businessPlace;
 
-  const BusinessProfilePage({Key key, this.businessPlaceTenantId, this.businessPlaceId}) : super(key: key);
+  const BusinessProfilePage({Key key, this.businessPlace}) : super(key: key);
 
   @override
   BusinessProfilePageState createState() => BusinessProfilePageState();
@@ -280,6 +278,9 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
                 child: CustomButton(
                   onPressed: () {
+                    /**BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(
+                        state.businessServiceType.businessServiceTypesRows[index].id)
+                    );**/
                     Navigator.of(context)
                         .pushNamed(Routes.checkAuthentication);
 
@@ -417,8 +418,15 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     background: Stack(
                       overflow: Overflow.visible,
                       children: [
+                        widget.businessPlace.photoLogo.first['privateUrl'].startsWith('assets') ?
                         Image.asset(
-                          BHDashedBoardImage6,
+                          widget.businessPlace.photoLogo.first['privateUrl'],
+                          height: 500,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        ) :
+                        Image.network(
+                          Environment.aipettoCloudStorageHost + widget.businessPlace.photoLogo.first['privateUrl'],
                           height: 500,
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover,

@@ -190,7 +190,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                   padding: EdgeInsets.symmetric(horizontal: 20),
                                   itemBuilder: (context, index) {
                                     return ReservedPastBusinessListItem(
-                                      businessPlace: businessesPlaces[index],
+                                      businessPlace: staticBusinessesPlaces[index],
                                     );
                                   },
                                 ),

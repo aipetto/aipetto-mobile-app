@@ -263,7 +263,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
                         child: BusinessPlaceItem(
-                          businessPlace: businessesPlaces[0],
+                          businessPlace: staticBusinessesPlaces[0],
                         ),
                       ),
                       Divider(

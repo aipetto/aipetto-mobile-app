@@ -11,7 +11,10 @@ class BookingCartBloc extends Bloc<BookingCartEvent, BookingCartState> {
   BookingCartBloc() : super(BookingCartState());
 
   @override
-  Stream<BookingCartState> mapEventToState(BookingCartEvent event) {
-    print('ok');
+  Stream<BookingCartState> mapEventToState(BookingCartEvent event) async* {
+
+    if(event is AddBookingService) {
+      yield BookingCartState(serviceId: event.serviceId);
+    }
   }
 }

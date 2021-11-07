@@ -7,6 +7,11 @@ class AddBookingService extends BookingCartEvent{
   final String serviceId;
 
   AddBookingService(this.serviceId);
+
+  @override
+  String toString(){
+    return 'Instance of BookingService in cart: ${this.serviceId}';
+  }
 }
 
 class AddBookingDateAndTime extends BookingCartEvent{

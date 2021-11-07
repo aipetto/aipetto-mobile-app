@@ -68,7 +68,10 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
                 return BusinessPlaceItem(
                   onTap: () {
                     Navigator.of(context)
-                        .pushNamed(Routes.bookingStep2DetailsOfPlace, arguments: businessesPlaces[index].id);
+                        .pushNamed(Routes.bookingStep2DetailsOfPlace,
+                        arguments: BusinessPlaceSelected(
+                            businessesPlaces[index].tenant,
+                            businessesPlaces[index].id));
                   },
                   businessPlace: businessesPlaces[index],
                 );

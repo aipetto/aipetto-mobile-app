@@ -17,6 +17,10 @@ import 'package:nb_utils/nb_utils.dart';
 
 class BusinessProfilePage extends StatefulWidget {
   static String tag = '/NewSliverCustom';
+  final String businessPlaceTenantId;
+  final String businessPlaceId;
+
+  const BusinessProfilePage({Key key, this.businessPlaceTenantId, this.businessPlaceId}) : super(key: key);
 
   @override
   BusinessProfilePageState createState() => BusinessProfilePageState();

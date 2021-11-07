@@ -24,7 +24,7 @@ class ServiceAvailabilityApiClient implements ServiceAvailabilityOperations {
   Future<List<ServiceAvailability>> getAvailabilityForServiceRegisteredToBusiness(String serviceId, String businessTenant, String businessId) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
-    final url = '$_baseUrl/tenant/:tenantId/business-place-service-availability?filter%5BserviceType%5D=$serviceId&filter%5BbusinessId%5D=$businessId';
+    final url = '$_baseUrl/tenant/$businessTenant/business-place-service-availability?filter%5BserviceType%5D=$serviceId&filter%5BbusinessId%5D=$businessId';
     final availabilityResponse = await this.httpClient.get(url, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

@@ -4,6 +4,7 @@ import 'package:aipetto/modules/auth/pages/forgot_password_page.dart';
 import 'package:aipetto/modules/auth/pages/login_page.dart';
 import 'package:aipetto/modules/business/pages/business_profile_page.dart';
 import 'package:aipetto/modules/business/pages/my_favorite_businesses_list_page.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/appointment_detail_page.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/booking/filter/filter_page.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/booking/step1/choose_service_to_reserve_page.dart';
@@ -92,8 +93,9 @@ class RouteGenerator {
             builder: (BuildContext context) => OnBoardingPage());
 
       case Routes.bookingStep2DetailsOfPlace:
+        final args = settings.arguments as BusinessPlaceSelected;
         return CupertinoPageRoute(
-            builder: (BuildContext context) => BusinessProfilePage());
+            builder: (BuildContext context) => BusinessProfilePage(businessPlaceId: args.placeId, businessPlaceTenantId: args.tenantId));
 
       case Routes.bookingStep3ServiceAvailability:
         return CupertinoPageRoute(
@@ -103,8 +105,6 @@ class RouteGenerator {
         return CupertinoPageRoute(
             builder: (BuildContext context) =>
                 ReservationCustomerDetailsPage()); // TODO receive args parameters
-
-      /// AppointmentBookedPage()
 
       case Routes.bookingStepConfirmation:
         return CupertinoPageRoute(builder: (_) => AppointmentBookedPage());

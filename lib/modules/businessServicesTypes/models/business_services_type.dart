@@ -206,3 +206,10 @@ class ServiceImage {
         "downloadUrl": downloadUrl,
       };
 }
+
+
+class ServiceTypeSelected {
+  final String serviceId;
+
+  ServiceTypeSelected(this.serviceId);
+}

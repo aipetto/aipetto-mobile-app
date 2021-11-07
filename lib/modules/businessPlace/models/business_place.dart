@@ -6,6 +6,22 @@ BusinessPlace businessPlaceFromJson(String str) => BusinessPlace.fromJson(json.d
 
 String businessPlaceToJson(BusinessPlace data) => json.encode(data.toJson());
 
+class BusinessPlacesList {
+  BusinessPlacesList({
+    this.listPlaces,
+  });
+
+  List<BusinessPlace> listPlaces;
+
+  factory BusinessPlacesList.fromJson(Map<String, dynamic> json) => BusinessPlacesList(
+    listPlaces: List<BusinessPlace>.from(json["listPlaces"].map((x) => BusinessPlace.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "listPlaces": List<dynamic>.from(listPlaces.map((x) => x.toJson())),
+  };
+}
+
 class BusinessPlace extends Equatable{
   BusinessPlace({
     this.location,
@@ -422,4 +438,11 @@ final businessesPlaces = [
     photoLogo: ['assets/images/logos/veterinariabonsamigos.jpg'],
   )
 ];
+
+class BusinessPlaceSelected {
+  final String tenantId;
+  final String placeId;
+
+  BusinessPlaceSelected(this.tenantId, this.placeId);
+}
 

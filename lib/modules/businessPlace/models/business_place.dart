@@ -432,10 +432,15 @@ final staticBusinessesPlaces = [
     tenant: '61096ec884e5ebfca16f0143',
     name: 'Veterinária Bons Amigos',
     services: ['Vet, PetShop, Hotel'],
+    address: 'Avenida Frei Henrique soares',
+    addressNumber: '163',
     addressCity: 'Contagem',
     addressState: 'Minas Gerais',
     addressCountry: AddressCountry(name: 'Brasil'),
     photoLogo: [{'privateUrl': 'assets/images/logos/veterinariabonsamigos.jpg'}],
+    isOpen: true,
+    openTime: '09:00',
+    closeTime: '18:00'
   )
 ];
 

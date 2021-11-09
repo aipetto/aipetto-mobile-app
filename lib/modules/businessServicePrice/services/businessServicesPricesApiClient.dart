@@ -28,7 +28,7 @@ class BusinessServicesPricesApiClient {
     });
 
     if(businessServicesPricesResponse.statusCode != 200) {
-      throw new Exception('Error get closest future reservation');
+      throw new Exception('Error getting business services prices');
     }
 
     final json = jsonDecode(businessServicesPricesResponse.body);

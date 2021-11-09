@@ -165,7 +165,7 @@
     "add_height": "Add height",
     "weight": "Weight",
     "add_weight": "Add weight",
-    "emergency_contact": "Emeregency Contact",
+    "emergency_contact": "Emergency Contact",
     "add_emergency_contact": "Add emeregency contact",
     "location": "Location",
     "geo_location_address": "Your current address here",
@@ -254,5 +254,8 @@
     "arent_they_cute": "They are so cute, aren`t they",
     "chat_bot_ai_introduction_message": "Hi there, I`m happy you curious about pets, what would like to know today?",
     "chat_send_message": "Write a question",
-    "sofia_the_owl": "Sofia, the wisdom owl"
+    "sofia_the_owl": "Sofia, the wisdom owl",
+    "opening_time": "Working Time",
+    "business_open": "Open",
+    "business_closed": "Closed"
 }

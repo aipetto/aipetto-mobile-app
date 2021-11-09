@@ -17,7 +17,7 @@ const BHVerificationTitle =
 const BHResetPasswordTitle = "Enter your new password and confirm it.";
 const BHAlertDialogTitle =
     "Your password has been completely reset, login and use the app";
-const BHDetailTitle = "Melhor veterinária em Contagem, Minas Gerais.";
+const BHDetailTitle = "Melhor veterinária de Contagem, Minas Gerais.";
 const BHReview =
     "Love it !!! /n I had a fun party with my new hair color, Thank you.";
 const BHInviteFriendsTitle =

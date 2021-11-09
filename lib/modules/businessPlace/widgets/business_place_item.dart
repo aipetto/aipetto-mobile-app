@@ -63,14 +63,6 @@ class BusinessPlaceItem extends StatelessWidget {
                   SizedBox(
                     height: 3,
                   ),
-                  ...businessPlace.services.map((service) {
-                    return Text(
-                        service ?? '',
-                        style: TextStyle(
-                        color: Colors.grey[500],
-                        fontSize: 16),
-                    );
-                  }),
                   Text(
                     businessCompleteAddress ?? '',
                     style: TextStyle(

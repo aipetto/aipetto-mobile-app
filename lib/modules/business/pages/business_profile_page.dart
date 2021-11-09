@@ -115,7 +115,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                   children: [
                     8.height,
                     Text(
-                      'contact_number'.tr(),
+                      'contact'.tr(),
                       style: TextStyle(
                           color: BHAppTextColorPrimary,
                           fontWeight: FontWeight.bold,
@@ -129,6 +129,16 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                         Text(businessOwnerOfServices.businessId.contactPhone ?? '',
                             style:
                                 TextStyle(color: Colors.black, fontSize: 14)),
+                      ],
+                    ),
+                    8.height,
+                    Row(
+                      children: [
+                        Icon(Icons.call, size: 16),
+                        8.width,
+                        Text('Whatsapp:' + businessOwnerOfServices.businessId.contactPhone ?? '',
+                            style:
+                            TextStyle(color: Colors.black, fontSize: 14)),
                       ],
                     ),
                     8.height,
@@ -205,15 +215,6 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'location'.tr(),
-                      style: TextStyle(
-                          color: BHAppTextColorPrimary,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                      textAlign: TextAlign.center,
-                    ),
-                    8.width,
                     Expanded(
                       child: Text(
                         address,
@@ -223,7 +224,44 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                margin: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.transparent,
+                  boxShadow: [
+                    BoxShadow(
+                        color: BHGreyColor.withOpacity(0.1),
+                        offset: Offset(0.0, 1.0),
+                        blurRadius: 1.0)
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        addressState,
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                        maxLines: 3,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                     8.width,
+                    Expanded(
+                      child: Text(
+                        addressZipCode,
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                        maxLines: 3,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ),
               ),

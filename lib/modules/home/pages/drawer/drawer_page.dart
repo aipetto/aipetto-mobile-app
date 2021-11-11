@@ -20,6 +20,7 @@ class DrawerPage extends StatelessWidget {
         BlocProvider.of<AuthenticationBloc>(context).state;
     if (authenticationUserState is AuthenticationAuthenticated) {
       if (authenticationUserState.user.avatars != null &&
+          authenticationUserState.user.avatars.length > 0 &&
           authenticationUserState.user.avatars.first != null) {
         profileImage = authenticationUserState.user.avatars.first.publicUrl;
       }

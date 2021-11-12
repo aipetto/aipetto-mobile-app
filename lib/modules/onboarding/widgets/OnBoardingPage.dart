@@ -90,8 +90,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         height: 60,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(primary: kAmphibianColorGreenLight),
-          child: const Text(
-            'Start',
+          child: Text(
+            'onboarding_getin'.tr(),
             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
           ),
           onPressed: () => _onIntroEnd(context),

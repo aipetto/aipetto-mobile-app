@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
     String firstName = '';
 
     if (widget.user != null) {
-      firstName = widget.user.firstName;
+      firstName = widget.user.firstName ?? '';
     }
 
     final PetRepository petRepository = PetRepository(

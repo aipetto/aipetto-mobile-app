@@ -22,7 +22,8 @@ class ServiceAvailabilityBloc extends Bloc<ServiceAvailabilityEvent, ServiceAvai
         final List<ServiceAvailability> serviceAvailabilities = await serviceAvailabilityRespository.fetchBusinessServiceAvailability(
             event.serviceId,
             event.businessTenant,
-            event.businessId
+            event.businessId,
+            event.dateToFilterTimeSlot
         );
         yield ServiceAvailabilityLoaded(serviceAvailabilities: serviceAvailabilities);
       } catch (_) {

@@ -22,18 +22,10 @@ class TimeSlotItem extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              time.split(' ')[0],
+              time,
               style: TextStyle(
                 color: kAmphibianColorBlueDarkAlternative,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              time.split(' ')[1],
-              style: TextStyle(
-                color: kAmphibianColorBlueDarkAlternative,
-                fontSize: 10,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),

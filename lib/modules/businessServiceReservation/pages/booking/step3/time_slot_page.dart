@@ -1,78 +1,70 @@
-import 'package:aipetto/components/day_slot_item.dart';
-import 'package:aipetto/components/time_slot_item.dart';
 import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
+import 'package:aipetto/modules/businessServiceAvailability/bloc/service_availability_bloc.dart';
+import 'package:aipetto/modules/businessServiceAvailability/repository/service_availability_repository.dart';
+import 'package:aipetto/modules/businessServiceAvailability/services/serviceAvailabilityApiClient.dart';
+import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
+import 'package:aipetto/modules/businessServiceReservation/pages/booking/step3/time_slot_item.dart';
 import 'package:aipetto/routes/routes.dart';
-import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 class TimeSlotPage extends StatefulWidget {
+
+  final BusinessPlace businessPlace;
+
+  const TimeSlotPage({Key key, this.businessPlace}) : super(key: key);
+
   @override
   _TimeSlotPageState createState() => _TimeSlotPageState();
 }
 
-class _TimeSlotPageState extends State<TimeSlotPage> {
-  int _selectedIndex = -1;
+class _TimeSlotPageState extends State<TimeSlotPage>  {
+  final formKey = GlobalKey<FormState>();
+  DateTime selectedBookingDate;
+  ValueChanged<DateTime> selectBookingDateFromCalendar;
+  TextEditingController dtBookingEditingController = new TextEditingController();
 
-  Widget _slot(String time, int slots, String hour) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: '$time ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextSpan(
-                  text: '$slots ${'slots'.tr().toLowerCase()}',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: kAmphibianColorBlueDarkAlternative,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        StaggeredGridView.countBuilder(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          crossAxisCount: 4,
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: slots,
-          staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          itemBuilder: (context, index) {
-            return TimeSlotItem(
-              time: hour,
-              onTap: () {
-                Navigator.of(context)
-                    .pushNamed(Routes.bookingStep4ReservationDetails);
-              },
-            );
-          },
-        ),
-      ],
+  final ServiceAvailabilityRespository serviceAvailabilityRepository = ServiceAvailabilityRespository(
+      ServiceAvailabilityApiClient(http.Client()));
+
+  Widget _inputBookingDateFromCalendar(){
+    return TextFormField(
+      controller: dtBookingEditingController,
+      onTap: () async {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        // Show Date Picker
+        await _selectBookingDateFromCalendar(context);
+        dtBookingEditingController.text = DateFormat('dd/MM/yyyy').format(selectedBookingDate);
+      },
+      readOnly: true,
+      decoration: InputDecoration(labelText: 'date'.tr()),
     );
+  }
+
+  Future<void> _selectBookingDateFromCalendar(BuildContext context) async {
+    final DateTime pickedDate = await showDatePicker(
+        context: context,
+        initialDate: selectedBookingDate ?? DateTime.now(),
+        firstDate: DateTime(2021,1),
+        lastDate: DateTime(2041));
+    if(pickedDate != null && pickedDate != selectedBookingDate){
+      setState((){
+        selectedBookingDate = pickedDate;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
+    dtBookingEditingController.text = DateFormat('dd/MM/yyyy').format(selectedBookingDate ?? DateTime.now());
+    selectedBookingDate = selectedBookingDate ?? DateTime.now();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -90,81 +82,52 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            BusinessPlaceItem(
-              businessPlace: staticBusinessesPlaces[0],
-            ),
-            Container(
-              width: double.infinity,
-              height: 85,
-              padding: EdgeInsets.symmetric(
-                vertical: 10,
-              ),
-              color: Prefs.getBool(Prefs.DARKTHEME, def: false)
-                  ? Colors.white.withOpacity(0.12)
-                  : Colors.grey[300],
-              child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(
-                  width: 10,
+      body: BlocProvider<ServiceAvailabilityBloc>(
+          create: (_) => ServiceAvailabilityBloc(
+            serviceAvailabilityRespository: serviceAvailabilityRepository
+          ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                BusinessPlaceItem(
+                  businessPlace: bookingCartState.place,
                 ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10,
+                Container(
+                  width: double.infinity,
+                  height: 85,
+                  padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 80.0),
+                  color: Prefs.getBool(Prefs.DARKTHEME, def: false)
+                      ? Colors.white.withOpacity(0.12)
+                      : Colors.green[100],
+                  child: Form(
+                      key: formKey,
+                      child: Column(
+                        children: <Widget>[
+                            _inputBookingDateFromCalendar(),
+                        ],
+                      )),
                 ),
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return DaySlotItem(
-                    onTap: () {
-                      setState(() {
-                        _selectedIndex = index;
-                      });
-                    },
-                    selected: _selectedIndex == index,
-                  );
-                },
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text(
-                  '${'today'.tr()}, 24 Dec',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Divider(
+                  color: Colors.grey,
+                  height: 1,
+                  indent: 15,
+                  endIndent: 15,
                 ),
-              ),
+                SizedBox(
+                  height: 25,
+                ),
+                TimeSlotItemPage(
+                  serviceId: bookingCartState.serviceId,
+                  businessTenant: bookingCartState.place.tenant,
+                  businessId: bookingCartState.place.businessId.id,
+                  dateToFilterTimeSlot: selectedBookingDate,
+                ),
+              ],
             ),
-            Divider(
-              color: Colors.grey,
-              height: 1,
-              indent: 15,
-              endIndent: 15,
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            _slot('morning'.tr(), 11, '08:30 AM'),
-            SizedBox(
-              height: 25,
-            ),
-            _slot('afternoon'.tr(), 9, '12:00 PM'),
-            SizedBox(
-              height: 25,
-            ),
-            _slot('evening'.tr(), 5, '04:00 PM'),
-            SizedBox(
-              height: 25,
-            ),
-          ],
-        ),
-      ),
+           ),
+        )
     );
   }
 }

@@ -8,7 +8,7 @@ class ServiceAvailabilityRespository {
 
   ServiceAvailabilityRespository(this.serviceAvailabilityApiClient) : assert(serviceAvailabilityApiClient != null);
 
-  Future<List<ServiceAvailability>> fetchBusinessServiceAvailability(String serviceId, String businessTenant, String businessId) async{
-    return await serviceAvailabilityApiClient.getAvailabilityForServiceRegisteredToBusiness(serviceId, businessTenant, businessId);
+  Future<List<ServiceAvailability>> fetchBusinessServiceAvailability(String serviceId, String businessTenant, String businessId, String dateToFilterTimeSlots) async{
+    return await serviceAvailabilityApiClient.getAvailabilityForServiceRegisteredToBusiness(serviceId, businessTenant, businessId, dateToFilterTimeSlots);
   }
 }

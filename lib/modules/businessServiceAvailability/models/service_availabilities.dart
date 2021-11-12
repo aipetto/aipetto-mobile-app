@@ -1,35 +1,41 @@
+// To parse this JSON data, do
+//
+//     final serviceAvailabilities = serviceAvailabilitiesFromJson(jsonString);
+
 import 'dart:convert';
 
-import 'package:aipetto/modules/businessPlace/models/business_place.dart';
+ServiceAvailabilities serviceAvailabilitiesFromJson(String str) => ServiceAvailabilities.fromJson(json.decode(str));
 
-ServiceAvailability serviceAvailabilityFromJson(String str) => ServiceAvailability.fromJson(json.decode(str));
-
-String serviceAvailabilityToJson(ServiceAvailability data) => json.encode(data.toJson());
+String serviceAvailabilitiesToJson(ServiceAvailabilities data) => json.encode(data.toJson());
 
 class ServiceAvailabilities {
   ServiceAvailabilities({
     this.rows,
+    this.count,
   });
 
   List<ServiceAvailability> rows;
+  int count;
 
   factory ServiceAvailabilities.fromJson(Map<String, dynamic> json) => ServiceAvailabilities(
     rows: List<ServiceAvailability>.from(json["rows"].map((x) => ServiceAvailability.fromJson(x))),
+    count: json["count"],
   );
 
   Map<String, dynamic> toJson() => {
     "rows": List<dynamic>.from(rows.map((x) => x.toJson())),
+    "count": count,
   };
 }
 
 class ServiceAvailability {
   ServiceAvailability({
-    this.timeSlot,
-    this.days,
-    this.workOnHolidays,
     this.places,
+    this.timeSlot,
     this.id,
     this.serviceType,
+    this.dateEnd,
+    this.dateStart,
     this.businessId,
     this.name,
     this.tenant,
@@ -41,12 +47,12 @@ class ServiceAvailability {
     this.rowId,
   });
 
+  List<Place> places;
   List<String> timeSlot;
-  List<String> days;
-  bool workOnHolidays;
-  List<BusinessPlace> places;
   String id;
   ServiceType serviceType;
+  DateTime dateEnd;
+  DateTime dateStart;
   BusinessId businessId;
   dynamic name;
   String tenant;
@@ -58,12 +64,12 @@ class ServiceAvailability {
   String rowId;
 
   factory ServiceAvailability.fromJson(Map<String, dynamic> json) => ServiceAvailability(
+    places: List<Place>.from(json["places"].map((x) => Place.fromJson(x))),
     timeSlot: List<String>.from(json["timeSlot"].map((x) => x)),
-    days: List<String>.from(json["days"].map((x) => x)),
-    workOnHolidays: json["workOnHolidays"],
-    places: List<BusinessPlace>.from(json["places"].map((x) => BusinessPlace.fromJson(x))),
     id: json["_id"],
     serviceType: ServiceType.fromJson(json["serviceType"]),
+    dateEnd: DateTime.parse(json["dateEnd"]),
+    dateStart: DateTime.parse(json["dateStart"]),
     businessId: BusinessId.fromJson(json["businessId"]),
     name: json["name"],
     tenant: json["tenant"],
@@ -76,12 +82,12 @@ class ServiceAvailability {
   );
 
   Map<String, dynamic> toJson() => {
-    "timeSlot": List<dynamic>.from(timeSlot.map((x) => x)),
-    "days": List<dynamic>.from(days.map((x) => x)),
-    "workOnHolidays": workOnHolidays,
     "places": List<dynamic>.from(places.map((x) => x.toJson())),
+    "timeSlot": List<dynamic>.from(timeSlot.map((x) => x)),
     "_id": id,
     "serviceType": serviceType.toJson(),
+    "dateEnd": "${dateEnd.year.toString().padLeft(4, '0')}-${dateEnd.month.toString().padLeft(2, '0')}-${dateEnd.day.toString().padLeft(2, '0')}",
+    "dateStart": "${dateStart.year.toString().padLeft(4, '0')}-${dateStart.month.toString().padLeft(2, '0')}-${dateStart.day.toString().padLeft(2, '0')}",
     "businessId": businessId.toJson(),
     "name": name,
     "tenant": tenant,
@@ -135,7 +141,7 @@ class BusinessId {
   List<String> categories;
   String id;
   dynamic instagram;
-  dynamic notes;
+  String notes;
   dynamic linkedin;
   String facebook;
   dynamic website;
@@ -147,8 +153,8 @@ class BusinessId {
   dynamic addressStreetNumber;
   dynamic addressStreet;
   dynamic contactEmail;
-  dynamic contactWhatsApp;
-  dynamic contactPhone;
+  String contactWhatsApp;
+  String contactPhone;
   String contactName;
   String name;
   String businessId;
@@ -279,6 +285,154 @@ class BusinessLogo {
     "updatedAt": updatedAt.toIso8601String(),
     "createdAt": createdAt.toIso8601String(),
     "id": businessLogoId,
+  };
+}
+
+class Place {
+  Place({
+    this.location,
+    this.services,
+    this.categories,
+    this.is24Hours,
+    this.isOpen,
+    this.id,
+    this.stars,
+    this.closeTime,
+    this.openTime,
+    this.addressState,
+    this.addressCity,
+    this.addressZipCode,
+    this.addressNumber,
+    this.address,
+    this.longitude,
+    this.latitude,
+    this.placeType,
+    this.name,
+    this.businessId,
+    this.addressCountry,
+    this.tenant,
+    this.createdBy,
+    this.updatedBy,
+    this.photoLogo,
+    this.photoStore,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+    this.placeId,
+  });
+
+  Location location;
+  List<String> services;
+  List<String> categories;
+  bool is24Hours;
+  bool isOpen;
+  String id;
+  dynamic stars;
+  String closeTime;
+  String openTime;
+  String addressState;
+  String addressCity;
+  dynamic addressZipCode;
+  String addressNumber;
+  String address;
+  double longitude;
+  double latitude;
+  String placeType;
+  String name;
+  String businessId;
+  String addressCountry;
+  String tenant;
+  String createdBy;
+  String updatedBy;
+  List<BusinessLogo> photoLogo;
+  List<dynamic> photoStore;
+  DateTime createdAt;
+  DateTime updatedAt;
+  int v;
+  String placeId;
+
+  factory Place.fromJson(Map<String, dynamic> json) => Place(
+    location: Location.fromJson(json["location"]),
+    services: List<String>.from(json["services"].map((x) => x)),
+    categories: List<String>.from(json["categories"].map((x) => x)),
+    is24Hours: json["is24hours"],
+    isOpen: json["isOpen"],
+    id: json["_id"],
+    stars: json["stars"],
+    closeTime: json["closeTime"],
+    openTime: json["openTime"],
+    addressState: json["addressState"],
+    addressCity: json["addressCity"],
+    addressZipCode: json["addressZipCode"],
+    addressNumber: json["addressNumber"],
+    address: json["address"],
+    longitude: json["longitude"].toDouble(),
+    latitude: json["latitude"].toDouble(),
+    placeType: json["placeType"],
+    name: json["name"],
+    businessId: json["businessId"],
+    addressCountry: json["addressCountry"],
+    tenant: json["tenant"],
+    createdBy: json["createdBy"],
+    updatedBy: json["updatedBy"],
+    photoLogo: List<BusinessLogo>.from(json["photoLogo"].map((x) => BusinessLogo.fromJson(x))),
+    photoStore: List<dynamic>.from(json["photoStore"].map((x) => x)),
+    createdAt: DateTime.parse(json["createdAt"]),
+    updatedAt: DateTime.parse(json["updatedAt"]),
+    v: json["__v"],
+    placeId: json["id"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "location": location.toJson(),
+    "services": List<dynamic>.from(services.map((x) => x)),
+    "categories": List<dynamic>.from(categories.map((x) => x)),
+    "is24hours": is24Hours,
+    "isOpen": isOpen,
+    "_id": id,
+    "stars": stars,
+    "closeTime": closeTime,
+    "openTime": openTime,
+    "addressState": addressState,
+    "addressCity": addressCity,
+    "addressZipCode": addressZipCode,
+    "addressNumber": addressNumber,
+    "address": address,
+    "longitude": longitude,
+    "latitude": latitude,
+    "placeType": placeType,
+    "name": name,
+    "businessId": businessId,
+    "addressCountry": addressCountry,
+    "tenant": tenant,
+    "createdBy": createdBy,
+    "updatedBy": updatedBy,
+    "photoLogo": List<dynamic>.from(photoLogo.map((x) => x.toJson())),
+    "photoStore": List<dynamic>.from(photoStore.map((x) => x)),
+    "createdAt": createdAt.toIso8601String(),
+    "updatedAt": updatedAt.toIso8601String(),
+    "__v": v,
+    "id": placeId,
+  };
+}
+
+class Location {
+  Location({
+    this.type,
+    this.coordinates,
+  });
+
+  String type;
+  List<double> coordinates;
+
+  factory Location.fromJson(Map<String, dynamic> json) => Location(
+    type: json["type"],
+    coordinates: List<double>.from(json["coordinates"].map((x) => x.toDouble())),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "type": type,
+    "coordinates": List<dynamic>.from(coordinates.map((x) => x)),
   };
 }
 

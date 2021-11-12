@@ -248,6 +248,7 @@
     "what_would_like_to_know" : "¿Qué te gustaria saber?",
     "onboarding_skip" : "Saltar",
     "onboarding_done" : "Hecho",
+    "onboarding_getin" : "Entrar",
     "cta_your_veterinarian_record" : "Ya tiene las vacunas de tu mascota actualizada?",
     "cta_check_veterinarian_nearby": "Corrobore que tu veterinario está registrado",
     "arent_they_cute": "Son tan lindos",
@@ -257,5 +258,5 @@
     "opening_time": "Horario de funcionamiento",
     "business_open": "Abierto",
     "business_closed": "Cerrado",
-    "contact": "Contacto"
+    "contact": "Contacto",
 }

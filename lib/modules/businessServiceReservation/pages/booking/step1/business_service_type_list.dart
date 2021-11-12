@@ -1,3 +1,4 @@
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/businessServicesTypes/bloc/business_services_types_bloc.dart';
 import 'package:aipetto/modules/businessServicesTypes/models/business_services_type.dart';
@@ -54,7 +55,7 @@ class _BusinessServiceTypeListState extends State<BusinessServiceTypeList> {
                           serviceType: state.businessServiceType
                               .businessServiceTypesRows[index],
                           onTap: () {
-                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(state.businessServiceType.businessServiceTypesRows[index].id));
+                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(state.businessServiceType.businessServiceTypesRows[index].id, new BusinessPlace()));
                             Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby,
                             arguments: ServiceTypeSelected(state.businessServiceType.businessServiceTypesRows[index].id));
                           },

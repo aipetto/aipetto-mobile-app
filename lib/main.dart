@@ -95,7 +95,7 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
-      title: 'aipetto',
+      title: 'Aipetto',
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationAuthenticated) {

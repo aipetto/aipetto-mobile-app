@@ -5,12 +5,13 @@ abstract class BookingCartEvent {}
 
 class AddBookingService extends BookingCartEvent{
   final String serviceId;
+  final BusinessPlace businessPlace;
 
-  AddBookingService(this.serviceId);
+  AddBookingService(this.serviceId, this.businessPlace);
 
   @override
   String toString(){
-    return 'Instance of BookingService in cart: ${this.serviceId}';
+    return 'Instance of BookingService in cart: ${this.serviceId} which belongs to ${this.businessPlace.name}';
   }
 }
 

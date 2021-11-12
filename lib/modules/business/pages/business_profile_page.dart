@@ -28,22 +28,22 @@ class BusinessProfilePage extends StatefulWidget {
 
 class BusinessProfilePageState extends State<BusinessProfilePage>
     with SingleTickerProviderStateMixin {
-  String _radioValue = '';
+  String _businessServiceRadioValue = '';
   TabController controller;
 
   void serviceSelectedToReserve(String serviceId) {
     setState(() {
-      _radioValue = serviceId;
-      print(_radioValue);
+      _businessServiceRadioValue = serviceId;
+      print(_businessServiceRadioValue);
     });
   }
 
-  int selectedRadio;
+  String selectedRadio;
 
   @override
   void initState() {
     super.initState();
-    _radioValue = '';
+    _businessServiceRadioValue = '';
   }
 
   @override
@@ -282,8 +282,8 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
                 child: CustomButton(
                   onPressed: () {
-                    if(_radioValue != ''){
-                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(_radioValue));
+                    if(_businessServiceRadioValue != ''){
+                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(_businessServiceRadioValue, widget.businessPlace));
                       Navigator.of(context).pushNamed(Routes.checkAuthentication);
                     }
                   },
@@ -342,8 +342,8 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                         ],
                       ).expand(),
                       Radio(
-                        value: servicesPricesList[index].id,
-                        groupValue: _radioValue,
+                        value: servicesPricesList[index].service.id,
+                        groupValue: _businessServiceRadioValue,
                         activeColor: kAmphibianColorBlueDarkAlternative,
                         fillColor: MaterialStateColor.resolveWith(
                             (states) => kAmphibianColorBlueDarkAlternative),
@@ -360,8 +360,8 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
                 child: CustomButton(
                   onPressed: () {
-                    if(_radioValue != ''){
-                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(_radioValue));
+                    if(_businessServiceRadioValue != ''){
+                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(_businessServiceRadioValue, widget.businessPlace));
                       Navigator.of(context).pushNamed(Routes.checkAuthentication);
                     }
                   },

@@ -15,7 +15,7 @@ class BookingCartBloc extends Bloc<BookingCartEvent, BookingCartState> {
   Stream<BookingCartState> mapEventToState(BookingCartEvent event) async* {
 
     if(event is AddBookingService) {
-      yield BookingCartState(serviceId: event.serviceId);
+      yield BookingCartState(serviceId: event.serviceId, place: event.businessPlace);
     }
   }
 }

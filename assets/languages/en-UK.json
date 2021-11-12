@@ -258,5 +258,6 @@
     "opening_time": "Working Time",
     "business_open": "Open",
     "business_closed": "Closed",
-    "contact": "Contact"
+    "contact": "Contact",
+    "onboarding_getin" : "Get in"
 }

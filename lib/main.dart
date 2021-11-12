@@ -1,7 +1,4 @@
 import 'package:aipetto/config/pref_manager.dart';
-import 'package:aipetto/modules/businessServicePrice/bloc/business_services_prices_bloc.dart';
-import 'package:aipetto/modules/businessServicePrice/repository/business_services_prices_repository.dart';
-import 'package:aipetto/modules/businessServicePrice/services/businessServicesPricesApiClient.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
 import 'package:aipetto/modules/onboarding/widgets/OnBoardingPage.dart';
@@ -50,11 +47,6 @@ class MyApp extends StatelessWidget {
     httpClient: http.Client(),
   ));
 
-  final BusinessServicesPricesRepository businessServicesPricesRepository = BusinessServicesPricesRepository(
-      businessServicesPricesClient: BusinessServicesPricesApiClient(
-        httpClient: http.Client(),
-  ));
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -66,9 +58,6 @@ class MyApp extends StatelessWidget {
         BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
         BlocProvider<UserGeolocationBloc>(create: (_) => UserGeolocationBloc()),
         BlocProvider<BookingCartBloc>(create: (_) => BookingCartBloc()),
-        BlocProvider<BusinessServicesPricesBloc>(create: (_) {
-          return BusinessServicesPricesBloc(businessServicesPricesRepository: businessServicesPricesRepository);
-        }),
         BlocProvider<PetBloc>(create: (context) {
           return PetBloc(
               authenticationService: userRepository,

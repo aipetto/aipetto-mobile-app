@@ -9,7 +9,19 @@ class FetchServiceAvailabilities extends ServiceAvailabilityEvent {
   final String businessId;
   final String dateToFilterTimeSlot;
 
-  FetchServiceAvailabilities(this.serviceId, this.businessTenant, this.businessId, this.dateToFilterTimeSlot);
+  FetchServiceAvailabilities({this.serviceId, this.businessTenant, this.businessId, this.dateToFilterTimeSlot});
+
+  FetchServiceAvailabilities copyWith({
+   String serviceId,
+   String businessTenant,
+   String businessId,
+   String dateToFilterTimeSlot
+  }) => FetchServiceAvailabilities(
+      serviceId: serviceId ?? this.serviceId,
+      businessTenant: businessTenant ?? this.businessTenant,
+      businessId: businessId ?? this.businessId,
+      dateToFilterTimeSlot: dateToFilterTimeSlot ?? this.dateToFilterTimeSlot
+  );
 
   @override
   List<Object> get props => [serviceId, businessTenant, businessId, dateToFilterTimeSlot];

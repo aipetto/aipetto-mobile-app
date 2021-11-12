@@ -5,6 +5,8 @@ import 'package:aipetto/modules/business/widgets/BHColors.dart';
 import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessServicePrice/bloc/business_services_prices_bloc.dart';
 import 'package:aipetto/modules/businessServicePrice/models/business_service_prices.dart';
+import 'package:aipetto/modules/businessServicePrice/repository/business_services_prices_repository.dart';
+import 'package:aipetto/modules/businessServicePrice/services/businessServicesPricesApiClient.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/shared/widgets/no_data_available_widget.dart';
 import 'package:aipetto/routes/routes.dart';
@@ -15,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:http/http.dart' as http;
 
 class BusinessProfilePage extends StatefulWidget {
   static String tag = '/NewSliverCustom';
@@ -58,6 +61,11 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
     final address = direction + ' ' + addressNumber;
     final addressState = state + ' ' + addressCity + ' ' + addressCountry;
     final addressZipCode = zipCode;
+
+    final BusinessServicesPricesRepository businessServicesPricesRepository = BusinessServicesPricesRepository(
+        businessServicesPricesClient: BusinessServicesPricesApiClient(
+          httpClient: http.Client(),
+        ));
 
     changeStatusColor(Colors.transparent);
     Widget aboutWidget(BusinessServicePrice businessOwnerOfServices) {
@@ -372,170 +380,172 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
       );
     }
 
-    return BlocBuilder<BusinessServicesPricesBloc, BusinessServicesPricesState>(
+    return  BlocProvider<BusinessServicesPricesBloc>(create: (_) {
+      return BusinessServicesPricesBloc(businessServicesPricesRepository: businessServicesPricesRepository);
+    }, child: BlocBuilder<BusinessServicesPricesBloc, BusinessServicesPricesState>(
       builder: (context, state) {
-          if (state == null || state is BusinessServicesPricesEmpty) {
-            BlocProvider.of<BusinessServicesPricesBloc>(context).add(FetchBusinessServicesPrices(businessTenant: widget.businessPlace.tenant));
-          }
-          if (state is BusinessServicesPricesError) {
-            return NoDataAvailableWidget();
-          }
-          if (state is BusinessServicesPricesLoaded) {
-            return DefaultTabController(
-              length: 2,
-              child: Scaffold(
-                appBar: AppBar(
-                  leading: Builder(
-                    builder: (BuildContext context) {
-                      return IconButton(
-                        icon: const Icon(Icons.arrow_back),
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushNamed(Routes.bookingStep1FindPlacesNearby);
-                        },
-                        tooltip: MaterialLocalizations
-                            .of(context)
-                            .openAppDrawerTooltip,
-                      );
-                    },
-                  ),
-                  actions: <Widget>[
-                    IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, Routes.home),
-                      icon: Icon(
-                        Icons.home,
+        if (state == null || state is BusinessServicesPricesEmpty) {
+          BlocProvider.of<BusinessServicesPricesBloc>(context).add(FetchBusinessServicesPrices(businessTenant: widget.businessPlace.tenant));
+        }
+        if (state is BusinessServicesPricesError) {
+          return NoDataAvailableWidget();
+        }
+        if (state is BusinessServicesPricesLoaded) {
+          return DefaultTabController(
+            length: 2,
+            child: Scaffold(
+              appBar: AppBar(
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(Routes.bookingStep1FindPlacesNearby);
+                      },
+                      tooltip: MaterialLocalizations
+                          .of(context)
+                          .openAppDrawerTooltip,
+                    );
+                  },
+                ),
+                actions: <Widget>[
+                  IconButton(
+                    onPressed: () =>
+                        Navigator.pushNamed(context, Routes.home),
+                    icon: Icon(
+                      Icons.home,
+                    ),
+                  )
+                ],
+              ),
+              body: NestedScrollView(
+                headerSliverBuilder: (BuildContext context,
+                    bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    Container(
+                      child: SliverAppBar(
+                        backgroundColor: kAmphibianColorBlueDarkAlternative,
+                        pinned: false,
+                        elevation: 2,
+                        automaticallyImplyLeading: false,
+                        expandedHeight: 300,
+                        flexibleSpace: FlexibleSpaceBar(
+                          collapseMode: CollapseMode.parallax,
+                          titlePadding: EdgeInsets.all(10),
+                          background: Stack(
+                            overflow: Overflow.visible,
+                            children: [
+                              widget.businessPlace.photoLogo
+                                  .first['privateUrl']
+                                  .startsWith('assets') ?
+                              Image.asset(
+                                widget.businessPlace.photoLogo
+                                    .first['privateUrl'],
+                                height: 500,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
+                                fit: BoxFit.cover,
+                              ) :
+                              Image.network(
+                                Environment.aipettoCloudStorageHost +
+                                    widget.businessPlace.photoLogo
+                                        .first['privateUrl'],
+                                height: 500,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
+                                fit: BoxFit.cover,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(bottom: 5),
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment
+                                          .start,
+                                      children: [
+                                        Text('Vet',
+                                            style: TextStyle(
+                                                color: whiteColor,
+                                                fontSize: 16),
+                                            textAlign: TextAlign.left),
+                                        Container(
+                                          height: 25,
+                                          width: 75,
+                                          margin: EdgeInsets.only(right: 16),
+                                          child: FlatButton(
+                                            onPressed: () {},
+                                            child: Text(widget.businessPlace.isOpen
+                                                ? 'business_open'.tr()
+                                                : 'business_closed'.tr(),
+                                                style: TextStyle(
+                                                    color: whiteColor,
+                                                    fontSize: 14)),
+                                            color: kAmphibianColorBlueDarkAlternative,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5)),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          centerTitle: true,
+                        ),
+                        bottom: TabBar(
+                          labelColor: Colors.black,
+                          unselectedLabelColor: Colors.black,
+                          isScrollable: true,
+                          indicatorColor: kAmphibianColorBlueDarkAlternative,
+                          tabs: [
+                            Tab(
+                              child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text('services_title'.tr(),
+                                      style: TextStyle(fontSize: 18))),
+                            ),
+                            Tab(
+                              child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text('Info',
+                                      style: TextStyle(fontSize: 18))),
+                            ),
+                          ],
+                          controller: controller,
+                        ),
+                        actions: [],
                       ),
-                    )
+                    ),
+                  ];
+                },
+                body: TabBarView(
+                  children: [
+                    serviceWidget(state.businessServicePrice),
+                    aboutWidget(state.businessServicePrice.first),
                   ],
                 ),
-                body: NestedScrollView(
-                  headerSliverBuilder: (BuildContext context,
-                      bool innerBoxIsScrolled) {
-                    return <Widget>[
-                      Container(
-                        child: SliverAppBar(
-                          backgroundColor: kAmphibianColorBlueDarkAlternative,
-                          pinned: false,
-                          elevation: 2,
-                          automaticallyImplyLeading: false,
-                          expandedHeight: 300,
-                          flexibleSpace: FlexibleSpaceBar(
-                            collapseMode: CollapseMode.parallax,
-                            titlePadding: EdgeInsets.all(10),
-                            background: Stack(
-                              overflow: Overflow.visible,
-                              children: [
-                                widget.businessPlace.photoLogo
-                                    .first['privateUrl']
-                                    .startsWith('assets') ?
-                                Image.asset(
-                                  widget.businessPlace.photoLogo
-                                      .first['privateUrl'],
-                                  height: 500,
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width,
-                                  fit: BoxFit.cover,
-                                ) :
-                                Image.network(
-                                  Environment.aipettoCloudStorageHost +
-                                      widget.businessPlace.photoLogo
-                                          .first['privateUrl'],
-                                  height: 500,
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width,
-                                  fit: BoxFit.cover,
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(bottom: 5),
-                                  padding: EdgeInsets.all(8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .center,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment
-                                            .start,
-                                        children: [
-                                          Text('Vet',
-                                              style: TextStyle(
-                                                  color: whiteColor,
-                                                  fontSize: 16),
-                                              textAlign: TextAlign.left),
-                                          Container(
-                                            height: 25,
-                                            width: 75,
-                                            margin: EdgeInsets.only(right: 16),
-                                            child: FlatButton(
-                                              onPressed: () {},
-                                              child: Text(widget.businessPlace.isOpen
-                                                  ? 'business_open'.tr()
-                                                  : 'business_closed'.tr(),
-                                                  style: TextStyle(
-                                                      color: whiteColor,
-                                                      fontSize: 14)),
-                                              color: kAmphibianColorBlueDarkAlternative,
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(5)),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                            centerTitle: true,
-                          ),
-                          bottom: TabBar(
-                            labelColor: Colors.black,
-                            unselectedLabelColor: Colors.black,
-                            isScrollable: true,
-                            indicatorColor: kAmphibianColorBlueDarkAlternative,
-                            tabs: [
-                              Tab(
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('services_title'.tr(),
-                                        style: TextStyle(fontSize: 18))),
-                              ),
-                              Tab(
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Info',
-                                        style: TextStyle(fontSize: 18))),
-                              ),
-                            ],
-                            controller: controller,
-                          ),
-                          actions: [],
-                        ),
-                      ),
-                    ];
-                  },
-                  body: TabBarView(
-                    children: [
-                      serviceWidget(state.businessServicePrice),
-                      aboutWidget(state.businessServicePrice.first),
-                    ],
-                  ),
-                ),
               ),
-            );
-          }
-         return Center(
-           child: CircularProgressIndicator(),
-         );
-       },
-     );
+            ),
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    ));
   }
 }

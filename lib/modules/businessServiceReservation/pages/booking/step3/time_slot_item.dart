@@ -29,10 +29,10 @@ class _TimeSlotItemPageState extends State<TimeSlotItemPage> {
         if (state == null || state is ServiceAvailabilityEmpty) {
           BlocProvider.of<ServiceAvailabilityBloc>(context)
               .add(FetchServiceAvailabilities(
-                widget.serviceId,
-                widget.businessTenant,
-                widget.businessId,
-                DateFormat('yyyy-MM-dd').format(widget.dateToFilterTimeSlot).toString()
+                serviceId: widget.serviceId,
+                businessTenant: widget.businessTenant,
+                businessId: widget.businessId,
+                dateToFilterTimeSlot: DateFormat('yyyy-MM-dd').format(widget.dateToFilterTimeSlot).toString()
               ));
         }
         if (state is ServiceAvailabilityError) {

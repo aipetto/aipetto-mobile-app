@@ -28,9 +28,6 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
   ValueChanged<DateTime> selectBookingDateFromCalendar;
   TextEditingController dtBookingEditingController = new TextEditingController();
 
-  final ServiceAvailabilityRespository serviceAvailabilityRepository = ServiceAvailabilityRespository(
-      ServiceAvailabilityApiClient(http.Client()));
-
   Widget _inputBookingDateFromCalendar(){
     return TextFormField(
       controller: dtBookingEditingController,
@@ -53,6 +50,10 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
         lastDate: DateTime(2041));
     if(pickedDate != null && pickedDate != selectedBookingDate){
       setState((){
+        BlocProvider.of<ServiceAvailabilityBloc>(context)
+            .add(FetchServiceAvailabilities(
+              dateToFilterTimeSlot: DateFormat('yyyy-MM-dd').format(pickedDate).toString()
+        ));
         selectedBookingDate = pickedDate;
       });
     }
@@ -64,6 +65,9 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
     final bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
     dtBookingEditingController.text = DateFormat('dd/MM/yyyy').format(selectedBookingDate ?? DateTime.now());
     selectedBookingDate = selectedBookingDate ?? DateTime.now();
+
+    final ServiceAvailabilityRespository serviceAvailabilityRepository = ServiceAvailabilityRespository(
+        ServiceAvailabilityApiClient(http.Client()));
 
     return Scaffold(
       appBar: AppBar(
@@ -83,10 +87,10 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
         ],
       ),
       body: BlocProvider<ServiceAvailabilityBloc>(
-          create: (_) => ServiceAvailabilityBloc(
-            serviceAvailabilityRespository: serviceAvailabilityRepository
-          ),
-          child: SingleChildScrollView(
+        create: (_) => ServiceAvailabilityBloc(
+        serviceAvailabilityRespository: serviceAvailabilityRepository
+        ),
+        child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +131,7 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
               ],
             ),
            ),
-        )
+    ),
     );
   }
 }

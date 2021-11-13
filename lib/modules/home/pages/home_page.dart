@@ -174,8 +174,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: SectionHeaderWidget(
                                   title: 'my_favorite_business_places'.tr(),
-                                  onPressed: () => Navigator.of(context)
-                                      .pushNamed(Routes.myFavoriteBusinesses),
+                                  onPressed: () {},
                                 ),
                               ),
                               Container(

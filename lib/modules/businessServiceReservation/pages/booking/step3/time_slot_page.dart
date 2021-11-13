@@ -25,16 +25,15 @@ class TimeSlotPage extends StatefulWidget {
 class _TimeSlotPageState extends State<TimeSlotPage>  {
   final formKey = GlobalKey<FormState>();
   DateTime selectedBookingDate;
-  ValueChanged<DateTime> selectBookingDateFromCalendar;
   TextEditingController dtBookingEditingController = new TextEditingController();
 
-  Widget _inputBookingDateFromCalendar(){
+  Widget inputBookingDateFromCalendar(){
     return TextFormField(
       controller: dtBookingEditingController,
       onTap: () async {
         FocusScope.of(context).requestFocus(new FocusNode());
         // Show Date Picker
-        await _selectBookingDateFromCalendar(context);
+        await selectBookingDateFromCalendar(context);
         dtBookingEditingController.text = DateFormat('dd/MM/yyyy').format(selectedBookingDate);
       },
       readOnly: true,
@@ -42,20 +41,16 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
     );
   }
 
-  Future<void> _selectBookingDateFromCalendar(BuildContext context) async {
+  Future<void> selectBookingDateFromCalendar(BuildContext context) async {
     final DateTime pickedDate = await showDatePicker(
         context: context,
         initialDate: selectedBookingDate ?? DateTime.now(),
         firstDate: DateTime(2021,1),
         lastDate: DateTime(2041));
-    if(pickedDate != null && pickedDate != selectedBookingDate){
-      setState((){
-        BlocProvider.of<ServiceAvailabilityBloc>(context)
-            .add(FetchServiceAvailabilities(
-              dateToFilterTimeSlot: DateFormat('yyyy-MM-dd').format(pickedDate).toString()
-        ));
-        selectedBookingDate = pickedDate;
-      });
+      if(pickedDate != null && pickedDate != selectedBookingDate){
+        setState((){
+          selectedBookingDate = pickedDate;
+        });
     }
   }
 
@@ -109,7 +104,7 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
                       key: formKey,
                       child: Column(
                         children: <Widget>[
-                            _inputBookingDateFromCalendar(),
+                            inputBookingDateFromCalendar(),
                         ],
                       )),
                 ),

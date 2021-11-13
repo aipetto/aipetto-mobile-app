@@ -436,6 +436,7 @@ final staticBusinessesPlaces = [
     addressNumber: '163',
     addressCity: 'Contagem',
     addressState: 'Minas Gerais',
+    businessId: BusinessId(id: '610cbc1212bcbd59074e84fa'),
     addressCountry: AddressCountry(name: 'Brasil'),
     photoLogo: [{'privateUrl': 'assets/images/logos/veterinariabonsamigos.jpg'}],
     isOpen: true,

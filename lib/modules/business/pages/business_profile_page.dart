@@ -287,18 +287,19 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                width: MediaQuery.of(context).size.width,
-                margin:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
-                child: CustomButton(
-                  onPressed: () {
-                    if(_businessServiceRadioValue != ''){
-                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: _servicePrice, serviceId: _businessServiceRadioValue, businessPlace: widget.businessPlace));
-                      Navigator.of(context).pushNamed(Routes.checkAuthentication);
-                    }
-                  },
-                  text: 'reserve'.tr(),
-                )),
+              margin: EdgeInsets.all(20),
+              child:  Text(
+                'check_availability'.tr() + '\n',
+                style: TextStyle(
+                  color: Color(0xff4a4a4a),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.normal,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
             ListView.builder(
               itemCount: servicesPricesList.length,
               shrinkWrap: true,
@@ -369,19 +370,6 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 );
               },
             ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                margin:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
-                child: CustomButton(
-                  onPressed: () {
-                    if(_businessServiceRadioValue != ''){
-                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: _servicePrice, serviceId: _businessServiceRadioValue, businessPlace: widget.businessPlace));
-                      Navigator.of(context).pushNamed(Routes.checkAuthentication);
-                    }
-                  },
-                  text: 'reserve'.tr(),
-                )),
           ],
         ),
       );

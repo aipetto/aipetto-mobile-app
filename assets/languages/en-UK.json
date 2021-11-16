@@ -259,5 +259,6 @@
     "business_open": "Open",
     "business_closed": "Closed",
     "contact": "Contact",
-    "onboarding_getin" : "Get in"
+    "onboarding_getin" : "Get in",
+    "check_availability": "Pick one service below to check availability"
 }

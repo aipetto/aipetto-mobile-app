@@ -259,5 +259,6 @@
     "opening_time": "Horário de Trabalho",
     "business_open": "Aberto",
     "business_closed": "Fechado",
-    "contact": "Contato"
+    "contact": "Contato",
+    "check_availability": "Escolha um serviço abaixo para ver disponibilidade"
 }

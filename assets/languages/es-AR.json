@@ -227,6 +227,7 @@
     "pet_type_choose": "¿Qué mascota tenés?",
     "services_title": "Servicios",
     "choose_category": "Seleccione una categoria",
+    "check_availability": "Elija un servicio abajo para mirar dispobilidad",
     "choose_pet_service": "¿Qué servicio tu mascota necesita?",
     "pet_info": "Bio",
     "antirage_vaccine": "Vacuna antirrábica",
@@ -258,5 +259,5 @@
     "opening_time": "Horario de funcionamiento",
     "business_open": "Abierto",
     "business_closed": "Cerrado",
-    "contact": "Contacto",
+    "contact": "Contacto"
 }

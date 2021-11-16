@@ -495,3 +495,9 @@ class ServiceType {
     "id": serviceTypeId,
   };
 }
+
+class ServiceAvailabilityTimeSlotSelected {
+  String serviceAvailabilityTimeSlotSelected;
+
+  ServiceAvailabilityTimeSlotSelected({this.serviceAvailabilityTimeSlotSelected});
+}

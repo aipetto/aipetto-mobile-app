@@ -55,7 +55,7 @@ class _BusinessServiceTypeListState extends State<BusinessServiceTypeList> {
                           serviceType: state.businessServiceType
                               .businessServiceTypesRows[index],
                           onTap: () {
-                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(state.businessServiceType.businessServiceTypesRows[index].id, new BusinessPlace()));
+                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: 0.0, serviceId: state.businessServiceType.businessServiceTypesRows[index].id, businessPlace: new BusinessPlace()));
                             Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby,
                             arguments: ServiceTypeSelected(state.businessServiceType.businessServiceTypesRows[index].id));
                           },

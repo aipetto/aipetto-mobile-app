@@ -55,7 +55,7 @@ class BusinessServicePrice {
   bool isFree;
   String id;
   Currency currency;
-  int servicePrice;
+  double servicePrice;
   BusinessId businessId;
   Currency service;
   String tenant;
@@ -70,7 +70,7 @@ class BusinessServicePrice {
     isFree: json["isFree"],
     id: json["_id"],
     currency: Currency.fromJson(json["currency"]),
-    servicePrice: json["servicePrice"],
+    servicePrice: json["servicePrice"] + .00,
     businessId: BusinessId.fromJson(json["businessId"]),
     service: Currency.fromJson(json["service"]),
     tenant: json["tenant"],

@@ -55,7 +55,7 @@ class Reservation {
   DateTime date;
   String customerTenant;
   String tenant;
-  int totalPrice;
+  double totalPrice;
   String createdBy;
   String updatedBy;
   String source;

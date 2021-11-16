@@ -104,7 +104,7 @@ class RouteGenerator {
       case Routes.bookingStep4ReservationDetails:
         return CupertinoPageRoute(
             builder: (BuildContext context) =>
-                ReservationCustomerDetailsPage()); // TODO receive args parameters
+                ReservationCustomerDetailsPage());
 
       case Routes.bookingStepConfirmation:
         return CupertinoPageRoute(builder: (_) => AppointmentBookedPage());

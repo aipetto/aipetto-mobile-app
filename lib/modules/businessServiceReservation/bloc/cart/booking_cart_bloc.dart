@@ -1,11 +1,9 @@
 import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:aipetto/modules/businessServiceAvailability/models/service_availabilities.dart';
-
-part 'booking_cart_state.dart';
 
 part 'booking_cart_event.dart';
+part 'booking_cart_state.dart';
 
 class BookingCartBloc extends Bloc<BookingCartEvent, BookingCartState> {
 
@@ -15,7 +13,11 @@ class BookingCartBloc extends Bloc<BookingCartEvent, BookingCartState> {
   Stream<BookingCartState> mapEventToState(BookingCartEvent event) async* {
 
     if(event is AddBookingService) {
-      yield BookingCartState(serviceId: event.serviceId, place: event.businessPlace);
+      yield BookingCartState(totalServicePrice: event.totalServicePrice, serviceId: event.serviceId, place: event.businessPlace);
+    }
+
+    if(event is ChangeBookingCartAvailability){
+      yield state.copyWith(timeAvailability: event.timeAvailability, dateAvailability: event.dateAvailability);
     }
   }
 }

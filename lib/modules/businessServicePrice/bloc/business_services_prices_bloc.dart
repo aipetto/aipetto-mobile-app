@@ -29,7 +29,8 @@ class BusinessServicesPricesBloc
       try {
         final List<BusinessServicePrice> businessServicePrices = await businessServicesPricesRepository.fetchBusinessServicesPrices(event.businessTenant);
         yield BusinessServicesPricesLoaded(businessServicePrice: businessServicePrices);
-      } catch (_) {
+      } catch (e) {
+        print(e);
         yield BusinessServicesPricesError();
       }
     }

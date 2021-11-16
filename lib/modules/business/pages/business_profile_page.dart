@@ -32,12 +32,13 @@ class BusinessProfilePage extends StatefulWidget {
 class BusinessProfilePageState extends State<BusinessProfilePage>
     with SingleTickerProviderStateMixin {
   String _businessServiceRadioValue = '';
+  double _servicePrice = 0.0;
   TabController controller;
 
-  void serviceSelectedToReserve(String serviceId) {
+  void serviceSelectedToReserve(String serviceId, double servicePrice) {
     setState(() {
       _businessServiceRadioValue = serviceId;
-      print(_businessServiceRadioValue);
+      _servicePrice = servicePrice;
     });
   }
 
@@ -47,6 +48,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
   void initState() {
     super.initState();
     _businessServiceRadioValue = '';
+    _servicePrice = 0.0;
   }
 
   @override
@@ -291,7 +293,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 child: CustomButton(
                   onPressed: () {
                     if(_businessServiceRadioValue != ''){
-                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(_businessServiceRadioValue, widget.businessPlace));
+                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: _servicePrice, serviceId: _businessServiceRadioValue, businessPlace: widget.businessPlace));
                       Navigator.of(context).pushNamed(Routes.checkAuthentication);
                     }
                   },
@@ -350,12 +352,17 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                         ],
                       ).expand(),
                       Radio(
-                        value: servicesPricesList[index].service.id,
+                        value: {'service': servicesPricesList[index].service.id, 'price': servicesPricesList[index].servicePrice},
                         groupValue: _businessServiceRadioValue,
                         activeColor: kAmphibianColorBlueDarkAlternative,
                         fillColor: MaterialStateColor.resolveWith(
                             (states) => kAmphibianColorBlueDarkAlternative),
-                        onChanged: (value) => serviceSelectedToReserve(value),
+                        onChanged: (value) {
+                          if(value['service'] != ''){
+                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: value['price'], serviceId: value['service'], businessPlace: widget.businessPlace));
+                            Navigator.of(context).pushNamed(Routes.checkAuthentication);
+                          }
+                        },
                       ),
                     ],
                   ),
@@ -369,7 +376,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 child: CustomButton(
                   onPressed: () {
                     if(_businessServiceRadioValue != ''){
-                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(_businessServiceRadioValue, widget.businessPlace));
+                      BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: _servicePrice, serviceId: _businessServiceRadioValue, businessPlace: widget.businessPlace));
                       Navigator.of(context).pushNamed(Routes.checkAuthentication);
                     }
                   },

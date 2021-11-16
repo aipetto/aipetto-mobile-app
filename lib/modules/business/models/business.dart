@@ -14,7 +14,7 @@ class Business extends Equatable {
   String avatar;
   String location;
   double rating;
-  int price;
+  double price;
   int idSpeciality;
   int goodReviews;
   int totaScore;

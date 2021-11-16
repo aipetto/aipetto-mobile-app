@@ -11,7 +11,7 @@ class Veterinarian {
   String about;
   String avatar;
   double rating;
-  int price;
+  double price;
   int idSpeciality;
   int goodReviews;
   int totaScore;

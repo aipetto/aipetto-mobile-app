@@ -1,9 +1,9 @@
 import 'package:aipetto/components/time_slot_item.dart';
 import 'package:aipetto/modules/businessServiceAvailability/bloc/service_availability_bloc.dart';
 import 'package:aipetto/modules/businessServiceAvailability/models/service_availabilities.dart';
+import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/shared/widgets/no_data_available_widget.dart';
 import 'package:aipetto/routes/routes.dart';
-import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -92,6 +92,9 @@ class _TimeSlotItemPageState extends State<TimeSlotItemPage> {
             return TimeSlotItem(
               time: serviceAvailabilities.first.timeSlot[index],
               onTap: () {
+                BlocProvider.of<BookingCartBloc>(context).add(ChangeBookingCartAvailability(
+                    timeAvailability: serviceAvailabilities.first.timeSlot[index],
+                    dateAvailability: widget.dateToFilterTimeSlot));
                 Navigator.of(context)
                     .pushNamed(Routes.bookingStep4ReservationDetails);
               },

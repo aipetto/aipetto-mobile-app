@@ -4,10 +4,11 @@ part of 'booking_cart_bloc.dart';
 abstract class BookingCartEvent {}
 
 class AddBookingService extends BookingCartEvent{
+  final double totalServicePrice;
   final String serviceId;
   final BusinessPlace businessPlace;
 
-  AddBookingService(this.serviceId, this.businessPlace);
+  AddBookingService({this.totalServicePrice, this.serviceId, this.businessPlace});
 
   @override
   String toString(){
@@ -16,9 +17,10 @@ class AddBookingService extends BookingCartEvent{
 }
 
 class AddBookingDateAndTime extends BookingCartEvent{
-  final ServiceAvailability availability;
+  final String timeAvailability;
+  final DateTime dateAvailability;
 
-  AddBookingDateAndTime(this.availability);
+  AddBookingDateAndTime({this.timeAvailability, this.dateAvailability});
 }
 
 class ChangeBookingCartService extends BookingCartEvent{
@@ -28,9 +30,10 @@ class ChangeBookingCartService extends BookingCartEvent{
 }
 
 class ChangeBookingCartAvailability extends BookingCartEvent{
-  final ServiceAvailability availability;
+  final String timeAvailability;
+  final DateTime dateAvailability;
 
-  ChangeBookingCartAvailability(this.availability);
+  ChangeBookingCartAvailability({this.timeAvailability, this.dateAvailability});
 }
 
 class GetBookingDateAndTime extends BookingCartEvent{

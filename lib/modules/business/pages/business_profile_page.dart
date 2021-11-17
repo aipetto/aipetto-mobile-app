@@ -353,14 +353,19 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                         ],
                       ).expand(),
                       Radio(
-                        value: {'service': servicesPricesList[index].service.id, 'price': servicesPricesList[index].servicePrice},
+                        value: {'serviceId': servicesPricesList[index].service.id, 'price': servicesPricesList[index].servicePrice, 'serviceName': servicesPricesList[index].service.name},
                         groupValue: _businessServiceRadioValue,
                         activeColor: kAmphibianColorBlueDarkAlternative,
                         fillColor: MaterialStateColor.resolveWith(
                             (states) => kAmphibianColorBlueDarkAlternative),
                         onChanged: (value) {
                           if(value['service'] != ''){
-                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: value['price'], serviceId: value['service'], businessPlace: widget.businessPlace));
+                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(
+                                totalServicePrice: value['price'],
+                                serviceId: value['serviceId'],
+                                serviceName: value['serviceName'],
+                                businessPlace: widget.businessPlace
+                            ));
                             Navigator.of(context).pushNamed(Routes.checkAuthentication);
                           }
                         },

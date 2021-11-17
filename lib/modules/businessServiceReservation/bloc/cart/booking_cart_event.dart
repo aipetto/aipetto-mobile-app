@@ -7,8 +7,9 @@ class AddBookingService extends BookingCartEvent{
   final double totalServicePrice;
   final String serviceId;
   final BusinessPlace businessPlace;
+  final String serviceName;
 
-  AddBookingService({this.totalServicePrice, this.serviceId, this.businessPlace});
+  AddBookingService({this.totalServicePrice, this.serviceId, this.businessPlace, this.serviceName});
 
   @override
   String toString(){

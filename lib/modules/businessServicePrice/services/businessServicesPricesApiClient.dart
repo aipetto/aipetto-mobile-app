@@ -18,13 +18,10 @@ class BusinessServicesPricesApiClient {
 
   Future<List<BusinessServicePrice>> fetchBusinessServicesPrices(String businessTenant) async {
 
-    final jwtOnSecureStorage = await secureStorageRepository.getToken();
-
     final url = '$_baseUrl/tenant/$businessTenant/business-services-prices?offset=0&limit=10&orderBy=createdAt_DESC';
     final businessServicesPricesResponse = await this.httpClient.get(url, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'Bearer ${jwtOnSecureStorage}',
     });
 
     if(businessServicesPricesResponse.statusCode != 200) {

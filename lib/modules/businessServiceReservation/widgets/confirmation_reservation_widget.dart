@@ -48,11 +48,6 @@ class _ConfirmationServiceReservationWidgetState
 
     final BookingCartState bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
 
-    final String availability = bookingCartState.timeAvailability;
-    final DateTime dateAvailability = bookingCartState.dateAvailability;
-    final double totalPrice = bookingCartState.totalServicePrice;
-    final BusinessPlace place = bookingCartState.place;
-
     _onConfirmationFormButtonPressed() {
       if (_key.currentState.validate()) {
         if (currentUser is AuthenticationAuthenticated) {
@@ -67,8 +62,8 @@ class _ConfirmationServiceReservationWidgetState
               date: bookingCartState.dateAvailability,
               totalPrice: bookingCartState.totalServicePrice,
               time: bookingCartState.timeAvailability,
-              customerTenant: '61399582b3bcce39758baf74', // elephwebb@gmail.com
-              tenant: '61096ec884e5ebfca16f0143', // aipetto@aipetto.com
+              customerTenant: currentUser.user.tenants.first.tenant.id, // elephwebb@gmail.com
+              tenant: bookingCartState.place.tenant, // aipetto@aipetto.com
               createdBy: currentUser.user.id,
               updatedBy: currentUser.user.id,
               source: 'aipetto_app');
@@ -125,7 +120,7 @@ class _ConfirmationServiceReservationWidgetState
                         ),
                       ),
                       Text(
-                        'antirage_vaccine'.tr(),
+                        bookingCartState.serviceName,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -158,7 +153,7 @@ class _ConfirmationServiceReservationWidgetState
                         ),
                       ),
                       Text(
-                        '${'tomorrow'.tr()}, 8:30 AM',
+                        DateFormat('dd/MM/yyyy').format(bookingCartState.dateAvailability).toString() + ', ' + bookingCartState.timeAvailability,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

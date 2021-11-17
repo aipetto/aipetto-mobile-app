@@ -260,5 +260,6 @@
     "business_closed": "Closed",
     "contact": "Contact",
     "onboarding_getin" : "Get in",
-    "check_availability": "Pick one service below to check availability"
+    "check_availability": "Pick one service below to check availability",
+    "no_time_available": "There is not time available for today, please check other date"
 }

@@ -79,7 +79,18 @@ class _TimeSlotItemPageState extends State<TimeSlotItemPage> {
         SizedBox(
           height: 15,
         ),
-        StaggeredGridView.countBuilder(
+        serviceAvailabilities.length <= 0
+            ? Container( margin: EdgeInsets.symmetric(
+              horizontal: 30,
+            ),
+            child: Text('no_time_available'.tr(),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 22,
+                fontFamily: 'NunitoSans',
+                fontWeight: FontWeight.w400,
+              ),))
+            : StaggeredGridView.countBuilder(
           padding: EdgeInsets.symmetric(horizontal: 10),
           crossAxisCount: 3,
           physics: NeverScrollableScrollPhysics(),

@@ -259,5 +259,6 @@
     "opening_time": "Horario de funcionamiento",
     "business_open": "Abierto",
     "business_closed": "Cerrado",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "no_time_available": "Sin horarios disponibles para hoy, por favor intente otra fecha."
 }

@@ -260,5 +260,6 @@
     "business_open": "Aberto",
     "business_closed": "Fechado",
     "contact": "Contato",
-    "check_availability": "Escolha um serviço abaixo para ver disponibilidade"
+    "check_availability": "Escolha um serviço abaixo para ver disponibilidade",
+    "no_time_available": "Não há horários disponíveis para hoje, por favor escolha outra data."
 }

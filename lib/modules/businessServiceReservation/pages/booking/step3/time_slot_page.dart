@@ -7,6 +7,7 @@ import 'package:aipetto/modules/businessServiceAvailability/services/serviceAvai
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/booking/step3/time_slot_item.dart';
 import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -99,7 +100,7 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
                   padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 80.0),
                   color: Prefs.getBool(Prefs.DARKTHEME, def: false)
                       ? Colors.white.withOpacity(0.12)
-                      : Colors.green[100],
+                      : kAmphibianColorGreenLight,
                   child: Form(
                       key: formKey,
                       child: Column(
@@ -108,14 +109,21 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
                         ],
                       )),
                 ),
-                Divider(
-                  color: Colors.grey,
-                  height: 1,
-                  indent: 15,
-                  endIndent: 15,
-                ),
                 SizedBox(
                   height: 25,
+                ),
+                Container( margin: EdgeInsets.symmetric(
+                  horizontal: 30,
+                ),
+                    child: Text(bookingCartState.serviceName,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontFamily: 'NunitoSans',
+                        fontWeight: FontWeight.w400,
+                      ),)),
+                SizedBox(
+                  height: 20,
                 ),
                 TimeSlotItemPage(
                   serviceId: bookingCartState.serviceId,

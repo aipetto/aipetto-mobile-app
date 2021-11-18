@@ -27,7 +27,8 @@ class BusinessPlaceBloc extends Bloc<BusinessPlaceEvent, BusinessPlaceState> {
         final List<BusinessPlace> businessPlaces =
             await businessPlaceRepository.fetchBusinessPlacesNearby('latExampleTemp,lnglatExampleTemp', 'serviceIdExampleTemp');
         yield NearbyBusinessPlaceLoaded(businessPlaces);
-      } catch (_) {
+      } catch (e) {
+        print(e);
         yield BusinessPlaceError();
       }
     }

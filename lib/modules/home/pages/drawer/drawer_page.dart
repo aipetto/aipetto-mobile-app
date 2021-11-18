@@ -1,6 +1,7 @@
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
 import 'package:aipetto/modules/auth/bloc/authentication_bloc.dart';
 import 'package:aipetto/modules/settings/widgets/account_widget.dart';
+import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

@@ -38,8 +38,6 @@ class BusinessPlace extends Equatable{
     this.addressZipCode,
     this.addressNumber,
     this.address,
-    this.longitude,
-    this.latitude,
     this.placeType,
     this.name,
     this.businessId,
@@ -69,8 +67,6 @@ class BusinessPlace extends Equatable{
   dynamic addressZipCode;
   String addressNumber;
   String address;
-  double longitude;
-  double latitude;
   dynamic placeType;
   String name;
   BusinessId businessId;
@@ -100,8 +96,6 @@ class BusinessPlace extends Equatable{
     addressZipCode: json["addressZipCode"],
     addressNumber: json["addressNumber"],
     address: json["address"],
-    longitude: json["longitude"].toDouble(),
-    latitude: json["latitude"].toDouble(),
     placeType: json["placeType"],
     name: json["name"],
     businessId: BusinessId.fromJson(json["businessId"]),
@@ -132,8 +126,6 @@ class BusinessPlace extends Equatable{
     "addressZipCode": addressZipCode,
     "addressNumber": addressNumber,
     "address": address,
-    "longitude": longitude,
-    "latitude": latitude,
     "placeType": placeType,
     "name": name,
     "businessId": businessId.toJson(),
@@ -228,8 +220,6 @@ class BusinessId {
     this.linkedin,
     this.facebook,
     this.website,
-    this.longitude,
-    this.latitude,
     this.businessLogo,
     this.addressPostCode,
     this.streetComplement,
@@ -263,8 +253,6 @@ class BusinessId {
   dynamic linkedin;
   String facebook;
   dynamic website;
-  String longitude;
-  String latitude;
   List<BusinessLogo> businessLogo;
   dynamic addressPostCode;
   dynamic streetComplement;
@@ -298,8 +286,6 @@ class BusinessId {
     linkedin: json["linkedin"],
     facebook: json["facebook"],
     website: json["website"],
-    longitude: json["longitude"],
-    latitude: json["latitude"],
     businessLogo: List<BusinessLogo>.from(json["businessLogo"].map((x) => BusinessLogo.fromJson(x))),
     addressPostCode: json["addressPostCode"],
     streetComplement: json["streetComplement"],
@@ -334,8 +320,6 @@ class BusinessId {
     "linkedin": linkedin,
     "facebook": facebook,
     "website": website,
-    "longitude": longitude,
-    "latitude": latitude,
     "businessLogo": List<dynamic>.from(businessLogo.map((x) => x.toJson())),
     "addressPostCode": addressPostCode,
     "streetComplement": streetComplement,

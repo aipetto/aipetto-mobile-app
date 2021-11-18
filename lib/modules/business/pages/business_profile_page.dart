@@ -474,14 +474,9 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                                       crossAxisAlignment: CrossAxisAlignment
                                           .start,
                                       children: [
-                                        Text('Vet',
-                                            style: TextStyle(
-                                                color: whiteColor,
-                                                fontSize: 16),
-                                            textAlign: TextAlign.left),
                                         Container(
                                           height: 25,
-                                          width: 75,
+                                          width: 90,
                                           margin: EdgeInsets.only(right: 16),
                                           child: FlatButton(
                                             onPressed: () {},
@@ -534,8 +529,8 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 },
                 body: TabBarView(
                   children: [
-                    serviceWidget(state.businessServicePrice),
-                    aboutWidget(state.businessServicePrice.first),
+                    state.businessServicePrice != null ? serviceWidget(state.businessServicePrice) : Container(),
+                    state.businessServicePrice != null ? aboutWidget(state.businessServicePrice.first) : Container(),
                   ],
                 ),
               ),

@@ -113,7 +113,7 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
 
     final newReservationConfirmationInfo = {
       'data': {
-        "serviceType": reservation.serviceType[0].id,
+        "serviceType": [reservation.serviceType[0].id],
         "businessId": reservation.businessId,
         "place": reservation.place,
         "time": reservation.time,

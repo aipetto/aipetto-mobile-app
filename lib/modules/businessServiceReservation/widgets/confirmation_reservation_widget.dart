@@ -6,6 +6,7 @@ import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/confirmation/service_reservation_confirmation_form_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
+import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -21,24 +22,26 @@ class ConfirmationServiceReservationWidget extends StatefulWidget {
 class _ConfirmationServiceReservationWidgetState
     extends State<ConfirmationServiceReservationWidget> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  final _customerName = TextEditingController();
 
   final _petNameController = TextEditingController();
-  final _customerController = TextEditingController();
-  final _phoneController = TextEditingController();
+  final _customerNameController = TextEditingController();
+  final _customerEmailController = TextEditingController();
   final _customerPhoneController = TextEditingController();
   final _emailController = TextEditingController();
+  User authenticatedUser;
   bool _isdark = false;
   bool _customer = true;
+  bool _pet = true;
 
   Color get _color => _isdark ? kColorDark : Colors.white;
 
   @override
   void initState() {
     super.initState();
-    _petNameController.text = 'Nombre del pet';
-    _customerController.text = 'Nombre del usuário cliente';
-    _phoneController.text = '+213781348677';
+    _petNameController.text = '';
+    _customerNameController.text = '';
+    _customerEmailController.text = '';
+    _customerPhoneController.text = '';
   }
 
   @override
@@ -48,8 +51,16 @@ class _ConfirmationServiceReservationWidgetState
 
     final BookingCartState bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
 
+    if (currentUser is AuthenticationAuthenticated) {
+      authenticatedUser = currentUser.user;
+    }
+
     _onConfirmationFormButtonPressed() {
-      if (_key.currentState.validate()) {
+      if (_key.currentState.validate()
+          && _customerEmailController.text != ''
+          && _customerNameController.text != ''
+          && _customerPhoneController.text != ''
+      ) {
         if (currentUser is AuthenticationAuthenticated) {
           final reservation = new Reservation(
               serviceType: <ServiceType>[
@@ -57,13 +68,13 @@ class _ConfirmationServiceReservationWidgetState
                     id: bookingCartState.serviceId
                 )
               ],
-              businessId: '610cbc1212bcbd59074e84fa',
+              businessId: bookingCartState.place.businessId.id,
               place: bookingCartState.place.id,
               date: bookingCartState.dateAvailability,
               totalPrice: bookingCartState.totalServicePrice,
               time: bookingCartState.timeAvailability,
-              customerTenant: currentUser.user.tenants.first.tenant.id, // elephwebb@gmail.com
-              tenant: bookingCartState.place.tenant, // aipetto@aipetto.com
+              customerTenant: currentUser.user.tenants.first.tenant.id,
+              tenant: bookingCartState.place.tenant,
               createdBy: currentUser.user.id,
               updatedBy: currentUser.user.id,
               source: 'aipetto_app');
@@ -71,7 +82,7 @@ class _ConfirmationServiceReservationWidgetState
           _serviceReservationConfirmationBloc.add(
               NewServiceReservationConfirmationFormButtonPressed(
                   reservation: reservation,
-                  businessPlaceTenantId: '61096ec884e5ebfca16f0143',
+                  businessPlaceTenantId:  bookingCartState.place.tenant,
                   user: currentUser.user));
         }
       }
@@ -210,10 +221,10 @@ class _ConfirmationServiceReservationWidgetState
                                 onChanged: (value) {
                                   setState(() {
                                     _petNameController.text = 'Snoopy';
-                                    _customer = true;
+                                    _pet = true;
                                   });
                                 },
-                                groupValue: _customer,
+                                groupValue: _pet,
                                 title: Text('Snoopy'),
                               ),
                               Divider(
@@ -225,10 +236,10 @@ class _ConfirmationServiceReservationWidgetState
                                 onChanged: (value) {
                                   setState(() {
                                     _petNameController.clear();
-                                    _customer = false;
+                                    _pet = false;
                                   });
                                 },
-                                groupValue: _customer,
+                                groupValue: _pet,
                                 title: Text('someone_else'.tr()),
                               ),
                             ],
@@ -238,7 +249,7 @@ class _ConfirmationServiceReservationWidgetState
                       SizedBox(
                         height: 15,
                       ),
-                      _userDetails(),
+                      _customerDetails(authenticatedUser.firstName, authenticatedUser.email),
                     ],
                   ),
                 ),
@@ -285,7 +296,7 @@ class _ConfirmationServiceReservationWidgetState
     );
   }
 
-  Widget _userDetails() {
+  Widget _customerDetails(String customerNameFromAuth, String customerEmailFromAuth) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -303,36 +314,54 @@ class _ConfirmationServiceReservationWidgetState
         ),
         Text(
           _customer ? '${'full_name'.tr()}*' : '${'customer_full_name'.tr()}*',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontFamily: 'NunitoSans',
+            fontWeight: FontWeight.w400,
+          ),
         ),
         CustomTextFormField(
-          controller: _customerController,
-          hintText: _customer ? '' : 'Cliente ABC',
+          controller: _customerNameController,
+          hintText: _customer ?? customerNameFromAuth,
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Text(
+          '${'customer_email'.tr()}*',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontFamily: 'NunitoSans',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        CustomTextFormField(
+          controller: _customerEmailController,
+          hintText: _customer ?? customerEmailFromAuth,
+          enabled: true,
         ),
         SizedBox(
           height: 15,
         ),
         Text(
           '${'mobile'.tr()}*',
-          style: kInputTextStyle,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontFamily: 'NunitoSans',
+              fontWeight: FontWeight.w400,
+            ),
         ),
         CustomTextFormField(
-          controller: _phoneController,
-          hintText: '+213781348677',
-          enabled: false,
+          controller: _customerPhoneController,
+          hintText: '',
+          enabled: true,
         ),
         _customer ? Container() : _customersMobile(),
         SizedBox(
           height: 15,
-        ),
-        Text(
-          _customer ? '${'your_email'.tr()}*' : '${'customer_email'.tr()}*',
-          style: kInputTextStyle,
-        ),
-        CustomTextFormField(
-          controller: _emailController,
-          hintText: _customer
-              ? 'enter_your_email_id'.tr()
-              : 'enter_customer_email_id'.tr(),
         ),
       ],
     );

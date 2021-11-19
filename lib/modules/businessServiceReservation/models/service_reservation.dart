@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:aipetto/modules/pet/models/pets.dart';
+
 ServiceReservations serviceReservationsFromJson(String str) => ServiceReservations.fromJson(json.decode(str));
 
 String serviceReservationsToJson(ServiceReservations data) => json.encode(data.toJson());
@@ -39,6 +41,7 @@ class Reservation {
     this.place,
     this.discountCode,
     this.digitalReservationDoc,
+    this.pet,
     this.createdAt,
     this.updatedAt,
     this.v,
@@ -63,6 +66,7 @@ class Reservation {
   dynamic place;
   dynamic discountCode;
   List<dynamic> digitalReservationDoc;
+  Pet pet;
   String createdAt;
   String updatedAt;
   int v;
@@ -112,6 +116,7 @@ class Reservation {
     place: json["place"],
     discountCode: json["discountCode"],
     digitalReservationDoc: List<dynamic>.from(json["digitalReservationDoc"].map((x) => x)),
+    pet: json["pet"],
     createdAt: json["createdAt"],
     updatedAt: json["updatedAt"],
     v: json["__v"],
@@ -136,6 +141,7 @@ class Reservation {
     "place": place,
     "discountCode": discountCode,
     "digitalReservationDoc": List<dynamic>.from(digitalReservationDoc.map((x) => x)),
+    "pet": pet,
     "createdAt": createdAt,
     "updatedAt": updatedAt,
     "__v": v,

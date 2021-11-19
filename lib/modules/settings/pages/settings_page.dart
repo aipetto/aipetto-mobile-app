@@ -28,10 +28,11 @@ class _SettingsPageState extends State<SettingsPage>
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'settings'.tr(),
-          ),
+          title: Text('settings'.tr(),
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1
+                  .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         ),
         body: SingleChildScrollView(
           child: Column(

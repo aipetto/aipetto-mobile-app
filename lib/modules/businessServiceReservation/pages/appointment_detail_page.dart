@@ -1,10 +1,12 @@
 import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
+import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppointmentDetailPage extends StatefulWidget {
   @override
@@ -239,6 +241,9 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    BookingCartState bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -263,7 +268,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
                         child: BusinessPlaceItem(
-                          businessPlace: staticBusinessesPlaces[0],
+                          businessPlace: bookingCartState.place, /// TODO this should come from the state
                         ),
                       ),
                       Divider(

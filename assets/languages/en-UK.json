@@ -77,8 +77,8 @@
     "slots": "Slots",
     "afternoon": "Afternoon",
     "evening": "Evening",
-    "please_provide_following_information_about": "Please provide following contact information",
-    "please_provide_following_customer_details_dot": "Please provide the following contact details:",
+    "please_provide_following_information_about": "Contact information",
+    "please_provide_following_customer_details_dot": "Contact details:",
     "full_name": "Full Name",
     "customer_full_name": "Full Name",
     "mobile": "Mobile",
@@ -92,7 +92,7 @@
     "purpose_of_visit": "Purpose of visit",
     "consultation": "Consultation",
     "date_and_time": "Date and time",
-    "this_appointment_for_dot": "This appointment for:",
+    "this_appointment_for_dot": "This appointment is for:",
     "someone_else": "Another pet",
     "booking_agreement": "Confirming this booking you agree with the",
     "t_and_c": "T&C",
@@ -261,5 +261,8 @@
     "contact": "Contact",
     "onboarding_getin" : "Get in",
     "check_availability": "Pick one service below to check availability",
-    "no_time_available": "There is not time available for today, please check other date"
+    "no_time_available": "There is not time available for today, please check other date",
+    "no_pet_found": "You still don't have a pet registered",
+    "successfully_selected": "successfully selected",
+    "booking_notifications": "Allow receive notifications of the booking"
 }

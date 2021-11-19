@@ -24,6 +24,12 @@ class AddBookingDateAndTime extends BookingCartEvent{
   AddBookingDateAndTime({this.timeAvailability, this.dateAvailability});
 }
 
+class ChangeBookingCartSelectPet extends BookingCartEvent{
+  final Pet pet;
+
+  ChangeBookingCartSelectPet({this.pet});
+}
+
 class ChangeBookingCartService extends BookingCartEvent{
   final String serviceId;
 

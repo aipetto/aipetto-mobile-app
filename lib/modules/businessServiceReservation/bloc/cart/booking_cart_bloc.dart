@@ -1,4 +1,5 @@
 import 'package:aipetto/modules/businessPlace/models/business_place.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -23,6 +24,10 @@ class BookingCartBloc extends Bloc<BookingCartEvent, BookingCartState> {
 
     if(event is ChangeBookingCartAvailability){
       yield state.copyWith(timeAvailability: event.timeAvailability, dateAvailability: event.dateAvailability);
+    }
+
+    if(event is ChangeBookingCartSelectPet){
+      yield state.copyWith(pet: event.pet);
     }
   }
 }

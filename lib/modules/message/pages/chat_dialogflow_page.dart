@@ -1,10 +1,5 @@
-import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/components/text_form_field.dart';
 import 'package:aipetto/modules/message/widgets/build_messages_widget.dart';
-import 'package:aipetto/modules/message/widgets/message_item.dart';
 import 'package:aipetto/routes/routes.dart';
-import 'package:aipetto/utils/constants.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ChatDialogFlowPage extends StatelessWidget {

@@ -77,8 +77,8 @@
     "slots": "Ranuras",
     "afternoon": "Por la tarde",
     "evening": "La noche",
-    "please_provide_following_information_about": "Por favor confirme tus datos de contacto",
-    "please_provide_following_customer_details_dot": "Por favor confirme tus datos de contacto:",
+    "please_provide_following_information_about": "Datos de contacto",
+    "please_provide_following_customer_details_dot": "Datos de contacto:",
     "full_name": "Nombre Completo",
     "customer_full_name": "Nombre Completo",
     "mobile": "Móvil",
@@ -92,7 +92,7 @@
     "purpose_of_visit": "El propósito de la visita",
     "consultation": "Consulta",
     "date_and_time": "Fecha y hora",
-    "this_appointment_for_dot": "Reserva para:",
+    "this_appointment_for_dot": "Reservar para:",
     "someone_else": "Otra mascota",
     "booking_agreement": "Confirmando a reserva você está de acordo com nosso ",
     "t_and_c": "T&C",
@@ -260,5 +260,7 @@
     "business_open": "Abierto",
     "business_closed": "Cerrado",
     "contact": "Contacto",
-    "no_time_available": "Sin horarios disponibles para hoy, por favor intente otra fecha."
+    "no_time_available": "Sin horarios disponibles para hoy, por favor intente otra fecha.",
+    "successfully_selected": "seleccionado con éxito",
+    "booking_notifications": "Permite recibir notificaciones del agendamiento"
 }

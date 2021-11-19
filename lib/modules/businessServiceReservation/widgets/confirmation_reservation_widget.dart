@@ -6,6 +6,8 @@ import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/confirmation/service_reservation_confirmation_form_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
+import 'package:aipetto/modules/pet/widgets/pet_radio_list.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
@@ -23,22 +25,23 @@ class _ConfirmationServiceReservationWidgetState
     extends State<ConfirmationServiceReservationWidget> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
-  final _petNameController = TextEditingController();
   final _customerNameController = TextEditingController();
   final _customerEmailController = TextEditingController();
   final _customerPhoneController = TextEditingController();
   final _emailController = TextEditingController();
+
+  bool _allowReceiveNotificationsOfAppoitment = true;
+  bool _customerAddressForTransport = false; /// TODO this will be enabled on v29
   User authenticatedUser;
   bool _isdark = false;
   bool _customer = true;
-  bool _pet = true;
+  Pet petSelected;
 
   Color get _color => _isdark ? kColorDark : Colors.white;
 
   @override
   void initState() {
     super.initState();
-    _petNameController.text = '';
     _customerNameController.text = '';
     _customerEmailController.text = '';
     _customerPhoneController.text = '';
@@ -49,7 +52,7 @@ class _ConfirmationServiceReservationWidgetState
     final _serviceReservationConfirmationBloc = BlocProvider.of<ServiceReservationConfirmationFormBloc>(context);
     final AuthenticationState currentUser = BlocProvider.of<AuthenticationBloc>(context).state;
 
-    final BookingCartState bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
+    BookingCartState bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
 
     if (currentUser is AuthenticationAuthenticated) {
       authenticatedUser = currentUser.user;
@@ -57,9 +60,7 @@ class _ConfirmationServiceReservationWidgetState
 
     _onConfirmationFormButtonPressed() {
       if (_key.currentState.validate()
-          && _customerEmailController.text != ''
-          && _customerNameController.text != ''
-          && _customerPhoneController.text != ''
+          && petSelected != null
       ) {
         if (currentUser is AuthenticationAuthenticated) {
           final reservation = new Reservation(
@@ -69,6 +70,7 @@ class _ConfirmationServiceReservationWidgetState
                 )
               ],
               businessId: bookingCartState.place.businessId.id,
+              pet: petSelected,
               place: bookingCartState.place.id,
               date: bookingCartState.dateAvailability,
               totalPrice: bookingCartState.totalServicePrice,
@@ -88,13 +90,25 @@ class _ConfirmationServiceReservationWidgetState
       }
     }
 
-    return BlocListener<ServiceReservationConfirmationFormBloc,
-        ServiceReservationConfirmationFormState>(
-      listener: (context, state) {
-        if (state is ServiceReservationFormSuccess) {
-          Navigator.of(context).pushNamed(Routes.bookingStepConfirmation);
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ServiceReservationConfirmationFormBloc,
+          ServiceReservationConfirmationFormState>(
+            listener: (context, state) {
+              if (state is ServiceReservationFormSuccess) {
+                Navigator.of(context).pushNamed(Routes.bookingStepConfirmation);
+              }
+            }
+        ),
+        BlocListener<BookingCartBloc,
+            BookingCartState>(
+            listener: (context, state) {
+              if(state.pet != null){
+                petSelected = state.pet;
+              }
+            }
+        ),
+      ],
       child: BlocBuilder<ServiceReservationConfirmationFormBloc,
           ServiceReservationConfirmationFormState>(builder: (context, state) {
         return Form(
@@ -105,7 +119,7 @@ class _ConfirmationServiceReservationWidgetState
               Container(
                 color: Colors.white,
                 child: BusinessPlaceItem(
-                  businessPlace: staticBusinessesPlaces[0],
+                  businessPlace: bookingCartState.place,
                 ),
               ),
               Divider(
@@ -190,6 +204,7 @@ class _ConfirmationServiceReservationWidgetState
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Text(
                         'this_appointment_for_dot'.tr(),
@@ -201,55 +216,11 @@ class _ConfirmationServiceReservationWidgetState
                       SizedBox(
                         height: 15,
                       ),
-                      Material(
-                        color: _isdark
-                            ? Colors.white.withOpacity(0.12)
-                            : Colors.white,
-                        borderRadius: BorderRadius.circular(4),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: _isdark ? Colors.black : Colors.grey,
-                                width: 1),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              RadioListTile(
-                                value: true,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _petNameController.text = 'Snoopy';
-                                    _pet = true;
-                                  });
-                                },
-                                groupValue: _pet,
-                                title: Text('Snoopy'),
-                              ),
-                              Divider(
-                                color: _isdark ? Colors.black : Colors.grey,
-                                height: 1,
-                              ),
-                              RadioListTile(
-                                value: false,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _petNameController.clear();
-                                    _pet = false;
-                                  });
-                                },
-                                groupValue: _pet,
-                                title: Text('someone_else'.tr()),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      PetRadioList(),
                       SizedBox(
                         height: 15,
                       ),
-                      _customerDetails(authenticatedUser.firstName, authenticatedUser.email),
+                      _customerDetails(authenticatedUser.firstName != null ? authenticatedUser.firstName : '' + authenticatedUser.lastName != null ? authenticatedUser.lastName : '', authenticatedUser.email),
                     ],
                   ),
                 ),
@@ -323,7 +294,8 @@ class _ConfirmationServiceReservationWidgetState
         ),
         CustomTextFormField(
           controller: _customerNameController,
-          hintText: _customer ?? customerNameFromAuth,
+          hintText: _customer ? customerNameFromAuth : '',
+          enabled: false,
         ),
         SizedBox(
           height: 15,
@@ -339,14 +311,14 @@ class _ConfirmationServiceReservationWidgetState
         ),
         CustomTextFormField(
           controller: _customerEmailController,
-          hintText: _customer ?? customerEmailFromAuth,
-          enabled: true,
+          hintText: _customer ? customerEmailFromAuth : '',
+          enabled: false,
         ),
         SizedBox(
           height: 15,
         ),
         Text(
-          '${'mobile'.tr()}*',
+          '${'mobile'.tr()}',
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
@@ -359,7 +331,30 @@ class _ConfirmationServiceReservationWidgetState
           hintText: '',
           enabled: true,
         ),
-        _customer ? Container() : _customersMobile(),
+        SizedBox(
+          height: 15,
+        ),
+        SwitchListTile(
+          value: _allowReceiveNotificationsOfAppoitment,
+          onChanged: (_) {
+            setState(() {
+              _allowReceiveNotificationsOfAppoitment = !_allowReceiveNotificationsOfAppoitment;
+            });
+          },
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'booking_notifications'.tr(),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        _customerAddressForTransport ? _inputsCustomerAddressForTransport() : Container(),
         SizedBox(
           height: 15,
         ),
@@ -367,7 +362,7 @@ class _ConfirmationServiceReservationWidgetState
     );
   }
 
-  Widget _customersMobile() {
+  Widget _inputsCustomerAddressForTransport() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

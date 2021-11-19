@@ -111,6 +111,8 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
       Reservation reservation, String businessPlaceTenantId, User user) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
+    print(reservation.pet);
+
     final newReservationConfirmationInfo = {
       'data': {
         "serviceType": [reservation.serviceType[0].id],

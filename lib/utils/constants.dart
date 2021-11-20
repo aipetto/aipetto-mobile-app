@@ -32,6 +32,8 @@ const kUnselectedTabTextStyle = TextStyle(
 const kColorBlue = Color(0xff4245ef);
 const kColorDarkBlue = Color(0xff1b3a5e);
 const kColorGreen = Color(0xff4245ef);
+const kColorBlueAnimation = Color(0xff46AFE2);
+
 
 const kInputTextStyle = TextStyle(
     fontSize: 16,
@@ -45,7 +47,7 @@ const kColorSecondary = Color(0xffff748d);
 const kColorDark = Color(0xff121212);
 const kColorLight = Color(0xffEBF2F5);
 
-const kBottomPadding = 48.0;
+const kBottomPadding = 28.0;
 
 const kTextStyleButton = TextStyle(
   color: kColorPrimary,

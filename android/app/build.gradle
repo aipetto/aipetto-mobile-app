@@ -41,7 +41,7 @@ android {
 
     defaultConfig {
         applicationId "com.aipetto"
-        minSdkVersion 18
+        minSdkVersion 20
         targetSdkVersion 30
         versionCode 28
         versionName flutterVersionName

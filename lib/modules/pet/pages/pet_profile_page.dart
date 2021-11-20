@@ -59,7 +59,6 @@ class _PetProfilePageState extends State<PetProfilePage>
            height: 250,
            width: double.infinity,
            child: ClipRRect(
-             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25.0), bottomRight: Radius.circular(25.0)),
              child: (widget.pet.profileImage != null &&
                  widget.pet.profileImage.length > 0 &&
                  widget.pet.profileImage[0] != null &&

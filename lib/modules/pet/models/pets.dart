@@ -71,7 +71,9 @@ class Pet {
       this.v,
       this.petId,
       this.bloodType,
-      this.weight});
+      this.weight,
+      this.uniqueIdentifier
+      });
 
   List<PetOwner> petOwners;
   List<Photo> photos;
@@ -103,6 +105,7 @@ class Pet {
   DateTime birthdate;
   List<ProfileImage> profileImage;
   String nickname;
+  String uniqueIdentifier;
   String name;
   dynamic secondBreedMixed;
   dynamic customerId;
@@ -123,6 +126,7 @@ class Pet {
         vaccines: List<dynamic>.from(json["vaccines"].map((x) => x)),
         hasBeenVaccinated: json["hasBeenVaccinated"],
         hasBeenDewormed: json["hasBeenDewormed"],
+        uniqueIdentifier: json["uniqueIdentifier"],
         hasBeenSterilizedSpayed: json["hasBeenSterilizedSpayed"],
         isLost: json["isLost"],
         usersAuthorized: List<PetOwner>.from(
@@ -201,6 +205,7 @@ class Pet {
             "${birthdate.year.toString().padLeft(4, '0')}-${birthdate.month.toString().padLeft(2, '0')}-${birthdate.day.toString().padLeft(2, '0')}",
         "profileImage": List<dynamic>.from(profileImage.map((x) => x.toJson())),
         "nickname": nickname,
+        "uniqueIdentifier": uniqueIdentifier,
         "name": name,
         "secondBreedMixed": secondBreedMixed,
         "customerId": customerId,
@@ -235,6 +240,7 @@ class Pet {
     DateTime birthdate,
     List<ProfileImage> profileImage,
     String nickname,
+    String uniqueIdentifier,
     String name,
     dynamic secondBreedMixed,
     String bloodType,
@@ -258,6 +264,7 @@ class Pet {
           birthdate: birthdate ?? this.birthdate,
           profileImage: profileImage ?? this.profileImage,
           nickname: nickname ?? this.nickname,
+          uniqueIdentifier: uniqueIdentifier ?? this.uniqueIdentifier,
           name: name ?? this.name,
           secondBreedMixed: secondBreedMixed ?? this.secondBreedMixed,
           bloodType: bloodType ?? this.bloodType);

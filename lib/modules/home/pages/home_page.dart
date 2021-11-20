@@ -126,12 +126,12 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(
-                      height: 130,
+                      height: 150,
                       child: Column(
                         children: <Widget>[PetHorizontalList()],
                       ),
@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               ClipRRect(
-                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50.0), bottomRight: Radius.circular(50.0)),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(50.0), topRight: Radius.circular(50.0)),
                                 child: Image.asset('assets/images/adopt-dogs-call.jpg',
                                   fit: BoxFit.cover,
                                 ),

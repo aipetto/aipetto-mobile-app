@@ -1,7 +1,6 @@
 import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/components/text_form_field.dart';
 import 'package:aipetto/modules/auth/bloc/authentication.dart';
-import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/confirmation/service_reservation_confirmation_form_bloc.dart';
@@ -30,6 +29,9 @@ class _ConfirmationServiceReservationWidgetState
   final _customerPhoneController = TextEditingController();
   final _emailController = TextEditingController();
 
+  String customerFirstName = '';
+  String customerLastName = '';
+  String customerEmail = '';
   bool _allowReceiveNotificationsOfAppoitment = true;
   bool _customerAddressForTransport = false; /// TODO this will be enabled on v29
   User authenticatedUser;
@@ -56,6 +58,9 @@ class _ConfirmationServiceReservationWidgetState
 
     if (currentUser is AuthenticationAuthenticated) {
       authenticatedUser = currentUser.user;
+      customerFirstName = authenticatedUser.firstName != null ? authenticatedUser.firstName : ' ';
+      customerLastName = authenticatedUser.lastName != null ? authenticatedUser.lastName : ' ';
+      customerEmail = authenticatedUser.lastName != null ? authenticatedUser.lastName : ' ';
     }
 
     _onConfirmationFormButtonPressed() {
@@ -70,7 +75,7 @@ class _ConfirmationServiceReservationWidgetState
                 )
               ],
               businessId: bookingCartState.place.businessId.id,
-              pet: petSelected,
+              pet: petSelected.id,
               place: bookingCartState.place.id,
               date: bookingCartState.dateAvailability,
               totalPrice: bookingCartState.totalServicePrice,
@@ -220,7 +225,7 @@ class _ConfirmationServiceReservationWidgetState
                       SizedBox(
                         height: 15,
                       ),
-                      _customerDetails(authenticatedUser.firstName != null ? authenticatedUser.firstName : '' + authenticatedUser.lastName != null ? authenticatedUser.lastName : '', authenticatedUser.email),
+                      _customerDetails(customerFirstName + customerLastName, customerEmail),
                     ],
                   ),
                 ),
@@ -295,7 +300,7 @@ class _ConfirmationServiceReservationWidgetState
         CustomTextFormField(
           controller: _customerNameController,
           hintText: _customer ? customerNameFromAuth : '',
-          enabled: false,
+          enabled: customerFirstName != null && customerFirstName != '' ? true : false,
         ),
         SizedBox(
           height: 15,
@@ -312,7 +317,7 @@ class _ConfirmationServiceReservationWidgetState
         CustomTextFormField(
           controller: _customerEmailController,
           hintText: _customer ? customerEmailFromAuth : '',
-          enabled: false,
+          enabled: customerEmail != null && customerEmail != '' ? true : false,
         ),
         SizedBox(
           height: 15,

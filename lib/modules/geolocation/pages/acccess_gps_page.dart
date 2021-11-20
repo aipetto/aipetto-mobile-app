@@ -99,7 +99,6 @@ class _AccessGPSPageState extends State<AccessGPSPage>
       case PermissionStatus.denied:
         Navigator.of(context).pushNamed(Routes.accessGPS);
         break;
-      case PermissionStatus.undetermined:
       case PermissionStatus.restricted:
       case PermissionStatus.limited:
       case PermissionStatus.permanentlyDenied:

@@ -38,7 +38,7 @@ class UpcomingAppointmentsPage extends StatelessWidget {
     return BlocBuilder<ServiceReservationBloc, ServiceReservationState>(
             builder: (context, state){
                   if (state == null) {
-                    BlocProvider.of<ServiceReservationBloc>(context).add(FetchFutureServiceReservation());
+                    BlocProvider.of<ServiceReservationBloc>(context)..add(FetchFutureServiceReservation());
                   }
                   if (state is ServiceReservationLoading) {
                     return Center(child: CircularProgressIndicator());

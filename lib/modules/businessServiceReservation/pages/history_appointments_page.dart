@@ -37,7 +37,7 @@ class HistoryAppointmentsPage extends StatelessWidget {
     return BlocBuilder<ServiceReservationBloc, ServiceReservationState>(
             builder: (context, state){
               if (state == null) {
-                BlocProvider.of<ServiceReservationBloc>(context).add(FetchPastServiceReservation());
+                BlocProvider.of<ServiceReservationBloc>(context)..add(FetchPastServiceReservation());
               }
               if (state is ServiceReservationLoading) {
                 return Center(child: CircularProgressIndicator());

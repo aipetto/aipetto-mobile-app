@@ -46,7 +46,7 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         }else{
           yield ServiceReservationEmpty();
         }
-      } catch (_) {
+      } catch (e) {
         yield ServiceReservationError();
       }
     }
@@ -63,7 +63,7 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         } else {
           yield ServiceReservationEmpty();
         }
-      } catch (_) {
+      } catch (e) {
         yield ServiceReservationError();
       }
     }

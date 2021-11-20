@@ -117,6 +117,8 @@ class _HomeState extends State<Home> {
                         },
                       ),
                 title: AppBarTitleWidget(),
+                backgroundColor: Colors.white,
+                shadowColor: Colors.transparent,
                 actions: <Widget>[
                       IconButton(
                           onPressed: () => Navigator.pushNamed(

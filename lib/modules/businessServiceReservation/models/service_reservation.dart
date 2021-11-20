@@ -66,7 +66,7 @@ class Reservation {
   dynamic place;
   dynamic discountCode;
   List<dynamic> digitalReservationDoc;
-  Pet pet;
+  String pet;
   String createdAt;
   String updatedAt;
   int v;
@@ -108,7 +108,7 @@ class Reservation {
     date: DateTime.parse(json["date"]),
     customerTenant: json["customerTenant"],
     tenant: json["tenant"],
-    totalPrice: json["totalPrice"],
+    totalPrice: json["totalPrice"] * 0.1,
     createdBy: json["createdBy"],
     updatedBy: json["updatedBy"],
     source: json["source"],

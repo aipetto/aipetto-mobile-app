@@ -53,7 +53,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                   CustomButton(
                     text: 'reschedule'.tr(),
                     textSize: 14,
-                    onPressed: () {},
+                    onPressed: null,
                     padding: EdgeInsets.symmetric(
                       vertical: 10,
                       horizontal: 5,
@@ -107,7 +107,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                     child: CustomButton(
                       text: 'reschedule'.tr(),
                       textSize: 14,
-                      onPressed: () {},
+                      onPressed: null,
                       padding: EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 5,

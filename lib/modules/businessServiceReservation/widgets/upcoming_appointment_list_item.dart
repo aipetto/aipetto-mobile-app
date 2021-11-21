@@ -96,7 +96,7 @@ class UpcomingAppointmentListItem extends StatelessWidget {
                            child: CustomButton(
                              text: 'reschedule'.tr(),
                              textSize: 14,
-                             onPressed: () {},
+                             onPressed: null,
                              padding: EdgeInsets.symmetric(
                                vertical: 10,
                              ),
@@ -110,7 +110,7 @@ class UpcomingAppointmentListItem extends StatelessWidget {
                            child: CustomOutlineButton(
                              text: 'cancel'.tr(),
                              textSize: 14,
-                             onPressed: () {},
+                             onPressed: null,
                              padding: EdgeInsets.symmetric(
                                vertical: 10,
                              ),

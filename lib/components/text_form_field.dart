@@ -49,7 +49,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         hintText: widget.hintText,
         hintStyle: TextStyle(
           fontSize: 18,
-          color: Color(0xffa19d9d),
+          color: Color(0xff908181),
           fontFamily: 'NunitoSans',
         ),
         errorText: widget.error ?? null,

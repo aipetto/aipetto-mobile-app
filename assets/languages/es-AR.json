@@ -262,5 +262,6 @@
     "contact": "Contacto",
     "no_time_available": "Sin horarios disponibles para hoy, por favor intente otra fecha.",
     "successfully_selected": "seleccionado con éxito",
-    "booking_notifications": "Permite recibir notificaciones del agendamiento"
+    "booking_notifications": "Permite recibir notificaciones del agendamiento",
+    "type": "Tipo"
 }

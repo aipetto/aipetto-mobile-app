@@ -263,5 +263,6 @@
     "check_availability": "Escolha um serviço abaixo para ver disponibilidade",
     "no_time_available": "Não há horários disponíveis para hoje, por favor escolha outra data.",
     "successfully_selected": "selecionado corretamente",
-    "booking_notifications": "Permite receber notificações do agendamento"
+    "booking_notifications": "Permite receber notificações do agendamento",
+    "type": "Tipo"
 }

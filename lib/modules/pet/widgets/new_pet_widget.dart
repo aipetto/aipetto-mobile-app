@@ -9,6 +9,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tflite/tflite.dart';
 
 import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
@@ -45,6 +46,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   var _selectedSex = 'male'.tr();
   var _birthDate = '03/04/2016';
   var _sexItems = <String>['male'.tr(), 'female'.tr()];
+  var tensorRecognitionResult = "";
 
   List<DropdownMenuItem<String>> _dropDownSex;
 
@@ -52,15 +54,32 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
   Future _getImage(ImageSource imageSource) async {
     final picker = new ImagePicker();
-    final PickedFile _pickedFile = await picker.getImage(source: imageSource);
-    setState(() {
-      _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
-    });
+    final PickedFile _pickedFile = await picker.getImage(source: imageSource, imageQuality: 50, maxWidth: 400, maxHeight: 400);
 
     if (_pickedFile == null) {
       print('No image selected');
       return;
     }
+
+    var recognitions = await Tflite.runModelOnImage(
+      path:  _pickedFile.path,
+      imageMean: 0.0,
+      imageStd: 255.0,
+      numResults: 2,
+      threshold: 0.2,
+      asynch: true
+    );
+
+    tensorRecognitionResult = "";
+
+    recognitions.forEach((response){
+      tensorRecognitionResult += response['label'] + " " + (response["confidence"] as double).toStringAsFixed(2) + "\n\n";
+    });
+
+    setState(() {
+      _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
+      tensorRecognitionResult;
+    });
   }
 
   _initDropDowns() {
@@ -75,7 +94,20 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   @override
   void initState() {
     super.initState();
+    loadModel();
     _initDropDowns();
+  }
+
+  @override
+  void dispose() async {
+    super.dispose();
+    await Tflite.close();
+  }
+
+  loadModel() async {
+    await Tflite.loadModel(
+        model: "assets/tensor/dog-breed-model.tflite",
+        labels: "assets/tensor/dog-breed-labels.txt");
   }
 
   @override
@@ -90,6 +122,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
           final superPet = new Pet(
             name: _name.text,
             isLookingForMatch: _selectedLookingForMatch,
+            type: new Breed(id: widget.petTypeId),
             tenant: currentUser.user.tenants.first.tenant.id,
             createdBy: currentUser.user.id,
             updatedBy: currentUser.user.id,
@@ -140,6 +173,22 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   ),
                 ),
                 Center(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 55.0),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        tensorRecognitionResult,
+                        style: TextStyle(
+                          backgroundColor: Colors.black87,
+                          fontSize: 25.0,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ),
+                ),
+                Center(
                   child: FlatButton(
                     onPressed: () {
                       _openBottomSheet(context);
@@ -169,13 +218,22 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   validator: (value) =>
                       value.isEmpty ? 'Please add a name' : null,
                 ),
-                /**SizedBox(height: 15),
+                SizedBox(height: 15),
+                Text(
+                  'type'.tr(),
+                  style: kInputTextStyle,
+                ),
+                CustomTextFormField(
+                 hintText: widget.petTypeName,
+                 enabled: false,
+                ),
+                SizedBox(height: 15),
               Text(
                 'breed_dot'.tr(),
                 style: kInputTextStyle,
               ),
               CustomTextFormField(
-                  hintText: 'Akita'
+                  hintText: ''
               ),
               SizedBox(height: 15),
               Text(
@@ -183,7 +241,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                 style: kInputTextStyle,
               ),
               CustomTextFormField(
-                  hintText: 'Akita'
+                  hintText: ''
               ),
               SizedBox(height: 15),
               Text(
@@ -224,12 +282,6 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   });
                 },
               ),
-              SizedBox(height: 15),
-              Text(
-                'blood_group_dot'.tr(),
-                style: kInputTextStyle,
-              ),*/
-
                 SizedBox(height: 15),
                 Text(
                   'looking_for_match'.tr(),

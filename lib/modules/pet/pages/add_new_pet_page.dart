@@ -19,6 +19,7 @@ class AddNewPetPage extends StatefulWidget {
 }
 
 class _AddNewPetPageState extends State<AddNewPetPage> {
+
   @override
   Widget build(BuildContext context) {
     final PetRepository petRepository = PetRepository(

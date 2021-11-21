@@ -264,5 +264,6 @@
     "no_time_available": "There is not time available for today, please check other date",
     "no_pet_found": "You still don't have a pet registered",
     "successfully_selected": "successfully selected",
-    "booking_notifications": "Allow receive notifications of the booking"
+    "booking_notifications": "Allow receive notifications of the booking",
+    "type": "type"
 }

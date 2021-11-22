@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
-import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

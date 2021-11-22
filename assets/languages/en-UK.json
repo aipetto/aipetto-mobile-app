@@ -265,5 +265,13 @@
     "no_pet_found": "You still don't have a pet registered",
     "successfully_selected": "successfully selected",
     "booking_notifications": "Allow receive notifications of the booking",
-    "type": "type"
+    "need_transport": "Need transport?",
+    "type": "type",
+    "hasBeenVaccinated": "Has been completed vaccinated?",
+    "hasBeenDewormed": "Has been dewormed?",
+    "hasBeenSterializedSpayed": "Has been Sterialized/Spayed?",
+    "isGuideDog": "Is a guide dog",
+    "hasMicrochip": "Has microchip?",
+    "isLost": "Is lost?",
+    "pet_age_in_months": "What your pet age in months?"
 }

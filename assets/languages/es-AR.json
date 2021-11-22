@@ -263,5 +263,13 @@
     "no_time_available": "Sin horarios disponibles para hoy, por favor intente otra fecha.",
     "successfully_selected": "seleccionado con éxito",
     "booking_notifications": "Permite recibir notificaciones del agendamiento",
-    "type": "Tipo"
+    "need_transport": "¿Necesita transporte?",
+    "type": "Tipo",
+    "hasBeenVaccinated": "¿Tomó todas las vacunas?",
+    "hasBeenDewormed": "¿Fue desparasitado?",
+    "hasBeenSterializedSpayed": "¿Fue Castrado/Esterializado?",
+    "isGuideDog": "¿Es un perro guía?",
+    "hasMicrochip": "¿Tiene microchip?",
+    "isLost": "¿Está perdido?",
+    "pet_age_in_months": "¿Cuál es la edad de tu mascota en meses?"
 }

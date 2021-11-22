@@ -4,6 +4,8 @@ import 'package:aipetto/modules/geolocation/bloc/user_geolocation_bloc.dart';
 import 'package:aipetto/modules/onboarding/widgets/OnBoardingPage.dart';
 import 'package:aipetto/modules/pet/repository/pet_repository.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
+import 'package:aipetto/routes/routes.dart';
+import 'package:aipetto/splash_page.dart';
 import 'package:aipetto/utils/app_themes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -96,7 +98,7 @@ class MyApp extends StatelessWidget {
             return OnBoardingPage();
           }
           if (state is AuthenticationLoading) {
-            return LoadingIndicator();
+            return SplashPage(redirect_route: Routes.onboarding);
           }
           return OnBoardingPage();
         },

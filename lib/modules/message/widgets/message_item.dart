@@ -16,7 +16,7 @@ class MessageItem extends StatelessWidget {
         Visibility(
           visible: !send,
           child: CircleAvatar(
-            radius: 18,
+            radius: 48,
             backgroundColor: Colors.transparent,
             child: Image.asset(
               'assets/images/owl-300.jpg',
@@ -46,7 +46,7 @@ class MessageItem extends StatelessWidget {
             child: SelectableText(
               message,
               style: TextStyle(
-                color: send ? kColorDarkBlue : Colors.white,
+                color: send ? kColorDarkBlue : Colors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),

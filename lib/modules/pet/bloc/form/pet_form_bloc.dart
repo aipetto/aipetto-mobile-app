@@ -38,6 +38,7 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState> {
       await repository.addPet(event.pet, event.fileImageProfile);
       yield PetFormSuccess();
     } catch (err) {
+      print(err);
       yield PetFormFailure('unknown_failure_error'.tr());
     }
   }

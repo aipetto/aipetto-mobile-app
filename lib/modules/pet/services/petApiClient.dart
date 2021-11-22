@@ -84,6 +84,15 @@ class PetApiClient {
     final newPetInfo = {
       'data': {
         "name": pet.name,
+        "uniqueIdentifier": "",
+        "nickname": pet.nickname,
+        "type": pet.type.id,
+        "hasMicrochip": pet.hasMicrochip,
+        "hasBeenDewormed": pet.hasBeenDewormed,
+        "hasBeenVaccinated": pet.hasBeenDewormed,
+        "hasBeenSterilizedSpayed": pet.hasBeenSterilizedSpayed,
+        "isGuideDog": pet.isGuideDog,
+        "isLost": pet.isLost,
         "isLookingForMatch": pet.isLookingForMatch,
         "profileImage": imageMultipartUploaded,
         "tenant": pet.tenant,

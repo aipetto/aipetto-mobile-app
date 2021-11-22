@@ -74,7 +74,7 @@ class MessageListItem extends StatelessWidget {
               child: Stack(
                 children: <Widget>[
                   CircleAvatar(
-                    radius: 35,
+                    radius: 45,
                     backgroundColor: Colors.transparent,
                     child: Image.asset(
                       imagePath,
@@ -120,7 +120,7 @@ class MessageListItem extends StatelessWidget {
                     message,
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

@@ -34,10 +34,9 @@ const kColorDarkBlue = Color(0xff1b3a5e);
 const kColorGreen = Color(0xff4245ef);
 const kColorBlueAnimation = Color(0xff46AFE2);
 
-
 const kInputTextStyle = TextStyle(
-    fontSize: 16,
-    color: Color(0xffbcbcbc),
+    fontSize: 18,
+    color: Color(0xff1d1c1c),
     fontWeight: FontWeight.w300,
     fontFamily: 'NunitoSans');
 

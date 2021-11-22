@@ -33,7 +33,8 @@ class _ConfirmationServiceReservationWidgetState
   String customerLastName = '';
   String customerEmail = '';
   bool _allowReceiveNotificationsOfAppoitment = true;
-  bool _customerAddressForTransport = false; /// TODO this will be enabled on v29
+  bool _needTransport = false;
+  bool _customerAddressForTransport = false; /// TODO this will be enabled on 1.1.15+29
   User authenticatedUser;
   bool _isdark = false;
   bool _customer = true;
@@ -79,6 +80,7 @@ class _ConfirmationServiceReservationWidgetState
               place: bookingCartState.place.id,
               date: bookingCartState.dateAvailability,
               totalPrice: bookingCartState.totalServicePrice,
+              needTransportation: _needTransport,
               time: bookingCartState.timeAvailability,
               customerTenant: currentUser.user.tenants.first.tenant.id,
               tenant: bookingCartState.place.tenant,
@@ -335,6 +337,29 @@ class _ConfirmationServiceReservationWidgetState
           controller: _customerPhoneController,
           hintText: '',
           enabled: true,
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        SwitchListTile(
+          value: _needTransport,
+          onChanged: (_) {
+            setState(() {
+              _needTransport = !_needTransport;
+            });
+          },
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'need_transport'.tr(),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
         SizedBox(
           height: 15,

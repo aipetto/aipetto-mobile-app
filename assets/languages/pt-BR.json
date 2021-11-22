@@ -264,5 +264,13 @@
     "no_time_available": "Não há horários disponíveis para hoje, por favor escolha outra data.",
     "successfully_selected": "selecionado corretamente",
     "booking_notifications": "Permite receber notificações do agendamento",
-    "type": "Tipo"
+    "need_transport": "Precisa de transporte?",
+    "type": "Tipo",
+    "hasBeenVaccinated": "Foi vacinado completamente?",
+    "hasBeenDewormed": "Foi desparasitado?",
+    "hasBeenSterializedSpayed": "Foi esterializado/castrado?",
+    "isGuideDog": "É um cachorro guia?",
+    "hasMicrochip": "Tem microchip?",
+    "isLost": "Está perdido?",
+    "pet_age_in_months": "Qual a idade do seu pet em meses?"
 }

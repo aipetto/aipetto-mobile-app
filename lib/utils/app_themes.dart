@@ -15,7 +15,7 @@ final appThemeData = {
     toggleableActiveColor: kColorPrimary,
     appBarTheme: AppBarTheme(
       elevation: 0,
-      color: Colors.white,
+      color: kAmphibianColorBlueDarkAlternative,
       brightness: Brightness.light,
       iconTheme: IconThemeData(
         color: kColorPrimary,
@@ -27,7 +27,7 @@ final appThemeData = {
         headline6: TextStyle(
           color: kColorDarkBlue,
           fontFamily: 'NunitoSans',
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -41,10 +41,14 @@ final appThemeData = {
     ),
     textTheme: TextTheme(
       button: kTextStyleButton,
-      subtitle1: kTextStyleSubtitle1.copyWith(color: kColorPrimaryDark),
-      subtitle2: kTextStyleSubtitle2.copyWith(color: kColorPrimaryDark),
-      bodyText2: kTextStyleBody2.copyWith(color: kColorPrimaryDark),
-      headline6: kTextStyleHeadline6.copyWith(color: kColorPrimaryDark),
+      subtitle1: kTextStyleSubtitle1.copyWith(
+          color: kAmphibianColorBlueDarkAlternative),
+      subtitle2: kTextStyleSubtitle2.copyWith(
+          color: kAmphibianColorBlueDarkAlternative),
+      bodyText2:
+          kTextStyleBody2.copyWith(color: kAmphibianColorBlueDarkAlternative),
+      headline6: kTextStyleHeadline6.copyWith(
+          color: kAmphibianColorBlueDarkAlternative),
     ),
     iconTheme: IconThemeData(
       color: kColorPrimary,

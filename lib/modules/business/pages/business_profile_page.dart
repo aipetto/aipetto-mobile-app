@@ -1,22 +1,29 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/modules/business/models/businessGeneralModel.dart';
+import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/modules/business/widgets/AppWidget.dart';
 import 'package:aipetto/modules/business/widgets/BHColors.dart';
-import 'package:aipetto/modules/business/widgets/BHConstants.dart';
-import 'package:aipetto/modules/business/widgets/BHDataProvider.dart';
-import 'package:aipetto/modules/business/widgets/BHImages.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
+import 'package:aipetto/modules/businessServicePrice/bloc/business_services_prices_bloc.dart';
+import 'package:aipetto/modules/businessServicePrice/models/business_service_prices.dart';
+import 'package:aipetto/modules/businessServicePrice/repository/business_services_prices_repository.dart';
+import 'package:aipetto/modules/businessServicePrice/services/businessServicesPricesApiClient.dart';
+import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
+import 'package:aipetto/modules/shared/widgets/no_data_available_widget.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:http/http.dart' as http;
 
 class BusinessProfilePage extends StatefulWidget {
   static String tag = '/NewSliverCustom';
+  final BusinessPlace businessPlace;
+
+  const BusinessProfilePage({Key key, this.businessPlace}) : super(key: key);
 
   @override
   BusinessProfilePageState createState() => BusinessProfilePageState();
@@ -24,32 +31,46 @@ class BusinessProfilePage extends StatefulWidget {
 
 class BusinessProfilePageState extends State<BusinessProfilePage>
     with SingleTickerProviderStateMixin {
-  int _radioValue1 = 0;
+  String _businessServiceRadioValue = '';
+  double _servicePrice = 0.0;
   TabController controller;
 
-  List<BHCategoryModel> categoryList;
-  List<BHOfferModel> offerList;
-  List<BHServicesModel> servicesList;
+  void serviceSelectedToReserve(String serviceId, double servicePrice) {
+    setState(() {
+      _businessServiceRadioValue = serviceId;
+      _servicePrice = servicePrice;
+    });
+  }
+
+  String selectedRadio;
 
   @override
   void initState() {
     super.initState();
-    servicesList = getServicesList();
-    categoryList = getCategory();
-    offerList = getOfferList();
-  }
-
-  void serviceSelectedToReserve(int value) {
-    setState(() {
-      _radioValue1 = value;
-      print(_radioValue1);
-    });
+    _businessServiceRadioValue = '';
+    _servicePrice = 0.0;
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final direction = widget.businessPlace.address ?? '';
+    final addressNumber = widget.businessPlace.addressNumber ?? '';
+    final state = widget.businessPlace.addressState ?? '';
+    final addressCity = widget.businessPlace.addressCity ?? '';
+    final addressCountry = widget.businessPlace.addressCountry.name ?? '';
+    final zipCode = widget.businessPlace.addressZipCode ?? '';
+    final address = direction + ' ' + addressNumber;
+    final addressState = state + ' ' + addressCity + ' ' + addressCountry;
+    final addressZipCode = zipCode;
+
+    final BusinessServicesPricesRepository businessServicesPricesRepository = BusinessServicesPricesRepository(
+        businessServicesPricesClient: BusinessServicesPricesApiClient(
+          httpClient: http.Client(),
+        ));
+
     changeStatusColor(Colors.transparent);
-    Widget aboutWidget() {
+    Widget aboutWidget(BusinessServicePrice businessOwnerOfServices) {
       return Container(
         padding: EdgeInsets.all(8),
         child: SingleChildScrollView(
@@ -60,19 +81,19 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: BHGreyColor.withOpacity(0.3),
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      BHTxtInformation,
+                      'general'.tr(),
                       style: TextStyle(
                           color: BHAppTextColorPrimary,
                           fontWeight: FontWeight.bold,
@@ -80,7 +101,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                       textAlign: TextAlign.center,
                     ),
                     8.height,
-                    Text(BHDetailTitle,
+                    Text(businessOwnerOfServices.businessId.notes ?? '',
                         style: TextStyle(color: Colors.black, fontSize: 16)),
                   ],
                 ),
@@ -90,31 +111,31 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.black,
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    8.height,
                     Text(
-                      BHTxtContact,
+                      'contact'.tr(),
                       style: TextStyle(
-                          color: Colors.black,
+                          color: BHAppTextColorPrimary,
                           fontWeight: FontWeight.bold,
                           fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
-                    8.height,
                     Row(
                       children: [
                         Icon(Icons.call, size: 16),
                         8.width,
-                        Text('+1(55)1111 1111',
+                        Text(businessOwnerOfServices.businessId.contactPhone ?? '',
                             style:
                                 TextStyle(color: Colors.black, fontSize: 14)),
                       ],
@@ -122,9 +143,19 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                     8.height,
                     Row(
                       children: [
+                        Icon(Icons.call, size: 16),
+                        8.width,
+                        Text('Whatsapp:' + businessOwnerOfServices.businessId.contactPhone ?? '',
+                            style:
+                            TextStyle(color: Colors.black, fontSize: 14)),
+                      ],
+                    ),
+                    8.height,
+                    Row(
+                      children: [
                         Icon(Icons.web, size: 16),
                         8.width,
-                        Text('www.aipetto.com',
+                        Text(businessOwnerOfServices.businessId.website ?? '',
                             style:
                                 TextStyle(color: Colors.black, fontSize: 16)),
                       ],
@@ -137,19 +168,19 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: BHGreyColor.withOpacity(0.3),
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      BHTxtOpeningTime,
+                      'opening_time'.tr(),
                       style: TextStyle(
                           color: BHAppTextColorPrimary,
                           fontWeight: FontWeight.bold,
@@ -161,32 +192,17 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Monday - Friday',
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 16)),
                         Column(
                           children: [
-                            Text('7:30 - 11:30 AM',
+                            Text(widget.businessPlace.openTime ?? '',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 16)),
                             8.height,
-                            Text('7:30 - 11:30 AM',
+                            Text(widget.businessPlace.closeTime ?? '',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 16))
                           ],
                         )
-                      ],
-                    ),
-                    8.height,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Sunday',
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 16)),
-                        Text('7:30 - 11:30 AM',
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 16)),
                       ],
                     ),
                   ],
@@ -197,28 +213,64 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: Colors.transparent,
                   boxShadow: [
                     BoxShadow(
-                        color: BHGreyColor.withOpacity(0.3),
+                        color: BHGreyColor.withOpacity(0.1),
                         offset: Offset(0.0, 1.0),
-                        blurRadius: 2.0)
+                        blurRadius: 1.0)
                   ],
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      BHTxtAddress,
-                      style: TextStyle(
-                          color: BHAppTextColorPrimary,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                      textAlign: TextAlign.center,
+                    Expanded(
+                      child: Text(
+                        address,
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                        maxLines: 3,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                margin: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.transparent,
+                  boxShadow: [
+                    BoxShadow(
+                        color: BHGreyColor.withOpacity(0.1),
+                        offset: Offset(0.0, 1.0),
+                        blurRadius: 1.0)
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        addressState,
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                        maxLines: 3,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     8.width,
-                    Text('301 Dorthy walks,chicago,Us.',
-                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                    Expanded(
+                      child: Text(
+                        addressZipCode,
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                        maxLines: 3,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -228,50 +280,28 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
       );
     }
 
-    Widget serviceWidget() {
+    Widget serviceWidget(List<BusinessServicePrice> servicesPricesList) {
+
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 120,
-              child: ListView.builder(
-                padding: EdgeInsets.all(8),
-                itemCount: categoryList.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.all(8),
-                    child: Column(
-                      children: <Widget>[
-                        Image.asset(categoryList[index].img,
-                            height: 40, width: 40),
-                        8.height,
-                        Text(
-                          categoryList[index].categoryName,
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle2
-                              .copyWith(fontSize: 14),
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(right: 16, left: 16),
-              child: Text(
-                BHTxtPopularServices,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2
-                    .copyWith(fontSize: 14),
+              margin: EdgeInsets.all(20),
+              child:  Text(
+                'check_availability'.tr() + '\n',
+                style: TextStyle(
+                  color: Color(0xff4a4a4a),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.normal,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             ListView.builder(
-              itemCount: servicesList.length,
+              itemCount: servicesPricesList.length,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.all(8),
@@ -281,12 +311,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: BHGreyColor.withOpacity(0.3),
+                    color: Colors.transparent,
                     boxShadow: [
                       BoxShadow(
-                          color: BHGreyColor.withOpacity(0.3),
+                          color: BHGreyColor.withOpacity(0.1),
                           offset: Offset(0.0, 1.0),
-                          blurRadius: 2.0)
+                          blurRadius: 1.0)
                     ],
                   ),
                   child: Row(
@@ -301,10 +331,10 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              servicesList[index].serviceName,
+                              servicesPricesList[index].service.name,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 18),
                             ),
                           ),
@@ -312,158 +342,205 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                           Row(
                             children: [
                               Text(
-                                servicesList[index].time,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
-                              ),
-                              8.width,
-                              Text(
-                                '\$${servicesList[index].price}',
+                                '${servicesPricesList[index].servicePrice}' + ' ' + servicesPricesList[index].currency.symbol,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color: kAmphibianColorGreenLight),
+                                    color: kAmphibianColorBlueDarkAlternative),
                               ),
                             ],
                           ),
                         ],
                       ).expand(),
                       Radio(
-                        value: servicesList[index].radioVal,
-                        groupValue: _radioValue1,
-                        activeColor: kAmphibianColorGreenLight,
+                        value: {'serviceId': servicesPricesList[index].service.id, 'price': servicesPricesList[index].servicePrice, 'serviceName': servicesPricesList[index].service.name},
+                        groupValue: _businessServiceRadioValue,
+                        activeColor: kAmphibianColorBlueDarkAlternative,
                         fillColor: MaterialStateColor.resolveWith(
-                            (states) => kAmphibianColorGreenLight),
-                        onChanged: (value) => serviceSelectedToReserve(value),
+                            (states) => kAmphibianColorBlueDarkAlternative),
+                        onChanged: (value) {
+                          if(value['service'] != ''){
+                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(
+                                totalServicePrice: value['price'],
+                                serviceId: value['serviceId'],
+                                serviceName: value['serviceName'],
+                                businessPlace: widget.businessPlace
+                            ));
+                            Navigator.of(context).pushNamed(Routes.checkAuthentication);
+                          }
+                        },
                       ),
                     ],
                   ),
                 );
               },
             ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                margin:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
-                child: CustomButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(Routes.bookingStep3ServiceAvailability);
-
-                    /// TODO get the pet profile passing the pet.id
-                  },
-                  text: 'reserve'.tr(),
-                )),
           ],
         ),
       );
     }
 
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              Container(
-                child: SliverAppBar(
-                  leading: IconButton(
-                    icon: Icon(Icons.arrow_back,
-                        color: kAmphibianColorGreenLight),
-                    onPressed: () {
-                      finish(context);
-                    },
-                  ),
-                  backgroundColor: kAmphibianColorGreenLight,
-                  pinned: true,
-                  elevation: 2,
-                  expandedHeight: 300,
-                  flexibleSpace: FlexibleSpaceBar(
-                    collapseMode: CollapseMode.parallax,
-                    titlePadding: EdgeInsets.all(10),
-                    background: Stack(
-                      overflow: Overflow.visible,
-                      children: [
-                        Image.asset(
-                          BHDashedBoardImage6,
-                          height: 500,
-                          width: MediaQuery.of(context).size.width,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 5),
-                          padding: EdgeInsets.all(8),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+    return  BlocProvider<BusinessServicesPricesBloc>(create: (_) {
+      return BusinessServicesPricesBloc(businessServicesPricesRepository: businessServicesPricesRepository);
+    }, child: BlocBuilder<BusinessServicesPricesBloc, BusinessServicesPricesState>(
+      builder: (context, state) {
+        if (state == null || state is BusinessServicesPricesEmpty) {
+          BlocProvider.of<BusinessServicesPricesBloc>(context).add(FetchBusinessServicesPrices(businessTenant: widget.businessPlace.tenant));
+        }
+        if (state is BusinessServicesPricesError) {
+          return NoDataAvailableWidget();
+        }
+        if (state is BusinessServicesPricesLoaded) {
+          return DefaultTabController(
+            length: 2,
+            child: Scaffold(
+              appBar: AppBar(
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(Routes.bookingStep1FindPlacesNearby);
+                      },
+                      tooltip: MaterialLocalizations
+                          .of(context)
+                          .openAppDrawerTooltip,
+                    );
+                  },
+                ),
+                actions: <Widget>[
+                  IconButton(
+                    onPressed: () =>
+                        Navigator.pushNamed(context, Routes.home),
+                    icon: Icon(
+                      Icons.home,
+                    ),
+                  )
+                ],
+              ),
+              body: NestedScrollView(
+                headerSliverBuilder: (BuildContext context,
+                    bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    Container(
+                      child: SliverAppBar(
+                        backgroundColor: kAmphibianColorBlueDarkAlternative,
+                        pinned: false,
+                        elevation: 2,
+                        automaticallyImplyLeading: false,
+                        expandedHeight: 300,
+                        flexibleSpace: FlexibleSpaceBar(
+                          collapseMode: CollapseMode.parallax,
+                          titlePadding: EdgeInsets.all(10),
+                          background: Stack(
+                            overflow: Overflow.visible,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Vet',
-                                      style: TextStyle(
-                                          color: whiteColor, fontSize: 16),
-                                      textAlign: TextAlign.left),
-                                  Container(
-                                    height: 25,
-                                    width: 75,
-                                    margin: EdgeInsets.only(right: 16),
-                                    child: FlatButton(
-                                      onPressed: () {},
-                                      child: Text(BHBtnOpen,
-                                          style: TextStyle(
-                                              color: whiteColor, fontSize: 14)),
-                                      color: kAmphibianColorGreenLight,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                    ),
-                                  )
-                                ],
+                              widget.businessPlace.photoLogo
+                                  .first['privateUrl']
+                                  .startsWith('assets') ?
+                              Image.asset(
+                                widget.businessPlace.photoLogo
+                                    .first['privateUrl'],
+                                height: 500,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
+                                fit: BoxFit.cover,
+                              ) :
+                              Image.network(
+                                Environment.aipettoCloudStorageHost +
+                                    widget.businessPlace.photoLogo
+                                        .first['privateUrl'],
+                                height: 500,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
+                                fit: BoxFit.cover,
                               ),
+                              Container(
+                                margin: EdgeInsets.only(bottom: 5),
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment
+                                          .start,
+                                      children: [
+                                        Container(
+                                          height: 25,
+                                          width: 90,
+                                          margin: EdgeInsets.only(right: 16),
+                                          child: FlatButton(
+                                            onPressed: () {},
+                                            child: Text(widget.businessPlace.isOpen
+                                                ? 'business_open'.tr()
+                                                : 'business_closed'.tr(),
+                                                style: TextStyle(
+                                                    color: whiteColor,
+                                                    fontSize: 14)),
+                                            color: kAmphibianColorBlueDarkAlternative,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5)),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
                             ],
                           ),
-                        )
-                      ],
+                          centerTitle: true,
+                        ),
+                        bottom: TabBar(
+                          labelColor: Colors.black,
+                          unselectedLabelColor: Colors.black,
+                          isScrollable: true,
+                          indicatorColor: kAmphibianColorBlueDarkAlternative,
+                          tabs: [
+                            Tab(
+                              child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text('services_title'.tr(),
+                                      style: TextStyle(fontSize: 18))),
+                            ),
+                            Tab(
+                              child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text('Info',
+                                      style: TextStyle(fontSize: 18))),
+                            ),
+                          ],
+                          controller: controller,
+                        ),
+                        actions: [],
+                      ),
                     ),
-                    centerTitle: true,
-                  ),
-                  bottom: TabBar(
-                    labelColor: Colors.black,
-                    unselectedLabelColor: Colors.black,
-                    isScrollable: true,
-                    indicatorColor: kAmphibianColorGreenLight,
-                    tabs: [
-                      Tab(
-                        child: Align(
-                            alignment: Alignment.center,
-                            child: Text(BHTabServices,
-                                style: TextStyle(fontSize: 18))),
-                      ),
-                      Tab(
-                        child: Align(
-                            alignment: Alignment.center,
-                            child: Text(BHTabAbout,
-                                style: TextStyle(fontSize: 18))),
-                      ),
-                    ],
-                    controller: controller,
-                  ),
-                  actions: [],
+                  ];
+                },
+                body: TabBarView(
+                  children: [
+                    state.businessServicePrice != null ? serviceWidget(state.businessServicePrice) : Container(),
+                    state.businessServicePrice != null ? aboutWidget(state.businessServicePrice.first) : Container(),
+                  ],
                 ),
               ),
-            ];
-          },
-          body: TabBarView(
-            children: [
-              serviceWidget(),
-              aboutWidget(),
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    ));
   }
 }

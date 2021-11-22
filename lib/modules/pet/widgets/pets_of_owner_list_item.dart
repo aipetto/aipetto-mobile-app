@@ -13,13 +13,13 @@ class PetsOfOwnerListItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
-          Navigator.of(context)
+            Navigator.of(context)
               .pushNamed(Routes.petProfile, arguments: PetSelected(this.pet));
         },
         child: Column(
           children: <Widget>[
             CircleAvatar(
-              radius: 40,
+              radius: 43,
               backgroundColor: Colors.grey,
               backgroundImage: (pet.profileImage != null &&
                       pet.profileImage.length > 0 &&
@@ -37,7 +37,7 @@ class PetsOfOwnerListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontSize: 16),
+                        .copyWith(fontSize: 18),
                     text: pet.name)),
           ],
         ),

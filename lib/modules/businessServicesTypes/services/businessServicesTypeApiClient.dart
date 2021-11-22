@@ -11,9 +11,9 @@ class BusinessServicesTypesApiClient {
   final _baseUrl = Environment.aipettoCoreApi;
   final http.Client httpClient;
 
-  // TODO Refactor to apply better solution and not hard coded, only for MVP.
+  // TODO Refactor to apply better solution and not hard coded default value: Portuguese
   final languageId =
-      Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50fb57043bb3ae7b537';
+      Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50ab5704301f1e7b535';
 
   BusinessServicesTypesApiClient({
     @required this.httpClient,
@@ -21,7 +21,7 @@ class BusinessServicesTypesApiClient {
 
   Future<BusinessServiceType> fetchBusinessServiceTypes() async {
     final url =
-        '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId';
+        '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId&filter%5BisEnabled%5D=true';
     final response = await this.httpClient.get(url);
 
     if (response.statusCode != 200) {

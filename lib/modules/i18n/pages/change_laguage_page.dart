@@ -65,6 +65,10 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
       appBar: AppBar(
         title: Text(
           'language_settings'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)
         ),
       ),
       body: SingleChildScrollView(

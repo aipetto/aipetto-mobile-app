@@ -16,24 +16,16 @@ class TimeSlotItem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey, width: 1),
+          border: Border.all(color: Colors.grey, width: 2),
           borderRadius: BorderRadius.circular(4),
         ),
         child: Column(
           children: <Widget>[
             Text(
-              time.split(' ')[0],
+              time,
               style: TextStyle(
-                color: kColorPrimary,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              time.split(' ')[1],
-              style: TextStyle(
-                color: kColorPrimary,
-                fontSize: 10,
+                color: kAmphibianColorBlueDarkAlternative,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),

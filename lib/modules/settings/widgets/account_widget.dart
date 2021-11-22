@@ -18,16 +18,28 @@ class AccountWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Container(
-          width: double.infinity,
-          color: color,
-          padding: EdgeInsets.all(15),
-          child: Text(
-            'accounts'.tr(),
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
+        InkWell(
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.appSettings);
+            //this.onTap();
+          },
+          child: Container(
+            width: double.infinity,
+            height: 30,
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'accounts'.tr(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -46,7 +58,7 @@ class AccountWidget extends StatelessWidget {
           ),
           onTap: () {
             authBloc.add(UserLoggedOut());
-            Navigator.of(context).pushNamed(Routes.login);
+            Navigator.of(context).pushNamed(Routes.onboarding);
           },
         ),
       ],

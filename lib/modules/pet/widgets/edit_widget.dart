@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,11 @@ import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
 
 class EditWidget extends StatefulWidget {
+
+  final Pet pet;
+
+  const EditWidget({Key key, this.pet}) : super(key: key);
+
   @override
   _EditWidgetState createState() => _EditWidgetState();
 }
@@ -78,12 +84,12 @@ class _EditWidgetState extends State<EditWidget> {
                 },
                 child: _image == null
                     ? CircleAvatar(
-                        radius: 80,
+                        radius: 100,
                         backgroundColor: Colors.grey,
                         //backgroundImage: NetworkImage(avatarUrl),
                       )
                     : CircleAvatar(
-                        radius: 80,
+                        radius: 100,
                         backgroundImage: FileImage(_image),
                       ),
               ),
@@ -98,8 +104,8 @@ class _EditWidgetState extends State<EditWidget> {
                 child: Text(
                   'change_avatar'.tr(),
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
+                    color: kAmphibianColorBlueDarkAlternative,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

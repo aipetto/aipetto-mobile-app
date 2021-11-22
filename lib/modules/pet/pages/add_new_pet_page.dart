@@ -19,6 +19,7 @@ class AddNewPetPage extends StatefulWidget {
 }
 
 class _AddNewPetPageState extends State<AddNewPetPage> {
+
   @override
   Widget build(BuildContext context) {
     final PetRepository petRepository = PetRepository(
@@ -28,7 +29,11 @@ class _AddNewPetPageState extends State<AddNewPetPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('add_new_pet'.tr()),
+        title: Text('add_new_pet'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: BlocProvider(
         create: (_) => PetFormBloc(repository: petRepository),

@@ -1,4 +1,5 @@
 import 'package:aipetto/routes/routes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -48,13 +49,12 @@ class _LoadingPageState extends State<LoadingPage> with WidgetsBindingObserver {
     await Future.delayed(Duration(milliseconds: 500));
 
     if (permissionGPS && gpsActive) {
-      Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby);
+      Navigator.of(context).pushReplacementNamed(Routes.bookingStep1FindPlacesNearby);
       return '';
     } else if (!permissionGPS) {
-      Navigator.of(context).pushNamed(Routes.accessGPS);
-      return 'Permission Gps required';
+      Navigator.of(context).pushReplacementNamed(Routes.accessGPS);
     } else {
-      return 'Activate GPS';
+      Navigator.of(context).pushReplacementNamed(Routes.needAddress);
     }
   }
 }

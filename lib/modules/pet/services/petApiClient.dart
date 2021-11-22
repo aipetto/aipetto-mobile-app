@@ -72,6 +72,24 @@ class PetApiClient {
     return Pet.fromJson(json);
   }
 
+  Future<void> deletePet(Pet pet) async {
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final petTenant = pet.tenant;
+    final petId = pet.id;
+
+    final url = '$_baseUrl/tenant/$petTenant/pet?ids%5B%5D=$petId';
+    final response = await this.httpClient.delete(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if (response.statusCode != 200) {
+      throw new Exception('Error deleting pet');
+    }
+  }
+
   Future<Pet> addPet(Pet pet, File profileImage) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
     final petTenant = pet.tenant;
@@ -84,6 +102,16 @@ class PetApiClient {
     final newPetInfo = {
       'data': {
         "name": pet.name,
+        "uniqueIdentifier": "",
+        "nickname": pet.nickname,
+        "type": pet.type.id,
+        "hasMicrochip": pet.hasMicrochip,
+        "hasBeenDewormed": pet.hasBeenDewormed,
+        "hasBeenVaccinated": pet.hasBeenDewormed,
+        "hasBeenSterilizedSpayed": pet.hasBeenSterilizedSpayed,
+        "isGuideDog": pet.isGuideDog,
+        "isLost": pet.isLost,
+        "age": pet.age,
         "isLookingForMatch": pet.isLookingForMatch,
         "profileImage": imageMultipartUploaded,
         "tenant": pet.tenant,
@@ -92,7 +120,7 @@ class PetApiClient {
       }
     };
 
-    final petUpdatedResponse = await this.httpClient.post(
+    final petAddResponse = await this.httpClient.post(
         Uri.parse('$_baseUrl/tenant/$petTenant/pet'),
         body: jsonEncode(newPetInfo),
         headers: {
@@ -101,11 +129,11 @@ class PetApiClient {
           'Authorization': 'Bearer ${jwtOnSecureStorage}',
         });
 
-    if (petUpdatedResponse.statusCode != 200) {
+    if (petAddResponse.statusCode != 200) {
       throw new Exception('Error adding pet');
     }
 
-    final json = jsonDecode(petUpdatedResponse.body);
+    final json = jsonDecode(petAddResponse.body);
     return Pet.fromJson(json);
   }
 

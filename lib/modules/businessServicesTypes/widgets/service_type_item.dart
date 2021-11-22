@@ -1,9 +1,10 @@
-import 'package:aipetto/modules/businessServicesTypes/models/type_services.dart';
+import 'package:aipetto/config/environment.dart';
+import 'package:aipetto/modules/businessServicesTypes/models/business_services_type.dart'
+    as BusinessServiceTypeModel;
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class ServiceTypeItem extends StatelessWidget {
-  final TypeServices serviceType;
+  final BusinessServiceTypeModel.BusinessServiceTypeRow serviceType;
   final Function onTap;
 
   const ServiceTypeItem(
@@ -19,17 +20,24 @@ class ServiceTypeItem extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(
             children: <Widget>[
-              CircleAvatar(
-                backgroundColor: Colors.grey[300],
-                backgroundImage: AssetImage(serviceType.imagePath),
-                radius: 25,
-              ),
+              serviceType.serviceImage.isNotEmpty
+                  ? CircleAvatar(
+                      backgroundColor: Colors.grey[300],
+                      backgroundImage: NetworkImage(
+                          Environment.aipettoCloudStorageHost +
+                              serviceType.serviceImage.first.privateUrl),
+                      radius: 20,
+                    )
+                  : CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.grey,
+                    ),
               SizedBox(
                 width: 10,
               ),
               Expanded(
                 child: Text(
-                  serviceType.name.tr() + '\n',
+                  serviceType.name + '\n',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

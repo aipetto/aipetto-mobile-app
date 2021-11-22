@@ -1,5 +1,6 @@
 class Routes {
   static const String splash = '/';
+  static const String onboarding = '/onboarding';
   static const String login = '/login';
   static const String signup = '/signup';
   static const String forgotPassword = '/forgot_password';
@@ -7,7 +8,9 @@ class Routes {
   static const String filter = '/filter';
   static const String categories = '/categories';
   static const String accessGPS = '/access_gps';
+  static const String needAddress = '/need_address';
   static const String loading = '/loading';
+  static const String checkAuthentication = '/check_auth';
   static const String choosePetType = '/pets_types';
   static const String addressSearch = '/address_search';
   static const String bookingStep1FindPlacesNearby =
@@ -24,6 +27,8 @@ class Routes {
   static const String appointmentDetail = '/appointment_detail';
   static const String visitDetail = '/visit_detail';
   static const String prescriptionDetail = '/prescription_detail';
+  static const String chat = '/chat';
+  static const String chatAI = '/chat-ai';
   static const String chatDetail = '/chat_detail';
   static const String veterinarianProfile = '/veterinarianProfile';
   static const String petProfile = '/pet_profile';

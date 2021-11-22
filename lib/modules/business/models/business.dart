@@ -12,8 +12,9 @@ class Business extends Equatable {
   String speciality;
   String about;
   String avatar;
+  String location;
   double rating;
-  int price;
+  double price;
   int idSpeciality;
   int goodReviews;
   int totaScore;
@@ -30,6 +31,7 @@ class Business extends Equatable {
     this.speciality,
     this.about,
     this.avatar,
+    this.location,
     this.rating,
     this.price,
     this.idSpeciality,
@@ -50,6 +52,7 @@ class Business extends Equatable {
       'speciality': speciality,
       'about': about,
       'avatar': avatar,
+      'location': location,
       'rating': rating,
       'price': price,
       'idSpeciality': idSpeciality,
@@ -73,6 +76,7 @@ class Business extends Equatable {
       speciality: map['speciality'],
       about: map['about'],
       avatar: map['avatar'],
+      location: map['location'],
       rating: map['rating'],
       price: map['price'],
       idSpeciality: map['idSpeciality'],
@@ -92,33 +96,3 @@ class Business extends Equatable {
   // TODO: implement props
   List<Object> get props => throw UnimplementedError();
 }
-
-final businesses = [
-  Business(
-    name: 'Veterinária Bons Amigos',
-    speciality: 'Vet',
-    about:
-        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/logos/veterinariabonsamigos.jpg',
-    rating: 4.5,
-    price: 100,
-  ),
-  Business(
-    name: 'Salón Pet Belleza Buenos Aires',
-    speciality: 'Beauty',
-    about:
-        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/aipetto/grooming_color.png',
-    rating: 4.5,
-    price: 100,
-  ),
-  Business(
-    name: 'Café Pet Friendly London',
-    speciality: 'Human-Pet Spaces',
-    about:
-        'Candidate of medical sciences, gynecologist, specialist with experience more than 5 years.',
-    avatar: 'assets/images/aipetto/cafe_pet_friendly.jpg',
-    rating: 4.5,
-    price: 100,
-  ),
-];

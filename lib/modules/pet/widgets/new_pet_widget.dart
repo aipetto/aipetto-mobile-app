@@ -6,9 +6,11 @@ import 'package:aipetto/modules/pet/bloc/form/pet_form_bloc.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tflite/tflite.dart';
 
 import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
@@ -34,17 +36,22 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   var _selectedLookingForMatch = false;
   var _hasBeenVaccinated = false;
   var _hasBeenDewormed = false;
-  var _hasBeenSterilizedSpayed = true;
+  var _hasBeenSterializedSpayed = false;
+  var _hasMicrochip = false;
   var _lookingForMatchAnswers = <String>['yes'.tr(), 'no'.tr()];
+  var _ageInMonthsFromBirthDayCalculation = 1.0;
 
-  ///var _isLookingForMatch = true;
-  var _isGuideDog = false;
+  var _isLost = false;
+  var _isGuideDog = false;                              
   var hasMicrochip = false;
 
   /// Dynamic Dropdown consume Breed from API passing language
   var _selectedSex = 'male'.tr();
+  DateTime birthDateInDateTime;
   var _birthDate = '03/04/2016';
   var _sexItems = <String>['male'.tr(), 'female'.tr()];
+  var tensorRecognitionResult = "";
+  var firstRecognitionResult = "";
 
   List<DropdownMenuItem<String>> _dropDownSex;
 
@@ -52,15 +59,37 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
   Future _getImage(ImageSource imageSource) async {
     final picker = new ImagePicker();
-    final PickedFile _pickedFile = await picker.getImage(source: imageSource);
-    setState(() {
-      _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
-    });
+    final PickedFile _pickedFile = await picker.getImage(source: imageSource, imageQuality: 50, maxWidth: 400, maxHeight: 400);
 
     if (_pickedFile == null) {
       print('No image selected');
       return;
     }
+
+    var recognitions = await Tflite.runModelOnImage(
+      path:  _pickedFile.path,
+      imageMean: 0.0,
+      imageStd: 255.0,
+      numResults: 2,
+      threshold: 0.2,
+      asynch: true
+    );
+
+    tensorRecognitionResult = "";
+    firstRecognitionResult = "";
+
+    if(recognitions.length > 0 && recognitions.first != null){
+      firstRecognitionResult = recognitions.first['label'];
+
+      recognitions.forEach((response){
+        tensorRecognitionResult += response['label'] + ",prob: " + (response["confidence"] as double).toStringAsFixed(2) + "%\n\n";
+      });
+    }
+
+    setState(() {
+      _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
+      tensorRecognitionResult;
+    });
   }
 
   _initDropDowns() {
@@ -75,7 +104,20 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   @override
   void initState() {
     super.initState();
+    loadModel();
     _initDropDowns();
+  }
+
+  @override
+  void dispose() async {
+    super.dispose();
+    await Tflite.close();
+  }
+
+  loadModel() async {
+    await Tflite.loadModel(
+        model: "assets/tensor/dog-breed-model.tflite",
+        labels: "assets/tensor/dog-breed-labels.txt");
   }
 
   @override
@@ -86,11 +128,26 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
     _onNewPetFormButtonPressed() {
       if (_key.currentState.validate()) {
+
+        if(birthDateInDateTime != null){
+
+          _ageInMonthsFromBirthDayCalculation = DateTime.now().difference(birthDateInDateTime).inDays / 30 > 0 ? DateTime.now().difference(birthDateInDateTime).inDays / 30 : 1;
+        }
+
         if (currentUser is AuthenticationAuthenticated) {
           final superPet = new Pet(
             name: _name.text,
+            nickname: _nickname.text,
             isLookingForMatch: _selectedLookingForMatch,
+            type: new Breed(id: widget.petTypeId),
             tenant: currentUser.user.tenants.first.tenant.id,
+            hasMicrochip: _hasMicrochip,
+            hasBeenDewormed: _hasBeenDewormed,
+            hasBeenSterilizedSpayed: _hasBeenSterializedSpayed,
+            hasBeenVaccinated: _hasBeenVaccinated,
+            isGuideDog: _isGuideDog,
+            age: _ageInMonthsFromBirthDayCalculation.round(),
+            isLost: _isLost,
             createdBy: currentUser.user.id,
             updatedBy: currentUser.user.id,
           );
@@ -130,13 +187,41 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                     child: _imagePetProfile == null
                         ? CircleAvatar(
                             radius: 100,
-                            backgroundColor: Colors.grey,
+                            backgroundColor: kAmphibianColorGreenLightAlternative ,
+                            child: Stack(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: CircleAvatar(
+                                      radius: 18,
+                                      backgroundColor: Colors.white70,
+                                      child: Icon(CupertinoIcons.camera),
+                                    ),
+                                  ),
+                                ]
+                            ),
                             //backgroundImage: NetworkImage(avatarUrl),
                           )
                         : CircleAvatar(
                             radius: 100,
                             backgroundImage: FileImage(_imagePetProfile),
                           ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 55.0),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        'breed_dot'.tr() + tensorRecognitionResult,
+                        style: TextStyle(
+                          backgroundColor: kAmphibianColorGreenLight,
+                          fontSize: 25.0,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
                   ),
                 ),
                 Center(
@@ -149,8 +234,8 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                     child: Text(
                       'change_avatar'.tr(),
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
+                        color: kAmphibianColorBlueDarkAlternative,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -169,21 +254,32 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   validator: (value) =>
                       value.isEmpty ? 'Please add a name' : null,
                 ),
-                /**SizedBox(height: 15),
+                SizedBox(height: 15),
+                Text(
+                  'nickname_dot'.tr(),
+                  style: kInputTextStyle,
+                ),
+                CustomTextFormField(
+                  controller: _nickname,
+                  hintText: ''
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'type'.tr(),
+                  style: kInputTextStyle,
+                ),
+                CustomTextFormField(
+                 hintText: widget.petTypeName,
+                 enabled: false,
+                ),
+                SizedBox(height: 15),
               Text(
                 'breed_dot'.tr(),
                 style: kInputTextStyle,
               ),
               CustomTextFormField(
-                  hintText: 'Akita'
-              ),
-              SizedBox(height: 15),
-              Text(
-                'nickname'.tr(),
-                style: kInputTextStyle,
-              ),
-              CustomTextFormField(
-                  hintText: 'Akita'
+                  hintText: firstRecognitionResult,
+                  enabled: false
               ),
               SizedBox(height: 15),
               Text(
@@ -207,6 +303,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                 style: kInputTextStyle,
               ),
               ListTile(
+                leading: Icon(Icons.calendar_today_outlined),
                 contentPadding: EdgeInsets.all(0),
                 title: Text(_birthDate),
                 onTap: () {
@@ -218,18 +315,13 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   ).then((DateTime value) {
                     if (value != null) {
                       setState(() {
+                        birthDateInDateTime = value;
                         _birthDate = value.toString();
                       });
                     }
                   });
                 },
               ),
-              SizedBox(height: 15),
-              Text(
-                'blood_group_dot'.tr(),
-                style: kInputTextStyle,
-              ),*/
-
                 SizedBox(height: 15),
                 Text(
                   'looking_for_match'.tr(),
@@ -244,6 +336,85 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   },
                 ),
                 SizedBox(height: 15),
+                Text(
+                  'hasMicrochip'.tr(),
+                  style: kInputTextStyle,
+                ),
+                SwitchListTile(
+                  value: _hasMicrochip,
+                  onChanged: (_) {
+                    setState(() {
+                      _hasMicrochip = !_hasMicrochip;
+                    });
+                  },
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'hasBeenVaccinated'.tr(),
+                  style: kInputTextStyle,
+                ),
+                SwitchListTile(
+                  value: _hasBeenVaccinated,
+                  onChanged: (_) {
+                    setState(() {
+                      _hasBeenVaccinated = !_hasBeenVaccinated;
+                    });
+                  },
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'hasBeenDewormed'.tr(),
+                  style: kInputTextStyle,
+                ),
+                SwitchListTile(
+                  value: _hasBeenDewormed,
+                  onChanged: (_) {
+                    setState(() {
+                      _hasBeenDewormed = !_hasBeenDewormed;
+                    });
+                  },
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'hasBeenSterializedSpayed'.tr(),
+                  style: kInputTextStyle,
+                ),
+                SwitchListTile(
+                  value: _hasBeenSterializedSpayed,
+                  onChanged: (_) {
+                    setState(() {
+                      _hasBeenSterializedSpayed = !_hasBeenSterializedSpayed;
+                    });
+                  },
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'isGuideDog'.tr(),
+                  style: kInputTextStyle,
+                ),
+                SwitchListTile(
+                  value: _isGuideDog,
+                  onChanged: (_) {
+                    setState(() {
+                      _isGuideDog = !_isGuideDog;
+                    });
+                  },
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'isLost'.tr(),
+                  style: kInputTextStyle,
+                ),
+                SwitchListTile(
+                  value: _isLost,
+                  onChanged: (_) {
+                    setState(() {
+                      _isLost = !_isLost;
+                    });
+                  },
+                ),
+                SizedBox(height: 15),
+
                 /**Text(
                 'weight_dot'.tr(),
                 style: kInputTextStyle,
@@ -252,6 +423,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                 keyboardType: TextInputType.number,
                 hintText: 'in_kg'.tr(),
               ),**/
+
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   child: CustomButton(

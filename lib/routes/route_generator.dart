@@ -1,7 +1,10 @@
+import 'package:aipetto/modules/auth/models/redirect_url.dart';
+import 'package:aipetto/modules/auth/pages/check_authentication.dart';
 import 'package:aipetto/modules/auth/pages/forgot_password_page.dart';
 import 'package:aipetto/modules/auth/pages/login_page.dart';
 import 'package:aipetto/modules/business/pages/business_profile_page.dart';
 import 'package:aipetto/modules/business/pages/my_favorite_businesses_list_page.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/appointment_detail_page.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/booking/filter/filter_page.dart';
 import 'package:aipetto/modules/businessServiceReservation/pages/booking/step1/choose_service_to_reserve_page.dart';
@@ -14,11 +17,15 @@ import 'package:aipetto/modules/exam/pages/visit_detail_page.dart';
 import 'package:aipetto/modules/geolocation/pages/acccess_gps_page.dart';
 import 'package:aipetto/modules/geolocation/pages/address_search_page.dart';
 import 'package:aipetto/modules/geolocation/pages/loading_page.dart';
+import 'package:aipetto/modules/geolocation/pages/need_address_to_continue_page.dart';
 import 'package:aipetto/modules/home/component/home.dart';
 import 'package:aipetto/modules/i18n/pages/change_laguage_page.dart';
+import 'package:aipetto/modules/message/pages/chat_dialogflow_page.dart';
 import 'package:aipetto/modules/message/pages/messages_detail_page.dart';
+import 'package:aipetto/modules/message/pages/messages_page.dart';
 import 'package:aipetto/modules/notification/pages/notification_settings_page.dart';
 import 'package:aipetto/modules/notification/pages/notifications_page.dart';
+import 'package:aipetto/modules/onboarding/widgets/OnBoardingPage.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/pages/add_new_pet_page.dart';
 import 'package:aipetto/modules/pet/pages/choose_pet_type.dart';
@@ -45,7 +52,11 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => SplashPage());
 
       case Routes.login:
-        return CupertinoPageRoute(builder: (_) => LoginPage());
+        final args = settings.arguments as RedirectUrl;
+        return CupertinoPageRoute(
+            builder: (context) => LoginPage(previous_route: args.url),
+            fullscreenDialog: true,
+        );
 
       case Routes.petProfile:
         final args = settings.arguments as PetSelected;
@@ -77,9 +88,14 @@ class RouteGenerator {
         return CupertinoPageRoute(
             builder: (BuildContext context) => ChooseBusinessPlacePage());
 
-      case Routes.bookingStep2DetailsOfPlace:
+      case Routes.onboarding:
         return CupertinoPageRoute(
-            builder: (BuildContext context) => BusinessProfilePage());
+            builder: (BuildContext context) => OnBoardingPage());
+
+      case Routes.bookingStep2DetailsOfPlace:
+        final args = settings.arguments as BusinessPlaceSelected;
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => BusinessProfilePage(businessPlace: args.businessPlace));
 
       case Routes.bookingStep3ServiceAvailability:
         return CupertinoPageRoute(
@@ -90,13 +106,8 @@ class RouteGenerator {
             builder: (BuildContext context) =>
                 ReservationCustomerDetailsPage());
 
-      /// AppointmentBookedPage()
-
       case Routes.bookingStepConfirmation:
         return CupertinoPageRoute(builder: (_) => AppointmentBookedPage());
-
-      case Routes.businessProfile:
-        return CupertinoPageRoute(builder: (_) => BusinessProfilePage());
 
       case Routes.addNewPet:
         final args = settings.arguments as PetTypeSelected;
@@ -118,11 +129,21 @@ class RouteGenerator {
         return CupertinoPageRoute(
             builder: (BuildContext context) => MessagesDetailPage());
 
+      case Routes.chatAI:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => ChatDialogFlowPage());
+
+     case Routes.chat:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => MessagesPage());
+
       case Routes.veterinarianProfile:
         return CupertinoPageRoute(builder: (_) => VeterinarianProfilePage());
 
       case Routes.editPetProfile:
-        return CupertinoPageRoute(builder: (_) => EditPetProfilePage());
+        final args = settings.arguments as PetSelected;
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => EditPetProfilePage(pet: args.pet));
 
       case Routes.editUserProfile:
         return CupertinoPageRoute(builder: (_) => EditUserProfilePage());
@@ -157,6 +178,10 @@ class RouteGenerator {
         return CupertinoPageRoute(
             builder: (BuildContext context) => AccessGPSPage());
 
+      case Routes.needAddress:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => NeedAddressToContinuePage());
+
       case Routes.choosePetType:
         return TransparentRoute(
             builder: (BuildContext context) => ChoosePetTypePage());
@@ -168,6 +193,10 @@ class RouteGenerator {
       case Routes.loading:
         return CupertinoPageRoute(
             builder: (BuildContext context) => LoadingPage());
+
+      case Routes.checkAuthentication:
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => CheckAuthenticationPage());
 
       case Routes.notifications:
         return CupertinoPageRoute(

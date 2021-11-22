@@ -15,3 +15,9 @@ class NewPetFormButtonPressed extends PetFormEvent {
   @override
   List<Object> get props => [pet];
 }
+
+class DeletePetFormButtonPressed extends PetFormEvent {
+  final Pet pet;
+
+  DeletePetFormButtonPressed({Pet this.pet});
+}

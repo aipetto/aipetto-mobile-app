@@ -1,102 +1,25 @@
-import 'package:aipetto/modules/petType/models/pet_type.dart' as PetType;
+import 'package:aipetto/modules/pet/pages/pet_type_list.dart';
 import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
-import 'package:aipetto/modules/petType/widgets/pet_type_item.dart';
-import 'package:aipetto/routes/routes.dart';
-import 'package:aipetto/utils/constants.dart';
+import 'package:aipetto/modules/petType/repository/pet_type_repository.dart';
+import 'package:aipetto/modules/petType/services/petTypeApiClient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:http/http.dart' as http;
 
 class ChoosePetTypePage extends StatelessWidget {
+  final PetTypeRepository petTypeRepository = PetTypeRepository(
+      petTypeClient: PetTypeApiClient(
+    httpClient: http.Client(),
+  ));
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PetTypeBloc, PetTypeState>(
-      builder: (context, state) {
-        if (state == null || state is PetTypeEmpty) {
-          BlocProvider.of<PetTypeBloc>(context).add(FetchPetType());
-        }
-        if (state is PetTypeError) {
-          return noValuesWidget();
-        }
-        if (state is PetTypeLoaded) {
-          return Scaffold(
-              appBar: AppBar(
-                centerTitle: true,
-                title: Text(
-                  'pet_type_choose'.tr(),
-                ),
-              ),
-              body: Column(
-                children: <Widget>[
-                  Expanded(
-                      child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        state.petType.rows.length < 0
-                            ? noValuesWidget()
-                            : StaggeredGridView.countBuilder(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                crossAxisCount: 4,
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: state.petType.rows.length,
-                                staggeredTileBuilder: (int index) =>
-                                    StaggeredTile.fit(2),
-                                mainAxisSpacing: 10,
-                                crossAxisSpacing: 10,
-                                itemBuilder: (context, index) {
-                                  return PetTypeItem(
-                                    petType: state.petType.rows[index],
-                                    onTap: () {
-                                      Navigator.of(context).pushNamed(
-                                          Routes.addNewPet,
-                                          arguments: PetType.PetTypeSelected(
-                                              state.petType.rows[index].id,
-                                              state.petType.rows[index].name));
-                                    },
-                                  );
-                                },
-                              ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                  ))
-                ],
-              ));
-        }
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      },
+    return Scaffold(
+      body: BlocProvider<PetTypeBloc>(
+        create: (_) => PetTypeBloc(petTypeRepository: petTypeRepository)
+          ..add(FetchPetType()),
+        child: PetTypeList(),
+      ),
     );
-  }
-
-  Center noValuesWidget() {
-    return Center(
-        child: Column(
-      children: <Widget>[
-        SizedBox(
-          height: 20,
-        ),
-        Image.asset('assets/images/pet_sick_icon.png'),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          'Error',
-          style: TextStyle(
-            color: kColorDarkBlue,
-            fontSize: 20,
-            fontFamily: 'NunitoSans',
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ],
-    ));
   }
 }

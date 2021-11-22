@@ -12,11 +12,11 @@ class AppBarTitleWidget extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                text: 'aipetto',
+                text: 'Aipetto',
                 style: TextStyle(
                   color: kAmphibianColorGreenLight,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
             ],

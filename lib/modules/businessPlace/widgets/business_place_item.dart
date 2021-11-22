@@ -1,15 +1,28 @@
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/config/environment.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:flutter/material.dart';
 
 class BusinessPlaceItem extends StatelessWidget {
-  final Business business;
+  final BusinessPlace businessPlace;
+
   final Function onTap;
 
   const BusinessPlaceItem(
-      {Key key, @required this.onTap, @required this.business})
+      {Key key, @required this.onTap, @required this.businessPlace})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    final String businessCity = businessPlace.addressCity ?? '';
+    final String addressState = businessPlace.addressState ?? '';
+    final String addressCountry = businessPlace.addressCountry.name ?? '';
+
+    final String businessCompleteAddress = businessCity
+        + ', '
+        + addressState
+        + ' - '
+        + addressCountry;
+
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -17,11 +30,20 @@ class BusinessPlaceItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             CircleAvatar(
-              radius: 20,
+              radius: 50,
               backgroundColor: Colors.transparent,
-              child: Image.asset(
-                business.avatar,
-                fit: BoxFit.fill,
+              child: businessPlace.photoLogo.first['privateUrl'].startsWith('assets') ?
+              Image.asset(
+                businessPlace.photoLogo.first['privateUrl'],
+                height: 500,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+              ) :
+              Image.network(
+                Environment.aipettoCloudStorageHost + businessPlace.photoLogo.first['privateUrl'],
+                height: 500,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(
@@ -32,20 +54,20 @@ class BusinessPlaceItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    business.name,
+                    businessPlace.name,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontWeight: FontWeight.w700),
+                        .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
                     height: 3,
                   ),
                   Text(
-                    business.speciality,
+                    businessCompleteAddress ?? '',
                     style: TextStyle(
-                      color: Colors.grey[350],
-                      fontSize: 14,
+                      color: Colors.grey[500],
+                      fontSize: 16,
                     ),
                   ),
                 ],

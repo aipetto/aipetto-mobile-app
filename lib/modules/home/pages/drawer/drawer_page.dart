@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DrawerPage extends StatelessWidget {
+
   final Function onTap;
 
   const DrawerPage({Key key, @required this.onTap}) : super(key: key);
@@ -20,6 +21,7 @@ class DrawerPage extends StatelessWidget {
         BlocProvider.of<AuthenticationBloc>(context).state;
     if (authenticationUserState is AuthenticationAuthenticated) {
       if (authenticationUserState.user.avatars != null &&
+          authenticationUserState.user.avatars.length > 0 &&
           authenticationUserState.user.avatars.first != null) {
         profileImage = authenticationUserState.user.avatars.first.publicUrl;
       }
@@ -60,7 +62,8 @@ class DrawerPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 50,
                         backgroundColor: Colors.grey,
-                        backgroundImage: profileImage != null
+                        backgroundImage: profileImage != null &&
+                                profileImage != ''
                             ? NetworkImage(profileImage)
                             : AssetImage(
                                 'assets/images/logos/aipetto-logo-transparent.png'),

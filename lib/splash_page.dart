@@ -4,8 +4,13 @@ import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class SplashPage extends StatefulWidget {
+  final String redirect_route;
+
+  const SplashPage({Key key, this.redirect_route}) : super(key: key);
+
   @override
   _SplashPageState createState() => _SplashPageState();
 }
@@ -14,11 +19,13 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2), () => {_loadScreen()});
+    _loadScreen(context);
   }
 
-  _loadScreen() async {
-    Navigator.of(context).pushReplacementNamed(Routes.home);
+  _loadScreen(BuildContext context) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Navigator.of(context).pushReplacementNamed(widget.redirect_route ?? Routes.home);
+    });
   }
 
   @override
@@ -26,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: kAmphibianColorBlueDark,
+        color: kColorBlueAnimation,
         child: Column(
           children: <Widget>[
             Expanded(
@@ -34,8 +41,7 @@ class _SplashPageState extends State<SplashPage> {
               child: Container(),
             ),
             Center(
-              child: Image.asset(
-                  "assets/images/logos/aipetto-logo-transparent.png",
+              child: Image.asset('assets/images/animations/petAnimationComputer.gif',
                   height: 250,
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.contain),
@@ -55,8 +61,8 @@ class _SplashPageState extends State<SplashPage> {
                               text: 'app_name'.tr(),
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 42,
-                                fontWeight: FontWeight.w700,
+                                fontSize: 45,
+                                fontWeight: FontWeight.w900,
                               ),
                             ),
                           ],

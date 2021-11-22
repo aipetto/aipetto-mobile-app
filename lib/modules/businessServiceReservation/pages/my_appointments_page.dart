@@ -1,8 +1,8 @@
+import 'package:aipetto/modules/businessServiceReservation/pages/history_appointments_page.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'history_appointments_page.dart';
 import 'upcoming_appointments_page.dart';
 
 class MyAppointmentsPage extends StatefulWidget {
@@ -11,23 +11,10 @@ class MyAppointmentsPage extends StatefulWidget {
 }
 
 class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
-  static const _kTabTextStyle = TextStyle(
-    color: kColorPrimaryDark,
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-  );
-
-  static const _kUnselectedTabTextStyle = TextStyle(
-    color: Colors.grey,
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-  );
 
   final _kTabPages = [
-    UpcomingAppointmentsPage(),
-    HistoryAppointmentsPage(),
+    UpcomingParentAppointsPage(),
+    HistoryParentAppointmentsPage(),
   ];
 
   final _kTabs = [
@@ -40,31 +27,38 @@ class _MyAppointmentsPageState extends State<MyAppointmentsPage> {
   ];
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('my_appointments'.tr()),
+        title: Text(
+          'my_appointments'.tr(),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1
+              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+        ),
         elevation: 0,
       ),
       body: DefaultTabController(
-        length: _kTabs.length,
-        child: Column(
-          children: <Widget>[
-            TabBar(
-              indicatorColor: kColorPrimary,
-              labelStyle: _kTabTextStyle,
-              unselectedLabelStyle: _kUnselectedTabTextStyle,
-              labelColor: kColorPrimary,
-              unselectedLabelColor: Colors.grey,
-              tabs: _kTabs,
-            ),
-            Expanded(
-              child: TabBarView(
-                children: _kTabPages,
+          length: _kTabs.length,
+          child: Column(
+            children: <Widget>[
+              TabBar(
+                indicatorColor: kColorPrimary,
+                labelStyle: kTabTextStyle,
+                unselectedLabelStyle: kUnselectedTabTextStyle,
+                labelColor: kColorPrimary,
+                unselectedLabelColor: Colors.grey,
+                tabs: _kTabs,
               ),
-            ),
-          ],
+              Expanded(
+                child: TabBarView(
+                  children: _kTabPages,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
     );
   }
 }

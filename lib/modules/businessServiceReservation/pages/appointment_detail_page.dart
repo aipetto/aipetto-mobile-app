@@ -1,11 +1,12 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/config/pref_manager.dart';
-import 'package:aipetto/modules/business/models/business.dart';
+import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
+import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppointmentDetailPage extends StatefulWidget {
   @override
@@ -13,11 +14,12 @@ class AppointmentDetailPage extends StatefulWidget {
 }
 
 class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
-  final bool _isdark = true;
+
+  final bool _isdark = false;
 
   Color get _color => _isdark ? kColorDark : Colors.white;
 
-  Widget dateAndTime() {
+  Widget dateAndTime(BookingCartState bookingCart) {
     return Container(
       width: double.infinity,
       color: _color,
@@ -32,7 +34,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
             Text(
               'date_and_time'.tr(),
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -40,17 +42,10 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               height: 10,
             ),
             Text(
-              '${'tomorrow'.tr()}, 8:30 AM',
+              DateFormat('dd/MM/yyyy').format(bookingCart.dateAvailability).toString() + ', ' + bookingCart.timeAvailability,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              '${'in'.tr()} 13 ${'hours'.tr()}',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
               ),
             ),
             SizedBox(
@@ -62,7 +57,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
     );
   }
 
-  Widget practiceDetail() {
+  Widget practiceDetail(BookingCartState bookingCart, String address, String addressState, String addressZipCode) {
     return Container(
       width: double.infinity,
       color: _color,
@@ -85,14 +80,14 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               height: 10,
             ),
             Text(
-              'Veterinárian Bons Amigos',
+              bookingCart.place.name,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              'Rua Independencia, Contagem MG - Brasil Cep 111',
+              address + ' - ' + addressState + ' ' + addressZipCode,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -101,27 +96,13 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
             SizedBox(
               height: 10,
             ),
-            InkWell(
-              onTap: () {},
-              child: Text(
-                'get_direction'.tr().toUpperCase(),
-                style: TextStyle(
-                  color: kAmphibianColorGreenLight,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
           ],
         ),
       ),
     );
   }
 
-  Widget procedure() {
+  Widget procedure(BookingCartState bookingCart) {
     return Container(
       width: double.infinity,
       color: _color,
@@ -144,7 +125,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
               height: 10,
             ),
             Text(
-              'Consultation',
+              bookingCart.serviceName,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -159,7 +140,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
     );
   }
 
-  Widget bookingDetails() {
+  Widget bookingDetails(BookingCartState bookingCart) {
     return Container(
       width: double.infinity,
       color: _color,
@@ -188,7 +169,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       height: 10,
                     ),
                     Text(
-                      'Dr Vidal CRMV 11111',
+                      bookingCart.pet.name,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -218,7 +199,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                         height: 10,
                       ),
                       Text(
-                        '9355476',
+                        '',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -240,12 +221,26 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    BookingCartState bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
+
+    final direction = bookingCartState.place.address ?? '';
+    final addressNumber = bookingCartState.place.addressNumber ?? '';
+    final state = bookingCartState.place.addressState ?? '';
+    final addressCity = bookingCartState.place.addressCity ?? '';
+    final addressCountry = bookingCartState.place.addressCountry.name ?? '';
+    final zipCode = bookingCartState.place.addressZipCode ?? '';
+    final address = direction + ' ' + addressNumber;
+    final addressState = state + ' ' + addressCity + ' ' + addressCountry;
+    final addressZipCode = zipCode;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'appointment_details'.tr(),
-        ),
+        title: Text('appointment_details'.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         automaticallyImplyLeading: false,
       ),
       body: SafeArea(
@@ -262,19 +257,19 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
                         child: BusinessPlaceItem(
-                          business: businesses[0],
+                          businessPlace: bookingCartState.place, /// TODO this should come from the state
                         ),
                       ),
                       Divider(
                         color: _isdark ? Colors.black : Colors.grey[300],
                       ),
-                      dateAndTime(),
+                      dateAndTime(bookingCartState),
                       Divider(),
-                      practiceDetail(),
+                      practiceDetail(bookingCartState, address, addressState, addressZipCode),
                       Divider(),
-                      procedure(),
+                      procedure(bookingCartState),
                       Divider(),
-                      bookingDetails(),
+                      bookingDetails(bookingCartState),
                       Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 15),
@@ -320,7 +315,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                 onPressed: () {
                   Navigator.of(context).pushNamed(Routes.home);
                 },
-                text: 'done'.tr(),
+                text: 'home'.tr(),
               ),
             ),
           ],

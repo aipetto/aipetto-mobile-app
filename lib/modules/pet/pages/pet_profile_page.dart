@@ -1,5 +1,6 @@
 import 'package:aipetto/components/round_icon_button.dart';
 import 'package:aipetto/modules/exam/pages/visit_page.dart';
+import 'package:aipetto/modules/pet/bloc/form/pet_form_bloc.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/pages/pet_info_page.dart';
 import 'package:aipetto/modules/vaccine/pages/vaccine_page.dart';
@@ -7,6 +8,7 @@ import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PetProfilePage extends StatefulWidget {
   final Pet pet;
@@ -22,6 +24,7 @@ class _PetProfilePageState extends State<PetProfilePage>
 
   @override
   Widget build(BuildContext context) {
+
     super.build(context);
     bool _isdark = false;
     final String breed = widget.pet.breed != null ? '${widget.pet.breed}' : '';
@@ -91,10 +94,17 @@ class _PetProfilePageState extends State<PetProfilePage>
                         ],
                       ),
                     ),
-                    RoundIconButton(
+                    /**RoundIconButton(
                       onPressed: () =>
                           Navigator.of(context).pushNamed(Routes.editPetProfile, arguments: PetSelected(widget.pet)),
                       icon: Icons.edit,
+                      size: 40,
+                      color: kAmphibianColorGreenLight,
+                      iconColor: Colors.white,
+                    ),**/
+                    RoundIconButton(
+                      onPressed: () => showAlertDialog(context),
+                      icon: Icons.delete,
                       size: 40,
                       color: kAmphibianColorGreenLight,
                       iconColor: Colors.white,
@@ -145,6 +155,45 @@ class _PetProfilePageState extends State<PetProfilePage>
           )
         ],
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+
+    final _petFormBloc = BlocProvider.of<PetFormBloc>(context);
+
+    // set up the buttons
+    // ignore: deprecated_member_use
+    Widget cancelButton = FlatButton(
+      child: Text('cancel'.tr()),
+      onPressed:  () {
+        Navigator.of(context).pop();
+      },
+    );
+    // ignore: deprecated_member_use
+    Widget continueButton = FlatButton(
+      child: Text('confirm'.tr()),
+      onPressed:  () {
+        _petFormBloc.add(DeletePetFormButtonPressed(
+            pet: widget.pet));
+        Navigator.of(context).pushNamed(Routes.home);
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(""),
+      content: Text('confirm_delete'.tr()),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 

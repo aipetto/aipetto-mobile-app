@@ -17,6 +17,7 @@ import 'package:http/http.dart' as http;
 import 'modules/auth/bloc/authentication_bloc.dart';
 import 'modules/auth/services/auth_service.dart';
 import 'modules/home/component/home.dart';
+import 'modules/pet/bloc/form/pet_form_bloc.dart';
 import 'modules/pet/bloc/pet_bloc.dart';
 import 'routes/route_generator.dart';
 import 'utils/themebloc/theme_bloc.dart';
@@ -69,6 +70,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthenticationBloc>(create: (context) {
           return AuthenticationBloc(userRepository)..add(AppLoaded());
         }),
+        BlocProvider<PetFormBloc>(create: (context){
+          return PetFormBloc(repository: petRepository);
+        })
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: _buildWithTheme,

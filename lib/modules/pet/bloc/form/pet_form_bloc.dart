@@ -30,12 +30,26 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState> {
     if (event is NewPetFormButtonPressed) {
       yield* _mapNewPetToState(event);
     }
+
+    if (event is DeletePetFormButtonPressed) {
+      yield* _mapDeletePetToState(event);
+    }
   }
 
   Stream<PetFormState> _mapNewPetToState(NewPetFormButtonPressed event) async* {
     yield PetFormLoading();
     try {
       await repository.addPet(event.pet, event.fileImageProfile);
+      yield PetFormSuccess();
+    } catch (err) {
+      yield PetFormFailure('unknown_failure_error'.tr());
+    }
+  }
+
+  Stream<PetFormState> _mapDeletePetToState(DeletePetFormButtonPressed event) async* {
+    yield PetFormLoading();
+    try {
+      await repository.deletePet(event.pet);
       yield PetFormSuccess();
     } catch (err) {
       yield PetFormFailure('unknown_failure_error'.tr());

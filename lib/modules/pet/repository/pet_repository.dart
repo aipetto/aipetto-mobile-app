@@ -26,4 +26,9 @@ class PetRepository {
   Future<Pet> addPet(Pet pet, File profileImage) async {
     return await petClient.addPet(pet, profileImage);
   }
+
+  Future<void> deletePet(Pet pet) async {
+    return await petClient.deletePet(pet);
+  }
+
 }

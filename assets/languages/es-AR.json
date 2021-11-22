@@ -273,5 +273,6 @@
     "isLost": "¿Está perdido?",
     "pet_age_in_months": "¿Cuál es la edad de tu mascota en meses?",
     "months": "meses",
-    "age_months": "Edad en meses"
+    "age_months": "Edad en meses",
+    "confirm_delete": "Toda la información de tu mascota será borrada"
 }

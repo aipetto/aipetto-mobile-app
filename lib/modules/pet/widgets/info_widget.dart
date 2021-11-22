@@ -20,7 +20,7 @@ class InfoWidget extends StatelessWidget {
           itemData: pet.sex != null ? pet.sex : '',
         ),
         ProfileInfoTile(
-          title: '',
+          title: 'age_months'.tr(),
           itemData: pet.age != null ? pet.age.toString() : '',
         ),
         ProfileInfoTile(

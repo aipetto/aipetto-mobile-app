@@ -78,11 +78,13 @@ class _NewPetWidgetState extends State<NewPetWidget> {
     tensorRecognitionResult = "";
     firstRecognitionResult = "";
 
-    firstRecognitionResult = recognitions.first['label'];
+    if(recognitions.length > 0 && recognitions.first != null){
+      firstRecognitionResult = recognitions.first['label'];
 
-    recognitions.forEach((response){
-      tensorRecognitionResult += response['label'] + ",prob: " + (response["confidence"] as double).toStringAsFixed(2) + "%\n\n";
-    });
+      recognitions.forEach((response){
+        tensorRecognitionResult += response['label'] + ",prob: " + (response["confidence"] as double).toStringAsFixed(2) + "%\n\n";
+      });
+    }
 
     setState(() {
       _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));

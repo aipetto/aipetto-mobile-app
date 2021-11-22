@@ -275,5 +275,7 @@
     "isLost": "Is lost?",
     "pet_age_in_months": "What your pet age in months?",
     "months": "months",
-    "age_months": "Age in months"
+    "age_months": "Age in months",
+    "confirm_delete": "All your pet information will be deleted"
+
 }

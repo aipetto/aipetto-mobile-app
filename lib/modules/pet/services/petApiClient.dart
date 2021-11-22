@@ -72,6 +72,24 @@ class PetApiClient {
     return Pet.fromJson(json);
   }
 
+  Future<void> deletePet(Pet pet) async {
+    final jwtOnSecureStorage = await secureStorageRepository.getToken();
+
+    final petTenant = pet.tenant;
+    final petId = pet.id;
+
+    final url = '$_baseUrl/tenant/$petTenant/pet?ids%5B%5D=$petId';
+    final response = await this.httpClient.delete(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${jwtOnSecureStorage}',
+    });
+
+    if (response.statusCode != 200) {
+      throw new Exception('Error deleting pet');
+    }
+  }
+
   Future<Pet> addPet(Pet pet, File profileImage) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
     final petTenant = pet.tenant;

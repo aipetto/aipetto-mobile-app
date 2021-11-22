@@ -42,7 +42,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   var _ageInMonthsFromBirthDayCalculation = 1.0;
 
   var _isLost = false;
-  var _isGuideDog = false;
+  var _isGuideDog = false;                              
   var hasMicrochip = false;
 
   /// Dynamic Dropdown consume Breed from API passing language

@@ -1,4 +1,5 @@
 import 'package:aipetto/components/custom_profile_item.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class VaccinePage extends StatefulWidget {
+  final Pet pet;
+
+  const VaccinePage({Key key, this.pet}) : super(key: key);
+
   @override
   _VaccinePageState createState() => _VaccinePageState();
 }

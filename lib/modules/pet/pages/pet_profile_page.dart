@@ -20,18 +20,17 @@ class PetProfilePage extends StatefulWidget {
 class _PetProfilePageState extends State<PetProfilePage>
     with AutomaticKeepAliveClientMixin<PetProfilePage> {
 
-  final _kTabPages = [
-    PetInfoPage(),
-    VisitPage(),
-    VaccinePage(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
     bool _isdark = false;
-    final String petAgeInMonths =
-        widget.pet.age != null ? '${widget.pet.age}' + 'details'.tr() : '';
+    final String breed = widget.pet.breed != null ? '${widget.pet.breed}' : '';
+
+    final _kTabPages = [
+      PetInfoPage(pet: widget.pet),
+      VisitPage(pet: widget.pet),
+      VaccinePage(pet: widget.pet),
+    ];
 
     var _kTabs = [
       Tab(
@@ -55,70 +54,55 @@ class _PetProfilePageState extends State<PetProfilePage>
       ),
       body: Column(
         children: <Widget>[
-          Container(
-           height: 250,
-           width: double.infinity,
-           child: ClipRRect(
-             child: (widget.pet.profileImage != null &&
-                 widget.pet.profileImage.length > 0 &&
-                 widget.pet.profileImage[0] != null &&
-                 widget.pet.profileImage[0].publicUrl != null)
-                 ? Image.network(widget.pet.profileImage[0].publicUrl, fit: BoxFit.cover)
-                 : Image.asset('assets/images/aipetto/pets.png', fit: BoxFit.cover),
-           ),
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            //color: Colors.white,
-            child: Row(
-              children: <Widget>[
-                SizedBox(
-                  width: 20,
+          Stack(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                child: (widget.pet.profileImage != null &&
+                    widget.pet.profileImage.length > 0 &&
+                    widget.pet.profileImage[0] != null &&
+                    widget.pet.profileImage[0].publicUrl != null)
+                    ? Image.network(widget.pet.profileImage[0].publicUrl, height: 250, width: double.infinity, fit: BoxFit.cover)
+                    : Image.asset('assets/images/aipetto/pets.png', height: 250, width: double.infinity, fit: BoxFit.cover),
+              ),
+              Container(
+                padding: EdgeInsets.all(20),
+                //color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            widget.pet.name ?? '',
+                            style: TextStyle(
+                              backgroundColor: kAmphibianColorGreenLight,
+                              fontSize: 25.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                        ],
+                      ),
+                    ),
+                    RoundIconButton(
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed(Routes.editPetProfile, arguments: PetSelected(widget.pet)),
+                      icon: Icons.edit,
+                      size: 40,
+                      color: kAmphibianColorGreenLight,
+                      iconColor: Colors.white,
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        widget.pet.name ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            .copyWith(fontSize: 18),
-                      ),
-                      SizedBox(
-                        height: 3,
-                      ),
-                      Text(
-                        widget.pet.breed ?? '',
-                        style: TextStyle(
-                          color: kAmphibianColorBlueDarkAlternative,
-                          fontSize: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3,
-                      ),
-                      Text(
-                        '$petAgeInMonths',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            .copyWith(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-                RoundIconButton(
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed(Routes.editPetProfile),
-                  icon: Icons.edit,
-                  size: 40,
-                  color: kAmphibianColorGreenLight,
-                  iconColor: Colors.white,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           SizedBox(
             height: 5,

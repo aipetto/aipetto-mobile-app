@@ -141,7 +141,9 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => VeterinarianProfilePage());
 
       case Routes.editPetProfile:
-        return CupertinoPageRoute(builder: (_) => EditPetProfilePage());
+        final args = settings.arguments as PetSelected;
+        return CupertinoPageRoute(
+            builder: (BuildContext context) => EditPetProfilePage(pet: args.pet));
 
       case Routes.editUserProfile:
         return CupertinoPageRoute(builder: (_) => EditUserProfilePage());

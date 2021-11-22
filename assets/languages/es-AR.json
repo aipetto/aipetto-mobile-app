@@ -271,5 +271,7 @@
     "isGuideDog": "¿Es un perro guía?",
     "hasMicrochip": "¿Tiene microchip?",
     "isLost": "¿Está perdido?",
-    "pet_age_in_months": "¿Cuál es la edad de tu mascota en meses?"
+    "pet_age_in_months": "¿Cuál es la edad de tu mascota en meses?",
+    "months": "meses",
+    "age_months": "Edad en meses"
 }

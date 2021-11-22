@@ -4,6 +4,7 @@ import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class SplashPage extends StatefulWidget {
   final String redirect_route;
@@ -18,11 +19,13 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () => {_loadScreen()});
+    _loadScreen(context);
   }
 
-  _loadScreen() async {
-    Navigator.of(context).pushReplacementNamed(widget.redirect_route ?? Routes.home);
+  _loadScreen(BuildContext context) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Navigator.of(context).pushReplacementNamed(widget.redirect_route ?? Routes.home);
+    });
   }
 
   @override

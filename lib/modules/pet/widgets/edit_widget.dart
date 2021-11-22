@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,11 @@ import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
 
 class EditWidget extends StatefulWidget {
+
+  final Pet pet;
+
+  const EditWidget({Key key, this.pet}) : super(key: key);
+
   @override
   _EditWidgetState createState() => _EditWidgetState();
 }

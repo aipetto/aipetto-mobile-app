@@ -1,47 +1,59 @@
-import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../config/pref_manager.dart';
+import 'package:aipetto/utils/constants.dart';
 
 class ProfileInfoTile extends StatelessWidget {
-  final String title, hint, trailing;
+  final String title, itemData;
+  final bool boolItemData;
 
   const ProfileInfoTile(
-      {Key key, @required this.title, this.hint, this.trailing})
+      {Key key, @required this.title, this.itemData, this.boolItemData})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     var _isDark = false;
     return Column(
       children: <Widget>[
-        ListTile(
-          title: Text(
-            title,
-            style: TextStyle(
-              color: kAmphibianColorBlueDarkAlternative,
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
+        boolItemData != null ?
+          SwitchListTile(
+            value: boolItemData,
+            onChanged: (_) {},
+            title: Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1
+                  .copyWith(fontWeight: FontWeight.w700),
+            ),
+          )
+          :
+          ListTile(
+            title: Text(
+              title,
+              style: TextStyle(
+                color: kAmphibianColorBlueDarkAlternative,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            trailing: Text(
+              itemData,
+              style: TextStyle(
+                color: itemData != null
+                    ? _isDark
+                        ? Colors.white.withOpacity(0.87)
+                        : Colors.black
+                    : kAmphibianColorBlueDarkAlternative,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
-          trailing: Text(
-            trailing ?? hint,
-            style: TextStyle(
-              color: trailing != null
-                  ? _isDark
-                      ? Colors.white.withOpacity(0.87)
-                      : Colors.black
-                  : kAmphibianColorBlueDarkAlternative,
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-            ),
+          Divider(
+            height: 0.5,
+            color: kAmphibianColorBlueDarkAlternative,
+            indent: 15,
+            endIndent: 15,
           ),
-        ),
-        Divider(
-          height: 0.5,
-          color: kAmphibianColorBlueDarkAlternative,
-          indent: 15,
-          endIndent: 15,
-        ),
       ],
     );
   }

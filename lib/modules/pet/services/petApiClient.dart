@@ -93,6 +93,7 @@ class PetApiClient {
         "hasBeenSterilizedSpayed": pet.hasBeenSterilizedSpayed,
         "isGuideDog": pet.isGuideDog,
         "isLost": pet.isLost,
+        "age": pet.age,
         "isLookingForMatch": pet.isLookingForMatch,
         "profileImage": imageMultipartUploaded,
         "tenant": pet.tenant,

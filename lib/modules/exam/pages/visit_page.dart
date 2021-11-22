@@ -1,4 +1,5 @@
 import 'package:aipetto/components/custom_profile_item.dart';
+import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class VisitPage extends StatefulWidget {
+  final Pet pet;
+
+  const VisitPage({Key key, this.pet}) : super(key: key);
+
   @override
   _VisitPageState createState() => _VisitPageState();
 }
@@ -36,7 +41,199 @@ class _VisitPageState extends State<VisitPage>
             ),
             SizedBox(
               height: 20,
-            )
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            VisitItem(
+              date: 'FEB 14',
+              time: 'Tue. 17:00',
+              child: CustomProfileItem(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.visitDetail);
+                },
+                title: 'examination'.tr(),
+                subTitle: 'veterinarian'.tr(),
+                buttonTitle: 'details'.tr(),
+                imagePath: 'assets/images/icon_veterinarian_1.png',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),

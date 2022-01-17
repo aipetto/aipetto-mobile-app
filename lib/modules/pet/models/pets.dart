@@ -10,7 +10,7 @@ String petsToJson(Pets data) => json.encode(data.toJson());
 
 class Pets {
   Pets({
-    this.rows,
+    required this.rows,
   });
 
   List<Pet> rows;
@@ -29,50 +29,63 @@ Pet petFromJson(String str) => Pet.fromJson(json.decode(str));
 String petToJson(Pet data) => json.encode(data.toJson());
 
 class Pet {
+
+  static const emptyPetOwnersList = <PetOwner>[];
+  static const emptyPhotosList = <Photo>[];
+  static const emptyVaccineList = [];
+  static const emptyMatchesList = [];
+  static const emptyPetFriendsList = [];
+  static const emptyPetOwnersAuthorizedToAccessPetList = <PetOwner>[];
+  static const emptyPetOwnersBusinessAuthorizedToAccessPetList = <BusinessAuthorized>[];
+  static const emptyDiseasesList = [];
+  static const emptyMatches = <Match>[];
+  static const emptyPetFriends = <Match>[];
+  static const emptyPetProfileImageList = <ProfileImage>[];
+
   Pet(
-      {this.petOwners,
-      this.photos,
-      this.vaccines,
-      this.hasBeenVaccinated,
-      this.hasBeenDewormed,
-      this.hasBeenSterilizedSpayed,
-      this.isLost,
-      this.usersAuthorized,
-      this.businessAuthorized,
-      this.isLookingForMatch,
-      this.diseases,
-      this.isGuideDog,
-      this.matches,
-      this.petFriends,
-      this.hasMicrochip,
-      this.id,
-      this.numberOfLikes,
-      this.biography,
-      this.health,
-      this.furLength,
-      this.maturitySize,
-      this.type,
+      {this.petOwners = emptyPetOwnersList,
+      this.photos = emptyPhotosList,
+      this.vaccines = emptyVaccineList,
+      this.hasBeenVaccinated = false,
+      this.hasBeenDewormed = false,
+      this.hasBeenSterilizedSpayed = false,
+      this.isLost = false,
+      this.usersAuthorized = emptyPetOwnersAuthorizedToAccessPetList,
+      this.businessAuthorized = emptyPetOwnersBusinessAuthorizedToAccessPetList,
+      this.isLookingForMatch = false,
+      this.diseases = emptyDiseasesList,
+      this.isGuideDog = false,
+      this.matches = emptyMatches,
+      this.petFriends = emptyPetFriends,
+      this.hasMicrochip = false,
+      this.id = '',
+      this.numberOfLikes = 0,
+      this.biography = '',
+      this.health = '',
+      this.furLength = '',
+      this.maturitySize = '',
+      this.type = '',
       this.breed,
-      this.sex,
-      this.secondColor,
-      this.color,
-      this.age,
-      this.birthdate,
-      this.profileImage,
-      this.nickname,
-      this.name,
+      this.sex = '',
+      this.secondColor = '',
+      this.color = '',
+      this.age = 0,
+      required this.birthdate,
+      this.profileImage = emptyPetProfileImageList,
+      this.nickname = '',
+      this.name = '',
       this.secondBreedMixed,
       this.customerId,
-      this.tenant,
-      this.createdBy,
-      this.updatedBy,
-      this.createdAt,
-      this.updatedAt,
-      this.v,
-      this.petId,
-      this.bloodType,
-      this.weight,
-      this.uniqueIdentifier
+      this.tenant = '',
+      this.createdBy = '',
+      this.updatedBy = '',
+      required this.createdAt,
+      required this.updatedAt,
+      this.v = 0,
+      this.petId = '',
+      this.bloodType = '',
+      this.weight = '',
+      this.uniqueIdentifier = ''
       });
 
   List<PetOwner> petOwners;
@@ -96,8 +109,8 @@ class Pet {
   String health;
   String furLength;
   String maturitySize;
-  Breed type;
-  Breed breed;
+  String type;
+  Breed? breed;
   String sex;
   String secondColor;
   String color;
@@ -112,8 +125,8 @@ class Pet {
   String tenant;
   String createdBy;
   String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   int v;
   String petId;
   String bloodType;
@@ -154,11 +167,12 @@ class Pet {
         //secondColor: json["secondColor"],
         //color: json["color"],
         age: json["age"],
-        //birthdate: DateTime.parse(json["birthdate"]),
+        birthdate: DateTime.parse(json["birthdate"]),
         profileImage: List<ProfileImage>.from(
             json["profileImage"].map((x) => ProfileImage.fromJson(x))),
         //nickname: json["nickname"],
         name: json["name"],
+        breed: json["breed"],
         //secondBreedMixed: json["secondBreedMixed"],
         //customerId: json["customerId"],
         tenant: json["tenant"],
@@ -195,8 +209,8 @@ class Pet {
         "health": health,
         "furLength": furLength,
         "maturitySize": maturitySize,
-        "type": type.toJson(),
-        "breed": breed.toJson(),
+        "type": type,
+        "breed": breed,
         "sex": sex,
         "secondColor": secondColor,
         "color": color,
@@ -212,8 +226,8 @@ class Pet {
         "tenant": tenant,
         "createdBy": createdBy,
         "updatedBy": updatedBy,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "__v": v,
         "id": petId,
         "bloodType": bloodType,
@@ -221,29 +235,28 @@ class Pet {
       };
 
   Pet copyWith({
-    bool hasBeenVaccinated,
-    bool hasBeenDewormed,
-    bool hasBeenSterilizedSpayed,
-    bool isLookingForMatch,
-    List<dynamic> diseases,
-    bool isGuideDog,
-    bool hasMicrochip,
-    String biography,
-    String furLength,
-    String maturitySize,
-    Breed type,
-    Breed breed,
-    String sex,
-    String secondColor,
-    String color,
-    int age,
-    DateTime birthdate,
-    List<ProfileImage> profileImage,
-    String nickname,
-    String uniqueIdentifier,
-    String name,
+    bool hasBeenVaccinated = false,
+    bool hasBeenDewormed = false,
+    bool hasBeenSterilizedSpayed = false,
+    bool isLookingForMatch = false,
+    List<dynamic> diseases = emptyDiseasesList,
+    bool isGuideDog = false,
+    bool hasMicrochip = false,
+    String biography = '',
+    String furLength = '',
+    String maturitySize = '',
+    String type = '',
+    String sex = '',
+    String secondColor = '',
+    String color = '',
+    int age = 0,
+    DateTime? birthdate,
+    List<ProfileImage> profileImage = emptyPetProfileImageList,
+    String nickname = '',
+    String uniqueIdentifier = '',
+    String name = '',
     dynamic secondBreedMixed,
-    String bloodType,
+    String bloodType = '',
   }) =>
       Pet(
           hasBeenVaccinated: hasBeenVaccinated ?? this.hasBeenVaccinated,
@@ -256,7 +269,6 @@ class Pet {
           furLength: furLength ?? this.furLength,
           maturitySize: maturitySize ?? this.maturitySize,
           type: type ?? this.type,
-          breed: breed ?? this.breed,
           sex: sex ?? this.sex,
           secondColor: secondColor ?? this.secondColor,
           color: color ?? this.color,
@@ -267,24 +279,32 @@ class Pet {
           uniqueIdentifier: uniqueIdentifier ?? this.uniqueIdentifier,
           name: name ?? this.name,
           secondBreedMixed: secondBreedMixed ?? this.secondBreedMixed,
-          bloodType: bloodType ?? this.bloodType);
+          bloodType: bloodType ?? this.bloodType,
+          createdAt: createdAt ?? DateTime.now(),
+          updatedAt: updatedAt ?? DateTime.now()
+  );
 }
 
 class Breed {
+
+  //static const defaultDateTime = DateTime(2017, 9, 7);
+  static const emptyProfileImagesList = <ProfileImage>[];
+  static const emptyBreedsList = <String>[];
+
   Breed({
-    this.id,
-    this.language,
-    this.name,
-    this.importHash,
-    this.tenant,
-    this.createdBy,
-    this.updatedBy,
-    this.image,
+    this.id = '',
+    this.language = '',
+    this.name = '',
+    this.importHash = '',
+    this.tenant = '',
+    this.createdBy = '',
+    this.updatedBy = '',
+    this.image = emptyProfileImagesList,
     this.createdAt,
     this.updatedAt,
-    this.v,
-    this.breedId,
-    this.breeds,
+    this.v = 0,
+    this.breedId = '',
+    this.breeds = emptyBreedsList,
   });
 
   String id;
@@ -295,8 +315,8 @@ class Breed {
   String createdBy;
   String updatedBy;
   List<ProfileImage> image;
-  DateTime createdAt;
-  DateTime updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   int v;
   String breedId;
   List<String> breeds;
@@ -315,9 +335,7 @@ class Breed {
         updatedAt: DateTime.parse(json["updatedAt"]),
         v: json["__v"],
         breedId: json["id"],
-        breeds: json["breeds"] == null
-            ? null
-            : List<String>.from(json["breeds"].map((x) => x)),
+        breeds: List<String>.from(json["breeds"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -329,8 +347,8 @@ class Breed {
         "createdBy": createdBy,
         "updatedBy": updatedBy,
         "image": List<dynamic>.from(image.map((x) => x.toJson())),
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "__v": v,
         "id": breedId,
         "breeds":
@@ -340,13 +358,13 @@ class Breed {
 
 class ProfileImage {
   ProfileImage({
-    this.name,
-    this.sizeInBytes,
+    this.name = '',
+    this.sizeInBytes = 0,
     this.publicUrl,
-    this.privateUrl,
-    this.createdAt,
-    this.updatedAt,
-    this.downloadUrl,
+    this.privateUrl = '',
+    required this.createdAt,
+    required this.updatedAt,
+    this.downloadUrl = '',
   });
 
   String name;
@@ -379,10 +397,12 @@ class ProfileImage {
 }
 
 class BusinessAuthorized {
+
+
   BusinessAuthorized({
-    this.location,
-    this.services,
-    this.categories,
+    required this.location,
+    required this.services,
+    required this.categories,
     this.id,
     this.name,
     this.tenant,
@@ -400,7 +420,7 @@ class BusinessAuthorized {
     this.contactPhone,
     this.contactWhatsApp,
     this.country,
-    this.businessLogo,
+    required this.businessLogo,
     this.facebook,
     this.instagram,
     this.linkedin,
@@ -415,23 +435,23 @@ class BusinessAuthorized {
   Location location;
   List<String> services;
   List<dynamic> categories;
-  String id;
-  String name;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String addressPostCode;
-  String addressStreet;
-  String addressStreetNumber;
-  String businessId;
+  String? id;
+  String? name;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? addressPostCode;
+  String? addressStreet;
+  String? addressStreetNumber;
+  String? businessId;
   dynamic contactEmail;
   dynamic contactName;
   dynamic contactPhone;
   dynamic contactWhatsApp;
-  String country;
+  String? country;
   List<dynamic> businessLogo;
   dynamic facebook;
   dynamic instagram;
@@ -439,15 +459,13 @@ class BusinessAuthorized {
   dynamic notes;
   dynamic streetComplement;
   dynamic website;
-  String businessAuthorizedId;
+  String? businessAuthorizedId;
   dynamic city;
   dynamic state;
 
   factory BusinessAuthorized.fromJson(Map<String, dynamic> json) =>
       BusinessAuthorized(
-        location: json["location"] == null
-            ? null
-            : Location.fromJson(json["location"]),
+        location: json["location"] ?? Location.fromJson(json["location"]),
         services: List<String>.from(json["services"].map((x) => x)),
         categories: List<dynamic>.from(json["categories"].map((x) => x)),
         id: json["_id"],
@@ -492,8 +510,8 @@ class BusinessAuthorized {
         "tenant": tenant,
         "createdBy": createdBy,
         "updatedBy": updatedBy,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "__v": v,
         "addressPostCode": addressPostCode == null ? null : addressPostCode,
         "addressStreet": addressStreet == null ? null : addressStreet,
@@ -519,9 +537,12 @@ class BusinessAuthorized {
 }
 
 class Location {
+
+  static const defaultCoordinatesList = <double>[];
+
   Location({
-    this.type,
-    this.coordinates,
+    this.type = '',
+    this.coordinates = defaultCoordinatesList,
   });
 
   String type;
@@ -540,40 +561,51 @@ class Location {
 }
 
 class Match {
+
+  static const defaultPetOwners = <String>[];
+  static const defaultPetMatchPhotos = [];
+  static const defaultPetMatchVaccines = [];
+  static const defaultUsersAuthorizedOfPetMatch = [];
+  static const defaultBusinessAuthorizedOfPetMatch = [];
+  static const defaultDiseasesOfPetMatch = [];
+  static const defaultMatchesOfPetMatch = [];
+  static const defaultPetFriendsOfPetMatch = [];
+  static const defaultProfileImagesOfPetMatch = <ProfileImage>[];
+
   Match({
-    this.petOwners,
-    this.photos,
-    this.vaccines,
-    this.hasBeenVaccinated,
-    this.hasBeenDewormed,
-    this.hasBeenSterilizedSpayed,
-    this.isLost,
-    this.usersAuthorized,
-    this.businessAuthorized,
-    this.isLookingForMatch,
-    this.diseases,
-    this.isGuideDog,
-    this.matches,
-    this.petFriends,
-    this.hasMicrochip,
-    this.id,
-    this.type,
-    this.breed,
-    this.sex,
-    this.profileImage,
-    this.color,
-    this.age,
+    this.petOwners = defaultPetOwners,
+    this.photos = defaultPetMatchPhotos,
+    this.vaccines = defaultPetMatchVaccines,
+    this.hasBeenVaccinated = false,
+    this.hasBeenDewormed = false,
+    this.hasBeenSterilizedSpayed = false,
+    this.isLost = false,
+    this.usersAuthorized = defaultUsersAuthorizedOfPetMatch,
+    this.businessAuthorized = defaultBusinessAuthorizedOfPetMatch,
+    this.isLookingForMatch = false,
+    this.diseases = defaultDiseasesOfPetMatch,
+    this.isGuideDog = false,
+    this.matches = defaultMatchesOfPetMatch,
+    this.petFriends = defaultPetFriendsOfPetMatch,
+    this.hasMicrochip = false,
+    this.id = '',
+    this.type = '',
+    this.breed = '',
+    this.sex = '',
+    this.profileImage = defaultProfileImagesOfPetMatch,
+    this.color = '',
+    this.age = 0,
     this.birthdate,
-    this.nickname,
-    this.name,
+    this.nickname = '',
+    this.name = '',
     this.customerId,
-    this.tenant,
-    this.createdBy,
-    this.updatedBy,
-    this.createdAt,
-    this.updatedAt,
-    this.v,
-    this.matchId,
+    this.tenant = '',
+    this.createdBy = '',
+    this.updatedBy = '',
+    required this.createdAt,
+    required this.updatedAt,
+    this.v = 0,
+    this.matchId = '',
   });
 
   List<String> petOwners;
@@ -598,15 +630,15 @@ class Match {
   List<ProfileImage> profileImage;
   String color;
   int age;
-  DateTime birthdate;
+  DateTime? birthdate;
   String nickname;
   String name;
   dynamic customerId;
   String tenant;
   String createdBy;
   String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   int v;
   String matchId;
 
@@ -674,15 +706,15 @@ class Match {
         "color": color == null ? null : color,
         "age": age,
         "birthdate":
-            "${birthdate.year.toString().padLeft(4, '0')}-${birthdate.month.toString().padLeft(2, '0')}-${birthdate.day.toString().padLeft(2, '0')}",
+            "${birthdate?.year.toString().padLeft(4, '0')}-${birthdate?.month.toString().padLeft(2, '0')}-${birthdate?.day.toString().padLeft(2, '0')}",
         "nickname": nickname == null ? null : nickname,
         "name": name,
         "customerId": customerId,
         "tenant": tenant,
         "createdBy": createdBy,
         "updatedBy": updatedBy,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "__v": v,
         "id": matchId,
       };
@@ -690,11 +722,11 @@ class Match {
 
 class PetOwner {
   PetOwner({
-    this.id,
-    this.petOwnerId,
-    this.firstName,
-    this.lastName,
-    this.email,
+    this.id = '',
+    this.petOwnerId = '',
+    this.firstName = '',
+    this.lastName = '',
+    this.email = '',
   });
 
   String id;
@@ -721,20 +753,23 @@ class PetOwner {
 }
 
 class Photo {
+
+  static const defaultListOfProfileImages = <ProfileImage>[];
+
   Photo({
-    this.id,
-    this.longitude,
-    this.latitude,
-    this.photo,
-    this.petId,
-    this.description,
-    this.tenant,
-    this.createdBy,
-    this.updatedBy,
-    this.createdAt,
-    this.updatedAt,
-    this.v,
-    this.photoId,
+    this.id = '',
+    this.longitude = '',
+    this.latitude = '',
+    this.photo = defaultListOfProfileImages,
+    this.petId = '',
+    this.description = '',
+    this.tenant = '',
+    this.createdBy = '',
+    this.updatedBy = '',
+    required this.createdAt,
+    required this.updatedAt,
+    this.v = 0,
+    this.photoId = '',
   });
 
   String id;
@@ -794,6 +829,6 @@ class PetSelected {
 // TODO Remove hardcode and consume from API
 final veterinarians = [
   Pet(
-    nickname: 'Supet Pet',
+    nickname: 'Supet Pet', createdAt: DateTime.now(), updatedAt: DateTime.now(), birthdate: DateTime.now(),
   ),
 ];

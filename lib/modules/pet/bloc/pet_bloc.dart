@@ -15,9 +15,9 @@ part 'pet_state.dart';
 class PetBloc extends Bloc<PetEvent, PetState> {
   final PetRepository petRepository;
   final AuthenticationService authenticationService;
-  StreamSubscription newPetFormSubscription;
+  late StreamSubscription newPetFormSubscription;
 
-  PetBloc({@required this.authenticationService, @required this.petRepository})
+  PetBloc({required this.authenticationService, required this.petRepository})
       : assert(petRepository != null),
         super(PetEmpty());
 

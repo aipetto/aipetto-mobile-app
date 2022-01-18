@@ -8,7 +8,7 @@ String businessPlaceToJson(BusinessPlace data) => json.encode(data.toJson());
 
 class BusinessPlacesList {
   BusinessPlacesList({
-    this.listPlaces,
+    required this.listPlaces,
   });
 
   List<BusinessPlace> listPlaces;
@@ -53,33 +53,33 @@ class BusinessPlace extends Equatable{
     this.businessPlaceId,
   });
 
-  Location location;
-  List<dynamic> services;
-  List<AddressCountry> categories;
-  bool is24Hours;
-  bool isOpen;
-  String id;
+  Location? location;
+  List<dynamic>? services;
+  List<AddressCountry>? categories;
+  bool? is24Hours;
+  bool? isOpen;
+  String? id;
   dynamic stars;
   dynamic closeTime;
   dynamic openTime;
-  String addressState;
-  String addressCity;
+  String? addressState;
+  String? addressCity;
   dynamic addressZipCode;
-  String addressNumber;
-  String address;
+  String? addressNumber;
+  String? address;
   dynamic placeType;
-  String name;
-  BusinessId businessId;
-  AddressCountry addressCountry;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  List<dynamic> photoLogo;
-  List<dynamic> photoStore;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String businessPlaceId;
+  String? name;
+  BusinessId? businessId;
+  AddressCountry? addressCountry;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  List<dynamic>? photoLogo;
+  List<dynamic>? photoStore;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? businessPlaceId;
 
   factory BusinessPlace.fromJson(Map<String, dynamic> json) => BusinessPlace(
     location: Location.fromJson(json["location"]),
@@ -112,9 +112,9 @@ class BusinessPlace extends Equatable{
   );
 
   Map<String, dynamic> toJson() => {
-    "location": location.toJson(),
-    "services": List<dynamic>.from(services.map((x) => x)),
-    "categories": List<dynamic>.from(categories.map((x) => x.toJson())),
+    "location": location?.toJson(),
+    "services": List<dynamic>.from(services!.map((x) => x)),
+    "categories": List<dynamic>.from(categories!.map((x) => x.toJson())),
     "is24hours": is24Hours,
     "isOpen": isOpen,
     "_id": id,
@@ -128,15 +128,15 @@ class BusinessPlace extends Equatable{
     "address": address,
     "placeType": placeType,
     "name": name,
-    "businessId": businessId.toJson(),
-    "addressCountry": addressCountry.toJson(),
+    "businessId": businessId?.toJson(),
+    "addressCountry": addressCountry?.toJson(),
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "photoLogo": List<dynamic>.from(photoLogo.map((x) => x)),
-    "photoStore": List<dynamic>.from(photoStore.map((x) => x)),
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "photoLogo": List<dynamic>.from(photoLogo!.map((x) => x)),
+    "photoStore": List<dynamic>.from(photoStore!.map((x) => x)),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": businessPlaceId,
   };
@@ -163,19 +163,19 @@ class AddressCountry {
     this.language,
   });
 
-  String id;
-  String name;
-  String initials;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String addressCountryId;
+  String? id;
+  String? name;
+  String? initials;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? addressCountryId;
   dynamic pageUrl;
-  List<dynamic> categoryImage;
-  String language;
+  List<dynamic>? categoryImage;
+  String? language;
 
   factory AddressCountry.fromJson(Map<String, dynamic> json) => AddressCountry(
     id: json["_id"],
@@ -200,12 +200,12 @@ class AddressCountry {
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": addressCountryId,
     "pageUrl": pageUrl,
-    "categoryImage": categoryImage == null ? null : List<dynamic>.from(categoryImage.map((x) => x)),
+    "categoryImage": categoryImage == null ? null : List<dynamic>.from(categoryImage!.map((x) => x)),
     "language": language == null ? null : language,
   };
 }
@@ -245,15 +245,15 @@ class BusinessId {
     this.businessIdId,
   });
 
-  List<dynamic> services;
-  List<String> categories;
-  String id;
+  List<dynamic>? services;
+  List<String>? categories;
+  String? id;
   dynamic instagram;
   dynamic notes;
   dynamic linkedin;
-  String facebook;
+  String? facebook;
   dynamic website;
-  List<BusinessLogo> businessLogo;
+  List<BusinessLogo>? businessLogo;
   dynamic addressPostCode;
   dynamic streetComplement;
   dynamic addressStreetNumber;
@@ -261,21 +261,21 @@ class BusinessId {
   dynamic contactEmail;
   dynamic contactWhatsApp;
   dynamic contactPhone;
-  String contactName;
-  String name;
-  String businessId;
+  String? contactName;
+  String? name;
+  String? businessId;
   dynamic city;
-  String state;
-  String country;
-  String language;
-  String currency;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String businessIdId;
+  String? state;
+  String? country;
+  String? language;
+  String? currency;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? businessIdId;
 
   factory BusinessId.fromJson(Map<String, dynamic> json) => BusinessId(
     services: List<dynamic>.from(json["services"].map((x) => x)),
@@ -312,15 +312,15 @@ class BusinessId {
   );
 
   Map<String, dynamic> toJson() => {
-    "services": List<dynamic>.from(services.map((x) => x)),
-    "categories": List<dynamic>.from(categories.map((x) => x)),
+    "services": List<dynamic>.from(services!.map((x) => x)),
+    "categories": List<dynamic>.from(categories!.map((x) => x)),
     "_id": id,
     "instagram": instagram,
     "notes": notes,
     "linkedin": linkedin,
     "facebook": facebook,
     "website": website,
-    "businessLogo": List<dynamic>.from(businessLogo.map((x) => x.toJson())),
+    "businessLogo": List<dynamic>.from(businessLogo!.map((x) => x.toJson())),
     "addressPostCode": addressPostCode,
     "streetComplement": streetComplement,
     "addressStreetNumber": addressStreetNumber,
@@ -339,8 +339,8 @@ class BusinessId {
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": businessIdId,
   };
@@ -358,14 +358,14 @@ class BusinessLogo {
     this.businessLogoId,
   });
 
-  String id;
-  String name;
-  int sizeInBytes;
+  String? id;
+  String? name;
+  int? sizeInBytes;
   dynamic publicUrl;
-  String privateUrl;
-  DateTime updatedAt;
-  DateTime createdAt;
-  String businessLogoId;
+  String? privateUrl;
+  DateTime? updatedAt;
+  DateTime? createdAt;
+  String? businessLogoId;
 
   factory BusinessLogo.fromJson(Map<String, dynamic> json) => BusinessLogo(
     id: json["_id"],
@@ -384,8 +384,8 @@ class BusinessLogo {
     "sizeInBytes": sizeInBytes,
     "publicUrl": publicUrl,
     "privateUrl": privateUrl,
-    "updatedAt": updatedAt.toIso8601String(),
-    "createdAt": createdAt.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
     "id": businessLogoId,
   };
 }
@@ -396,8 +396,8 @@ class Location {
     this.coordinates,
   });
 
-  String type;
-  List<double> coordinates;
+  String? type;
+  List<double>? coordinates;
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
     type: json["type"],
@@ -406,7 +406,7 @@ class Location {
 
   Map<String, dynamic> toJson() => {
     "type": type,
-    "coordinates": List<dynamic>.from(coordinates.map((x) => x)),
+    "coordinates": List<dynamic>.from(coordinates!.map((x) => x)),
   };
 }
 

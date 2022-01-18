@@ -16,13 +16,13 @@ class BusinessServicesTypesApiClient {
       Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50ab5704301f1e7b535';
 
   BusinessServicesTypesApiClient({
-    @required this.httpClient,
+    required this.httpClient,
   }) : assert(httpClient != null);
 
   Future<BusinessServiceType> fetchBusinessServiceTypes() async {
     final url =
         '$_baseUrl/business-services-types?filter%5Blanguage%5D=$languageId&filter%5BisEnabled%5D=true';
-    final response = await this.httpClient.get(url);
+    final response = await this.httpClient.get(Uri.parse(url));
 
     if (response.statusCode != 200) {
       throw new Exception('Error gettings pet types');

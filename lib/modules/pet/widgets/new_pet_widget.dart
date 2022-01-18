@@ -10,7 +10,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
 
 import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
@@ -59,21 +58,12 @@ class _NewPetWidgetState extends State<NewPetWidget> {
 
   Future _getImage(ImageSource imageSource) async {
     final picker = new ImagePicker();
-    final PickedFile _pickedFile = await picker.getImage(source: imageSource, imageQuality: 50, maxWidth: 400, maxHeight: 400);
+    final PickedFile? _pickedFile = await picker.getImage(source: imageSource, imageQuality: 50, maxWidth: 400, maxHeight: 400);
 
     if (_pickedFile == null) {
       print('No image selected');
       return;
     }
-
-    var recognitions = await Tflite.runModelOnImage(
-      path:  _pickedFile.path,
-      imageMean: 0.0,
-      imageStd: 255.0,
-      numResults: 2,
-      threshold: 0.2,
-      asynch: true
-    );
 
     setState(() {
       _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
@@ -99,13 +89,6 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   @override
   void dispose() async {
     super.dispose();
-    await Tflite.close();
-  }
-
-  loadModel() async {
-    await Tflite.loadModel(
-        model: "assets/tensor/dog-breed-model.tflite",
-        labels: "assets/tensor/dog-breed-labels.txt");
   }
 
   @override

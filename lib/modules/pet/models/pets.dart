@@ -249,6 +249,7 @@ class Pet {
     String sex = '',
     String secondColor = '',
     String color = '',
+    Breed? breed,
     int age = 0,
     DateTime? birthdate,
     List<ProfileImage> profileImage = emptyPetProfileImageList,
@@ -278,6 +279,7 @@ class Pet {
           nickname: nickname ?? this.nickname,
           uniqueIdentifier: uniqueIdentifier ?? this.uniqueIdentifier,
           name: name ?? this.name,
+          breed: breed ?? this.breed,
           secondBreedMixed: secondBreedMixed ?? this.secondBreedMixed,
           bloodType: bloodType ?? this.bloodType,
           createdAt: createdAt ?? DateTime.now(),
@@ -590,7 +592,7 @@ class Match {
     this.hasMicrochip = false,
     this.id = '',
     this.type = '',
-    this.breed = '',
+    this.breed,
     this.sex = '',
     this.profileImage = defaultProfileImagesOfPetMatch,
     this.color = '',
@@ -625,7 +627,7 @@ class Match {
   bool hasMicrochip;
   String id;
   String type;
-  String breed;
+  Breed? breed;
   String sex;
   List<ProfileImage> profileImage;
   String color;

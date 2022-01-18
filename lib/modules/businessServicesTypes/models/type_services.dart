@@ -9,9 +9,9 @@ class TypeServices extends Equatable {
   String imagePath;
 
   TypeServices({
-    @required this.id,
-    @required this.name,
-    @required this.imagePath,
+    required this.id,
+    required this.name,
+    required this.imagePath,
   });
 
   Map<String, dynamic> toMap() {
@@ -23,8 +23,6 @@ class TypeServices extends Equatable {
   }
 
   factory TypeServices.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return TypeServices(
       id: map['id'],
       name: map['name'],

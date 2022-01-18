@@ -19,22 +19,22 @@ class Veterinarian {
   int visitDuration;
 
   Veterinarian({
-    this.id,
-    this.name,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.phone,
-    this.speciality,
-    this.about,
-    this.avatar,
-    this.rating,
-    this.price,
-    this.idSpeciality,
-    this.goodReviews,
-    this.totaScore,
-    this.satisfaction,
-    this.visitDuration,
+    this.id = '',
+    this.name = '',
+    this.firstName = '',
+    this.lastName = '',
+    this.email = '',
+    this.phone = '',
+    this.speciality = '',
+    this.about = '',
+    this.avatar = '',
+    this.rating = 0,
+    this.price = 0.0,
+    this.idSpeciality = 0,
+    this.goodReviews = 0,
+    this.totaScore = 0,
+    this.satisfaction = 0,
+    this.visitDuration = 0,
   });
 
   Map<String, dynamic> toMap() {
@@ -59,8 +59,6 @@ class Veterinarian {
   }
 
   factory Veterinarian.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return Veterinarian(
       id: map['id'],
       name: map['name'],
@@ -90,7 +88,9 @@ class Veterinarian {
 class Veterinarians {
   List<Veterinarian> veterinarianList;
 
-  Veterinarians({this.veterinarianList});
+  Veterinarians({
+    required this.veterinarianList
+  });
 
   factory Veterinarians.fromJSON(Map<dynamic, dynamic> json) {
     return Veterinarians(veterinarianList: parserecipes(json));

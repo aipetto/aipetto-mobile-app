@@ -6,7 +6,7 @@ class Message extends Equatable {
   String id;
 
   Message({
-    this.id,
+    required this.id,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,8 +16,6 @@ class Message extends Equatable {
   }
 
   factory Message.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return Message(
       id: map['id'],
     );

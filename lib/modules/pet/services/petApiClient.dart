@@ -20,14 +20,14 @@ class PetApiClient {
   final SecureStorage secureStorageRepository = SecureStorage();
 
   PetApiClient({
-    @required this.httpClient,
+    required this.httpClient,
   }) : assert(httpClient != null);
 
-  Future<List<Pet>> fetchUserPets(String userTenantId) async {
+  Future<List<Pet>> fetchUserPets(String? userTenantId) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/tenant/$userTenantId/pet';
-    final response = await this.httpClient.get(url, headers: {
+    final response = await this.httpClient.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}',
@@ -43,7 +43,7 @@ class PetApiClient {
 
   Future<Pet> fetchPet(Pet pet) async {
     final url = '$_baseUrl/tenant/${pet.tenant}/pet/${pet.id}';
-    final response = await this.httpClient.get(url);
+    final response = await this.httpClient.get(Uri.parse(url));
 
     if (response.statusCode != 200) {
       throw new Exception('Error gettings pet information');
@@ -79,7 +79,7 @@ class PetApiClient {
     final petId = pet.id;
 
     final url = '$_baseUrl/tenant/$petTenant/pet?ids%5B%5D=$petId';
-    final response = await this.httpClient.delete(url, headers: {
+    final response = await this.httpClient.delete(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}',
@@ -104,7 +104,7 @@ class PetApiClient {
         "name": pet.name,
         "uniqueIdentifier": "",
         "nickname": pet.nickname,
-        "type": pet.type.id,
+        "type": pet.type,
         "hasMicrochip": pet.hasMicrochip,
         "hasBeenDewormed": pet.hasBeenDewormed,
         "hasBeenVaccinated": pet.hasBeenDewormed,

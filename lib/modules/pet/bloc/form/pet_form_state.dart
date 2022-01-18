@@ -12,11 +12,13 @@ class PetFormLoading extends PetFormState {}
 class PetFormSuccess extends PetFormState {
   final Pet pet;
 
-  PetFormSuccess({@required this.pet});
+  PetFormSuccess({required this.pet});
 
   @override
   List<Object> get props => [pet];
 }
+
+class PetDeleteSuccess extends PetFormState {}
 
 class PetFormFailure extends PetFormState {
   final String error;

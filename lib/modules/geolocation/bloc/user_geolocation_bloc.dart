@@ -12,11 +12,16 @@ class UserGeolocationBloc
     extends Bloc<UserGeolocationEvent, UserGeolocationState> {
   UserGeolocationBloc() : super(UserGeolocationState());
 
-  StreamSubscription<Position> _positionSubscription;
+  late StreamSubscription<Position> _positionSubscription;
+
+  late LocationSettings preferLocationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 10
+  );
 
   void getCurrentLocation() {
     this._positionSubscription = Geolocator.getPositionStream(
-            desiredAccuracy: LocationAccuracy.high, distanceFilter: 10)
+            locationSettings: preferLocationSettings)
         .listen((Position position) {
       final newLocationInLatLngFormat =
           new LatLng(position.latitude, position.longitude);

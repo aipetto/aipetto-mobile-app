@@ -21,13 +21,13 @@ class User extends Equatable {
     this.avatars,
   });
 
-  bool emailVerified;
-  String id;
-  String email;
-  String firstName;
-  String lastName;
-  List<TenantElement> tenants = [];
-  List<Avatar> avatars = [];
+  bool? emailVerified;
+  String? id;
+  String? email;
+  String? firstName;
+  String? lastName;
+  List<TenantElement>? tenants = [];
+  List<Avatar>? avatars = [];
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         emailVerified: json["emailVerified"],
@@ -47,12 +47,12 @@ class User extends Equatable {
         "email": email,
         "firstName": firstName,
         "lastName": lastName,
-        "tenants": List<dynamic>.from(tenants.map((x) => x.toJson())),
-        "avatars": List<dynamic>.from(avatars.map((x) => x.toJson())),
+        "tenants": List<dynamic>.from(tenants!.map((x) => x.toJson())),
+        "avatars": List<dynamic>.from(avatars!.map((x) => x.toJson())),
       };
 
   @override
-  List<Object> get props =>
+  List<Object?> get props =>
       [id, emailVerified, email, firstName, lastName, tenants, avatars];
 }
 
@@ -69,15 +69,15 @@ class Avatar {
     this.downloadUrl,
   });
 
-  String id;
-  String name;
-  int sizeInBytes;
-  String publicUrl;
-  String privateUrl;
-  DateTime updatedAt;
-  DateTime createdAt;
-  String avatarId;
-  String downloadUrl;
+  String? id;
+  String? name;
+  int? sizeInBytes;
+  String? publicUrl;
+  String? privateUrl;
+  DateTime? updatedAt;
+  DateTime? createdAt;
+  String? avatarId;
+  String? downloadUrl;
 
   factory Avatar.fromJson(Map<String, dynamic> json) => Avatar(
         id: json["_id"],
@@ -97,8 +97,8 @@ class Avatar {
         "sizeInBytes": sizeInBytes,
         "publicUrl": publicUrl,
         "privateUrl": privateUrl,
-        "updatedAt": updatedAt.toIso8601String(),
-        "createdAt": createdAt.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
         "id": avatarId,
         "downloadUrl": downloadUrl,
       };
@@ -115,13 +115,13 @@ class TenantElement {
     this.tenantId,
   });
 
-  List<String> roles;
-  String id;
-  TenantTenant tenant;
-  String status;
-  DateTime updatedAt;
-  DateTime createdAt;
-  String tenantId;
+  List<String>? roles;
+  String? id;
+  TenantTenant? tenant;
+  String? status;
+  DateTime? updatedAt;
+  DateTime? createdAt;
+  String? tenantId;
 
   factory TenantElement.fromJson(Map<String, dynamic> json) => TenantElement(
         roles: List<String>.from(json["roles"].map((x) => x)),
@@ -134,12 +134,12 @@ class TenantElement {
       );
 
   Map<String, dynamic> toJson() => {
-        "roles": List<dynamic>.from(roles.map((x) => x)),
+        "roles": List<dynamic>.from(roles!.map((x) => x)),
         "_id": id,
-        "tenant": tenant.toJson(),
+        "tenant": tenant?.toJson(),
         "status": status,
-        "updatedAt": updatedAt.toIso8601String(),
-        "createdAt": createdAt.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
         "id": tenantId,
       };
 }
@@ -160,18 +160,18 @@ class TenantTenant {
     this.settings,
   });
 
-  String plan;
-  String planStatus;
-  String id;
-  String name;
-  String url;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String tenantId;
-  Settings settings;
+  String? plan;
+  String? planStatus;
+  String? id;
+  String? name;
+  String? url;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? tenantId;
+  Settings? settings;
 
   factory TenantTenant.fromJson(Map<String, dynamic> json) => TenantTenant(
         plan: json["plan"],
@@ -196,11 +196,11 @@ class TenantTenant {
         "url": url,
         "createdBy": createdBy,
         "updatedBy": updatedBy,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "__v": v,
         "id": tenantId,
-        "settings": settings.toJson(),
+        "settings": settings?.toJson(),
       };
 }
 
@@ -218,16 +218,16 @@ class Settings {
     this.settingsId,
   });
 
-  String id;
-  String theme;
-  String tenant;
-  String createdBy;
-  List<dynamic> backgroundImages;
-  List<dynamic> logos;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String settingsId;
+  String? id;
+  String? theme;
+  String? tenant;
+  String? createdBy;
+  List<dynamic>? backgroundImages;
+  List<dynamic>? logos;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? settingsId;
 
   factory Settings.fromJson(Map<String, dynamic> json) => Settings(
         id: json["_id"],
@@ -248,10 +248,10 @@ class Settings {
         "theme": theme,
         "tenant": tenant,
         "createdBy": createdBy,
-        "backgroundImages": List<dynamic>.from(backgroundImages.map((x) => x)),
-        "logos": List<dynamic>.from(logos.map((x) => x)),
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "backgroundImages": List<dynamic>.from(backgroundImages!.map((x) => x)),
+        "logos": List<dynamic>.from(logos!.map((x) => x)),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "__v": v,
         "id": settingsId,
       };

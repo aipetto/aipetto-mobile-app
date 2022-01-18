@@ -10,11 +10,11 @@ class Notification extends Equatable {
   String date;
 
   Notification({
-    this.id,
-    this.title,
-    this.body,
-    this.icon,
-    this.date,
+    required this.id,
+    required this.title,
+    required this.body,
+    required this.icon,
+    required this.date,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,8 +28,6 @@ class Notification extends Equatable {
   }
 
   factory Notification.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return Notification(
       id: map['id'],
       title: map['title'],
@@ -51,12 +49,14 @@ class Notification extends Equatable {
 
 final notifications = [
   Notification(
+    id: 1,
     title: 'Recordatorio de Reserva',
     body: 'No te olvides de tu reserva para desparasitar tu mascota',
     icon: 'assets/images/reminder.png',
     date: '2h',
   ),
   Notification(
+    id: 2,
     title: 'Consejos de salud',
     body:
         'Caminar tu pet 30 minutos por día puede reducir 90% de las enfermedades del corazón',
@@ -64,18 +64,21 @@ final notifications = [
     date: '1d',
   ),
   Notification(
+    id: 3,
     title: 'Appointment confirmation',
     body: 'Veterinaria aipetto confirmó la reserva para la vacunación',
     icon: 'assets/images/confirmation.png',
     date: '1d',
   ),
   Notification(
+    id: 4,
     title: 'Recordatorio Médico - Check up',
     body: 'No te olvides de hacer el check-up general mensual',
     icon: 'assets/images/reminder.png',
     date: '1 semana',
   ),
   Notification(
+    id: 5,
     title: 'Recordatorio de Receta',
     body:
         'Entre en contacto con la veterinaria Liana sobre la última prescipción',

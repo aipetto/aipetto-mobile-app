@@ -10,7 +10,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
 
 import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
@@ -20,7 +19,7 @@ class NewPetWidget extends StatefulWidget {
   final String petTypeName;
 
   const NewPetWidget(
-      {Key key, @required this.petTypeId, @required this.petTypeName})
+      {required Key key, required this.petTypeId, required this.petTypeName})
       : super(key: key);
 
   @override
@@ -46,49 +45,28 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   var hasMicrochip = false;
 
   /// Dynamic Dropdown consume Breed from API passing language
-  var _selectedSex = 'male'.tr();
-  DateTime birthDateInDateTime;
+  Object? _selectedSex = 'male'.tr();
+  late DateTime birthDateInDateTime;
   var _birthDate = '03/04/2016';
   var _sexItems = <String>['male'.tr(), 'female'.tr()];
   var tensorRecognitionResult = "";
   var firstRecognitionResult = "";
 
-  List<DropdownMenuItem<String>> _dropDownSex;
+  late List<DropdownMenuItem<String>> _dropDownSex;
 
-  File _imagePetProfile;
+  late File _imagePetProfile;
 
   Future _getImage(ImageSource imageSource) async {
     final picker = new ImagePicker();
-    final PickedFile _pickedFile = await picker.getImage(source: imageSource, imageQuality: 50, maxWidth: 400, maxHeight: 400);
+    final PickedFile? _pickedFile = await picker.getImage(source: imageSource, imageQuality: 50, maxWidth: 400, maxHeight: 400);
 
     if (_pickedFile == null) {
       print('No image selected');
       return;
     }
 
-    var recognitions = await Tflite.runModelOnImage(
-      path:  _pickedFile.path,
-      imageMean: 0.0,
-      imageStd: 255.0,
-      numResults: 2,
-      threshold: 0.2,
-      asynch: true
-    );
-
-    tensorRecognitionResult = "";
-    firstRecognitionResult = "";
-
-    if(recognitions.length > 0 && recognitions.first != null){
-      firstRecognitionResult = recognitions.first['label'];
-
-      recognitions.forEach((response){
-        tensorRecognitionResult += response['label'] + ",prob: " + (response["confidence"] as double).toStringAsFixed(2) + "%\n\n";
-      });
-    }
-
     setState(() {
       _imagePetProfile = File.fromUri(Uri(path: _pickedFile.path));
-      tensorRecognitionResult;
     });
   }
 
@@ -111,13 +89,6 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   @override
   void dispose() async {
     super.dispose();
-    await Tflite.close();
-  }
-
-  loadModel() async {
-    await Tflite.loadModel(
-        model: "assets/tensor/dog-breed-model.tflite",
-        labels: "assets/tensor/dog-breed-labels.txt");
   }
 
   @override
@@ -127,7 +98,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
         BlocProvider.of<AuthenticationBloc>(context).state;
 
     _onNewPetFormButtonPressed() {
-      if (_key.currentState.validate()) {
+      if (_key.currentState!.validate()) {
 
         if(birthDateInDateTime != null){
 
@@ -278,7 +249,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                 style: kInputTextStyle,
               ),
               CustomTextFormField(
-                  hintText: firstRecognitionResult,
+                  hintText: '',
                   enabled: false
               ),
               SizedBox(height: 15),
@@ -312,7 +283,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                     initialDate: DateTime.now(),
                     firstDate: DateTime(1900),
                     lastDate: DateTime.now(),
-                  ).then((DateTime value) {
+                  ).then((DateTime? value) {
                     if (value != null) {
                       setState(() {
                         birthDateInDateTime = value;

@@ -6,7 +6,7 @@ class PetBreed extends Equatable {
   String id;
 
   PetBreed({
-    this.id,
+    required this.id,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,8 +16,6 @@ class PetBreed extends Equatable {
   }
 
   factory PetBreed.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return PetBreed(
       id: map['id'],
     );

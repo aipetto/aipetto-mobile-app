@@ -16,9 +16,8 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState> {
   final PetRepository repository;
 
   PetFormBloc({
-    @required this.repository,
-  })  : assert(repository != null),
-        super(null);
+    required this.repository,
+  }) : super(PetFormInitial());
 
   @override
   Future<void> close() {
@@ -39,8 +38,8 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState> {
   Stream<PetFormState> _mapNewPetToState(NewPetFormButtonPressed event) async* {
     yield PetFormLoading();
     try {
-      await repository.addPet(event.pet, event.fileImageProfile);
-      yield PetFormSuccess();
+      var petAdded = await repository.addPet(event.pet, event.fileImageProfile);
+      yield PetFormSuccess(pet: petAdded);
     } catch (err) {
       yield PetFormFailure('unknown_failure_error'.tr());
     }
@@ -50,7 +49,7 @@ class PetFormBloc extends Bloc<PetFormEvent, PetFormState> {
     yield PetFormLoading();
     try {
       await repository.deletePet(event.pet);
-      yield PetFormSuccess();
+      yield PetDeleteSuccess();
     } catch (err) {
       yield PetFormFailure('unknown_failure_error'.tr());
     }

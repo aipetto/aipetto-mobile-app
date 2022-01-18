@@ -6,7 +6,7 @@ class Exam extends Equatable {
   String id;
 
   Exam({
-    this.id,
+    required this.id,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,8 +16,6 @@ class Exam extends Equatable {
   }
 
   factory Exam.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return Exam(
       id: map['id'],
     );

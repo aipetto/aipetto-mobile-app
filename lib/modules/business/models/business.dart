@@ -22,23 +22,23 @@ class Business extends Equatable {
   int visitDuration;
 
   Business({
-    this.id,
-    this.name,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.phone,
-    this.speciality,
-    this.about,
-    this.avatar,
-    this.location,
-    this.rating,
-    this.price,
-    this.idSpeciality,
-    this.goodReviews,
-    this.totaScore,
-    this.satisfaction,
-    this.visitDuration,
+    this.id = '',
+    this.name = '',
+    this.firstName = '',
+    this.lastName = '',
+    this.email = '',
+    this.phone = '',
+    this.speciality = '',
+    this.about = '',
+    this.avatar = '',
+    this.location = '',
+    this.rating = 0.0,
+    this.price = 0.0,
+    this.idSpeciality = 0,
+    this.goodReviews = 0,
+    this.totaScore = 0,
+    this.satisfaction = 0,
+    this.visitDuration = 0,
   });
 
   Map<String, dynamic> toMap() {
@@ -64,7 +64,6 @@ class Business extends Equatable {
   }
 
   factory Business.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
 
     return Business(
       id: map['id'],

@@ -6,7 +6,7 @@ class BusinessCategory extends Equatable {
   String id;
 
   BusinessCategory({
-    this.id,
+    required this.id,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,8 +16,6 @@ class BusinessCategory extends Equatable {
   }
 
   factory BusinessCategory.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return BusinessCategory(
       id: map['id'],
     );

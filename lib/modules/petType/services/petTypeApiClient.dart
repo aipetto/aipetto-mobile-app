@@ -16,12 +16,12 @@ class PetTypeApiClient {
       Prefs.getString(Prefs.LANGUAGE_ID) ?? '6096a50ab5704301f1e7b535';
 
   PetTypeApiClient({
-    @required this.httpClient,
+    required this.httpClient,
   }) : assert(httpClient != null);
 
   Future<PetType> fetchPetTypes() async {
     final url = '$_baseUrl/pet-types?filter%5Blanguage%5D=$languageId';
-    final response = await this.httpClient.get(url);
+    final response = await this.httpClient.get(Uri.parse(url));
 
     if (response.statusCode != 200) {
       throw new Exception('Error gettings pet types');

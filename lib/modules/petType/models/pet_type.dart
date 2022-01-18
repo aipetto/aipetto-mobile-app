@@ -10,7 +10,7 @@ String petTypeToJson(PetType data) => json.encode(data.toJson());
 
 class PetType {
   PetType({
-    this.rows,
+    required this.rows,
   });
 
   List<Row> rows;
@@ -40,18 +40,18 @@ class Row {
     this.active,
   });
 
-  String id;
-  Row language;
-  List<Image> image;
-  String name;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String rowId;
-  bool active;
+  String? id;
+  Row? language;
+  List<Image>? image;
+  String? name;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? rowId;
+  bool? active;
 
   factory Row.fromJson(Map<String, dynamic> json) => Row(
         id: json["_id"],
@@ -81,8 +81,8 @@ class Row {
         "tenant": tenant,
         "createdBy": createdBy,
         "updatedBy": updatedBy,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "__v": v,
         "id": rowId,
         "active": active == null ? null : active,
@@ -102,15 +102,15 @@ class Image {
     this.downloadUrl,
   });
 
-  String id;
-  String name;
-  int sizeInBytes;
+  String? id;
+  String? name;
+  int? sizeInBytes;
   dynamic publicUrl;
-  String privateUrl;
-  DateTime createdAt;
-  DateTime updatedAt;
-  String imageId;
-  String downloadUrl;
+  String? privateUrl;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  String? imageId;
+  String? downloadUrl;
 
   factory Image.fromJson(Map<String, dynamic> json) => Image(
         id: json["_id"],
@@ -130,14 +130,14 @@ class Image {
         "sizeInBytes": sizeInBytes,
         "publicUrl": publicUrl,
         "privateUrl": privateUrl,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "id": imageId,
         "downloadUrl": downloadUrl,
       };
 
   @override
-  List<Object> get props => [id, name];
+  List<dynamic> get props => [id, name];
 
   @override
   String toString() => 'PetType{ id: $id}';

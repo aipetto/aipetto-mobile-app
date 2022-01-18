@@ -15,9 +15,9 @@ part 'pet_state.dart';
 class PetBloc extends Bloc<PetEvent, PetState> {
   final PetRepository petRepository;
   final AuthenticationService authenticationService;
-  StreamSubscription newPetFormSubscription;
+  late StreamSubscription newPetFormSubscription;
 
-  PetBloc({@required this.authenticationService, @required this.petRepository})
+  PetBloc({required this.authenticationService, required this.petRepository})
       : assert(petRepository != null),
         super(PetEmpty());
 
@@ -33,7 +33,7 @@ class PetBloc extends Bloc<PetEvent, PetState> {
   Stream<PetState> mapEventToState(PetEvent event) async* {
     // TODO Check PetForm StreamSubscription to component/widget under the PetBloc in Widgets Tree
     final PetFormBloc newPetFormBloc = PetFormBloc(repository: petRepository);
-    newPetFormSubscription = newPetFormBloc.listen((state) {
+    newPetFormSubscription = newPetFormBloc.stream.listen((state) {
       if (state is PetFormSuccess) {
         add(FetchPets());
       }
@@ -44,7 +44,7 @@ class PetBloc extends Bloc<PetEvent, PetState> {
       try {
         final User currentUser = await authenticationService.getCurrentUser();
         final List<Pet> pets =
-            await petRepository.fetchPets(currentUser.tenants.first.tenant.id);
+            await petRepository.fetchPets(currentUser.tenants?.first.tenant?.id);
         yield PetsLoaded(pets: pets);
       } catch (_) {
         yield PetError();

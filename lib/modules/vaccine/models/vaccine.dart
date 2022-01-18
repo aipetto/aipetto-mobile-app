@@ -6,7 +6,7 @@ class Vaccine extends Equatable {
   String id;
 
   Vaccine({
-    this.id,
+    required this.id,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,8 +16,6 @@ class Vaccine extends Equatable {
   }
 
   factory Vaccine.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
     return Vaccine(
       id: map['id'],
     );

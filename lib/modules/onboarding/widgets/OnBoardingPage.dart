@@ -147,26 +147,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           image: Image.asset('assets/images/veterinarians.jpg', width: 250),
           decoration: pageDecoration,
         ),
-        PageViewModel(
-          title: 'all_about_pets'.tr(),
-          body: '',
-          image: Image.asset('assets/images/owl-300.jpg', width: 200),
-          footer: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacementNamed(Routes.chatAI);
-            },
-            child: Text('ask_anything'.tr(),
-              style: TextStyle(color: Colors.black),
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: kAmphibianColorGreenLight,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-            ),
-          ),
-          decoration: pageDecoration,
-        )
       ],
       onDone: () => _onIntroEnd(context),
       //onSkip: () => _onIntroEnd(context),

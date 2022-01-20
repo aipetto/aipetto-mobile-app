@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TestAndPrescriptionCardWidget extends StatelessWidget {
-  final String image;
+  final String? image;
   final String title;
   final String subTitle;
 
   const TestAndPrescriptionCardWidget(
-      {Key key, this.image, @required this.title, @required this.subTitle})
-      : super(key: key);
+      {this.image, required this.title, required this.subTitle});
   @override
   Widget build(BuildContext context) {
     return Card(

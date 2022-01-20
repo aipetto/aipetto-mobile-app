@@ -1,5 +1,5 @@
 class RedirectUrl {
-  final String url;
+  final String? url;
 
   RedirectUrl(this.url);
 }

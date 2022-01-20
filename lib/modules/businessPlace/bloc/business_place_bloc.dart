@@ -12,7 +12,7 @@ part 'business_place_state.dart';
 class BusinessPlaceBloc extends Bloc<BusinessPlaceEvent, BusinessPlaceState> {
   final BusinessPlaceRespository businessPlaceRepository;
 
-  BusinessPlaceBloc({@required this.businessPlaceRepository})
+  BusinessPlaceBloc({required this.businessPlaceRepository})
       : assert(businessPlaceRepository != null), super(BusinessPlaceEmpty());
 
   @override
@@ -24,9 +24,9 @@ class BusinessPlaceBloc extends Bloc<BusinessPlaceEvent, BusinessPlaceState> {
     if (event is BusinessPlacesNearby) {
       yield BusinessPlaceLoading();
       try {
-        final List<BusinessPlace> businessPlaces =
+        final List<BusinessPlace>? businessPlaces =
             await businessPlaceRepository.fetchBusinessPlacesNearby('latExampleTemp,lnglatExampleTemp', 'serviceIdExampleTemp');
-        yield NearbyBusinessPlaceLoaded(businessPlaces);
+        yield NearbyBusinessPlaceLoaded(businessPlaces!);
       } catch (e) {
         print(e);
         yield BusinessPlaceError();
@@ -36,8 +36,8 @@ class BusinessPlaceBloc extends Bloc<BusinessPlaceEvent, BusinessPlaceState> {
     if (event is BusinessPlaceDetail) {
       yield BusinessPlaceLoading();
       try {
-        final BusinessPlace businessPlace = await businessPlaceRepository.fetchBusinessDetail(event.businessTenant, event.placeId);
-        yield BusinessPlaceLoaded(businessPlace);
+        final BusinessPlace? businessPlace = await businessPlaceRepository.fetchBusinessDetail(event.businessTenant, event.placeId);
+        yield BusinessPlaceLoaded(businessPlace!);
       } catch (_) {
         yield BusinessPlaceError();
       }

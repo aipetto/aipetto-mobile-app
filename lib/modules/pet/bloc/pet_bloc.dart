@@ -65,7 +65,7 @@ class PetBloc extends Bloc<PetEvent, PetState> {
       yield PetLoading();
       try {
         // get current tenant from user state
-        // await petRepository.updatePet(pet);
+        // Pet petUpdate = await petRepository.updatePet(event);
         // Inside petRepository Prototype pattern pet.copyWith(onlyNewFieldsToUpdate)
         yield PetLoaded();
       } catch (_) {

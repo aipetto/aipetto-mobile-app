@@ -1,14 +1,12 @@
 import 'dart:convert';
 
-import 'package:aipetto/modules/pet/models/pets.dart';
-
 ServiceReservations serviceReservationsFromJson(String str) => ServiceReservations.fromJson(json.decode(str));
 
 String serviceReservationsToJson(ServiceReservations data) => json.encode(data.toJson());
 
 class ServiceReservations {
   ServiceReservations({
-    this.rows,
+    required this.rows,
   });
 
   List<Reservation> rows;
@@ -30,7 +28,7 @@ class Reservation {
     this.id,
     this.businessId,
     this.time,
-    this.date,
+    required this.date,
     this.customerTenant,
     this.tenant,
     this.totalPrice,
@@ -49,28 +47,28 @@ class Reservation {
   });
 
 
-  List<ServiceType> serviceType;
-  List<dynamic> serviceProviderIDs;
-  bool needTransportation;
-  String id;
-  String businessId;
-  String time;
+  List<ServiceType>? serviceType;
+  List<dynamic>? serviceProviderIDs;
+  bool? needTransportation;
+  String? id;
+  String? businessId;
+  String? time;
   DateTime date;
-  String customerTenant;
-  String tenant;
-  double totalPrice;
-  String createdBy;
-  String updatedBy;
-  String source;
+  String? customerTenant;
+  String? tenant;
+  double? totalPrice;
+  String? createdBy;
+  String? updatedBy;
+  String? source;
   dynamic customerId;
   dynamic place;
   dynamic discountCode;
-  List<dynamic> digitalReservationDoc;
-  String pet;
-  String createdAt;
-  String updatedAt;
-  int v;
-  String rowId;
+  List<dynamic>? digitalReservationDoc;
+  String? pet;
+  String? createdAt;
+  String? updatedAt;
+  int? v;
+  String? rowId;
 
   Reservation copyWith({
     serviceType,
@@ -124,13 +122,13 @@ class Reservation {
   );
 
   Map<String, dynamic> toJson() => {
-    "serviceType": List<dynamic>.from(serviceType.map((x) => x.toJson())),
-    "serviceProviderIDs": List<dynamic>.from(serviceProviderIDs.map((x) => x)),
+    "serviceType": List<dynamic>.from(serviceType!.map((x) => x.toJson())),
+    "serviceProviderIDs": List<dynamic>.from(serviceProviderIDs!.map((x) => x)),
     "needTransportation": needTransportation,
     "_id": id,
     "businessId": businessId,
     "time": time,
-    "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+    "date": "${date?.year.toString().padLeft(4, '0')}-${date?.month.toString().padLeft(2, '0')}-${date?.day.toString().padLeft(2, '0')}",
     "tenant": tenant,
     "customerTenant": customerTenant,
     "totalPrice": totalPrice,
@@ -140,7 +138,7 @@ class Reservation {
     "customerId": customerId,
     "place": place,
     "discountCode": discountCode,
-    "digitalReservationDoc": List<dynamic>.from(digitalReservationDoc.map((x) => x)),
+    "digitalReservationDoc": List<dynamic>.from(digitalReservationDoc!.map((x) => x)),
     "pet": pet,
     "createdAt": createdAt,
     "updatedAt": updatedAt,
@@ -185,17 +183,17 @@ class BusinessId {
     this.v
   });
 
-  List<dynamic> services;
-  List<String> categories;
-  String id;
+  List<dynamic>? services;
+  List<String>? categories;
+  String? id;
   dynamic instagram;
   dynamic notes;
   dynamic linkedin;
-  String facebook;
+  String? facebook;
   dynamic website;
-  String longitude;
-  String latitude;
-  List<BusinessLogo> businessLogo;
+  String? longitude;
+  String? latitude;
+  List<BusinessLogo>? businessLogo;
   dynamic addressPostCode;
   dynamic streetComplement;
   dynamic addressStreetNumber;
@@ -203,20 +201,20 @@ class BusinessId {
   dynamic contactEmail;
   dynamic contactWhatsApp;
   dynamic contactPhone;
-  String contactName;
-  String name;
-  String businessId;
+  String? contactName;
+  String? name;
+  String? businessId;
   dynamic city;
-  String state;
-  String country;
-  String language;
-  String currency;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  String createdAt;
-  String updatedAt;
-  int v;
+  String? state;
+  String? country;
+  String? language;
+  String? currency;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  String? createdAt;
+  String? updatedAt;
+  int? v;
 
   factory BusinessId.fromJson(Map<String, dynamic> json) => BusinessId(
     services: List<dynamic>.from(json["services"].map((x) => x)),
@@ -254,8 +252,8 @@ class BusinessId {
   );
 
   Map<String, dynamic> toJson() => {
-    "services": List<dynamic>.from(services.map((x) => x)),
-    "categories": List<dynamic>.from(categories.map((x) => x)),
+    "services": List<dynamic>.from(services!.map((x) => x)),
+    "categories": List<dynamic>.from(categories!.map((x) => x)),
     "_id": id,
     "instagram": instagram,
     "notes": notes,
@@ -264,7 +262,7 @@ class BusinessId {
     "website": website,
     "longitude": longitude,
     "latitude": latitude,
-    "businessLogo": List<dynamic>.from(businessLogo.map((x) => x.toJson())),
+    "businessLogo": List<dynamic>.from(businessLogo!.map((x) => x.toJson())),
     "addressPostCode": addressPostCode,
     "streetComplement": streetComplement,
     "addressStreetNumber": addressStreetNumber,
@@ -302,14 +300,14 @@ class BusinessLogo {
     this.businessLogoId,
   });
 
-  String id;
-  String name;
-  int sizeInBytes;
+  String? id;
+  String? name;
+  int? sizeInBytes;
   dynamic publicUrl;
-  String privateUrl;
-  String updatedAt;
-  String createdAt;
-  String businessLogoId;
+  String? privateUrl;
+  String? updatedAt;
+  String? createdAt;
+  String? businessLogoId;
 
   factory BusinessLogo.fromJson(Map<String, dynamic> json) => BusinessLogo(
     id: json["_id"],
@@ -350,18 +348,18 @@ class ServiceType {
     this.serviceTypeId,
   });
 
-  String id;
-  List<BusinessLogo> serviceImage;
-  String language;
-  String category;
-  String name;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String serviceTypeId;
+  String? id;
+  List<BusinessLogo>? serviceImage;
+  String? language;
+  String? category;
+  String? name;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? serviceTypeId;
 
   factory ServiceType.fromJson(Map<String, dynamic> json) => ServiceType(
     id: json["_id"],
@@ -380,15 +378,15 @@ class ServiceType {
 
   Map<String, dynamic> toJson() => {
     "_id": id,
-    "serviceImage": List<dynamic>.from(serviceImage.map((x) => x.toJson())),
+    "serviceImage": List<dynamic>.from(serviceImage!.map((x) => x.toJson())),
     "language": language,
     "category": category,
     "name": name,
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": serviceTypeId,
   };

@@ -1,8 +1,7 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/utils/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 import 'widgets/widgets.dart';
 
@@ -13,12 +12,12 @@ class FilterPage extends StatefulWidget {
 
 class _FilterPageState extends State<FilterPage> {
   final bool _isDark = false;
-  Color _color;
+  Color? _color;
 
   @override
   void initState() {
     super.initState();
-    _color = _isDark ? kColorDark : Colors.grey[50];
+    _color = _isDark ? kColorDark : Colors.grey;
   }
 
   @override
@@ -46,16 +45,16 @@ class _FilterPageState extends State<FilterPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SortWidget(
-                      color: _color,
+                      color: _color as Color,
                     ),
                     AvailabilityWidget(
-                      color: _color,
+                      color: _color as Color,
                     ),
                     SexWidget(
-                      color: _color,
+                      color: _color as Color,
                     ),
                     ConsultationFeeWidget(
-                      color: _color,
+                      color: _color as Color,
                     ),
                   ],
                 ),

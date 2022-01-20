@@ -10,31 +10,31 @@ class BookingCartState {
   final Pet pet;
 
   BookingCartState({
-    String timeAvailability,
-    String serviceName,
-    DateTime dateAvailability,
-    BusinessPlace place,
-    String serviceId,
-    double totalServicePrice,
-    Pet pet
+    String? timeAvailability,
+    String? serviceName,
+    DateTime? dateAvailability,
+    BusinessPlace? place,
+    String? serviceId,
+    double? totalServicePrice,
+    Pet? pet
     })
-      : dateAvailability = dateAvailability ?? null,
-      serviceName = serviceName ?? null,
-      timeAvailability = timeAvailability ?? null,
-      place = place ?? null,
-      serviceId = serviceId ?? null,
-      totalServicePrice = totalServicePrice ?? null,
-      pet = pet ?? null;
+      : dateAvailability = dateAvailability ?? DateTime.now(),
+      serviceName = serviceName ?? '',
+      timeAvailability = timeAvailability ?? '',
+      place = place ?? new BusinessPlace(name: ''),
+      serviceId = serviceId ?? '',
+      totalServicePrice = totalServicePrice ?? 0.0,
+      pet = pet ?? new Pet(birthdate: DateTime.now(), createdAt: DateTime.now(), updatedAt: DateTime.now());
 
 
   BookingCartState copyWith({
-    final String serviceId,
-    final String serviceName,
-    final BusinessPlace place,
-    final String timeAvailability,
-    final DateTime dateAvailability,
-    final double totalServicePrice,
-    final Pet pet,
+    final String? serviceId,
+    final String? serviceName,
+    final BusinessPlace? place,
+    final String? timeAvailability,
+    final DateTime? dateAvailability,
+    final double? totalServicePrice,
+    final Pet? pet,
   }) => BookingCartState(
     serviceId: serviceId ?? this.serviceId,
     serviceName: serviceName ?? this.serviceName,

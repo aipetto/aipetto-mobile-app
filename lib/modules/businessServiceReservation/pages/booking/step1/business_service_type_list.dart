@@ -40,14 +40,14 @@ class _BusinessServiceTypeListState extends State<BusinessServiceTypeList> {
                     SizedBox(
                       height: 20,
                     ),
-                    StaggeredGridView.countBuilder(
+                    AlignedGridView.count(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       crossAxisCount: 4,
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: state
                           .businessServiceType.businessServiceTypesRows.length,
-                      staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
+                      ///staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       itemBuilder: (context, index) {
@@ -55,7 +55,7 @@ class _BusinessServiceTypeListState extends State<BusinessServiceTypeList> {
                           serviceType: state.businessServiceType
                               .businessServiceTypesRows[index],
                           onTap: () {
-                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: 0.0, serviceId: state.businessServiceType.businessServiceTypesRows[index].id, businessPlace: new BusinessPlace()));
+                            BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(totalServicePrice: 0.0, serviceId: state.businessServiceType.businessServiceTypesRows[index].id, businessPlace: new BusinessPlace(name: ''), serviceName: ''));
                             Navigator.of(context).pushNamed(Routes.bookingStep1FindPlacesNearby,
                             arguments: ServiceTypeSelected(state.businessServiceType.businessServiceTypesRows[index].id));
                           },

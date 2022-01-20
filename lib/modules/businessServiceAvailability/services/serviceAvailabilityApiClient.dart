@@ -6,11 +6,11 @@ import 'package:aipetto/modules/businessServiceAvailability/models/service_avail
 import 'package:http/http.dart' as http;
 
 abstract class ServiceAvailabilityOperations {
-  Future<List<ServiceAvailability>> getAvailabilityForServiceRegisteredToBusiness(
-      String serviceId,
-      String businessTenant,
-      String businessId,
-      String dateToSearchTimeSlots
+  Future<List<ServiceAvailability>?> getAvailabilityForServiceRegisteredToBusiness(
+      String? serviceId,
+      String? businessTenant,
+      String? businessId,
+      String? dateToSearchTimeSlots
    );
 }
 
@@ -22,11 +22,11 @@ class ServiceAvailabilityApiClient implements ServiceAvailabilityOperations {
   ServiceAvailabilityApiClient(this.httpClient);
 
   @override
-  Future<List<ServiceAvailability>> getAvailabilityForServiceRegisteredToBusiness(String serviceId, String businessTenant, String businessId, String dateToSearchTimeSlots) async {
+  Future<List<ServiceAvailability>?> getAvailabilityForServiceRegisteredToBusiness(String? serviceId, String? businessTenant, String? businessId, String? dateToSearchTimeSlots) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/tenant/$businessTenant/business-place-service-availability?filter%5BserviceType%5D=$serviceId&filter%5BdateEndRange%5D%5B%5D=$dateToSearchTimeSlots&filter%5BdateStartRange%5D%5B%5D=$dateToSearchTimeSlots&filter%5BbusinessId%5D=$businessId&filter%5Bname%5D=&limit=1';
-    final availabilityResponse = await this.httpClient.get(url, headers: {
+    final availabilityResponse = await this.httpClient.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}',

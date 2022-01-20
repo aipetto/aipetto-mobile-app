@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PetProfilePage extends StatefulWidget {
-  final Pet pet;
+  final Pet? pet;
 
-  const PetProfilePage({Key key, this.pet}) : super(key: key);
+  const PetProfilePage({this.pet});
 
   @override
   _PetProfilePageState createState() => _PetProfilePageState();
@@ -27,7 +27,7 @@ class _PetProfilePageState extends State<PetProfilePage>
 
     super.build(context);
     bool _isdark = false;
-    final String breed = widget.pet.breed != null ? '${widget.pet.breed}' : '';
+    final String breed = widget.pet?.breed != null ? '${widget.pet?.breed}' : '';
 
     final _kTabPages = [
       PetInfoPage(pet: widget.pet),
@@ -50,7 +50,7 @@ class _PetProfilePageState extends State<PetProfilePage>
     return Scaffold(
       appBar: AppBar(
         title: Text('pet_profile'.tr(),
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
+            style: Theme.of(context).textTheme.subtitle1?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: Colors.white,
                 fontSize: 16)),
@@ -61,11 +61,11 @@ class _PetProfilePageState extends State<PetProfilePage>
             children: <Widget>[
               Container(
                 alignment: Alignment.center,
-                child: (widget.pet.profileImage != null &&
-                    widget.pet.profileImage.length > 0 &&
-                    widget.pet.profileImage[0] != null &&
-                    widget.pet.profileImage[0].publicUrl != null)
-                    ? Image.network(widget.pet.profileImage[0].publicUrl, height: 250, width: double.infinity, fit: BoxFit.cover)
+                child: (widget.pet?.profileImage != null &&
+                    (widget.pet?.profileImage.length ?? 0) > 0 &&
+                    widget.pet?.profileImage[0] != null &&
+                    widget.pet?.profileImage[0].publicUrl != null)
+                    ? Image.network(widget.pet?.profileImage[0].publicUrl, height: 250, width: double.infinity, fit: BoxFit.cover)
                     : Image.asset('assets/images/aipetto/pets.png', height: 250, width: double.infinity, fit: BoxFit.cover),
               ),
               Container(
@@ -81,7 +81,7 @@ class _PetProfilePageState extends State<PetProfilePage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            widget.pet.name ?? '',
+                            widget.pet?.name ?? '',
                             style: TextStyle(
                               backgroundColor: kAmphibianColorGreenLight,
                               fontSize: 25.0,

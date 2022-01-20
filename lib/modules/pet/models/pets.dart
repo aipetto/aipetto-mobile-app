@@ -109,7 +109,7 @@ class Pet {
   String health;
   String furLength;
   String maturitySize;
-  String type;
+  String? type;
   Breed? breed;
   String sex;
   String secondColor;
@@ -122,9 +122,9 @@ class Pet {
   String name;
   dynamic secondBreedMixed;
   dynamic customerId;
-  String tenant;
-  String createdBy;
-  String updatedBy;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
   DateTime? createdAt;
   DateTime? updatedAt;
   int v;

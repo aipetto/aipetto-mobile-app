@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
 
 class NavBarItemWidget extends StatelessWidget {
-  final Function onTap;
+  final void Function()? onTap;
   final String image;
   final bool isSelected;
   final String menuText;
 
   const NavBarItemWidget({
-    Key key,
-    @required this.onTap,
-    @required this.image,
-    @required this.menuText,
-    @required this.isSelected,
+    Key? key,
+    required this.onTap,
+    required this.image,
+    required this.menuText,
+    required this.isSelected,
   }) : super(key: key);
 
-  Color get _color => isSelected
+  Color? get _color => isSelected
       ? kColorPrimary
       : true
           ? Colors.grey[900]

@@ -3,20 +3,19 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  final TextEditingController controller;
-  final String hintText;
-  final bool obscureText;
-  final bool enabled;
-  final Widget suffixIcon;
-  final bool suffixIconTap;
-  final String error;
-  final TextInputType keyboardType;
-  final Function validator;
+  final TextEditingController? controller;
+  final String? hintText;
+  final bool? obscureText;
+  final bool? enabled;
+  final Widget? suffixIcon;
+  final bool? suffixIconTap;
+  final String? error;
+  final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
 
   const CustomTextFormField({
-    Key key,
     this.controller,
-    @required this.hintText,
+    required this.hintText,
     this.keyboardType,
     this.obscureText,
     this.enabled,
@@ -24,14 +23,14 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIconTap,
     this.error,
     this.validator,
-  }) : super(key: key);
+  });
 
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  bool _obscureText;
+  bool? _obscureText;
   @override
   void initState() {
     _obscureText = widget.obscureText;
@@ -53,17 +52,17 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           fontFamily: 'NunitoSans',
         ),
         errorText: widget.error ?? null,
-        suffixIcon: (widget.obscureText != null && widget.obscureText)
+        suffixIcon: (widget.obscureText != null && widget.obscureText!)
             ? GestureDetector(
                 onTap: () {
                   setState(() {
-                    _obscureText = !_obscureText;
+                    _obscureText = !_obscureText!;
                   });
                 },
                 child: Container(
                   padding: EdgeInsets.all(10),
                   child: Icon(
-                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                    _obscureText! ? Icons.visibility : Icons.visibility_off,
                     size: 15,
                   ),
                 ),

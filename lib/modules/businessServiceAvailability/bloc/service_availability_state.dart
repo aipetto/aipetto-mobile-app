@@ -12,12 +12,12 @@ class ServiceAvailabilityEmpty extends ServiceAvailabilityState {}
 class ServiceAvailabilityLoading extends ServiceAvailabilityState {}
 
 class ServiceAvailabilityLoaded extends ServiceAvailabilityState {
-  final List<ServiceAvailability> serviceAvailabilities;
+  final List<ServiceAvailability>? serviceAvailabilities;
 
-  ServiceAvailabilityLoaded({@required this.serviceAvailabilities}) : assert(serviceAvailabilities != null);
+  ServiceAvailabilityLoaded({this.serviceAvailabilities}) : assert(serviceAvailabilities != null);
 
   @override
-  List<Object> get props => [serviceAvailabilities];
+  List<Object> get props => [serviceAvailabilities as Object];
 }
 
 class ServiceAvailabilityError extends ServiceAvailabilityState {}

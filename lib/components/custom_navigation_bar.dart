@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 class CustomNavigationBar extends StatefulWidget {
   final double scaleFactor;
   final bool isFloating;
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
   final double elevation;
   final List<Widget> items;
-  final Function(int) onTap;
+  final void Function(int)? onTap;
   final int currentIndex;
   final Color backgroundColor;
   final Color strokeColor;
@@ -17,8 +17,7 @@ class CustomNavigationBar extends StatefulWidget {
   final Curve scaleCurve;
 
   const CustomNavigationBar(
-      {Key key,
-      @required this.items,
+      {required this.items,
       this.onTap,
       this.currentIndex = 0,
       this.scaleFactor = 0.2,
@@ -32,8 +31,7 @@ class CustomNavigationBar extends StatefulWidget {
       : assert(items != null),
         assert(scaleFactor <= 0.5, 'Scale factor must smaller than 0.5'),
         assert(scaleFactor > 0, 'Scale factor must bigger than 0'),
-        assert(0 <= currentIndex && currentIndex < items.length),
-        super(key: key);
+        assert(0 <= currentIndex && currentIndex < items.length);
 
   @override
   _CustomNavigationBarState createState() => _CustomNavigationBarState();
@@ -41,13 +39,12 @@ class CustomNavigationBar extends StatefulWidget {
 
 class _CustomNavigationBarState extends State<CustomNavigationBar>
     with TickerProviderStateMixin {
-  List<double> _radiuses;
-  List<double> _sizes;
-  AnimationController _controller;
-  AnimationController _scaleController;
-
+  List<double>? _radiuses;
+  List<double>? _sizes;
+  AnimationController? _controller;
+  AnimationController? _scaleController;
   double _bubbleRadius = 0.0;
-  double _maxRadius;
+  double? _maxRadius;
 
   @override
   void initState() {
@@ -66,7 +63,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar>
   @override
   void dispose() {
     if (_controller != null) {
-      _controller.dispose();
+      _controller?.dispose();
     }
     super.dispose();
   }
@@ -86,16 +83,16 @@ class _CustomNavigationBarState extends State<CustomNavigationBar>
       duration: Duration(milliseconds: 300),
     );
     CurvedAnimation _curvedAnimation = CurvedAnimation(
-      parent: _controller,
+      parent: _controller as Animation<double>,
       curve: widget.bubbleCurve,
     );
     Tween<double>(begin: 0.0, end: 1.0).animate(_curvedAnimation)
       ..addListener(() {
         setState(() {
-          _radiuses[index] = _maxRadius * _curvedAnimation.value;
+          _radiuses?[index] = (_maxRadius ?? 0.0) * _curvedAnimation.value;
         });
       });
-    _controller.forward();
+    _controller?.forward();
   }
 
   void _startScale(int index) {
@@ -104,11 +101,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar>
       duration: Duration(milliseconds: 400),
     )..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          _scaleController.reverse();
+          _scaleController?.reverse();
         }
       });
     CurvedAnimation _scaleAnimation = CurvedAnimation(
-      parent: _scaleController,
+      parent: _scaleController as Animation<double>,
       curve: widget.scaleCurve,
       reverseCurve: widget.scaleCurve.flipped,
     );
@@ -116,10 +113,10 @@ class _CustomNavigationBarState extends State<CustomNavigationBar>
     Tween<double>(begin: 0.0, end: 1.0).animate(_scaleAnimation)
       ..addListener(() {
         setState(() {
-          _sizes[index] = _scaleAnimation.value * widget.scaleFactor;
+          _sizes?[index] = _scaleAnimation.value * widget.scaleFactor;
         });
       });
-    _scaleController.forward();
+    _scaleController?.forward();
   }
 
   @override
@@ -149,7 +146,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar>
             children: <Widget>[
               for (var i = 0; i < widget.items.length; i++)
                 _CustomNavigationBarTile(
-                  scale: _sizes[i],
+                  scale: _sizes?[i],
                   child: widget.items[i],
                 ),
             ],
@@ -161,19 +158,18 @@ class _CustomNavigationBarState extends State<CustomNavigationBar>
 }
 
 class _CustomNavigationBarTile extends StatelessWidget {
-  final Widget child;
-  final double scale;
+  final Widget? child;
+  final double? scale;
 
   const _CustomNavigationBarTile({
-    Key key,
     this.child,
     this.scale,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Transform.scale(
-      scale: 1.0 + scale,
+      scale: 1.0 + scale!,
       child: child,
     );
   }

@@ -8,7 +8,7 @@ class VeterinarianItem extends StatelessWidget {
   final Function onTap;
 
   const VeterinarianItem(
-      {Key key, @required this.onTap, @required this.veterinarian})
+      {Key key, required this.onTap, required this.veterinarian})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,3 @@
-import 'package:aipetto/components/custom_button.dart';
 import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/modules/business/widgets/AppWidget.dart';
 import 'package:aipetto/modules/business/widgets/BHColors.dart';
@@ -16,14 +15,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:nb_utils/nb_utils.dart';
 
 class BusinessProfilePage extends StatefulWidget {
   static String tag = '/NewSliverCustom';
   final BusinessPlace businessPlace;
 
-  const BusinessProfilePage({Key key, this.businessPlace}) : super(key: key);
+  const BusinessProfilePage({required this.businessPlace});
 
   @override
   BusinessProfilePageState createState() => BusinessProfilePageState();
@@ -33,7 +32,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
     with SingleTickerProviderStateMixin {
   String _businessServiceRadioValue = '';
   double _servicePrice = 0.0;
-  TabController controller;
+  TabController? controller;
 
   void serviceSelectedToReserve(String serviceId, double servicePrice) {
     setState(() {
@@ -42,7 +41,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
     });
   }
 
-  String selectedRadio;
+  String? selectedRadio;
 
   @override
   void initState() {
@@ -58,7 +57,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
     final addressNumber = widget.businessPlace.addressNumber ?? '';
     final state = widget.businessPlace.addressState ?? '';
     final addressCity = widget.businessPlace.addressCity ?? '';
-    final addressCountry = widget.businessPlace.addressCountry.name ?? '';
+    final addressCountry = widget.businessPlace.addressCountry?.name ?? '';
     final zipCode = widget.businessPlace.addressZipCode ?? '';
     final address = direction + ' ' + addressNumber;
     final addressState = state + ' ' + addressCity + ' ' + addressCountry;
@@ -70,7 +69,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
         ));
 
     changeStatusColor(Colors.transparent);
-    Widget aboutWidget(BusinessServicePrice businessOwnerOfServices) {
+    Widget aboutWidget(BusinessServicePrice? businessOwnerOfServices) {
       return Container(
         padding: EdgeInsets.all(8),
         child: SingleChildScrollView(
@@ -101,7 +100,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                       textAlign: TextAlign.center,
                     ),
                     8.height,
-                    Text(businessOwnerOfServices.businessId.notes ?? '',
+                    Text(businessOwnerOfServices?.businessId?.notes ?? '',
                         style: TextStyle(color: Colors.black, fontSize: 16)),
                   ],
                 ),
@@ -135,7 +134,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                       children: [
                         Icon(Icons.call, size: 16),
                         8.width,
-                        Text(businessOwnerOfServices.businessId.contactPhone ?? '',
+                        Text(businessOwnerOfServices?.businessId?.contactPhone ?? '',
                             style:
                                 TextStyle(color: Colors.black, fontSize: 14)),
                       ],
@@ -145,7 +144,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                       children: [
                         Icon(Icons.call, size: 16),
                         8.width,
-                        Text('Whatsapp:' + businessOwnerOfServices.businessId.contactPhone ?? '',
+                        Text('Whatsapp:' + businessOwnerOfServices?.businessId?.contactPhone ?? '',
                             style:
                             TextStyle(color: Colors.black, fontSize: 14)),
                       ],
@@ -155,7 +154,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                       children: [
                         Icon(Icons.web, size: 16),
                         8.width,
-                        Text(businessOwnerOfServices.businessId.website ?? '',
+                        Text(businessOwnerOfServices?.businessId?.website ?? '',
                             style:
                                 TextStyle(color: Colors.black, fontSize: 16)),
                       ],
@@ -280,7 +279,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
       );
     }
 
-    Widget serviceWidget(List<BusinessServicePrice> servicesPricesList) {
+    Widget serviceWidget(List<BusinessServicePrice?> servicesPricesList) {
 
       return SingleChildScrollView(
         child: Column(
@@ -331,7 +330,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              servicesPricesList[index].service.name,
+                              servicesPricesList[index]?.service?.name as String,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
@@ -342,7 +341,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                           Row(
                             children: [
                               Text(
-                                '${servicesPricesList[index].servicePrice}' + ' ' + servicesPricesList[index].currency.symbol,
+                                '${servicesPricesList[index]?.servicePrice}' + ' ' + (servicesPricesList[index]?.currency?.symbol as String),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -353,12 +352,12 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                         ],
                       ).expand(),
                       Radio(
-                        value: {'serviceId': servicesPricesList[index].service.id, 'price': servicesPricesList[index].servicePrice, 'serviceName': servicesPricesList[index].service.name},
+                        value: {'serviceId': servicesPricesList[index]?.service?.id, 'price': servicesPricesList[index]?.servicePrice, 'serviceName': servicesPricesList[index]?.service?.name},
                         groupValue: _businessServiceRadioValue,
                         activeColor: kAmphibianColorBlueDarkAlternative,
                         fillColor: MaterialStateColor.resolveWith(
                             (states) => kAmphibianColorBlueDarkAlternative),
-                        onChanged: (value) {
+                        onChanged: (dynamic value) {
                           if(value['service'] != ''){
                             BlocProvider.of<BookingCartBloc>(context).add(AddBookingService(
                                 totalServicePrice: value['price'],
@@ -437,11 +436,11 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                             overflow: Overflow.visible,
                             children: [
                               widget.businessPlace.photoLogo
-                                  .first['privateUrl']
+                                  ?.first['privateUrl']
                                   .startsWith('assets') ?
                               Image.asset(
                                 widget.businessPlace.photoLogo
-                                    .first['privateUrl'],
+                                    ?.first['privateUrl'],
                                 height: 500,
                                 width: MediaQuery
                                     .of(context)
@@ -452,7 +451,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                               Image.network(
                                 Environment.aipettoCloudStorageHost +
                                     widget.businessPlace.photoLogo
-                                        .first['privateUrl'],
+                                        ?.first['privateUrl'],
                                 height: 500,
                                 width: MediaQuery
                                     .of(context)
@@ -480,7 +479,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                                           margin: EdgeInsets.only(right: 16),
                                           child: FlatButton(
                                             onPressed: () {},
-                                            child: Text(widget.businessPlace.isOpen
+                                            child: Text(widget.businessPlace.isOpen!
                                                 ? 'business_open'.tr()
                                                 : 'business_closed'.tr(),
                                                 style: TextStyle(

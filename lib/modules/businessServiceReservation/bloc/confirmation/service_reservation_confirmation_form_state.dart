@@ -15,7 +15,7 @@ class ServiceReservationFormSuccess
     extends ServiceReservationConfirmationFormState {
   final Reservation reservation;
 
-  ServiceReservationFormSuccess({@required this.reservation});
+  ServiceReservationFormSuccess({required this.reservation});
 
   @override
   List<Object> get props => [reservation];

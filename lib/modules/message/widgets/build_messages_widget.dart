@@ -2,13 +2,11 @@ import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
 import 'message_item.dart';
 
-
 class BuildMessagesWidget extends StatefulWidget {
-  const BuildMessagesWidget({Key key}) : super(key: key);
+  const BuildMessagesWidget();
 
   @override
   State<StatefulWidget> createState() => new _BuildMessagesWidget();
@@ -56,7 +54,7 @@ class _BuildMessagesWidget extends State<BuildMessagesWidget> {
             height: 50,
             decoration: BoxDecoration(
               border: Border(
-                top: BorderSide(color: Colors.grey[200], width: 0.5),
+                top: BorderSide(color: Colors.grey, width: 0.5),
               ),
             ),
             padding: EdgeInsets.symmetric(vertical: 5),
@@ -112,7 +110,10 @@ class _BuildMessagesWidget extends State<BuildMessagesWidget> {
 
   void Response(query) async {
     _textEditingController.clear();
-    AuthGoogle authGoogle =
+    /**
+      TODO: import 'package:flutter_dialogflow/dialogflow_v2.dart'
+
+        AuthGoogle authGoogle =
           await AuthGoogle(fileJson: "assets/credentials.json")
               .build();
 
@@ -125,6 +126,7 @@ class _BuildMessagesWidget extends State<BuildMessagesWidget> {
     setState((){
       _messages.insert(0, message);
     });
+   **/
   }
 
   void _handleSubmitted(String text){

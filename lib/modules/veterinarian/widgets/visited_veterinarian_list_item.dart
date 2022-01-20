@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class VisitedVeterinarianListItem extends StatelessWidget {
   final Veterinarian veterinarian;
 
-  const VisitedVeterinarianListItem({Key key, @required this.veterinarian})
+  const VisitedVeterinarianListItem({Key key, required this.veterinarian})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

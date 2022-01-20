@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/notification/models/notification.dart' as notif;
+import 'package:flutter/material.dart';
 
 class NotificationListItem extends StatelessWidget {
   final notif.Notification notification;
-  final Function onTap;
+  final void Function()? onTap;
 
   const NotificationListItem({
-    Key key,
-    @required this.notification,
-    @required this.onTap,
-  }) : super(key: key);
+    required this.notification,
+    required this.onTap,
+  });
   @override
   Widget build(BuildContext context) {
     bool isDark = true;
@@ -34,7 +32,7 @@ class NotificationListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle1
-                        .copyWith(fontWeight: FontWeight.w500),
+                        ?.copyWith(fontWeight: FontWeight.w500),
                   ),
                   SizedBox(
                     height: 4,
@@ -44,7 +42,7 @@ class NotificationListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .bodyText2
-                        .copyWith(fontSize: 14),
+                        ?.copyWith(fontSize: 14),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

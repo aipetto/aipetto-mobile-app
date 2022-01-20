@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 class MyBusinessListItem extends StatelessWidget {
   final BusinessPlace businessPlace;
 
-  const MyBusinessListItem({Key key, @required this.businessPlace})
-      : super(key: key);
+  const MyBusinessListItem({required this.businessPlace});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -18,7 +17,7 @@ class MyBusinessListItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Image.asset(
-              businessPlace.photoLogo.first,
+              businessPlace.photoLogo?.first,
               width: 80,
               height: 80,
             ),
@@ -34,10 +33,10 @@ class MyBusinessListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontWeight: FontWeight.w700),
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    businessPlace.services.first + '\n',
+                    businessPlace.services?.first + '\n',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 14,

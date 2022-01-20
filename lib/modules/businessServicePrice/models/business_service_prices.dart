@@ -18,8 +18,8 @@ class BusinessServicePrices extends Equatable{
     this.count,
   });
 
-  final List<BusinessServicePrice> rows;
-  final int count;
+  final List<BusinessServicePrice>? rows;
+  final int? count;
 
   factory BusinessServicePrices.fromJson(Map<String, dynamic> json) => BusinessServicePrices(
     rows: List<BusinessServicePrice>.from(json["rows"].map((x) => BusinessServicePrice.fromJson(x))),
@@ -27,12 +27,12 @@ class BusinessServicePrices extends Equatable{
   );
 
   Map<String, dynamic> toJson() => {
-    "rows": List<dynamic>.from(rows.map((x) => x.toJson())),
+    "rows": List<dynamic>.from(rows!.map((x) => x.toJson())),
     "count": count,
   };
 
   @override
-  List<Object> get props => [rows];
+  List<Object> get props => [rows as Object];
 }
 
 class BusinessServicePrice {
@@ -52,19 +52,19 @@ class BusinessServicePrice {
     this.rowId,
   });
 
-  bool isFree;
-  String id;
-  Currency currency;
-  double servicePrice;
-  BusinessId businessId;
-  Currency service;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String rowId;
+  bool? isFree;
+  String? id;
+  Currency? currency;
+  double? servicePrice;
+  BusinessId? businessId;
+  Currency? service;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? rowId;
 
   factory BusinessServicePrice.fromJson(Map<String, dynamic> json) => BusinessServicePrice(
     isFree: json["isFree"],
@@ -85,15 +85,15 @@ class BusinessServicePrice {
   Map<String, dynamic> toJson() => {
     "isFree": isFree,
     "_id": id,
-    "currency": currency.toJson(),
+    "currency": currency?.toJson(),
     "servicePrice": servicePrice,
-    "businessId": businessId.toJson(),
-    "service": service.toJson(),
+    "businessId": businessId?.toJson(),
+    "service": service?.toJson(),
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": rowId,
   };
@@ -136,17 +136,17 @@ class BusinessId {
     this.businessIdId,
   });
 
-  List<dynamic> services;
-  List<String> categories;
-  String id;
+  List<dynamic>? services;
+  List<String>? categories;
+  String? id;
   dynamic instagram;
   dynamic notes;
   dynamic linkedin;
-  String facebook;
+  String? facebook;
   dynamic website;
-  String longitude;
-  String latitude;
-  List<BusinessLogo> businessLogo;
+  String? longitude;
+  String? latitude;
+  List<BusinessLogo>? businessLogo;
   dynamic addressPostCode;
   dynamic streetComplement;
   dynamic addressStreetNumber;
@@ -154,21 +154,21 @@ class BusinessId {
   dynamic contactEmail;
   dynamic contactWhatsApp;
   dynamic contactPhone;
-  String contactName;
-  String name;
-  String businessId;
+  String? contactName;
+  String? name;
+  String? businessId;
   dynamic city;
-  String state;
-  String country;
-  String language;
-  String currency;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String businessIdId;
+  String? state;
+  String? country;
+  String? language;
+  String? currency;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? businessIdId;
 
   factory BusinessId.fromJson(Map<String, dynamic> json) => BusinessId(
     services: List<dynamic>.from(json["services"].map((x) => x)),
@@ -207,8 +207,8 @@ class BusinessId {
   );
 
   Map<String, dynamic> toJson() => {
-    "services": List<dynamic>.from(services.map((x) => x)),
-    "categories": List<dynamic>.from(categories.map((x) => x)),
+    "services": List<dynamic>.from(services!.map((x) => x)),
+    "categories": List<dynamic>.from(categories!.map((x) => x)),
     "_id": id,
     "instagram": instagram,
     "notes": notes,
@@ -217,7 +217,7 @@ class BusinessId {
     "website": website,
     "longitude": longitude,
     "latitude": latitude,
-    "businessLogo": List<dynamic>.from(businessLogo.map((x) => x.toJson())),
+    "businessLogo": List<dynamic>.from(businessLogo!.map((x) => x.toJson())),
     "addressPostCode": addressPostCode,
     "streetComplement": streetComplement,
     "addressStreetNumber": addressStreetNumber,
@@ -236,8 +236,8 @@ class BusinessId {
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": businessIdId,
   };
@@ -255,14 +255,14 @@ class BusinessLogo {
     this.businessLogoId,
   });
 
-  String id;
-  String name;
-  int sizeInBytes;
+  String? id;
+  String? name;
+  int? sizeInBytes;
   dynamic publicUrl;
-  String privateUrl;
-  DateTime updatedAt;
-  DateTime createdAt;
-  String businessLogoId;
+  String? privateUrl;
+  DateTime? updatedAt;
+  DateTime? createdAt;
+  String? businessLogoId;
 
   factory BusinessLogo.fromJson(Map<String, dynamic> json) => BusinessLogo(
     id: json["_id"],
@@ -281,8 +281,8 @@ class BusinessLogo {
     "sizeInBytes": sizeInBytes,
     "publicUrl": publicUrl,
     "privateUrl": privateUrl,
-    "updatedAt": updatedAt.toIso8601String(),
-    "createdAt": createdAt.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
     "id": businessLogoId,
   };
 }
@@ -305,20 +305,20 @@ class Currency {
     this.category,
   });
 
-  bool active;
-  String id;
-  String name;
-  String symbol;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String currencyId;
-  List<BusinessLogo> serviceImage;
-  String language;
-  String category;
+  bool? active;
+  String? id;
+  String? name;
+  String? symbol;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? currencyId;
+  List<BusinessLogo>? serviceImage;
+  String? language;
+  String? category;
 
   factory Currency.fromJson(Map<String, dynamic> json) => Currency(
     active: json["active"] == null ? null : json["active"],
@@ -345,11 +345,11 @@ class Currency {
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": currencyId,
-    "serviceImage": serviceImage == null ? null : List<dynamic>.from(serviceImage.map((x) => x.toJson())),
+    "serviceImage": serviceImage == null ? null : List<dynamic>.from(serviceImage!.map((x) => x.toJson())),
     "language": language == null ? null : language,
     "category": category == null ? null : category,
   };

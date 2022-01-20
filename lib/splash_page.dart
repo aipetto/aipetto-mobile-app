@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 class SplashPage extends StatefulWidget {
-  final String redirect_route;
+  final String? redirect_route;
 
-  const SplashPage({Key key, this.redirect_route}) : super(key: key);
+  const SplashPage({this.redirect_route});
 
   @override
   _SplashPageState createState() => _SplashPageState();
@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _loadScreen(BuildContext context) async {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
+    SchedulerBinding.instance?.addPostFrameCallback((_) {
       Navigator.of(context).pushReplacementNamed(widget.redirect_route ?? Routes.home);
     });
   }

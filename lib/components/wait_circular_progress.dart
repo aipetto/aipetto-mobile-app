@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class WaitCircularProgress extends StatelessWidget {
   final String title;
 
-  const WaitCircularProgress({Key key, @required this.title}) : super(key: key);
+  const WaitCircularProgress({required this.title});
   @override
   Widget build(BuildContext context) {
     return Container(

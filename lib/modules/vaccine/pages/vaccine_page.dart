@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class VaccinePage extends StatefulWidget {
-  final Pet pet;
+  final Pet? pet;
 
-  const VaccinePage({Key key, this.pet}) : super(key: key);
+  const VaccinePage({this.pet});
 
   @override
   _VaccinePageState createState() => _VaccinePageState();
@@ -55,8 +55,7 @@ class VaccineItem extends StatelessWidget {
   final Widget child;
 
   const VaccineItem(
-      {Key key, @required this.date, @required this.time, @required this.child})
-      : super(key: key);
+      {required this.date, required this.time, required this.child});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -67,7 +66,7 @@ class VaccineItem extends StatelessWidget {
           children: <Widget>[
             Text(
               date,
-              style: Theme.of(context).textTheme.subtitle2.copyWith(
+              style: Theme.of(context).textTheme.subtitle2?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
             ),

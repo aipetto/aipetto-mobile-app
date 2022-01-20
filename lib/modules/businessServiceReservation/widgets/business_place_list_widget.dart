@@ -35,7 +35,7 @@ class _BusinessPlaceListWidget extends State<BusinessPlaceListWidget> {
                       padding: EdgeInsets.all(20),
                       child: Text(
                         'choose_a_business_place'.tr(),
-                        style: Theme.of(context).textTheme.headline6.copyWith(
+                        style: Theme.of(context).textTheme.headline6?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                       ),

@@ -5,7 +5,7 @@ import 'custom_wave_clipper_header.dart';
 class WaveHeader extends StatelessWidget {
   final String title;
 
-  const WaveHeader({Key key, @required this.title}) : super(key: key);
+  const WaveHeader({required this.title});
   @override
   Widget build(BuildContext context) {
     Size size = new Size(MediaQuery.of(context).size.width, 350);

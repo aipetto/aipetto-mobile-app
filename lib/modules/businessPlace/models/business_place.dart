@@ -39,7 +39,7 @@ class BusinessPlace extends Equatable{
     this.addressNumber,
     this.address,
     this.placeType,
-    this.name,
+    required this.name,
     this.businessId,
     this.addressCountry,
     this.tenant,
@@ -68,7 +68,7 @@ class BusinessPlace extends Equatable{
   String? addressNumber;
   String? address;
   dynamic placeType;
-  String? name;
+  String name;
   BusinessId? businessId;
   AddressCountry? addressCountry;
   String? tenant;

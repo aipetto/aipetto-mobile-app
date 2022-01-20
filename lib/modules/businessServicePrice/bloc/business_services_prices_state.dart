@@ -12,13 +12,13 @@ class BusinessServicesPricesEmpty extends BusinessServicesPricesState {}
 class BusinessServicesPricesLoading extends BusinessServicesPricesState {}
 
 class BusinessServicesPricesLoaded extends BusinessServicesPricesState {
-  final List<BusinessServicePrice> businessServicePrice;
+  final List<BusinessServicePrice?> businessServicePrice;
 
-  BusinessServicesPricesLoaded({@required this.businessServicePrice})
+  BusinessServicesPricesLoaded({required this.businessServicePrice})
       : assert(businessServicePrice != null);
 
   @override
-  List<Object> get props => [businessServicePrice];
+  List<Object> get props => [businessServicePrice as Object];
 }
 
 class BusinessServicesPricesError extends BusinessServicesPricesState {}

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class SocialIcon extends StatelessWidget {
   final List<Color> colors;
   final IconData iconData;
-  final Function onPressed;
+  final void Function()? onPressed;
 
   SocialIcon({
-    @required this.colors,
-    @required this.iconData,
-    @required this.onPressed,
+    required this.colors,
+    required this.iconData,
+    required this.onPressed,
   });
 
   @override

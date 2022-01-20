@@ -14,7 +14,7 @@ class BusinessServicesTypesLoading extends BusinessServicesTypesState {}
 class BusinessServicesTypesLoaded extends BusinessServicesTypesState {
   final BusinessServiceType businessServiceType;
 
-  BusinessServicesTypesLoaded({@required this.businessServiceType})
+  BusinessServicesTypesLoaded({required this.businessServiceType})
       : assert(businessServiceType != null);
 
   @override

@@ -57,7 +57,7 @@ class _InputWidgetState extends State<InputWidget> {
                 groupValue: _sex,
                 onChanged: (sex) {
                   setState(() {
-                    _sex = sex;
+                    _sex = sex as Sex;
                   });
                 },
               ),
@@ -73,7 +73,7 @@ class _InputWidgetState extends State<InputWidget> {
                 groupValue: _sex,
                 onChanged: (sex) {
                   setState(() {
-                    _sex = sex;
+                    _sex = sex as Sex;
                   });
                 },
               ),

@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:aipetto/modules/petType/bloc/pet_type_bloc.dart';
 import 'package:aipetto/modules/petType/models/pet_type.dart' as PetType;
 import 'package:aipetto/modules/petType/widgets/pet_type_item.dart';
 import 'package:aipetto/modules/shared/widgets/no_data_available_widget.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:aipetto/routes/routes.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -29,7 +29,7 @@ class _PetTypeListState extends State<PetTypeList> {
               appBar: AppBar(
                 centerTitle: true,
                 title: Text('pet_type_choose'.tr(),
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                         fontSize: 16)),

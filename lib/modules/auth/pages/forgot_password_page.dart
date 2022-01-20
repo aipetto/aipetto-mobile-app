@@ -51,7 +51,7 @@ class ForgotPasswordPage extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .button
-                                .copyWith(fontSize: 14),
+                                ?.copyWith(fontSize: 14),
                           ),
                         ),
                       ),

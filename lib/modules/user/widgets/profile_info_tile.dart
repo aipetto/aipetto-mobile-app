@@ -6,7 +6,7 @@ class ProfileInfoTile extends StatelessWidget {
   final String title, hint, trailing;
 
   const ProfileInfoTile(
-      {Key key, @required this.title, this.hint, this.trailing})
+      {Key key, required this.title, this.hint, this.trailing})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

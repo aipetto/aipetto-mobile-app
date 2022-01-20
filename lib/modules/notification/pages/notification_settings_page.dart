@@ -34,7 +34,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)
+                ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)
         ),
       ),
       body: SingleChildScrollView(
@@ -53,7 +53,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
-                    .copyWith(fontWeight: FontWeight.w700),
+                    ?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
             SizedBox(

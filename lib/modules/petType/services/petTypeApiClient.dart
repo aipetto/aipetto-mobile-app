@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:aipetto/modules/petType/models/pet_type.dart';
-import 'package:flutter/material.dart';
 import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/config/pref_manager.dart';
-import 'package:meta/meta.dart';
+import 'package:aipetto/modules/petType/models/pet_type.dart';
 import 'package:http/http.dart' as http;
 
 class PetTypeApiClient {

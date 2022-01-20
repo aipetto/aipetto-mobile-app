@@ -12,7 +12,7 @@ String businessServiceTypeToJson(BusinessServiceType data) =>
 
 class BusinessServiceType {
   BusinessServiceType({
-    this.businessServiceTypesRows,
+    required this.businessServiceTypesRows,
   });
 
   List<BusinessServiceTypeRow> businessServiceTypesRows;
@@ -45,18 +45,18 @@ class BusinessServiceTypeRow {
     this.rowId,
   });
 
-  String id;
-  List<ServiceImage> serviceImage;
-  Category language;
-  Category category;
-  String name;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  String createdAt;
-  String updatedAt;
-  int v;
-  String rowId;
+  String? id;
+  List<ServiceImage>? serviceImage;
+  Category? language;
+  Category? category;
+  String? name;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  String? createdAt;
+  String? updatedAt;
+  int? v;
+  String? rowId;
 
   factory BusinessServiceTypeRow.fromJson(Map<String, dynamic> json) =>
       BusinessServiceTypeRow(
@@ -77,9 +77,9 @@ class BusinessServiceTypeRow {
 
   Map<String, dynamic> toJson() => {
         "_id": id,
-        "serviceImage": List<dynamic>.from(serviceImage.map((x) => x.toJson())),
-        "language": language.toJson(),
-        "category": category.toJson(),
+        "serviceImage": List<dynamic>.from(serviceImage!.map((x) => x.toJson())),
+        "language": language?.toJson(),
+        "category": category?.toJson(),
         "name": name,
         "tenant": tenant,
         "createdBy": createdBy,
@@ -108,26 +108,24 @@ class Category {
     this.active,
   });
 
-  String id;
+  String? id;
   dynamic pageUrl;
-  List<dynamic> categoryImage;
-  String language;
-  String name;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  String createdAt;
-  String updatedAt;
-  int v;
-  String categoryId;
-  bool active;
+  List<dynamic>? categoryImage;
+  String? language;
+  String? name;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  String? createdAt;
+  String? updatedAt;
+  int? v;
+  String? categoryId;
+  bool? active;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["_id"],
         pageUrl: json["pageUrl"],
-        categoryImage: json["categoryImage"] == null
-            ? null
-            : List<dynamic>.from(json["categoryImage"].map((x) => x)),
+        categoryImage: List<dynamic>.from(json["categoryImage"].map((x) => x)),
         language: json["language"] == null ? null : json["language"],
         name: json["name"],
         tenant: json["tenant"],
@@ -145,7 +143,7 @@ class Category {
         "pageUrl": pageUrl,
         "categoryImage": categoryImage == null
             ? null
-            : List<dynamic>.from(categoryImage.map((x) => x)),
+            : List<dynamic>.from(categoryImage!.map((x) => x)),
         "language": language == null ? null : language,
         "name": name,
         "tenant": tenant,
@@ -165,22 +163,22 @@ class ServiceImage {
     this.name,
     this.sizeInBytes,
     this.publicUrl,
-    this.privateUrl,
+    required this.privateUrl,
     this.createdAt,
     this.updatedAt,
     this.serviceImageId,
     this.downloadUrl,
   });
 
-  String id;
-  String name;
-  int sizeInBytes;
+  String? id;
+  String? name;
+  int? sizeInBytes;
   dynamic publicUrl;
   String privateUrl;
-  String createdAt;
-  String updatedAt;
-  String serviceImageId;
-  String downloadUrl;
+  String? createdAt;
+  String? updatedAt;
+  String? serviceImageId;
+  String? downloadUrl;
 
   factory ServiceImage.fromJson(Map<String, dynamic> json) => ServiceImage(
         id: json["_id"],
@@ -209,7 +207,7 @@ class ServiceImage {
 
 
 class ServiceTypeSelected {
-  final String serviceId;
+  final String? serviceId;
 
   ServiceTypeSelected(this.serviceId);
 }

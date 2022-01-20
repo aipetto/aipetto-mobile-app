@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 
 class ServiceTypeItem extends StatelessWidget {
   final BusinessServiceTypeModel.BusinessServiceTypeRow serviceType;
-  final Function onTap;
+  final void Function()? onTap;
 
   const ServiceTypeItem(
-      {Key key, @required this.serviceType, @required this.onTap})
-      : super(key: key);
+      {required this.serviceType, required this.onTap});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -20,12 +19,12 @@ class ServiceTypeItem extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(
             children: <Widget>[
-              serviceType.serviceImage.isNotEmpty
+              serviceType.serviceImage!.isNotEmpty
                   ? CircleAvatar(
                       backgroundColor: Colors.grey[300],
                       backgroundImage: NetworkImage(
                           Environment.aipettoCloudStorageHost +
-                              serviceType.serviceImage.first.privateUrl),
+                              serviceType.serviceImage!.first.privateUrl),
                       radius: 20,
                     )
                   : CircleAvatar(
@@ -37,7 +36,7 @@ class ServiceTypeItem extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  serviceType.name + '\n',
+                  (serviceType.name ?? '') + '\n',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

@@ -15,12 +15,11 @@ import '../../../components/text_form_field.dart';
 import '../../../utils/constants.dart';
 
 class NewPetWidget extends StatefulWidget {
-  final String petTypeId;
-  final String petTypeName;
+  final String? petTypeId;
+  final String? petTypeName;
 
   const NewPetWidget(
-      {required Key key, required this.petTypeId, required this.petTypeName})
-      : super(key: key);
+      {required this.petTypeId, required this.petTypeName});
 
   @override
   _NewPetWidgetState createState() => _NewPetWidgetState();
@@ -82,7 +81,6 @@ class _NewPetWidgetState extends State<NewPetWidget> {
   @override
   void initState() {
     super.initState();
-    loadModel();
     _initDropDowns();
   }
 
@@ -110,8 +108,8 @@ class _NewPetWidgetState extends State<NewPetWidget> {
             name: _name.text,
             nickname: _nickname.text,
             isLookingForMatch: _selectedLookingForMatch,
-            type: new Breed(id: widget.petTypeId),
-            tenant: currentUser.user.tenants.first.tenant.id,
+            type: widget.petTypeId,
+            tenant: currentUser.user.tenants?.first.tenant?.id,
             hasMicrochip: _hasMicrochip,
             hasBeenDewormed: _hasBeenDewormed,
             hasBeenSterilizedSpayed: _hasBeenSterializedSpayed,
@@ -121,6 +119,9 @@ class _NewPetWidgetState extends State<NewPetWidget> {
             isLost: _isLost,
             createdBy: currentUser.user.id,
             updatedBy: currentUser.user.id,
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+            birthdate: DateTime.parse(_birthDate)
           );
 
           _petFormBloc.add(NewPetFormButtonPressed(
@@ -240,7 +241,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   style: kInputTextStyle,
                 ),
                 CustomTextFormField(
-                 hintText: widget.petTypeName,
+                 hintText: widget.petTypeName as String,
                  enabled: false,
                 ),
                 SizedBox(height: 15),

@@ -81,13 +81,13 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _buildWithTheme(BuildContext context, ThemeState state) {
-    context.bloc<ThemeBloc>().add(ThemeChanged(theme: AppTheme.LightTheme));
+    context.read<ThemeBloc>().add(ThemeChanged(theme: AppTheme.LightTheme));
 
     return MaterialApp(
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: MyBehavior(),
-          child: child,
+          child: child as Widget,
         );
       },
       title: 'Aipetto',

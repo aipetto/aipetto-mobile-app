@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 
 class EditPetProfilePage extends StatefulWidget {
 
-  final Pet pet;
+  final Pet? pet;
 
-  const EditPetProfilePage({Key key, this.pet}) : super(key: key);
+  const EditPetProfilePage({this.pet});
 
   @override
   _EditPetProfilePageState createState() => _EditPetProfilePageState();
@@ -26,7 +26,7 @@ class _EditPetProfilePageState extends State<EditPetProfilePage> {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         actions: <Widget>[
           IconButton(
             onPressed: () {

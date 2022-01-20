@@ -5,10 +5,9 @@ import '../utils/constants.dart';
 
 class DaySlotItem extends StatelessWidget {
   final bool selected;
-  final Function onTap;
+  final void Function()? onTap;
 
-  const DaySlotItem({Key key, @required this.selected, @required this.onTap})
-      : super(key: key);
+  const DaySlotItem({required this.selected, required this.onTap});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,7 +20,7 @@ class DaySlotItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-            color: selected ? Colors.blue[300] : Colors.grey,
+            color: selected ? Colors.blue.shade300 : Colors.grey,
             width: 2, //selected ? 2 : 1,
           ),
           borderRadius: BorderRadius.circular(8),
@@ -30,7 +29,7 @@ class DaySlotItem extends StatelessWidget {
           children: <Widget>[
             Text(
               '${'today'.tr()}, 24 Dec',
-              style: Theme.of(context).textTheme.subtitle2.copyWith(
+              style: Theme.of(context).textTheme.subtitle2?.copyWith(
                   color: kColorPrimaryDark, fontWeight: FontWeight.w600),
             ),
             Text(

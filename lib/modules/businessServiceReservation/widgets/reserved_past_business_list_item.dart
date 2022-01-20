@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 class ReservedPastBusinessListItem extends StatelessWidget {
   final BusinessPlace businessPlace;
 
-  const ReservedPastBusinessListItem({Key key, @required this.businessPlace})
-      : super(key: key);
+  const ReservedPastBusinessListItem({required this.businessPlace});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +25,7 @@ class ReservedPastBusinessListItem extends StatelessWidget {
             CircleAvatar(
               radius: 50,
               backgroundColor: Colors.grey,
-              backgroundImage: AssetImage(businessPlace.photoLogo.first['privateUrl']),
+              backgroundImage: AssetImage(businessPlace.photoLogo?.first['privateUrl']),
             ),
             SizedBox(
               height: 10,

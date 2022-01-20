@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorage {
-  static SecureStorage _instance;
+  static SecureStorage? _instance;
 
   factory SecureStorage() =>
       _instance ??= SecureStorage._(FlutterSecureStorage());
@@ -20,7 +20,7 @@ class SecureStorage {
     return value != null;
   }
 
-  Future<String> getToken() async {
+  Future<String?> getToken() async {
     return await _storage.read(key: _tokenKey);
   }
 

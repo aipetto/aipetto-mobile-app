@@ -6,9 +6,7 @@ import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/config/storage/images_file_storage.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
 import 'package:aipetto/modules/pet/models/pets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:meta/meta.dart';
 import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
 
@@ -72,11 +70,11 @@ class PetApiClient {
     return Pet.fromJson(json);
   }
 
-  Future<void> deletePet(Pet pet) async {
+  Future<void> deletePet(Pet? pet) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
-    final petTenant = pet.tenant;
-    final petId = pet.id;
+    final petTenant = pet!.tenant;
+    final petId = pet!.id;
 
     final url = '$_baseUrl/tenant/$petTenant/pet?ids%5B%5D=$petId';
     final response = await this.httpClient.delete(Uri.parse(url), headers: {
@@ -96,7 +94,7 @@ class PetApiClient {
 
     List<ProfileImage> imageMultipartUploaded = profileImage != null
         ? await uploadMultipartImageToCloudStorage(
-            profileImage, pet, petTenant, jwtOnSecureStorage)
+            profileImage, pet, petTenant!, jwtOnSecureStorage!)
         : [];
 
     final newPetInfo = {

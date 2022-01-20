@@ -6,9 +6,9 @@ import 'package:easy_localization/easy_localization.dart';
 
 class CtaAuthenticationWidget extends StatelessWidget {
 
-  final String urlToRedirect;
+  final String? urlToRedirect;
 
-  const CtaAuthenticationWidget({Key key, this.urlToRedirect}) : super(key: key);
+  const CtaAuthenticationWidget({this.urlToRedirect});
 
   @override
   Widget build(BuildContext context) {

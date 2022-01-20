@@ -13,7 +13,7 @@ class BusinessServicesTypesBloc
     extends Bloc<BusinessServicesTypesEvent, BusinessServicesTypesState> {
   final BusinessServiceTypesRepository businessServiceTypeRepository;
 
-  BusinessServicesTypesBloc({@required this.businessServiceTypeRepository})
+  BusinessServicesTypesBloc({required this.businessServiceTypeRepository})
       : assert(businessServiceTypeRepository != null),
         super(null);
 

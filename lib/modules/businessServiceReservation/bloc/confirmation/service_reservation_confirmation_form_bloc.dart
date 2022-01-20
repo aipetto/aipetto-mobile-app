@@ -18,7 +18,7 @@ class ServiceReservationConfirmationFormBloc extends Bloc<
   final BusinessServiceReservationRepository repository;
 
   ServiceReservationConfirmationFormBloc({
-    @required this.repository,
+    required this.repository,
   })  : assert(repository != null),
         super(null);
 

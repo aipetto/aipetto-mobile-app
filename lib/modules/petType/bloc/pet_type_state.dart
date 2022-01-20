@@ -14,7 +14,7 @@ class PetTypeLoading extends PetTypeState {}
 class PetTypeLoaded extends PetTypeState {
   final PetType petType;
 
-  PetTypeLoaded({@required this.petType}) : assert(petType != null);
+  PetTypeLoaded({required this.petType}) : assert(petType != null);
 
   @override
   List<Object> get props => [petType];

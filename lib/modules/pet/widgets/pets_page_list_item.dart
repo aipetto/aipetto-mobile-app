@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class MyPetListItem extends StatelessWidget {
   final Pet pet;
 
-  const MyPetListItem({Key key, @required this.pet}) : super(key: key);
+  const MyPetListItem({required this.pet});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -19,11 +19,10 @@ class MyPetListItem extends StatelessWidget {
             CircleAvatar(
               radius: 40,
               backgroundColor: Colors.grey,
-              backgroundImage: (pet.profileImage != null &&
-                      pet.profileImage.length > 0 &&
+              backgroundImage: (pet.profileImage.length > 0 &&
                       pet.profileImage[0] != null &&
                       pet.profileImage[0].publicUrl != null)
-                  ? NetworkImage(pet.profileImage[0].publicUrl)
+                  ? NetworkImage(pet.profileImage[0].publicUrl) as ImageProvider
                   : AssetImage('assets/images/aipetto/pets.png'),
             ),
             SizedBox(
@@ -38,7 +37,7 @@ class MyPetListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontWeight: FontWeight.w700),
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   pet.nickname != null
                       ? Text(

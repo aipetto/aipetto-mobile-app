@@ -35,10 +35,10 @@ class _ConfirmationServiceReservationWidgetState
   bool _allowReceiveNotificationsOfAppoitment = true;
   bool _needTransport = false;
   bool _customerAddressForTransport = false; /// TODO this will be enabled on 1.1.15+29
-  User authenticatedUser;
+  User? authenticatedUser;
   bool _isdark = false;
   bool _customer = true;
-  Pet petSelected;
+  Pet? petSelected;
 
   Color get _color => _isdark ? kColorDark : Colors.white;
 
@@ -55,17 +55,17 @@ class _ConfirmationServiceReservationWidgetState
     final _serviceReservationConfirmationBloc = BlocProvider.of<ServiceReservationConfirmationFormBloc>(context);
     final AuthenticationState currentUser = BlocProvider.of<AuthenticationBloc>(context).state;
 
-    BookingCartState bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
+    BookingCartState? bookingCartState = BlocProvider.of<BookingCartBloc>(context).state;
 
     if (currentUser is AuthenticationAuthenticated) {
       authenticatedUser = currentUser.user;
-      customerFirstName = authenticatedUser.firstName != null ? authenticatedUser.firstName : ' ';
-      customerLastName = authenticatedUser.lastName != null ? authenticatedUser.lastName : ' ';
-      customerEmail = authenticatedUser.lastName != null ? authenticatedUser.lastName : ' ';
+      customerFirstName = authenticatedUser?.firstName ?? '';
+      customerLastName = authenticatedUser?.lastName ?? '';
+      customerEmail = authenticatedUser?.lastName ?? '';
     }
 
     _onConfirmationFormButtonPressed() {
-      if (_key.currentState.validate()
+      if (_key.currentState!.validate()
           && petSelected != null
       ) {
         if (currentUser is AuthenticationAuthenticated) {
@@ -75,14 +75,14 @@ class _ConfirmationServiceReservationWidgetState
                     id: bookingCartState.serviceId
                 )
               ],
-              businessId: bookingCartState.place.businessId.id,
-              pet: petSelected.id,
+              businessId: bookingCartState.place.businessId?.id,
+              pet: petSelected!.id,
               place: bookingCartState.place.id,
               date: bookingCartState.dateAvailability,
               totalPrice: bookingCartState.totalServicePrice,
               needTransportation: _needTransport,
               time: bookingCartState.timeAvailability,
-              customerTenant: currentUser.user.tenants.first.tenant.id,
+              customerTenant: currentUser.user.tenants?.first.tenant?.id,
               tenant: bookingCartState.place.tenant,
               createdBy: currentUser.user.id,
               updatedBy: currentUser.user.id,
@@ -126,7 +126,7 @@ class _ConfirmationServiceReservationWidgetState
               Container(
                 color: Colors.white,
                 child: BusinessPlaceItem(
-                  businessPlace: bookingCartState.place,
+                  businessPlace: bookingCartState.place, onTap: () {},
                 ),
               ),
               Divider(

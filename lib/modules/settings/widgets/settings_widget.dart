@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../routes/routes.dart';
 
 class SettingsWidget extends StatefulWidget {
-  final Color color;
+  final Color? color;
 
-  const SettingsWidget({Key key, @required this.color}) : super(key: key);
+  const SettingsWidget({required this.color});
   @override
   _SettingsWidgetState createState() => _SettingsWidgetState();
 }

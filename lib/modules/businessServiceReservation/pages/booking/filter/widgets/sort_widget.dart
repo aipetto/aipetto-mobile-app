@@ -6,7 +6,7 @@ enum SortBy { nothing, fee }
 class SortWidget extends StatefulWidget {
   final Color color;
 
-  const SortWidget({Key key, @required this.color}) : super(key: key);
+  const SortWidget({required this.color});
   @override
   _SortWidgetState createState() => _SortWidgetState();
 }
@@ -37,7 +37,7 @@ class _SortWidgetState extends State<SortWidget> {
           value: SortBy.nothing,
           onChanged: (value) {
             setState(() {
-              _sortBy = value;
+              _sortBy = value as SortBy;
             });
           },
           groupValue: _sortBy,
@@ -47,7 +47,7 @@ class _SortWidgetState extends State<SortWidget> {
           value: SortBy.fee,
           onChanged: (value) {
             setState(() {
-              _sortBy = value;
+              _sortBy = value as SortBy;
             });
           },
           groupValue: _sortBy,

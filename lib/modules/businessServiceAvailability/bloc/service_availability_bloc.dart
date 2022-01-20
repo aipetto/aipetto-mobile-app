@@ -12,14 +12,14 @@ part 'service_availability_state.dart';
 class ServiceAvailabilityBloc extends Bloc<ServiceAvailabilityEvent, ServiceAvailabilityState> {
   final ServiceAvailabilityRespository serviceAvailabilityRespository;
 
-  ServiceAvailabilityBloc({@required this.serviceAvailabilityRespository}) : assert(serviceAvailabilityRespository != null), super(null);
+  ServiceAvailabilityBloc({required this.serviceAvailabilityRespository}) : assert(serviceAvailabilityRespository != null), super(ServiceAvailabilityEmpty());
 
   @override
   Stream<ServiceAvailabilityState> mapEventToState(event) async* {
     if (event is FetchServiceAvailabilities){
       yield ServiceAvailabilityLoading();
       try{
-        final List<ServiceAvailability> serviceAvailabilities = await serviceAvailabilityRespository.fetchBusinessServiceAvailability(
+        final List<ServiceAvailability>? serviceAvailabilities = await serviceAvailabilityRespository.fetchBusinessServiceAvailability(
             event.serviceId,
             event.businessTenant,
             event.businessId,

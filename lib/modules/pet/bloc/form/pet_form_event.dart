@@ -10,14 +10,14 @@ class NewPetFormButtonPressed extends PetFormEvent {
   final Pet pet;
   final File fileImageProfile;
 
-  NewPetFormButtonPressed({Pet this.pet, File this.fileImageProfile});
+  NewPetFormButtonPressed({required this.pet,required this.fileImageProfile});
 
   @override
   List<Object> get props => [pet];
 }
 
 class DeletePetFormButtonPressed extends PetFormEvent {
-  final Pet pet;
+  final Pet? pet;
 
-  DeletePetFormButtonPressed({Pet this.pet});
+  DeletePetFormButtonPressed({required this.pet});
 }

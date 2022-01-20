@@ -32,7 +32,7 @@ class _ChooseBusinessPlacePageState extends State<ChooseBusinessPlacePage> {
           style: Theme.of(context)
               .textTheme
               .subtitle1
-              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+              ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
         ),
         leading: Builder(
           builder: (BuildContext context) {

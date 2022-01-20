@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AccountWidget extends StatelessWidget {
-  final Color color;
+  final Color? color;
 
   const AccountWidget({
-    Key key,
-    @required this.color,
-  }) : super(key: key);
+    required this.color,
+  });
   @override
   Widget build(BuildContext context) {
     final authBloc = BlocProvider.of<AuthenticationBloc>(context);

@@ -5,9 +5,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class PetInfoPage extends StatefulWidget {
-  final Pet pet;
+  final Pet? pet;
 
-  const PetInfoPage({Key key, this.pet}) : super(key: key);
+  const PetInfoPage({this.pet});
 
   @override
   _PetInfoPageState createState() => _PetInfoPageState();

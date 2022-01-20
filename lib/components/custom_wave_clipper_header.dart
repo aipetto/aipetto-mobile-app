@@ -7,18 +7,17 @@ import '../utils/constants.dart';
 import 'wave_clipper.dart';
 
 class CustomWaveClipperHeader extends StatefulWidget {
-  final Size size;
-  final int xOffset;
-  final int yOffset;
-  final int duration;
+  final Size? size;
+  final num xOffset;
+  final num yOffset;
+  final int? duration;
 
   CustomWaveClipperHeader({
-    Key key,
-    @required this.size,
-    this.xOffset,
-    this.yOffset,
+    required this.size,
+    required this.xOffset,
+    required this.yOffset,
     this.duration,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -28,7 +27,7 @@ class CustomWaveClipperHeader extends StatefulWidget {
 
 class _CustomWaveClipperHeaderState extends State<CustomWaveClipperHeader>
     with TickerProviderStateMixin {
-  AnimationController animationController;
+  AnimationController? animationController;
   List<Offset> animList1 = [];
 
   @override
@@ -38,14 +37,14 @@ class _CustomWaveClipperHeaderState extends State<CustomWaveClipperHeader>
     animationController = AnimationController(
         vsync: this, duration: Duration(milliseconds: widget.duration ?? 2000));
 
-    animationController.addListener(() {
+    animationController?.addListener(() {
       animList1.clear();
-      for (int i = -2 - widget.xOffset;
-          i <= widget.size.width.toInt() + 2;
+      for (int i = -2 - widget.xOffset as int;
+          i <= (widget.size?.width.toInt() ?? 0.0) + 2;
           i++) {
         animList1.add(Offset(
             i.toDouble() + widget.xOffset,
-            sin((animationController.value * 360 - i) %
+            sin(((animationController?.value ?? 0.0) * 360 - i) %
                         360 *
                         Vector.degrees2Radians) *
                     20 +
@@ -53,12 +52,12 @@ class _CustomWaveClipperHeaderState extends State<CustomWaveClipperHeader>
                 widget.yOffset));
       }
     });
-    animationController.repeat();
+    animationController?.repeat();
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController?.dispose();
     super.dispose();
   }
 
@@ -70,13 +69,13 @@ class _CustomWaveClipperHeaderState extends State<CustomWaveClipperHeader>
         alignment: Alignment.center,
         child: AnimatedBuilder(
           animation: CurvedAnimation(
-            parent: animationController,
+            parent: animationController as Animation<double>,
             curve: Curves.easeInOut,
           ),
           builder: (context, child) => ClipPath(
             child: Container(
-              width: widget.size.width,
-              height: widget.size.height,
+              width: widget.size?.width,
+              height: widget.size?.height,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -86,7 +85,7 @@ class _CustomWaveClipperHeaderState extends State<CustomWaveClipperHeader>
                 ),
               ),
             ),
-            clipper: WaveClipper(animationController.value, animList1),
+            clipper: WaveClipper(animationController!.value, animList1),
           ),
         ),
       ),

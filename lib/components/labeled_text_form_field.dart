@@ -5,20 +5,19 @@ import 'text_form_field.dart';
 
 class LabeledTextFormField extends StatelessWidget {
   final String title;
-  final double padding;
-  final TextEditingController controller;
-  final String hintText;
-  final bool obscureText;
-  final bool enabled;
-  final Widget suffixIcon;
-  final bool suffixIconTap;
-  final String error;
-  final TextInputType keyboardType;
-  final Function validator;
+  final double? padding;
+  final TextEditingController? controller;
+  final String? hintText;
+  final bool? obscureText;
+  final bool? enabled;
+  final Widget? suffixIcon;
+  final bool? suffixIconTap;
+  final String? error;
+  final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
 
   const LabeledTextFormField({
-    Key key,
-    @required this.title,
+    required this.title,
     this.padding,
     this.controller,
     this.hintText,
@@ -29,7 +28,7 @@ class LabeledTextFormField extends StatelessWidget {
     this.error,
     this.keyboardType,
     this.validator,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(

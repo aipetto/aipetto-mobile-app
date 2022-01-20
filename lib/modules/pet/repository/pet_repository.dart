@@ -3,8 +3,6 @@ import 'dart:io';
 
 import 'package:aipetto/modules/pet/models/pets.dart';
 import 'package:aipetto/modules/pet/services/petApiClient.dart';
-import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 class PetRepository {
   final PetApiClient petClient;
@@ -27,7 +25,7 @@ class PetRepository {
     return await petClient.addPet(pet, profileImage);
   }
 
-  Future<void> deletePet(Pet pet) async {
+  Future<void> deletePet(Pet? pet) async {
     return await petClient.deletePet(pet);
   }
 

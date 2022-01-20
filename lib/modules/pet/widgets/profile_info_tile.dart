@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:aipetto/utils/constants.dart';
 
 class ProfileInfoTile extends StatelessWidget {
-  final String title, itemData;
+  final String title;
+  final String itemData;
   final bool boolItemData;
 
   const ProfileInfoTile(
-      {Key key, @required this.title, this.itemData, this.boolItemData})
-      : super(key: key);
+      {required this.title, required this.itemData, required this.boolItemData});
   @override
   Widget build(BuildContext context) {
     var _isDark = false;
@@ -22,7 +22,7 @@ class ProfileInfoTile extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .subtitle1
-                  .copyWith(fontWeight: FontWeight.w700),
+                  ?.copyWith(fontWeight: FontWeight.w700),
             ),
           )
           :

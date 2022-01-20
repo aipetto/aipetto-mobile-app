@@ -19,9 +19,9 @@ import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
 
-  final String previous_route;
+  final String? previous_route;
 
-  const LoginPage({Key key, this.previous_route}) : super(key: key);
+  const LoginPage({required this.previous_route});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -160,7 +160,7 @@ class _SignInFormState extends State<_SignInForm> {
     }
 
     _onLoginButtonPressed() {
-      if (_key.currentState.validate()) {
+      if (_key.currentState!.validate()) {
         _loginBloc.add(LoginInWithEmailButtonPressed(
             email: _emailController.text, password: _passwordController.text));
       } else {
@@ -325,7 +325,7 @@ class _SignInFormState extends State<_SignInForm> {
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .button
-                                                .copyWith(fontSize: 14),
+                                                ?.copyWith(fontSize: 14),
                                           ),
                                         ),
                                       ],

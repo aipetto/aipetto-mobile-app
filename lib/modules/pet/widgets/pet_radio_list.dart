@@ -42,7 +42,7 @@ class PetRadioList extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
-                          .copyWith(fontSize: 18),
+                          ?.copyWith(fontSize: 18),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     )
@@ -57,7 +57,7 @@ class PetRadioList extends StatelessWidget {
         if (state is PetLoaded) {
           final stateAsPetsLoadedState = state as PetsLoaded;
           final pets = stateAsPetsLoadedState.pets;
-          return buildPetsRadioList(pets);
+          buildPetsRadioList(pets);
         }
       },
     );
@@ -102,7 +102,7 @@ class PetRadioList extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontSize: 18),
+                        ?.copyWith(fontSize: 18),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   )
@@ -121,7 +121,7 @@ class PetRadioList extends StatelessWidget {
 class PetsOfOwnerRadioItem extends StatelessWidget {
   final Pet pet;
 
-  const PetsOfOwnerRadioItem({@required this.pet});
+  const PetsOfOwnerRadioItem({required this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +175,7 @@ class PetsOfOwnerRadioItem extends StatelessWidget {
                   pet.profileImage.length > 0 &&
                   pet.profileImage[0] != null &&
                   pet.profileImage[0].publicUrl != null)
-                  ? NetworkImage(pet.profileImage[0].publicUrl)
+                  ? NetworkImage(pet.profileImage[0].publicUrl) as ImageProvider
                   : AssetImage('assets/images/aipetto/pets.png'),
             ),
             SizedBox(
@@ -187,7 +187,7 @@ class PetsOfOwnerRadioItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontSize: 18),
+                        ?.copyWith(fontSize: 18),
                     text: pet.name)),
           ],
         ),

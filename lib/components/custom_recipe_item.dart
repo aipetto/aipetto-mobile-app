@@ -8,12 +8,10 @@ class CustomRecipeItem extends StatelessWidget {
   final String pills;
 
   const CustomRecipeItem(
-      {Key key,
-      @required this.title,
-      @required this.subTitle,
-      @required this.days,
-      @required this.pills})
-      : super(key: key);
+      {required this.title,
+      required this.subTitle,
+      required this.days,
+      required this.pills});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -48,7 +46,7 @@ class CustomRecipeItem extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .subtitle2
-                            .copyWith(fontWeight: FontWeight.w700),
+                            ?.copyWith(fontWeight: FontWeight.w700),
                       ),
                       SizedBox(
                         height: 2,
@@ -96,7 +94,7 @@ class CustomRecipeItem extends StatelessWidget {
                       ),
                       Text(
                         days,
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
                             ),
@@ -122,7 +120,7 @@ class CustomRecipeItem extends StatelessWidget {
                       ),
                       Text(
                         pills,
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
                             ),

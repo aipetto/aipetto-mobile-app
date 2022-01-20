@@ -14,7 +14,7 @@ class ServiceReservationLoading extends ServiceReservationState {}
 class NextClosestServiceReservationLoaded extends ServiceReservationState {
   final List<Reservation> serviceReservation;
 
-  NextClosestServiceReservationLoaded({@required this.serviceReservation}) : assert(serviceReservation != null);
+  NextClosestServiceReservationLoaded({required this.serviceReservation}) : assert(serviceReservation != null);
 
   @override
   List<Object> get props => [serviceReservation];
@@ -23,7 +23,7 @@ class NextClosestServiceReservationLoaded extends ServiceReservationState {
 class FutureServiceReservationLoaded extends ServiceReservationState {
   final List<Reservation> serviceReservations;
 
-  FutureServiceReservationLoaded({@required this.serviceReservations}) : assert(serviceReservations != null);
+  FutureServiceReservationLoaded({required this.serviceReservations}) : assert(serviceReservations != null);
 
   @override
   List<Object> get props => [serviceReservations];
@@ -32,7 +32,7 @@ class FutureServiceReservationLoaded extends ServiceReservationState {
 class PastServiceReservationLoaded extends ServiceReservationState {
   final List<Reservation> serviceReservations;
 
-  PastServiceReservationLoaded({@required this.serviceReservations}) : assert(serviceReservations != null);
+  PastServiceReservationLoaded({required this.serviceReservations}) : assert(serviceReservations != null);
 
   @override
   List<Object> get props => [serviceReservations];

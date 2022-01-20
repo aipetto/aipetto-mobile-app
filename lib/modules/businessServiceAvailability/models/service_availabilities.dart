@@ -14,8 +14,8 @@ class ServiceAvailabilities {
     this.count,
   });
 
-  List<ServiceAvailability> rows;
-  int count;
+  List<ServiceAvailability>? rows;
+  int? count;
 
   factory ServiceAvailabilities.fromJson(Map<String, dynamic> json) => ServiceAvailabilities(
     rows: List<ServiceAvailability>.from(json["rows"].map((x) => ServiceAvailability.fromJson(x))),
@@ -23,7 +23,7 @@ class ServiceAvailabilities {
   );
 
   Map<String, dynamic> toJson() => {
-    "rows": List<dynamic>.from(rows.map((x) => x.toJson())),
+    "rows": List<dynamic>.from(rows!.map((x) => x.toJson())),
     "count": count,
   };
 }
@@ -47,21 +47,21 @@ class ServiceAvailability {
     this.rowId,
   });
 
-  List<Place> places;
-  List<String> timeSlot;
-  String id;
-  ServiceType serviceType;
-  DateTime dateEnd;
-  DateTime dateStart;
-  BusinessId businessId;
+  List<Place>? places;
+  List<String>? timeSlot;
+  String? id;
+  ServiceType? serviceType;
+  DateTime? dateEnd;
+  DateTime? dateStart;
+  BusinessId? businessId;
   dynamic name;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String rowId;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? rowId;
 
   factory ServiceAvailability.fromJson(Map<String, dynamic> json) => ServiceAvailability(
     places: List<Place>.from(json["places"].map((x) => Place.fromJson(x))),
@@ -82,19 +82,19 @@ class ServiceAvailability {
   );
 
   Map<String, dynamic> toJson() => {
-    "places": List<dynamic>.from(places.map((x) => x.toJson())),
-    "timeSlot": List<dynamic>.from(timeSlot.map((x) => x)),
+    "places": List<dynamic>.from(places!.map((x) => x.toJson())),
+    "timeSlot": List<dynamic>.from(timeSlot!.map((x) => x)),
     "_id": id,
-    "serviceType": serviceType.toJson(),
-    "dateEnd": "${dateEnd.year.toString().padLeft(4, '0')}-${dateEnd.month.toString().padLeft(2, '0')}-${dateEnd.day.toString().padLeft(2, '0')}",
-    "dateStart": "${dateStart.year.toString().padLeft(4, '0')}-${dateStart.month.toString().padLeft(2, '0')}-${dateStart.day.toString().padLeft(2, '0')}",
-    "businessId": businessId.toJson(),
+    "serviceType": serviceType?.toJson(),
+    "dateEnd": "${dateEnd?.year.toString().padLeft(4, '0')}-${dateEnd?.month.toString().padLeft(2, '0')}-${dateEnd?.day.toString().padLeft(2, '0')}",
+    "dateStart": "${dateStart?.year.toString().padLeft(4, '0')}-${dateStart?.month.toString().padLeft(2, '0')}-${dateStart?.day.toString().padLeft(2, '0')}",
+    "businessId": businessId?.toJson(),
     "name": name,
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": rowId,
   };
@@ -135,37 +135,37 @@ class BusinessId {
     this.businessIdId,
   });
 
-  List<dynamic> services;
-  List<String> categories;
-  String id;
+  List<dynamic>? services;
+  List<String>? categories;
+  String? id;
   dynamic instagram;
-  String notes;
+  String? notes;
   dynamic linkedin;
-  String facebook;
+  String? facebook;
   dynamic website;
-  List<BusinessLogo> businessLogo;
+  List<BusinessLogo>? businessLogo;
   dynamic addressPostCode;
   dynamic streetComplement;
   dynamic addressStreetNumber;
   dynamic addressStreet;
   dynamic contactEmail;
-  String contactWhatsApp;
-  String contactPhone;
-  String contactName;
-  String name;
-  String businessId;
+  String? contactWhatsApp;
+  String? contactPhone;
+  String? contactName;
+  String? name;
+  String? businessId;
   dynamic city;
-  String state;
-  String country;
-  String language;
-  String currency;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String businessIdId;
+  String? state;
+  String? country;
+  String? language;
+  String? currency;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? businessIdId;
 
   factory BusinessId.fromJson(Map<String, dynamic> json) => BusinessId(
     services: List<dynamic>.from(json["services"].map((x) => x)),
@@ -202,15 +202,15 @@ class BusinessId {
   );
 
   Map<String, dynamic> toJson() => {
-    "services": List<dynamic>.from(services.map((x) => x)),
-    "categories": List<dynamic>.from(categories.map((x) => x)),
+    "services": List<dynamic>.from(services!.map((x) => x)),
+    "categories": List<dynamic>.from(categories!.map((x) => x)),
     "_id": id,
     "instagram": instagram,
     "notes": notes,
     "linkedin": linkedin,
     "facebook": facebook,
     "website": website,
-    "businessLogo": List<dynamic>.from(businessLogo.map((x) => x.toJson())),
+    "businessLogo": List<dynamic>.from(businessLogo!.map((x) => x.toJson())),
     "addressPostCode": addressPostCode,
     "streetComplement": streetComplement,
     "addressStreetNumber": addressStreetNumber,
@@ -229,8 +229,8 @@ class BusinessId {
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": businessIdId,
   };
@@ -248,14 +248,14 @@ class BusinessLogo {
     this.businessLogoId,
   });
 
-  String id;
-  String name;
-  int sizeInBytes;
+  String? id;
+  String? name;
+  int? sizeInBytes;
   dynamic publicUrl;
-  String privateUrl;
-  DateTime updatedAt;
-  DateTime createdAt;
-  String businessLogoId;
+  String? privateUrl;
+  DateTime? updatedAt;
+  DateTime? createdAt;
+  String? businessLogoId;
 
   factory BusinessLogo.fromJson(Map<String, dynamic> json) => BusinessLogo(
     id: json["_id"],
@@ -274,8 +274,8 @@ class BusinessLogo {
     "sizeInBytes": sizeInBytes,
     "publicUrl": publicUrl,
     "privateUrl": privateUrl,
-    "updatedAt": updatedAt.toIso8601String(),
-    "createdAt": createdAt.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
     "id": businessLogoId,
   };
 }
@@ -311,33 +311,33 @@ class Place {
     this.placeId,
   });
 
-  Location location;
-  List<String> services;
-  List<String> categories;
-  bool is24Hours;
-  bool isOpen;
-  String id;
+  Location? location;
+  List<String>? services;
+  List<String>? categories;
+  bool? is24Hours;
+  bool? isOpen;
+  String? id;
   dynamic stars;
-  String closeTime;
-  String openTime;
-  String addressState;
-  String addressCity;
+  String? closeTime;
+  String? openTime;
+  String? addressState;
+  String? addressCity;
   dynamic addressZipCode;
-  String addressNumber;
-  String address;
-  String placeType;
-  String name;
-  String businessId;
-  String addressCountry;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  List<BusinessLogo> photoLogo;
-  List<dynamic> photoStore;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String placeId;
+  String? addressNumber;
+  String? address;
+  String? placeType;
+  String? name;
+  String? businessId;
+  String? addressCountry;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  List<BusinessLogo>? photoLogo;
+  List<dynamic>? photoStore;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? placeId;
 
   factory Place.fromJson(Map<String, dynamic> json) => Place(
     location: Location.fromJson(json["location"]),
@@ -370,9 +370,9 @@ class Place {
   );
 
   Map<String, dynamic> toJson() => {
-    "location": location.toJson(),
-    "services": List<dynamic>.from(services.map((x) => x)),
-    "categories": List<dynamic>.from(categories.map((x) => x)),
+    "location": location?.toJson(),
+    "services": List<dynamic>.from(services!.map((x) => x)),
+    "categories": List<dynamic>.from(categories!.map((x) => x)),
     "is24hours": is24Hours,
     "isOpen": isOpen,
     "_id": id,
@@ -391,10 +391,10 @@ class Place {
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "photoLogo": List<dynamic>.from(photoLogo.map((x) => x.toJson())),
-    "photoStore": List<dynamic>.from(photoStore.map((x) => x)),
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "photoLogo": List<dynamic>.from(photoLogo!.map((x) => x.toJson())),
+    "photoStore": List<dynamic>.from(photoStore!.map((x) => x)),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": placeId,
   };
@@ -406,8 +406,8 @@ class Location {
     this.coordinates,
   });
 
-  String type;
-  List<double> coordinates;
+  String? type;
+  List<double>? coordinates;
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
     type: json["type"],
@@ -416,7 +416,7 @@ class Location {
 
   Map<String, dynamic> toJson() => {
     "type": type,
-    "coordinates": List<dynamic>.from(coordinates.map((x) => x)),
+    "coordinates": List<dynamic>.from(coordinates!.map((x) => x)),
   };
 }
 
@@ -436,18 +436,18 @@ class ServiceType {
     this.serviceTypeId,
   });
 
-  String id;
-  List<BusinessLogo> serviceImage;
-  String language;
-  String category;
-  String name;
-  String tenant;
-  String createdBy;
-  String updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  String serviceTypeId;
+  String? id;
+  List<BusinessLogo>? serviceImage;
+  String? language;
+  String? category;
+  String? name;
+  String? tenant;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? serviceTypeId;
 
   factory ServiceType.fromJson(Map<String, dynamic> json) => ServiceType(
     id: json["_id"],
@@ -466,22 +466,22 @@ class ServiceType {
 
   Map<String, dynamic> toJson() => {
     "_id": id,
-    "serviceImage": List<dynamic>.from(serviceImage.map((x) => x.toJson())),
+    "serviceImage": List<dynamic>.from(serviceImage!.map((x) => x.toJson())),
     "language": language,
     "category": category,
     "name": name,
     "tenant": tenant,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,
     "id": serviceTypeId,
   };
 }
 
 class ServiceAvailabilityTimeSlotSelected {
-  String serviceAvailabilityTimeSlotSelected;
+  String? serviceAvailabilityTimeSlotSelected;
 
   ServiceAvailabilityTimeSlotSelected({this.serviceAvailabilityTimeSlotSelected});
 }

@@ -4,22 +4,21 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
 class CustomProfileItem extends StatelessWidget {
-  final String imagePath;
+  final String? imagePath;
   final String title;
   final String subTitle;
-  final Function onTap;
+  final void Function()? onTap;
   final String buttonTitle;
-  final String subTitle2;
+  final String? subTitle2;
 
   const CustomProfileItem({
-    Key key,
     this.imagePath,
-    @required this.title,
-    @required this.subTitle,
-    @required this.onTap,
-    @required this.buttonTitle,
+    required this.title,
+    required this.subTitle,
+    required this.onTap,
+    required this.buttonTitle,
     this.subTitle2,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,7 +31,7 @@ class CustomProfileItem extends StatelessWidget {
               backgroundColor: Colors.transparent,
               radius: 25,
               child: Image.asset(
-                imagePath,
+                imagePath!,
                 fit: BoxFit.fill,
               ),
             ),
@@ -48,7 +47,7 @@ class CustomProfileItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontWeight: FontWeight.w700),
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
                     height: 2,
@@ -93,7 +92,7 @@ class CustomProfileItem extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .button
-                                .copyWith(fontSize: 12),
+                                ?.copyWith(fontSize: 12),
                             maxLines: 3,
                             softWrap: false,
                             overflow: TextOverflow.ellipsis),

@@ -4,18 +4,18 @@ part of 'service_availability_bloc.dart';
 abstract class ServiceAvailabilityEvent extends Equatable {}
 
 class FetchServiceAvailabilities extends ServiceAvailabilityEvent {
-  final String serviceId;
-  final String businessTenant;
-  final String businessId;
-  final String dateToFilterTimeSlot;
+  final String? serviceId;
+  final String? businessTenant;
+  final String? businessId;
+  final String? dateToFilterTimeSlot;
 
   FetchServiceAvailabilities({this.serviceId, this.businessTenant, this.businessId, this.dateToFilterTimeSlot});
 
   FetchServiceAvailabilities copyWith({
-   String serviceId,
-   String businessTenant,
-   String businessId,
-   String dateToFilterTimeSlot
+   String? serviceId,
+   String? businessTenant,
+   String? businessId,
+   String? dateToFilterTimeSlot
   }) => FetchServiceAvailabilities(
       serviceId: serviceId ?? this.serviceId,
       businessTenant: businessTenant ?? this.businessTenant,
@@ -24,5 +24,5 @@ class FetchServiceAvailabilities extends ServiceAvailabilityEvent {
   );
 
   @override
-  List<Object> get props => [serviceId, businessTenant, businessId, dateToFilterTimeSlot];
+  List<Object> get props => [serviceId as Object, businessTenant as Object, businessId as Object, dateToFilterTimeSlot as Object];
 }

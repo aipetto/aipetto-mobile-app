@@ -12,9 +12,8 @@ part 'pet_type_state.dart';
 class PetTypeBloc extends Bloc<PetTypeEvent, PetTypeState> {
   final PetTypeRepository petTypeRepository;
 
-  PetTypeBloc({@required this.petTypeRepository})
-      : assert(petTypeRepository != null),
-        super(null);
+  PetTypeBloc({required this.petTypeRepository})
+      : super(PetTypeEmpty());
 
   @override
   PetTypeState get initialState => PetTypeEmpty();

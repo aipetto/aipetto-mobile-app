@@ -4,14 +4,14 @@ import 'package:easy_localization/easy_localization.dart';
 class SexWidget extends StatefulWidget {
   final Color color;
 
-  const SexWidget({Key key, @required this.color}) : super(key: key);
+  const SexWidget({required this.color});
   @override
   _SexWidgetState createState() => _SexWidgetState();
 }
 
 class _SexWidgetState extends State<SexWidget> {
-  bool _male = false;
-  bool _female = false;
+  bool? _male = false;
+  bool? _female = false;
   @override
   Widget build(BuildContext context) {
     return Column(

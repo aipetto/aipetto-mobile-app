@@ -6,7 +6,7 @@ enum Availability { anyDay, today, next3Days, commingWeekend }
 class AvailabilityWidget extends StatefulWidget {
   final Color color;
 
-  const AvailabilityWidget({Key key, @required this.color}) : super(key: key);
+  const AvailabilityWidget({required this.color});
   @override
   _AvailabilityWidgetState createState() => _AvailabilityWidgetState();
 }
@@ -37,7 +37,7 @@ class _AvailabilityWidgetState extends State<AvailabilityWidget> {
           value: Availability.anyDay,
           onChanged: (value) {
             setState(() {
-              _availability = value;
+              _availability = value as Availability;
             });
           },
           groupValue: _availability,
@@ -47,7 +47,7 @@ class _AvailabilityWidgetState extends State<AvailabilityWidget> {
           value: Availability.today,
           onChanged: (value) {
             setState(() {
-              _availability = value;
+              _availability = value as Availability;
             });
           },
           groupValue: _availability,
@@ -57,7 +57,7 @@ class _AvailabilityWidgetState extends State<AvailabilityWidget> {
           value: Availability.next3Days,
           onChanged: (value) {
             setState(() {
-              _availability = value;
+              _availability = value as Availability;
             });
           },
           groupValue: _availability,
@@ -67,7 +67,7 @@ class _AvailabilityWidgetState extends State<AvailabilityWidget> {
           value: Availability.commingWeekend,
           onChanged: (value) {
             setState(() {
-              _availability = value;
+              _availability = value as Availability;
             });
           },
           groupValue: _availability,

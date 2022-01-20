@@ -1,5 +1,4 @@
 import 'package:aipetto/components/round_icon_button.dart';
-import 'package:aipetto/config/pref_manager.dart';
 import 'package:aipetto/modules/exam/pages/visit_page.dart';
 import 'package:aipetto/modules/pet/pages/pet_info_page.dart';
 import 'package:aipetto/modules/vaccine/pages/vaccine_page.dart';

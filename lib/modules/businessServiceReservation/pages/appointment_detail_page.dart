@@ -1,5 +1,4 @@
 import 'package:aipetto/components/custom_button.dart';
-import 'package:aipetto/modules/businessPlace/models/business_place.dart';
 import 'package:aipetto/modules/businessPlace/widgets/business_place_item.dart';
 import 'package:aipetto/modules/businessServiceReservation/bloc/cart/booking_cart_bloc.dart';
 import 'package:aipetto/routes/routes.dart';
@@ -227,7 +226,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
     final addressNumber = bookingCartState.place.addressNumber ?? '';
     final state = bookingCartState.place.addressState ?? '';
     final addressCity = bookingCartState.place.addressCity ?? '';
-    final addressCountry = bookingCartState.place.addressCountry.name ?? '';
+    final addressCountry = bookingCartState.place.addressCountry?.name ?? '';
     final zipCode = bookingCartState.place.addressZipCode ?? '';
     final address = direction + ' ' + addressNumber;
     final addressState = state + ' ' + addressCity + ' ' + addressCountry;
@@ -240,7 +239,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         automaticallyImplyLeading: false,
       ),
       body: SafeArea(
@@ -257,7 +256,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                       Container(
                         color: _isdark ? Colors.transparent : Colors.white,
                         child: BusinessPlaceItem(
-                          businessPlace: bookingCartState.place, /// TODO this should come from the state
+                          businessPlace: bookingCartState.place, onTap: () {  }, /// TODO this should come from the state
                         ),
                       ),
                       Divider(

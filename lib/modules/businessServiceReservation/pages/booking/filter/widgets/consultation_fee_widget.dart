@@ -6,8 +6,7 @@ enum ConsultationFee { free, range1, range2, range3, range4 }
 class ConsultationFeeWidget extends StatefulWidget {
   final Color color;
 
-  const ConsultationFeeWidget({Key key, @required this.color})
-      : super(key: key);
+  const ConsultationFeeWidget({required this.color});
   @override
   _ConsultationFeeWidgetState createState() => _ConsultationFeeWidgetState();
 }
@@ -38,7 +37,7 @@ class _ConsultationFeeWidgetState extends State<ConsultationFeeWidget> {
           value: ConsultationFee.free,
           onChanged: (value) {
             setState(() {
-              _consultationFee = value;
+              _consultationFee = value as ConsultationFee;
             });
           },
           groupValue: _consultationFee,
@@ -48,7 +47,7 @@ class _ConsultationFeeWidgetState extends State<ConsultationFeeWidget> {
           value: ConsultationFee.range1,
           onChanged: (value) {
             setState(() {
-              _consultationFee = value;
+              _consultationFee = value as ConsultationFee;
             });
           },
           groupValue: _consultationFee,
@@ -58,7 +57,7 @@ class _ConsultationFeeWidgetState extends State<ConsultationFeeWidget> {
           value: ConsultationFee.range2,
           onChanged: (value) {
             setState(() {
-              _consultationFee = value;
+              _consultationFee = value as ConsultationFee;
             });
           },
           groupValue: _consultationFee,
@@ -68,7 +67,7 @@ class _ConsultationFeeWidgetState extends State<ConsultationFeeWidget> {
           value: ConsultationFee.range3,
           onChanged: (value) {
             setState(() {
-              _consultationFee = value;
+              _consultationFee = value as ConsultationFee;
             });
           },
           groupValue: _consultationFee,
@@ -78,7 +77,7 @@ class _ConsultationFeeWidgetState extends State<ConsultationFeeWidget> {
           value: ConsultationFee.range4,
           onChanged: (value) {
             setState(() {
-              _consultationFee = value;
+              _consultationFee = value as ConsultationFee;
             });
           },
           groupValue: _consultationFee,

@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 
 class PetTypeItem extends StatelessWidget {
   final PetTypeModel.Row petType;
-  final Function onTap;
+  final void Function()? onTap;
 
-  const PetTypeItem({Key key, @required this.petType, @required this.onTap})
-      : super(key: key);
+  const PetTypeItem({required this.petType, required this.onTap});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -17,7 +16,7 @@ class PetTypeItem extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(
             children: <Widget>[
-              petType.image.isEmpty
+              petType.image!.isEmpty
                   ? CircleAvatar(
                       backgroundColor: Colors.grey[300],
                       radius: 25,

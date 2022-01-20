@@ -5,8 +5,7 @@ class MessageItem extends StatelessWidget {
   final bool send;
   final String message;
 
-  const MessageItem({Key key, @required this.send, @required this.message})
-      : super(key: key);
+  const MessageItem({required this.send, required this.message});
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -15,9 +15,9 @@ import 'package:http/http.dart' as http;
 
 class TimeSlotPage extends StatefulWidget {
 
-  final BusinessPlace businessPlace;
+  final BusinessPlace? businessPlace;
 
-  const TimeSlotPage({Key key, this.businessPlace}) : super(key: key);
+  const TimeSlotPage({this.businessPlace});
 
   @override
   _TimeSlotPageState createState() => _TimeSlotPageState();
@@ -25,7 +25,7 @@ class TimeSlotPage extends StatefulWidget {
 
 class _TimeSlotPageState extends State<TimeSlotPage>  {
   final formKey = GlobalKey<FormState>();
-  DateTime selectedBookingDate;
+  DateTime? selectedBookingDate;
   TextEditingController dtBookingEditingController = new TextEditingController();
 
   Widget inputBookingDateFromCalendar(){
@@ -35,7 +35,7 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
         FocusScope.of(context).requestFocus(new FocusNode());
         // Show Date Picker
         await selectBookingDateFromCalendar(context);
-        dtBookingEditingController.text = DateFormat('dd/MM/yyyy').format(selectedBookingDate);
+        dtBookingEditingController.text = DateFormat('dd/MM/yyyy').format(selectedBookingDate!);
       },
       readOnly: true,
       decoration: InputDecoration(labelText: 'date'.tr()),
@@ -43,7 +43,7 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
   }
 
   Future<void> selectBookingDateFromCalendar(BuildContext context) async {
-    final DateTime pickedDate = await showDatePicker(
+    final DateTime? pickedDate = await showDatePicker(
         context: context,
         initialDate: selectedBookingDate ?? DateTime.now(),
         firstDate: DateTime(2021,1),
@@ -72,7 +72,7 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         actions: <Widget>[
           IconButton(
             onPressed: () => Navigator.pushNamed(context, Routes.home),
@@ -98,7 +98,7 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
                   width: double.infinity,
                   height: 85,
                   padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 80.0),
-                  color: Prefs.getBool(Prefs.DARKTHEME, def: false)
+                  color: Prefs.getBool(Prefs.DARKTHEME, def: false)!
                       ? Colors.white.withOpacity(0.12)
                       : kAmphibianColorGreenLight,
                   child: Form(
@@ -127,9 +127,9 @@ class _TimeSlotPageState extends State<TimeSlotPage>  {
                 ),
                 TimeSlotItemPage(
                   serviceId: bookingCartState.serviceId,
-                  businessTenant: bookingCartState.place.tenant,
-                  businessId: bookingCartState.place.businessId.id,
-                  dateToFilterTimeSlot: selectedBookingDate,
+                  businessTenant: bookingCartState.place.tenant as String,
+                  businessId: bookingCartState.place.businessId?.id as String,
+                  dateToFilterTimeSlot: selectedBookingDate as DateTime,
                 ),
               ],
             ),

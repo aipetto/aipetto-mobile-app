@@ -14,7 +14,7 @@ class AppLoaded extends AuthenticationEvent {}
 class UserLoggedIn extends AuthenticationEvent {
   final User user;
 
-  UserLoggedIn({@required this.user});
+  UserLoggedIn({required this.user});
 
   @override
   List<Object> get props => [user];

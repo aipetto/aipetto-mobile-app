@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class PetsOfOwnerListItem extends StatelessWidget {
   final Pet pet;
 
-  const PetsOfOwnerListItem({@required this.pet});
+  const PetsOfOwnerListItem({required this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class PetsOfOwnerListItem extends StatelessWidget {
                       pet.profileImage.length > 0 &&
                       pet.profileImage[0] != null &&
                       pet.profileImage[0].publicUrl != null)
-                  ? NetworkImage(pet.profileImage[0].publicUrl)
+                  ? NetworkImage(pet.profileImage[0].publicUrl) as ImageProvider
                   : AssetImage('assets/images/aipetto/pets.png'),
             ),
             SizedBox(
@@ -37,7 +37,7 @@ class PetsOfOwnerListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontSize: 18),
+                        ?.copyWith(fontSize: 18),
                     text: pet.name)),
           ],
         ),

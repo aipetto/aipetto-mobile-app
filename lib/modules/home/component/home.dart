@@ -5,17 +5,16 @@ import 'package:aipetto/modules/home/pages/drawer/drawer_page.dart';
 import 'package:aipetto/modules/home/pages/home_page.dart';
 import 'package:aipetto/modules/home/widgets/app_bar_title_widget.dart';
 import 'package:aipetto/modules/home/widgets/nav_bar_item_widget.dart';
-import 'package:aipetto/modules/message/pages/messages_page.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:aipetto/modules/user/models/user.dart';
 import 'package:aipetto/routes/routes.dart';
 import 'package:aipetto/utils/constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  final User user;
+  final User? user;
 
-  const Home({Key key, this.user}) : super(key: key);
+  const Home({this.user});
 
   @override
   _HomeState createState() => _HomeState();
@@ -30,7 +29,7 @@ class _HomeState extends State<Home> {
 
   int _selectedIndex = 0;
 
-  static PageController _pageController;
+  static PageController? _pageController;
 
   @override
   void initState() {
@@ -43,12 +42,12 @@ class _HomeState extends State<Home> {
   @override
   void dispose() {
     super.dispose();
-    _pageController.dispose();
+    _pageController?.dispose();
   }
 
   _selectPage(int index) {
-    if (_pageController.hasClients)
-      _pageController.animateToPage(index,
+    if (_pageController!.hasClients)
+      _pageController?.animateToPage(index,
           duration: Duration(milliseconds: 250), curve: Curves.easeOut);
     setState(() {
       _selectedIndex = index;
@@ -61,8 +60,7 @@ class _HomeState extends State<Home> {
     final _pages = [
       HomePage(user: widget.user),
       ChooseServiceToReservePage(),
-      MyAppointmentsPage(),
-      MessagesPage(),
+      MyAppointmentsPage()
     ];
     return Stack(
       children: <Widget>[
@@ -166,14 +164,6 @@ class _HomeState extends State<Home> {
                     image: 'calendar',
                     menuText: "my_appointments".tr(),
                     isSelected: _selectedIndex == 2,
-                  ),
-                  NavBarItemWidget(
-                    onTap: () {
-                      _selectPage(3);
-                    },
-                    image: 'messages',
-                    menuText: "conversation_messages".tr(),
-                    isSelected: _selectedIndex == 3,
                   ),
                 ],
                 currentIndex: _selectedIndex,

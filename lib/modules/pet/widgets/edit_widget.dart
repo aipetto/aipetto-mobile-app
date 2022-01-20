@@ -9,9 +9,9 @@ import '../../../utils/constants.dart';
 
 class EditWidget extends StatefulWidget {
 
-  final Pet pet;
+  final Pet? pet;
 
-  const EditWidget({Key key, this.pet}) : super(key: key);
+  const EditWidget({this.pet});
 
   @override
   _EditWidgetState createState() => _EditWidgetState();
@@ -35,8 +35,8 @@ class _EditWidgetState extends State<EditWidget> {
 
   var _birthDate = '03/04/2016';
 
-  List<DropdownMenuItem<String>> _dropDownSex;
-  List<DropdownMenuItem<String>> _dropDownMarital;
+  List<DropdownMenuItem<String>>? _dropDownSex;
+  List<DropdownMenuItem<String>>? _dropDownMarital;
 
   List<DropdownMenuItem<String>> _dropDownBlood = _bloodItems
       .map((String value) => DropdownMenuItem<String>(
@@ -45,7 +45,7 @@ class _EditWidgetState extends State<EditWidget> {
           ))
       .toList();
 
-  File _image;
+  File? _image;
 
   _initDropDowns() {
     _dropDownSex = _sexItems
@@ -90,7 +90,7 @@ class _EditWidgetState extends State<EditWidget> {
                       )
                     : CircleAvatar(
                         radius: 100,
-                        backgroundImage: FileImage(_image),
+                        backgroundImage: FileImage(_image as File),
                       ),
               ),
             ),
@@ -144,7 +144,7 @@ class _EditWidgetState extends State<EditWidget> {
               //hint: ,
               onChanged: (value) {
                 setState(() {
-                  _selectedSex = value;
+                  _selectedSex = value as String;
                 });
               },
               items: _dropDownSex,
@@ -163,12 +163,10 @@ class _EditWidgetState extends State<EditWidget> {
                   initialDate: DateTime.now(),
                   firstDate: DateTime(1900),
                   lastDate: DateTime.now(),
-                ).then((DateTime value) {
-                  if (value != null) {
+                ).then((DateTime? value) {
                     setState(() {
                       _birthDate = value.toString();
                     });
-                  }
                 });
               },
             ),
@@ -183,7 +181,7 @@ class _EditWidgetState extends State<EditWidget> {
               //hint: ,
               onChanged: (value) {
                 setState(() {
-                  _selectedBloodGroup = value;
+                  _selectedBloodGroup = value as String;
                 });
               },
               items: _dropDownBlood,

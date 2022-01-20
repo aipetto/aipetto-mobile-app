@@ -14,19 +14,19 @@ class PetLoading extends PetState {}
 class PetsLoaded extends PetState {
   final List<Pet> pets;
 
-  PetsLoaded({@required this.pets}) : assert(pets != null);
+  PetsLoaded({required this.pets}) : assert(pets != null);
 
   @override
   List<Object> get props => [pets];
 }
 
 class PetLoaded extends PetState {
-  final Pet pet;
+  final Pet? pet;
 
-  PetLoaded({@required this.pet}) : assert(pet != null);
+  PetLoaded({this.pet}) : assert(pet != null);
 
   @override
-  List<Object> get props => [pet];
+  List<Object> get props => [pet as Object];
 }
 
 class PetError extends PetState {}

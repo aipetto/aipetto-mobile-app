@@ -13,9 +13,9 @@ class BusinessServicesPricesBloc
     extends Bloc<BusinessServicesPricesEvent, BusinessServicesPricesState> {
   final BusinessServicesPricesRepository businessServicesPricesRepository;
 
-  BusinessServicesPricesBloc({@required this.businessServicesPricesRepository})
+  BusinessServicesPricesBloc({required this.businessServicesPricesRepository})
       : assert(businessServicesPricesRepository != null),
-        super(null);
+        super(BusinessServicesPricesEmpty());
 
   @override
   BusinessServicesPricesState get initialState => BusinessServicesPricesEmpty();
@@ -27,7 +27,7 @@ class BusinessServicesPricesBloc
       yield BusinessServicesPricesLoading();
 
       try {
-        final List<BusinessServicePrice> businessServicePrices = await businessServicesPricesRepository.fetchBusinessServicesPrices(event.businessTenant);
+        final List<BusinessServicePrice>? businessServicePrices = await businessServicesPricesRepository.fetchBusinessServicesPrices(event.businessTenant);
         yield BusinessServicesPricesLoaded(businessServicePrice: businessServicePrices);
       } catch (e) {
         print(e);

@@ -8,11 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 class AddNewPetPage extends StatefulWidget {
-  final String petTypeId;
-  final String petTypeName;
+  final String? petTypeId;
+  final String? petTypeName;
 
-  const AddNewPetPage({Key key, this.petTypeId, this.petTypeName})
-      : super(key: key);
+  const AddNewPetPage({this.petTypeId, this.petTypeName});
 
   @override
   _AddNewPetPageState createState() => _AddNewPetPageState();
@@ -33,7 +32,7 @@ class _AddNewPetPageState extends State<AddNewPetPage> {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: BlocProvider(
         create: (_) => PetFormBloc(repository: petRepository),

@@ -16,7 +16,7 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
   final BusinessServiceReservationRepository serviceReservationRepository;
   final AuthenticationService authenticationService;
 
-  ServiceReservationBloc({@required this.authenticationService, @required this.serviceReservationRepository}) : assert(serviceReservationRepository != null), super(null);
+  ServiceReservationBloc({required this.authenticationService, required this.serviceReservationRepository}) : assert(serviceReservationRepository != null), super(ServiceReservationEmpty());
 
   @override
   Stream<ServiceReservationState> mapEventToState(event) async* {
@@ -26,7 +26,7 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         final DateTime currentDate = new DateTime.now();
         final User currentUser = await authenticationService.getCurrentUser();
         final List<Reservation> serviceReservation = await serviceReservationRepository.getClosestFutureReservationBooked(
-            currentDate, currentUser.tenants.first.tenant.id
+            currentDate, currentUser.tenants?.first.tenant?.id
         );
         yield NextClosestServiceReservationLoaded(serviceReservation: serviceReservation);
       } catch (_) {
@@ -40,7 +40,7 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         final DateTime currentDate = new DateTime.now();
         final String formatDate = DateFormat('yyyy-MM-dd').format(currentDate).toString();
         final User currentUser = await authenticationService.getCurrentUser();
-        final List<Reservation> serviceReservations = await serviceReservationRepository.getFutureReservationsBooked(formatDate, currentUser.tenants.first.tenant.id);
+        final List<Reservation> serviceReservations = await serviceReservationRepository.getFutureReservationsBooked(formatDate, currentUser.tenants?.first.tenant?.id);
         if (serviceReservations.length > 0){
           yield FutureServiceReservationLoaded(serviceReservations: serviceReservations);
         }else{
@@ -57,7 +57,7 @@ class ServiceReservationBloc extends Bloc<ServiceReservationEvent, ServiceReserv
         final DateTime currentDate = new DateTime.now();
         final User currentUser = await authenticationService.getCurrentUser();
         final DateTime currentDateLessOneDay = currentDate.subtract(new Duration(days: 1));
-        final List<Reservation> serviceReservations = await serviceReservationRepository.getPastUserReservationsBooked(currentDateLessOneDay, currentUser.tenants.first.tenant.id);
+        final List<Reservation> serviceReservations = await serviceReservationRepository.getPastUserReservationsBooked(currentDateLessOneDay, currentUser.tenants?.first.tenant?.id);
         if (serviceReservations.length > 0) {
           yield PastServiceReservationLoaded(serviceReservations: serviceReservations);
         } else {

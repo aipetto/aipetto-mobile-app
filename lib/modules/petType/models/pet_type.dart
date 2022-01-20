@@ -73,10 +73,10 @@ class Row {
 
   Map<String, dynamic> toJson() => {
         "_id": id,
-        "language": language == null ? null : language.toJson(),
+        "language": language == null ? null : language!.toJson(),
         "image": image == null
             ? null
-            : List<dynamic>.from(image.map((x) => x.toJson())),
+            : List<dynamic>.from(image!.map((x) => x.toJson())),
         "name": name,
         "tenant": tenant,
         "createdBy": createdBy,
@@ -99,7 +99,7 @@ class Image {
     this.createdAt,
     this.updatedAt,
     this.imageId,
-    this.downloadUrl,
+    required this.downloadUrl,
   });
 
   String? id;
@@ -110,7 +110,7 @@ class Image {
   DateTime? createdAt;
   DateTime? updatedAt;
   String? imageId;
-  String? downloadUrl;
+  String downloadUrl;
 
   factory Image.fromJson(Map<String, dynamic> json) => Image(
         id: json["_id"],
@@ -144,8 +144,8 @@ class Image {
 }
 
 class PetTypeSelected {
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
 
   PetTypeSelected(this.id, this.name);
 }

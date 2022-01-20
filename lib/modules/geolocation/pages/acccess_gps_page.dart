@@ -13,13 +13,13 @@ class _AccessGPSPageState extends State<AccessGPSPage>
     with WidgetsBindingObserver {
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance?.addObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance?.removeObserver(this);
     super.dispose();
   }
 
@@ -45,7 +45,7 @@ class _AccessGPSPageState extends State<AccessGPSPage>
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: Center(
         child: Column(

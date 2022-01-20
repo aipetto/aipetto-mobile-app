@@ -10,18 +10,18 @@ class CheckAuthenticationPage extends StatefulWidget {
 }
 
 class _CheckAuthenticationPage extends State<CheckAuthenticationPage> with WidgetsBindingObserver {
-  Future checkUserAuthentication;
+  late Future checkUserAuthentication;
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance?.addObserver(this);
     checkUserAuthentication = checkUserIsAuthenticatedOrNot();
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance?.removeObserver(this);
     super.dispose();
   }
 

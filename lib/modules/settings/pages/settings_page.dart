@@ -22,7 +22,7 @@ class _SettingsPageState extends State<SettingsPage>
   );
 
   bool _isDark = false;
-  Color _color;
+  Color? _color;
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _SettingsPageState extends State<SettingsPage>
               style: Theme.of(context)
                   .textTheme
                   .subtitle1
-                  .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                  ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         ),
         body: SingleChildScrollView(
           child: Column(

@@ -9,7 +9,7 @@ class ThemeChanged extends ThemeEvent {
   final AppTheme theme;
 
   ThemeChanged({
-    @required this.theme,
+    required this.theme,
   }) : super([theme]);
 
   @override

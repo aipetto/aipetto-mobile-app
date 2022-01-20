@@ -16,7 +16,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                .copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
+                ?.copyWith(fontWeight: FontWeight.w700, color: Colors.white)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -54,7 +54,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .subtitle2
-                                      .copyWith(
+                                      ?.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                 ),
@@ -147,7 +147,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                   Expanded(
                     child: Text(
                       'diagnosis'.tr(),
-                      style: Theme.of(context).textTheme.headline6.copyWith(
+                      style: Theme.of(context).textTheme.headline6?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
                     ),
@@ -157,7 +157,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                   ),
                   Icon(
                     Icons.keyboard_arrow_up,
-                    color: Theme.of(context).textTheme.headline6.color,
+                    color: Theme.of(context).textTheme.headline6?.color,
                   ),
                 ],
               ),
@@ -186,7 +186,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                   Expanded(
                     child: Text(
                       'recommendation'.tr(),
-                      style: Theme.of(context).textTheme.headline6.copyWith(
+                      style: Theme.of(context).textTheme.headline6?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
                     ),
@@ -196,7 +196,7 @@ class _VisitDetailPageState extends State<VisitDetailPage> {
                   ),
                   Icon(
                     Icons.keyboard_arrow_up,
-                    color: Theme.of(context).textTheme.headline6.color,
+                    color: Theme.of(context).textTheme.headline6?.color,
                   ),
                 ],
               ),

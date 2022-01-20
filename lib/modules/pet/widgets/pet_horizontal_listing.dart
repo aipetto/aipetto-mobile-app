@@ -40,7 +40,7 @@ class PetHorizontalList extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
-                          .copyWith(fontSize: 18),
+                          ?.copyWith(fontSize: 18),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     )
@@ -55,7 +55,7 @@ class PetHorizontalList extends StatelessWidget {
         if (state is PetLoaded) {
           final stateAsPetsLoadedState = state as PetsLoaded;
           final pets = stateAsPetsLoadedState.pets;
-          return buildPetsHorizontalList(pets);
+          buildPetsHorizontalList(pets);
         }
       },
     );
@@ -100,7 +100,7 @@ class PetHorizontalList extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontSize: 18),
+                        ?.copyWith(fontSize: 18),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   )

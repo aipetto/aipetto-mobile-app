@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 class BusinessPlaceItem extends StatelessWidget {
   final BusinessPlace businessPlace;
 
-  final Function onTap;
+  final void Function()? onTap;
 
   const BusinessPlaceItem(
-      {Key key, @required this.onTap, @required this.businessPlace})
-      : super(key: key);
+      {this.onTap, required this.businessPlace});
   @override
   Widget build(BuildContext context) {
 
     final String businessCity = businessPlace.addressCity ?? '';
     final String addressState = businessPlace.addressState ?? '';
-    final String addressCountry = businessPlace.addressCountry.name ?? '';
+    final String addressCountry = businessPlace.addressCountry?.name ?? '';
 
     final String businessCompleteAddress = businessCity
         + ', '
@@ -32,15 +31,15 @@ class BusinessPlaceItem extends StatelessWidget {
             CircleAvatar(
               radius: 50,
               backgroundColor: Colors.transparent,
-              child: businessPlace.photoLogo.first['privateUrl'].startsWith('assets') ?
+              child: businessPlace.photoLogo?.first['privateUrl'].startsWith('assets') ?
               Image.asset(
-                businessPlace.photoLogo.first['privateUrl'],
+                businessPlace.photoLogo?.first['privateUrl'],
                 height: 500,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
               ) :
               Image.network(
-                Environment.aipettoCloudStorageHost + businessPlace.photoLogo.first['privateUrl'],
+                Environment.aipettoCloudStorageHost + businessPlace.photoLogo?.first['privateUrl'],
                 height: 500,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
@@ -58,7 +57,7 @@ class BusinessPlaceItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
+                        ?.copyWith(fontSize: 15, fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
                     height: 3,

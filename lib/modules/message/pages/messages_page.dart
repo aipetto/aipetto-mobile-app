@@ -11,7 +11,6 @@ class MessagesPage extends StatefulWidget {
 class _MessagesPageState extends State<MessagesPage>
     with AutomaticKeepAliveClientMixin<MessagesPage> {
 
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -41,24 +40,22 @@ class _MessagesPageState extends State<MessagesPage>
 }
 
 class MessageListItem extends StatelessWidget {
-  final Function onTap;
+  final void Function()? onTap;
   final String imagePath;
   final String name;
   final String message;
   final String date;
-  final int unread;
+  final int? unread;
   final bool online;
 
   const MessageListItem(
-      {Key key,
-      @required this.onTap,
-      @required this.imagePath,
-      @required this.name,
-      @required this.message,
-      @required this.date,
+      {required this.onTap,
+      required this.imagePath,
+      required this.name,
+      required this.message,
+      required this.date,
       this.unread,
-      this.online})
-      : super(key: key);
+      this.online = false});
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +109,7 @@ class MessageListItem extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     name,
-                    style: Theme.of(context).textTheme.subtitle2.copyWith(
+                    style: Theme.of(context).textTheme.subtitle2?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),

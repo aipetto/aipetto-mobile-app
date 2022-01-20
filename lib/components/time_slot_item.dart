@@ -4,10 +4,9 @@ import '../utils/constants.dart';
 
 class TimeSlotItem extends StatelessWidget {
   final String time;
-  final Function onTap;
+  final void Function()? onTap;
 
-  const TimeSlotItem({Key key, @required this.time, @required this.onTap})
-      : super(key: key);
+  const TimeSlotItem({required this.time, required this.onTap});
   @override
   Widget build(BuildContext context) {
     return InkWell(

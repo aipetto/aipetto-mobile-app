@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
 import 'package:aipetto/modules/user/models/user.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
@@ -19,7 +18,7 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
   final _baseUrl = Environment.aipettoCoreApi;
   final http.Client httpClient;
 
-  AipettoCoreAuthenticationService({@required this.httpClient})
+  AipettoCoreAuthenticationService({required this.httpClient})
       : assert(httpClient != null);
 
   @override
@@ -52,7 +51,7 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
         return userFromJson(userResp.body);
       }
     }
-    return null;
+    throw new Exception('Error fetch user with auth email and password');
   }
 
   GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -65,12 +64,12 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
   Future<User> signInWithGoogle() async {
     try {
       final SecureStorage secureStorageRepository = new SecureStorage();
-      final GoogleSignInAccount account = await _googleSignIn.signIn();
-      final googleKey = await account.authentication;
+      final GoogleSignInAccount? account = await _googleSignIn.signIn();
+      final googleKey = await account?.authentication;
 
       final getJwtResponse = await http.post(
           Uri.parse('$_baseUrl/auth/mobile/google'),
-          body: {'token': googleKey.idToken});
+          body: {'token': googleKey?.idToken});
 
       if (getJwtResponse.statusCode == 200) {
         await secureStorageRepository.persistToken(getJwtResponse.body);
@@ -88,7 +87,7 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
           final jwtOnSecureStorage = await secureStorageRepository.getToken();
           var uuid = Uuid();
 
-          if (userDTOFromResponse.tenants.isEmpty) {
+          if (userDTOFromResponse.tenants!.isEmpty) {
             final newTenantName = {
               'data': {'name': 'aipetto' + uuid.v4()}
             };
@@ -104,11 +103,11 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
           return userDTOFromResponse;
         }
       }
-      return null;
+      throw new Exception('Error fetch user with Google Sign In');
     } catch (e) {
       print('Error Google Sign in');
       print(e);
-      return null;
+      throw new Exception('Error fetch user with Google Sign In');
     }
   }
 
@@ -127,7 +126,7 @@ class AipettoCoreAuthenticationService extends AuthenticationService {
     if (resp.statusCode == 200) {
       return userFromJson(resp.body);
     }
-    return null;
+    throw new Exception('Error fetch user with Google Sign In');
   }
 
   @override

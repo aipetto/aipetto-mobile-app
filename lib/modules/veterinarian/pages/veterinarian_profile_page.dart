@@ -49,7 +49,7 @@ class VeterinarianProfilePage extends StatelessWidget {
                           Text(
                             'Dr Vidal CRMV 11111',
                             style:
-                                Theme.of(context).textTheme.subtitle1.copyWith(
+                                Theme.of(context).textTheme.subtitle1?.copyWith(
                                       fontWeight: FontWeight.w700,
                                     ),
                           ),

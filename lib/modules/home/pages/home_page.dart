@@ -16,9 +16,9 @@ import 'package:http/http.dart' as http;
 import 'package:in_app_update/in_app_update.dart';
 
 class HomePage extends StatefulWidget {
-  final User user;
+  final User? user;
 
-  const HomePage({Key key, this.user}) : super(key: key);
+  const HomePage({this.user});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage> {
 
-  AppUpdateInfo _updateInfo;
+  AppUpdateInfo? _updateInfo;
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
   Future<void> checkForUpdate() async {
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
 
   void showSnack(String text) {
     if(_scaffoldKey.currentContext != null){
-      ScaffoldMessenger.of(_scaffoldKey.currentContext)
+      ScaffoldMessenger.of(_scaffoldKey.currentContext!)
           .showSnackBar(SnackBar(content: Text(text)));
     }
   }
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
   void initState() {
     super.initState();
     // Register a post frame callback to modify the widget
-    WidgetsBinding.instance.addPostFrameCallback((_) => inmediateUpdate());
+    WidgetsBinding.instance?.addPostFrameCallback((_) => inmediateUpdate());
   }
 
   inmediateUpdate() {
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
     String firstName = '';
 
     if (widget.user != null) {
-      firstName = widget.user.firstName ?? '';
+      firstName = widget.user?.firstName ?? '';
     }
 
     final PetRepository petRepository = PetRepository(
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                       children: <Widget>[
                         Text(
                           '${'hello'.tr()} $firstName',
-                          style: Theme.of(context).textTheme.headline6.copyWith(
+                          style: Theme.of(context).textTheme.headline6?.copyWith(
                                 fontWeight: FontWeight.w400,
                               ),
                         ),

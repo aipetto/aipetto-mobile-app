@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 class MyVeterinarianListItem extends StatelessWidget {
   final Veterinarian veterinarian;
 
-  const MyVeterinarianListItem({Key key, @required this.veterinarian})
-      : super(key: key);
+  const MyVeterinarianListItem({required this.veterinarian});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,7 +31,7 @@ class MyVeterinarianListItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
-                        .copyWith(fontWeight: FontWeight.w700),
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   Text(
                     veterinarian.speciality + '\n',

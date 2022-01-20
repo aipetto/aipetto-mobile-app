@@ -5,9 +5,9 @@ abstract class BusinessServicesPricesEvent extends Equatable {}
 
 class FetchBusinessServicesPrices extends BusinessServicesPricesEvent {
 
-  final String businessTenant;
+  final String? businessTenant;
 
-  FetchBusinessServicesPrices({@required this.businessTenant});
+  FetchBusinessServicesPrices({required this.businessTenant});
 
   @override
   List<Object> get props => [];

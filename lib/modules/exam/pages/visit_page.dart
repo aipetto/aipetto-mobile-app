@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class VisitPage extends StatefulWidget {
-  final Pet pet;
+  final Pet? pet;
 
-  const VisitPage({Key key, this.pet}) : super(key: key);
+  const VisitPage({this.pet});
 
   @override
   _VisitPageState createState() => _VisitPageState();
@@ -58,8 +58,7 @@ class VisitItem extends StatelessWidget {
   final Widget child;
 
   const VisitItem(
-      {Key key, @required this.date, @required this.time, @required this.child})
-      : super(key: key);
+      {required this.date, required this.time, required this.child});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -70,7 +69,7 @@ class VisitItem extends StatelessWidget {
           children: <Widget>[
             Text(
               date,
-              style: Theme.of(context).textTheme.subtitle2.copyWith(
+              style: Theme.of(context).textTheme.subtitle2?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
             ),

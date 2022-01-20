@@ -4,16 +4,16 @@ part of 'booking_cart_bloc.dart';
 abstract class BookingCartEvent {}
 
 class AddBookingService extends BookingCartEvent{
-  final double totalServicePrice;
-  final String serviceId;
-  final BusinessPlace businessPlace;
-  final String serviceName;
+  final double? totalServicePrice;
+  final String? serviceId;
+  final BusinessPlace? businessPlace;
+  final String? serviceName;
 
-  AddBookingService({this.totalServicePrice, this.serviceId, this.businessPlace, this.serviceName});
+  AddBookingService({required this.totalServicePrice, required this.serviceId, required this.businessPlace, required this.serviceName});
 
   @override
   String toString(){
-    return 'Instance of BookingService in cart: ${this.serviceId} which belongs to ${this.businessPlace.name}';
+    return 'Instance of BookingService in cart: ${this.serviceId} which belongs to ${this.businessPlace?.name}';
   }
 }
 
@@ -21,13 +21,13 @@ class AddBookingDateAndTime extends BookingCartEvent{
   final String timeAvailability;
   final DateTime dateAvailability;
 
-  AddBookingDateAndTime({this.timeAvailability, this.dateAvailability});
+  AddBookingDateAndTime({required this.timeAvailability, required this.dateAvailability});
 }
 
 class ChangeBookingCartSelectPet extends BookingCartEvent{
   final Pet pet;
 
-  ChangeBookingCartSelectPet({this.pet});
+  ChangeBookingCartSelectPet({required this.pet});
 }
 
 class ChangeBookingCartService extends BookingCartEvent{
@@ -37,10 +37,10 @@ class ChangeBookingCartService extends BookingCartEvent{
 }
 
 class ChangeBookingCartAvailability extends BookingCartEvent{
-  final String timeAvailability;
-  final DateTime dateAvailability;
+  final String? timeAvailability;
+  final DateTime? dateAvailability;
 
-  ChangeBookingCartAvailability({this.timeAvailability, this.dateAvailability});
+  ChangeBookingCartAvailability({required this.timeAvailability, required this.dateAvailability});
 }
 
 class GetBookingDateAndTime extends BookingCartEvent{

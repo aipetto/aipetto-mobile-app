@@ -8,7 +8,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
 
   final Reservation reservation;
 
-  const HistoryAppointmentListItem({Key key, this.reservation}) : super(key: key);
+  const HistoryAppointmentListItem({required this.reservation});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                           child: _buildColumn(
                             context: context,
                             title: 'time'.tr(),
-                            subtitle: reservation.time.tr(),
+                            subtitle: reservation.time!.tr(),
                           ),
                         ),
                       ],
@@ -53,7 +53,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                   CustomButton(
                     text: 'reschedule'.tr(),
                     textSize: 14,
-                    onPressed: null,
+                    onPressed: () {},
                     padding: EdgeInsets.symmetric(
                       vertical: 10,
                       horizontal: 5,
@@ -90,7 +90,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                           child: _buildColumn(
                             context: context,
                             title: 'speciality'.tr(),
-                            subtitle: reservation.serviceType.first.name,
+                            subtitle: reservation.serviceType?.first.name,
                           ),
                         ),
                       ],
@@ -107,7 +107,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
                     child: CustomButton(
                       text: 'reschedule'.tr(),
                       textSize: 14,
-                      onPressed: null,
+                      onPressed: () {},
                       padding: EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 5,
@@ -123,9 +123,9 @@ class HistoryAppointmentListItem extends StatelessWidget {
   }
 
   Column _buildColumn({
-    @required BuildContext context,
-    @required String title,
-    @required subtitle,
+    required BuildContext context,
+    required String title,
+    required subtitle,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +146,7 @@ class HistoryAppointmentListItem extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .subtitle1
-              .copyWith(fontWeight: FontWeight.w500),
+              ?.copyWith(fontWeight: FontWeight.w500),
         ),
       ],
     );

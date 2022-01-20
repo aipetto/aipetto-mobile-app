@@ -8,22 +8,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DrawerPage extends StatelessWidget {
 
-  final Function onTap;
+  final void Function() onTap;
 
-  const DrawerPage({Key key, @required this.onTap}) : super(key: key);
+  const DrawerPage({required this.onTap});
   @override
   Widget build(BuildContext context) {
-    String profileImage = '';
-    String firstName = '';
-    String lastName = '';
+    String? profileImage = '';
+    String? firstName = '';
+    String? lastName = '';
 
     final authenticationUserState =
         BlocProvider.of<AuthenticationBloc>(context).state;
     if (authenticationUserState is AuthenticationAuthenticated) {
       if (authenticationUserState.user.avatars != null &&
-          authenticationUserState.user.avatars.length > 0 &&
-          authenticationUserState.user.avatars.first != null) {
-        profileImage = authenticationUserState.user.avatars.first.publicUrl;
+          (authenticationUserState.user.avatars?.length ?? 0) > 0 &&
+          authenticationUserState.user.avatars?.first != null) {
+        profileImage = authenticationUserState.user.avatars?.first.publicUrl;
       }
 
       if (authenticationUserState.user.firstName != null) {
@@ -62,9 +62,8 @@ class DrawerPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 50,
                         backgroundColor: Colors.grey,
-                        backgroundImage: profileImage != null &&
-                                profileImage != ''
-                            ? NetworkImage(profileImage)
+                        backgroundImage: profileImage != ''
+                            ? NetworkImage(profileImage!) as ImageProvider
                             : AssetImage(
                                 'assets/images/logos/aipetto-logo-transparent.png'),
                       ),
@@ -104,9 +103,9 @@ class DrawerPage extends StatelessWidget {
   }
 
   InkWell _drawerItem({
-    @required String image,
-    @required String text,
-    @required Function onTap,
+    required String image,
+    required String text,
+    required Function onTap,
   }) {
     return InkWell(
       onTap: () {

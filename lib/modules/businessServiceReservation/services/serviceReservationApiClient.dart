@@ -2,11 +2,10 @@ import 'dart:convert';
 
 import 'package:aipetto/config/environment.dart';
 import 'package:aipetto/config/storage/secure_storage.dart';
-import 'package:aipetto/modules/user/models/user.dart';
-import 'package:intl/intl.dart';
-import 'package:meta/meta.dart';
-import 'package:http/http.dart' as http;
 import 'package:aipetto/modules/businessServiceReservation/models/service_reservation.dart';
+import 'package:aipetto/modules/user/models/user.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 abstract class ServiceReservationOperations {
   Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateTime, String customerTenant);
@@ -22,16 +21,16 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   final http.Client httpClient;
 
   ServiceReservationApiClient({
-    @required this.httpClient,
+    required this.httpClient,
   }) : assert(httpClient != null);
 
   @override
-  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDate, String customerTenant) async {
+  Future<List<Reservation>> getClosestFutureReservationBooked(DateTime currentDate, String? customerTenant) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D%5B%5D=$currentDate&filter%5BcustomerTenant%5D=$customerTenant&orderBy=date_ASC&limit=1&offset=0';
-    final reservationsResponse = await this.httpClient.get(url, headers: {
+    final reservationsResponse = await this.httpClient.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}',
@@ -46,12 +45,12 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }
 
   @override
-  Future<List<Reservation>> getFutureReservationsBooked(String currentDate, String customerTenant) async {
+  Future<List<Reservation>> getFutureReservationsBooked(String currentDate, String? customerTenant) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D%5B%5D=$currentDate&filter%5BcustomerTenant%5D=$customerTenant&orderBy=date_ASC';
-    final reservationsResponse = await this.httpClient.get(url, headers: {
+    final reservationsResponse = await this.httpClient.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}',
@@ -66,13 +65,13 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }
 
   @override
-  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateLessOneDay, String customerTenant) async {
+  Future<List<Reservation>> getPastUserReservationsBooked(DateTime currentDateLessOneDay, String? customerTenant) async {
 
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/customer-service-reservation?filter%5BdateRange%5D%5B%5D=2021-09-01&filter%5BdateRange%5D%5B%5D=$currentDateLessOneDay&filter%5BcustomerTenant%5D=$customerTenant&orderBy=date_DESC';
-    final reservationsResponse = await this.httpClient.get(url, headers: {
+    final reservationsResponse = await this.httpClient.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}',
@@ -87,12 +86,12 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
   }
 
   @override
-  Future<Reservation> getReservationDetails(String reservationId, String userTenant) async {
+  Future<Reservation> getReservationDetails(String reservationId, String? userTenant) async {
 
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final url = '$_baseUrl/user/$userTenant/service-reservation/$reservationId';
-    final serviceResponse = await this.httpClient.get(url, headers: {
+    final serviceResponse = await this.httpClient.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${jwtOnSecureStorage}',
@@ -113,7 +112,7 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
 
     final newReservationConfirmationInfo = {
       'data': {
-        "serviceType": [reservation.serviceType[0].id],
+        "serviceType": [reservation.serviceType![0].id],
         "businessId": reservation.businessId,
         "pet": reservation.pet,
         "place": reservation.place,

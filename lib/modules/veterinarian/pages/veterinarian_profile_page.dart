@@ -140,7 +140,7 @@ class VeterinarianProfilePage extends StatelessWidget {
                 ),
                 Text(
                   'about'.tr(),
-                  style: Theme.of(context).textTheme.headline6.copyWith(
+                  style: Theme.of(context).textTheme.headline6?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                 ),

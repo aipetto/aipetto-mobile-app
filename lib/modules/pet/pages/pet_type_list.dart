@@ -44,14 +44,13 @@ class _PetTypeListState extends State<PetTypeList> {
                       children: <Widget>[
                         state.petType.rows.length < 0
                             ? NoDataAvailableWidget()
-                            : StaggeredGridView.countBuilder(
+                            : AlignedGridView.count(
                                 padding: EdgeInsets.symmetric(horizontal: 10),
                                 crossAxisCount: 4,
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: state.petType.rows.length,
-                                staggeredTileBuilder: (int index) =>
-                                    StaggeredTile.fit(2),
+                                ///staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
                                 mainAxisSpacing: 10,
                                 crossAxisSpacing: 10,
                                 itemBuilder: (context, index) {

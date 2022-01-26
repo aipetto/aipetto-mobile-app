@@ -279,7 +279,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
       );
     }
 
-    Widget serviceWidget(List<BusinessServicePrice?> servicesPricesList) {
+    Widget serviceWidget(List<BusinessServicePrice>? servicesPricesList) {
 
       return SingleChildScrollView(
         child: Column(
@@ -300,7 +300,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
               ),
             ),
             ListView.builder(
-              itemCount: servicesPricesList.length,
+              itemCount: servicesPricesList!.length,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.all(8),
@@ -352,7 +352,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                         ],
                       ).expand(),
                       Radio(
-                        value: {'serviceId': servicesPricesList[index]?.service?.id, 'price': servicesPricesList[index]?.servicePrice, 'serviceName': servicesPricesList[index]?.service?.name},
+                        value: {'serviceId': servicesPricesList![index].service?.id, 'price': servicesPricesList[index]?.servicePrice, 'serviceName': servicesPricesList[index]?.service?.name},
                         groupValue: _businessServiceRadioValue,
                         activeColor: kAmphibianColorBlueDarkAlternative,
                         fillColor: MaterialStateColor.resolveWith(
@@ -529,7 +529,7 @@ class BusinessProfilePageState extends State<BusinessProfilePage>
                 body: TabBarView(
                   children: [
                     state.businessServicePrice != null ? serviceWidget(state.businessServicePrice) : Container(),
-                    state.businessServicePrice != null ? aboutWidget(state.businessServicePrice.first) : Container(),
+                    state.businessServicePrice != null ? aboutWidget(state.businessServicePrice?.first) : Container(),
                   ],
                 ),
               ),

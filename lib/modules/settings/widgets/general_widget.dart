@@ -7,7 +7,7 @@ import '../../../utils/constants.dart';
 class GeneralWidget extends StatefulWidget {
   final bool isDark;
 
-  const GeneralWidget({Key key, required this.isDark}) : super(key: key);
+  const GeneralWidget({required this.isDark});
   @override
   _GeneralWidgetState createState() => _GeneralWidgetState();
 }

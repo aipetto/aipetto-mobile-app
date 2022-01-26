@@ -15,7 +15,7 @@ class BusinessServicesTypesBloc
 
   BusinessServicesTypesBloc({required this.businessServiceTypeRepository})
       : assert(businessServiceTypeRepository != null),
-        super(null);
+        super(BusinessServicesTypesEmpty());
 
   @override
   BusinessServicesTypesState get initialState => BusinessServicesTypesEmpty();

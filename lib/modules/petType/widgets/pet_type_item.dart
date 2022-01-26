@@ -24,7 +24,7 @@ class PetTypeItem extends StatelessWidget {
                   : CircleAvatar(
                       backgroundColor: Colors.grey[300],
                       backgroundImage:
-                          NetworkImage(petType.image.first.downloadUrl),
+                          NetworkImage(petType.image!.first.downloadUrl),
                       radius: 25,
                     ),
               SizedBox(
@@ -32,7 +32,7 @@ class PetTypeItem extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  petType.name + '\n',
+                  petType.name! + '\n',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

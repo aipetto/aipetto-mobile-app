@@ -107,7 +107,7 @@ class ServiceReservationApiClient implements ServiceReservationOperations {
 
   @override
   Future postNewConfirmationReservation(
-      Reservation reservation, String businessPlaceTenantId, User user) async {
+      Reservation reservation, String? businessPlaceTenantId, User user) async {
     final jwtOnSecureStorage = await secureStorageRepository.getToken();
 
     final newReservationConfirmationInfo = {

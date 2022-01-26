@@ -13,12 +13,12 @@ class ServiceReservationFormLoading
 
 class ServiceReservationFormSuccess
     extends ServiceReservationConfirmationFormState {
-  final Reservation reservation;
+  final Reservation? reservation;
 
-  ServiceReservationFormSuccess({required this.reservation});
+  ServiceReservationFormSuccess({this.reservation});
 
   @override
-  List<Object> get props => [reservation];
+  List<Object> get props => [reservation as Object];
 }
 
 class ServiceReservationFormFailure

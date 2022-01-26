@@ -12,7 +12,7 @@ class BusinessServicesPricesEmpty extends BusinessServicesPricesState {}
 class BusinessServicesPricesLoading extends BusinessServicesPricesState {}
 
 class BusinessServicesPricesLoaded extends BusinessServicesPricesState {
-  final List<BusinessServicePrice?> businessServicePrice;
+  final List<BusinessServicePrice>? businessServicePrice;
 
   BusinessServicesPricesLoaded({required this.businessServicePrice})
       : assert(businessServicePrice != null);

@@ -224,7 +224,7 @@ class _NewPetWidgetState extends State<NewPetWidget> {
                   controller: _name,
                   hintText: 'Hachikō',
                   validator: (value) =>
-                      value.isEmpty ? 'Please add a name' : null,
+                      value!.isEmpty ? 'Please add a name' : null,
                 ),
                 SizedBox(height: 15),
                 Text(

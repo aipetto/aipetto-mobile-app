@@ -20,7 +20,7 @@ class ServiceReservationConfirmationFormBloc extends Bloc<
   ServiceReservationConfirmationFormBloc({
     required this.repository,
   })  : assert(repository != null),
-        super(null);
+        super(ServiceReservationFormInitial());
 
   @override
   Future<void> close() {

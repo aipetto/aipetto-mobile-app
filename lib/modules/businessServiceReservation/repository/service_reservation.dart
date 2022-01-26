@@ -27,7 +27,7 @@ class BusinessServiceReservationRepository {
   }
 
   Future<Reservation> addNewReservation(
-      Reservation reservation, String businessPlaceTenantId, User user) async {
+      Reservation reservation, String? businessPlaceTenantId, User user) async {
     return await reservationClient.postNewConfirmationReservation(
         reservation, businessPlaceTenantId, user);
   }
